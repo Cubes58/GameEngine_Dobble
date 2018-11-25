@@ -4,7 +4,7 @@
 
 #include "GLCore.hpp"
 
-Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint32 p_Style) {
+Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint32 p_Style) : m_Style(p_Style) {
 	sf::ContextSettings settings(0, 0, 0, 2, 4);
 	settings.depthBits = 0;			// Disabled.
 	settings.stencilBits = 0;		// Disabled.
@@ -45,14 +45,14 @@ sf::RenderWindow &Window::GetWindow() {
 	return m_Window;
 }
 
-const sf::Uint32 &Window::GetStyle() {
+const sf::Uint32 &Window::GetStyle() const {
 	return m_Style;
 }
 
-int Window::GetWidth() {
+int Window::GetWidth() const {
 	return m_Width;
 }
 
-int Window::GetHeight() {
+int Window::GetHeight() const {
 	return m_Height;
 }

@@ -22,8 +22,8 @@ public:
 	void Display();
 
 	sf::RenderWindow &GetWindow();
-	const sf::Uint32 &GetStyle();
+	const sf::Uint32 &GetStyle() const;
 
-	int GetWidth();
-	int GetHeight();
+	int GetWidth() const;
+	int GetHeight() const;
 };
