@@ -152,11 +152,13 @@
   <ItemGroup>
     <ClCompile Include="source\server\main.cpp" />
     <ClCompile Include="source\server\Server.cpp" />
+    <ClCompile Include="source\server\ServerGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\server\Randomiser.h" />
     <ClInclude Include="include\server\Server.h" />
+    <ClInclude Include="include\server\ServerGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

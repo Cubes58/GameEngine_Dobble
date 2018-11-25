@@ -1,8 +1,8 @@
-#include <SFML\System.hpp>
+#include <SFML/System.hpp>
 
 #include "Game.h"
 
-int main() {
+int main(int p_Argc, char* p_Argv[]) {
 	Log::Clear();
 
 	int width = 1280;
