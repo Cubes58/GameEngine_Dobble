@@ -2,7 +2,7 @@
 
 #include "Logger.h"
 #include "ServerGame.h"
-#include "FolderFileFinder.h"
+
 int main(int p_Argc, char* p_Argv[]) {
 	Log::Initialise();
 	Log::Flush("ALL");
