@@ -106,8 +106,16 @@ public:
 
 	static void Flush(const std::string &p_FileName) {
 		for (auto &file : m_FileInformation) {
-			std::fstream fileStream(file.first, std::ofstream::out | std::ofstream::trunc);
-			fileStream.close();
+			if (file.second == p_FileName) {
+				std::fstream fileStream(file.first, std::ofstream::out | std::ofstream::trunc);
+				fileStream.close();
+
+				break;
+			}
+			else if (p_FileName == "ALL") {
+				std::fstream fileStream(file.first, std::ofstream::out | std::ofstream::trunc);
+				fileStream.close();
+			}
 		}
 	}
 
