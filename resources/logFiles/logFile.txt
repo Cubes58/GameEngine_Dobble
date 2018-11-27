@@ -1,2 +1,2 @@
 [INFO] OpenGL version: 4.6.0 NVIDIA 398.36
-[INFO] Unable to load: 0 functions.
+[WARNING] Unable to load: 0 functions.

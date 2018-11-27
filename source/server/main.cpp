@@ -2,9 +2,10 @@
 
 #include "Logger.h"
 #include "ServerGame.h"
-
+#include "FolderFileFinder.h"
 int main(int p_Argc, char* p_Argv[]) {
-	Log::Clear();
+	Log::Initialise();
+	Log::Flush("ALL");
 
 	ServerGame serverGame;
 	const sf::Time timePerFrame = sf::seconds(1.0f / 60.0f);

@@ -23,10 +23,10 @@ Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint3
 	gl::exts::LoadTest loaded = gl::sys::LoadFunctions();
 
 	if (!loaded)
-		Log(Type::FAULT) << "Unable to load GL functions.";
+		Log(MessageType::FAULT) << "Unable to load GL functions.";
 
-	Log(Type::INFO) << "OpenGL version: " << gl::GetString(gl::VERSION);
-	Log(Type::INFO) << "Unable to load: " << loaded.GetNumMissing() << " functions.";
+	Log(MessageType::INFO) << "OpenGL version: " << gl::GetString(gl::VERSION);
+	Log(MessageType::WARNING) << "Unable to load: " << loaded.GetNumMissing() << " functions.";
 }
 
 Window::~Window() {

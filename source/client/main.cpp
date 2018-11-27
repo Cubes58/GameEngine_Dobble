@@ -3,7 +3,8 @@
 #include "Game.h"
 
 int main(int p_Argc, char* p_Argv[]) {
-	Log::Clear();
+	Log::Initialise();
+	Log::Flush("ALL");
 
 	int width = 1280;
 	int height = 720;

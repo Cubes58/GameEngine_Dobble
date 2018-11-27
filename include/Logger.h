@@ -2,47 +2,44 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include <string>
+#include <utility>
+#include <assert.h>
 
-#define ASSERT(x) if (!(x)) __debugbreak();
-// std::string function, std::string file, unsigned int line.
-// MACROS: #x (turns the x function into a string), __FILE__ Get the file, __LINE__ to get the line.
+#include "FolderFileFinder.h"
 
-enum class Type : unsigned char {
-	DEBUG,
-	INFO,
+#define LOG_FILES_FOLDER "./resources/logFiles"
+#define DEFAULT_LOG_FILE  "logFile"
+
+enum class MessageType : unsigned char {
+	INFO = 0,
 	WARNING,
 	FAULT
 };
 
-struct Configure {
-	Type m_Level = Type::INFO;
-	bool m_HeadersEnabled = true;
-	bool m_PrintToOutputFile = true;
-	bool m_PrintToConsole = true;
-};
-
 class Log {
 private:
-	bool m_Opened = false;
-	Type m_MessageLevel = Type::DEBUG;
-	Configure m_ConfigureFile;
-	std::fstream m_LogFile;
+	std::fstream m_FileStream;
+	static std::vector<std::pair<std::string, std::string>> m_FileInformation;
 
-	std::string GetLabel(const Type &p_Type) {
+	bool m_FileOpened = false;
+	bool m_ShowMessageType = true;
+	bool m_PrintToOutputFile = true;
+	bool m_PrintToConsole = true;
+	MessageType m_MessageType = MessageType::INFO;
+
+	std::string GetLabel(const MessageType &p_Type) {
 		std::string label("");
 
 		switch (p_Type) {
-		case Type::DEBUG:
-			label = "DEBUG";
-			break;
-		case Type::INFO:
+		case MessageType::INFO:
 			label = "INFO";
 			break;
-		case Type::WARNING:
+		case MessageType::WARNING:
 			label = "WARNING";
 			break;
-		case Type::FAULT:
+		case MessageType::FAULT:
 			label = "FAULT(ERROR)";
 			break;
 		default:
@@ -51,52 +48,77 @@ private:
 		}
 		return label;
 	}
+
+	static std::string GetFileFromName(const std::string &p_FileName) {
+		std::string fileLocation = "";
+		for (auto &file : m_FileInformation) {
+			if (file.second == p_FileName) {
+				fileLocation = file.first;
+				break;
+			}
+		}
+		return fileLocation;
+	}
 public:
 	Log() {
 
 	}
 
-	Log(const Type &p_Type, const std::string &p_FileName = "logfile.txt") {
-		m_MessageLevel = p_Type;
+	Log(const MessageType &p_Type, const std::string &p_FileName = DEFAULT_LOG_FILE) {
+		m_MessageType = p_Type;
 
-#ifdef _DEBUG
-		m_ConfigureFile.m_Level = Type::DEBUG;
-#endif
-
-		if (m_ConfigureFile.m_PrintToOutputFile)
-			m_LogFile.open(p_FileName, std::ios_base::app);
-		if (m_ConfigureFile.m_HeadersEnabled)
+		if (m_PrintToOutputFile) {
+			std::string fileLocation = GetFileFromName(p_FileName);
+			m_FileStream.open(fileLocation, std::ios_base::app);
+		}
+		if (m_ShowMessageType)
 			operator<< ("[" + GetLabel(p_Type) + "] ");
 	}
 
 	~Log() {
-		if (m_Opened) {
-			if (m_ConfigureFile.m_PrintToConsole)
+		if (m_FileOpened) {
+			if (m_PrintToConsole) {
+				if (m_MessageType == MessageType::FAULT) {
+					std::cout << "\n" << "FILE: " << __FILE__ << "\n" << "LINE: " << __LINE__ << "\n";
+				}
 				std::cout << std::endl;
-			if (m_ConfigureFile.m_PrintToOutputFile) {
-				m_LogFile << "\n";
-				m_LogFile.close();
+			}
+			if (m_PrintToOutputFile) {
+				if (m_MessageType == MessageType::FAULT) {
+					m_FileStream << "\n" << "FILE: " << __FILE__ << "\n" << "LINE: " << __LINE__ << "\n";
+				}
+
+				m_FileStream << "\n";
+				m_FileStream.close();
 			}
 		}
-
-		m_Opened = false;
+		m_FileOpened = false;
 	}
 
-	static void Clear() {
-		std::fstream logFile("logfile.txt", std::ios::out);
-		logFile.close();
+	static void Initialise(const std::string &p_FolderLocation = LOG_FILES_FOLDER) {
+		std::vector<std::string> files = FolderFileFinder::GetFilesInFolder(LOG_FILES_FOLDER);
+		std::vector<std::string> fileNames = FolderFileFinder::ExtractFileName(files);
+
+		for (size_t i = 0; i < files.size() && i < fileNames.size(); ++i) {
+			m_FileInformation.emplace_back(std::make_pair(files[i], fileNames[i]));
+		}
+	}
+
+	static void Flush(const std::string &p_FileName) {
+		for (auto &file : m_FileInformation) {
+			std::fstream fileStream(file.first, std::ofstream::out | std::ofstream::trunc);
+			fileStream.close();
+		}
 	}
 
 	template<typename T>
-	Log& operator<<(const T &p_Message) {
-		if (m_MessageLevel >= m_ConfigureFile.m_Level) {
-			if (m_ConfigureFile.m_PrintToConsole)
-				std::cout << p_Message;
+	Log &operator<<(const T &p_Message) {
+		if (m_PrintToConsole)
+			std::cout << p_Message;
 
-			m_Opened = true;
-			if (m_ConfigureFile.m_PrintToOutputFile)
-				m_LogFile << p_Message;
-		}
+		m_FileOpened = true;
+		if (m_PrintToOutputFile)
+			m_FileStream << p_Message;
 
 		return *this;
 	}
