@@ -1,6 +1,6 @@
 #include <SFML/System.hpp>
 
-#include "Game.h"
+#include "Game.h"1
 
 int main(int p_Argc, char* p_Argv[]) {
 	Log::Initialise();
