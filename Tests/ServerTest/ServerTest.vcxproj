@@ -101,6 +101,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
@@ -122,6 +123,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
@@ -143,6 +145,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
@@ -164,6 +167,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
