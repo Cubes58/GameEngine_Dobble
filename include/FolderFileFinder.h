@@ -17,10 +17,6 @@ private:
 	}
 
 	struct PathLeafString {
-		/*!
-			\brief The file name, and extension of the file, from a filesystem object.
-			\param p_Entry filesystem::directory_entry p_Entry File directory.
-		*/
 		std::string operator()(const std::filesystem::directory_entry &p_Entry) const {
 			return p_Entry.path().filename().string();
 		}
