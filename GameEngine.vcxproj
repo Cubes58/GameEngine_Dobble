@@ -184,18 +184,23 @@
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
     <ClCompile Include="source\client\Window.cpp" />
-    <ClCompile Include="source\Entity.cpp" />
-    <ClCompile Include="source\EntityManager.cpp" />
     <ClCompile Include="source\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
     <ClInclude Include="include\client\Window.h" />
+    <ClInclude Include="include\ComponentManager.h" />
+    <ClInclude Include="include\ComponentContainer.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
+    <ClInclude Include="include\EntitySystem.h" />
     <ClInclude Include="include\FolderFileFinder.h" />
     <ClInclude Include="include\Logger.h" />
+    <ClInclude Include="include\PositionComponent.h" />
+    <ClInclude Include="include\RenderComponent.h" />
+    <ClInclude Include="include\RenderSystem.h" />
+    <ClInclude Include="include\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,8 +2,21 @@
 
 #include "GLCore.hpp"
 
+#include "EntityManager.h"
+
 Game::Game(Window &p_Window) : m_Window(p_Window) {
-	
+	EntityManagerInstance.Init();
+	EntityManager::Instance().CreateEntity("EntityOne");
+	PositionComponent positionComponent;
+	positionComponent.m_XPosition = 5.5;
+	positionComponent.m_YPosition = 1.75;
+	EntityManager::Instance().AddComponentToEntity("EntityOne", positionComponent);
+	//EntityManager::Instance().RemoveEntity("EntityOne");
+	std::weak_ptr<PositionComponent> posComp = EntityManagerInstance.GetComponent("EntityOne", positionComponent);
+
+	auto pointer = posComp.lock();
+	std::cout << "\n\n" << pointer->m_XPosition << std::endl;
+	std::cout << pointer->m_YPosition << std::endl;
 }
 
 Game::~Game() {
