@@ -20,10 +20,14 @@ using EntityID = std::size_t;
 
 class EntityManager {
 private:
+	friend EntitySystem;
+
 	std::hash<std::string> m_StringHasher;
 	std::set<EntityID> m_Entities;
 	ComponentContainer m_ComponentContainer;
+
 	std::vector<std::shared_ptr<EntitySystem>> m_Systems;
+	//std::shared_ptr<RenderSystem> m_RenderSystem;
 
 	EntityManager() = default;
 	~EntityManager() = default;
@@ -39,13 +43,21 @@ public:
 		if (alreadyInstantiated)
 			return;
 
-		// If server load all the data from files.
+		// If server - load all the data from files.
 		// If client - load a bunch of data, but also get some from the server.
 
 		alreadyInstantiated = true;
 	}
 
-	EntityID CreateEntity(EntityID p_EntityID) {
+	void InvokeSystems() {
+		for (auto &entity : m_Entities) {
+			for (auto &system : m_Systems) {
+				system->Process(entity);
+			}
+		}
+	}
+
+	EntityID CreateEntity(const EntityID &p_EntityID) {
 		m_Entities.emplace(p_EntityID);
 
 		return p_EntityID;
@@ -55,7 +67,7 @@ public:
 	}
 
 	template <typename ComponentType>
-	void AddComponentToEntity(EntityID p_EntityID, ComponentType p_Component) {
+	void AddComponentToEntity(const EntityID &p_EntityID, ComponentType p_Component) {
 		auto entity = m_Entities.find(p_EntityID);
 		if (entity != m_Entities.end())
 			m_ComponentContainer.AddComponent(p_EntityID, p_Component);
@@ -65,9 +77,13 @@ public:
 		AddComponentToEntity(m_StringHasher(p_EntityName), p_Component);
 	}
 
-	void RemoveEntity(EntityID p_EntityID) {
-		auto entity = m_Entities.find(p_EntityID);
+	template <typename ComponentType>
+	void RemoveComponent(const EntityID &p_EntityID) {
+		m_ComponentContainer.DeleteComponent<ComponentType>(p_EntityID);
+	}
 
+	void RemoveEntity(const EntityID &p_EntityID) {
+		auto entity = m_Entities.find(p_EntityID);
 		if (entity == m_Entities.end())
 			return;
 
@@ -79,12 +95,16 @@ public:
 	}
 
 	template <typename ComponentType>
-	std::weak_ptr<ComponentType> GetComponent(EntityID p_Entity, ComponentType p_Component) {
-		return m_ComponentContainer.GetComponent(p_Entity, p_Component);
+	std::weak_ptr<ComponentType> GetComponent(const EntityID &p_Entity) {
+		return m_ComponentContainer.GetComponent<ComponentType>(p_Entity);
 	}
 	template <typename ComponentType>
-	std::weak_ptr<ComponentType> GetComponent(const std::string &p_Entity, ComponentType p_Component) {
-		return GetComponent(m_StringHasher(p_Entity), p_Component);
+	std::weak_ptr<ComponentType> GetComponent(const std::string &p_Entity) {
+		return GetComponent<ComponentType>(m_StringHasher(p_Entity));
+	}
+
+	void AddSystem(std::shared_ptr<EntitySystem> p_EntitySystem) {
+		m_Systems.push_back(p_EntitySystem);
 	}
 
 	void Clear() {
