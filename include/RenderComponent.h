@@ -3,9 +3,9 @@
 #include <vector>
 #include <string>
 
-#include "Texture2D.h"
+#include "Component.h"
 
-struct RenderComponent {
+struct RenderComponent : public Component {
 	std::string m_CardBackgroundTextureID;
 	
 	// Store eight texture names' for each of the symbols on the card.

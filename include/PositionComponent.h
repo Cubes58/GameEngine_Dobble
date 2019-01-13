@@ -1,6 +1,8 @@
 #pragma once
 
-struct PositionComponent {
+#include "Component.h"
+
+struct PositionComponent : public Component {
 	float m_XPosition;
 	float m_YPosition;
 

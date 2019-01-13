@@ -8,6 +8,8 @@
 #include "Logger.h"
 #include "Scene.h"
 
+#include "PositionComponent.h"
+
 Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_ACTIVE) {
 	for (int i = 0; i < m_s_NumberOfDifferentKeyCodes; ++i) {
 		m_Keys[i] = false;
@@ -15,28 +17,28 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 
 
 	EntityManagerInstance.Init();
-	EntityManager::Instance().CreateEntity("EntityOne");
+	EntityManager::Instance().CreateEntity("EntityOne"); EntityManager::Instance().CreateEntity("EntityTwo");
 	PositionComponent positionComponent;
-	positionComponent.m_XPosition = 5.5;
-	positionComponent.m_YPosition = 1.75;
+	positionComponent.m_XPosition = 10;
+	positionComponent.m_YPosition = 0;
 	positionComponent.m_Width = 500;
 	positionComponent.m_Height = 500;
 	positionComponent.m_Rotation = 0;
-	EntityManager::Instance().AddComponentToEntity("EntityOne", positionComponent);
+	EntityManager::Instance().AddComponentToEntity<PositionComponent>("EntityOne", std::make_shared<PositionComponent>(positionComponent));
 
-	RenderComponent renderComponent;
+
+	EntityManager::Instance().AddComponentToEntity<PositionComponent>("EntityTwo", std::make_shared<PositionComponent>(positionComponent));
+	
+	//EntityManager::Instance().DeleteComponent<PositionComponent>("EntityOne");
+	//EntityManager::Instance().DeleteEntity("EntityOne");
+	//std::shared_ptr<PositionComponent> posComp = EntityManagerInstance.GetComponent<PositionComponent>("EntityTwo");
+	
+	std::shared_ptr<RenderComponent> renderComponent = std::make_shared<RenderComponent>();
 	ResourceManager::LoadTexture("resources/images/test.jpg", gl::FALSE_, "CardBackground");
-	renderComponent.m_CardBackgroundTextureID = "CardBackground";
-	EntityManager::Instance().AddComponentToEntity("EntityOne", renderComponent);
+	renderComponent->m_CardBackgroundTextureID = "CardBackground";
+	EntityManager::Instance().AddComponentToEntity<RenderComponent>("EntityOne", renderComponent);
 
-	//EntityManager::Instance().RemoveEntity("EntityOne");
-	std::weak_ptr<PositionComponent> posComp = EntityManagerInstance.GetComponent<PositionComponent>("EntityOne");
-
-	auto pointer = posComp.lock();
-	std::cout << "\n\n" << pointer->m_XPosition << std::endl;
-	std::cout << pointer->m_YPosition << std::endl;
-
-	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>(m_Window);
+	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight());
 	EntityManagerInstance.AddSystem(renderSystem);
 }
 
@@ -72,8 +74,7 @@ void Game::ProcessEvents() {
 }
 
 void Game::Update(float p_DeltaTime) {
-	// TODO: Invoke entity systems
-	//EntityManagerInstance.InvokeSystems();
+	EntityManagerInstance.UpdateSystems(p_DeltaTime);
 
 	GLenum e;
 	while ((e = gl::GetError()) != gl::NO_ERROR_) {
@@ -115,7 +116,7 @@ void Game::Render() {
 	gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
 	// Draw game related stuff!
-	EntityManagerInstance.InvokeSystems();
+	EntityManagerInstance.RenderSystems(m_Window);
 
 	// Switch the buffers.
 	m_Window.GetWindow().display();

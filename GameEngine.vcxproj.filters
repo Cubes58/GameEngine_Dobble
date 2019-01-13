@@ -36,9 +36,6 @@
     <ClCompile Include="source\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\EntitySystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\client\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -68,9 +65,6 @@
     <ClInclude Include="include\client\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\FolderFileFinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -95,17 +89,14 @@
     <ClInclude Include="include\RenderComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\ComponentManager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ComponentContainer.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="include\EntityManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="include\client\ResourceManager.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

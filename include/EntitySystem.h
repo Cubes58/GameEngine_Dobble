@@ -1,21 +1,14 @@
 #pragma once
 
-#include <unordered_map>
 #include <memory>
-#include <any>
 
-#include "Entity.h"
-#include "ComponentContainer.h"
-
-class EntityManager;
+#include "Window.h"
 
 class EntitySystem {
-protected:
-	ComponentContainer &GetComponentContainer();
-
 public:
 	EntitySystem() = default;
 	virtual ~EntitySystem() = default;
 
-	virtual void Process(const EntityID &p_Entity) = 0;
+	virtual void Update(float p_DeltaTime) {}
+	virtual void Render(Window &p_Window) {}
 };
