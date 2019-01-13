@@ -1,11 +1,19 @@
 #pragma once
 
-#include <memory>
+#include <vector>
+#include <string>
 
-#include <SFML/Graphics/Shape.hpp>
-#include <SFML/Graphics/Texture.hpp>
+#include "Texture2D.h"
 
 struct RenderComponent {
-	std::shared_ptr<sf::Shape> m_Shape;
-	sf::Texture m_Texture;
+	std::string m_CardBackgroundTextureID;
+	
+	// Store eight texture names' for each of the symbols on the card.
+	std::vector<std::string> m_SymbolTextureNames;
+
+	// Generate and store 8 circles? (8 VBOs and a VAO to store them).
+
+	RenderComponent() = default;
+	RenderComponent(const std::vector<std::string> &p_SymbolTextureNames, const std::string &p_CardBackgroundTextureID)
+		: m_SymbolTextureNames(p_SymbolTextureNames), m_CardBackgroundTextureID(p_CardBackgroundTextureID) {}
 };

@@ -1,6 +1,7 @@
 #include <SFML/System.hpp>
 
 #include "Game.h"
+#include "Logger.h"
 
 int main(int p_Argc, char* p_Argv[]) {
 	Log::Initialise();
@@ -16,17 +17,22 @@ int main(int p_Argc, char* p_Argv[]) {
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
+	unsigned int updateCounter = 0, renderCounter = 0;
+	sf::Time totalTime = sf::Time::Zero;
 	while (window.IsOpen()) {
 		sf::Time elapsedTime = clock.restart();
 		timeSinceLastUpdate += elapsedTime;
+		totalTime += elapsedTime;
 
 		game.ProcessEvents();
 
 		while (timeSinceLastUpdate >= timePerFrame) {
 			timeSinceLastUpdate -= timePerFrame;
 			game.Update(timePerFrame.asSeconds());
+			//Log(MessageType::INFO) << "Update counter: " << ++updateCounter / totalTime.asSeconds();
 		}
 		game.Render();
+		//Log(MessageType::INFO) << "Render counter: " << ++renderCounter / totalTime.asSeconds();
 
 		window.Display();
 	}

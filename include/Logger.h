@@ -9,6 +9,7 @@
 
 #include "FolderFileFinder.h"
 
+#define ASSERT(x) if (!(x)) __debugbreak();
 #define LOG_FILES_FOLDER "./resources/logFiles"
 #define DEFAULT_LOG_FILE  "logFile"
 
