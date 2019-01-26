@@ -50,13 +50,13 @@
     <ClInclude Include="include\EntityManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\FolderFileFinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\EntitySystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileSystemHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

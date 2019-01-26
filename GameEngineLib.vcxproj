@@ -193,7 +193,7 @@
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
-    <ClInclude Include="include\FolderFileFinder.h" />
+    <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\Scene.h" />
   </ItemGroup>

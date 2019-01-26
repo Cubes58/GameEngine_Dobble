@@ -22,6 +22,9 @@
     <Filter Include="Header Files\Managers">
       <UniqueIdentifier>{08fd3295-0f2a-4b63-881b-688599d35cac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\EntitySystems">
+      <UniqueIdentifier>{fc63c542-cd3d-4b97-82a8-d071af365bbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\client\main.cpp">
@@ -65,16 +68,7 @@
     <ClInclude Include="include\client\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\FolderFileFinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\EntitySystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\RenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\client\Shader.h">
@@ -97,6 +91,15 @@
     </ClInclude>
     <ClInclude Include="include\Component.h">
       <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntitySystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RenderSystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileSystemHelper.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -43,7 +43,7 @@ public:
 		gl::GenVertexArrays(1, &m_VAO);
 		gl::BindVertexArray(m_VAO);
 		gl::BindBuffer(gl::ARRAY_BUFFER, m_VBO);
-		// Vertices
+		// Vertices - Two floats for position, two for the texture coordinates.
 		gl::EnableVertexAttribArray(0);
 		gl::VertexAttribPointer(0, 4, gl::FLOAT, gl::FALSE_, 4 * sizeof(gl::FLOAT), (void*)0);
 

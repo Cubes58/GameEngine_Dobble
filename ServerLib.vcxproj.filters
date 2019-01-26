@@ -41,7 +41,7 @@
     <ClInclude Include="include\server\ServerGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\FolderFileFinder.h">
+    <ClInclude Include="include\FileSystemHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

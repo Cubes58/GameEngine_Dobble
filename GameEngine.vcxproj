@@ -204,7 +204,7 @@
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
-    <ClInclude Include="include\FolderFileFinder.h" />
+    <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\PositionComponent.h" />
     <ClInclude Include="include\RenderComponent.h" />

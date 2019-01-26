@@ -16,7 +16,7 @@ private:
 	std::string m_Title;
 public:
 	Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint32 p_Style = sf::Style::Default);
-	~Window();
+	~Window() = default;
 
 	bool IsOpen();
 	void Display();

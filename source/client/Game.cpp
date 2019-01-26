@@ -15,9 +15,10 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 		m_Keys[i] = false;
 	}
 
-
 	EntityManagerInstance.Init();
-	EntityManager::Instance().CreateEntity("EntityOne"); EntityManager::Instance().CreateEntity("EntityTwo");
+	EntityManager::Instance().CreateEntity("EntityOne"); 
+	EntityManager::Instance().CreateEntity("EntityTwo");
+	EntityManager::Instance().CreateEntity("EntityThree");
 	PositionComponent positionComponent;
 	positionComponent.m_XPosition = 10;
 	positionComponent.m_YPosition = 0;
@@ -25,8 +26,6 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 	positionComponent.m_Height = 500;
 	positionComponent.m_Rotation = 0;
 	EntityManager::Instance().AddComponentToEntity<PositionComponent>("EntityOne", std::make_shared<PositionComponent>(positionComponent));
-
-
 	EntityManager::Instance().AddComponentToEntity<PositionComponent>("EntityTwo", std::make_shared<PositionComponent>(positionComponent));
 	
 	//EntityManager::Instance().DeleteComponent<PositionComponent>("EntityOne");
@@ -100,7 +99,7 @@ void Game::Update(float p_DeltaTime) {
 			ASSERT(false);
 			break;
 		default:
-			Log(MessageType::FAULT) << "ERROR: Unknown";
+			Log(MessageType::FAULT) << "ERROR: UNKNOWN";
 			ASSERT(false);
 			break;
 		}

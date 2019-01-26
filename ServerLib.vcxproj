@@ -180,7 +180,7 @@
     <ClCompile Include="source\server\ServerGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\FolderFileFinder.h" />
+    <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\server\Randomiser.h" />
     <ClInclude Include="include\server\Server.h" />

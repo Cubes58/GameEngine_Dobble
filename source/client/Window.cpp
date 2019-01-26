@@ -31,13 +31,11 @@ Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint3
 
 	gl::Viewport(0, 0, GetWidth(), GetHeight());
 	gl::Enable(gl::CULL_FACE);
-	//gl::Enable(gl::BLEND);
-	//gl::BlendFunc(gl::SRC_ALPHA, gl::ONE_MINUS_SRC_ALPHA);
+
+	gl::Enable(gl::BLEND);
+	gl::BlendFunc(gl::SRC_ALPHA, gl::ONE_MINUS_SRC_ALPHA);
+
 	gl::Disable(gl::DEPTH_TEST);
-}
-
-Window::~Window() {
-
 }
 
 bool Window::IsOpen() {

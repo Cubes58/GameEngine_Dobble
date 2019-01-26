@@ -7,7 +7,7 @@
 #include <utility>
 #include <assert.h>
 
-#include "FolderFileFinder.h"
+#include "FileSystemHelper.h"
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define LOG_FILES_FOLDER "./resources/logFiles"
@@ -97,11 +97,10 @@ public:
 	}
 
 	static void Initialise(const std::string &p_FolderLocation = LOG_FILES_FOLDER) {
-		std::vector<std::string> files = FolderFileFinder::GetFilesInFolder(LOG_FILES_FOLDER);
-		std::vector<std::string> fileNames = FolderFileFinder::ExtractFileName(files);
+		std::vector<FileInformation> files = FileSystemHelper::GetFilesInFolder(p_FolderLocation);
 
-		for (size_t i = 0; i < files.size() && i < fileNames.size(); ++i) {
-			m_FileInformation.emplace_back(std::make_pair(files[i], fileNames[i]));
+		for (const auto &file : files) {
+			m_FileInformation.emplace_back(std::make_pair(file.m_Location, file.m_Name));
 		}
 	}
 
