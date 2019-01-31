@@ -8,35 +8,68 @@
 #include "Logger.h"
 #include "Scene.h"
 
+#include "TransformComponent.h"
+
 Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_ACTIVE) {
 	for (int i = 0; i < m_s_NumberOfDifferentKeyCodes; ++i) {
 		m_Keys[i] = false;
 	}
 
-
 	EntityManagerInstance.Init();
-	EntityManager::Instance().CreateEntity("EntityOne");
-	PositionComponent positionComponent;
-	positionComponent.m_XPosition = 5.5;
-	positionComponent.m_YPosition = 1.75;
-	positionComponent.m_Width = 500;
-	positionComponent.m_Height = 500;
-	positionComponent.m_Rotation = 0;
-	EntityManager::Instance().AddComponentToEntity("EntityOne", positionComponent);
+	EntityManager::Instance().CreateEntity("EntityOne"); 
+	TransformComponent positionComponent;
 
+	positionComponent.m_CircleTransforms[0].m_Position = Vector2D<float>(200.0f, 200.0f);
+	positionComponent.m_CircleTransforms[0].m_Radius = 200;
+	positionComponent.m_CircleTransforms[0].m_Rotation = 0;
+
+	positionComponent.m_CircleTransforms[1].m_Position = Vector2D<float>(150.0f, 150.0f);
+	positionComponent.m_CircleTransforms[1].m_Radius = 40;
+	positionComponent.m_CircleTransforms[1].m_Rotation = 0;
+	
+	positionComponent.m_CircleTransforms[2].m_Position = Vector2D<float>(225.0f, 200.0f);
+	positionComponent.m_CircleTransforms[2].m_Radius = 25;
+	positionComponent.m_CircleTransforms[2].m_Rotation = 30;
+	
+	positionComponent.m_CircleTransforms[3].m_Position = Vector2D<float>(100.0f, 100.0f);
+	positionComponent.m_CircleTransforms[3].m_Radius = 25.75;
+	positionComponent.m_CircleTransforms[3].m_Rotation = 20;
+	
+	positionComponent.m_CircleTransforms[4].m_Position = Vector2D<float>(290.0f, 110.0f);
+	positionComponent.m_CircleTransforms[4].m_Radius = 55;
+	positionComponent.m_CircleTransforms[4].m_Rotation = 70;
+	
+	positionComponent.m_CircleTransforms[5].m_Position = Vector2D<float>(200.0f, 50.0f);
+	positionComponent.m_CircleTransforms[5].m_Radius = 27.5;
+	positionComponent.m_CircleTransforms[5].m_Rotation = 90;
+	
+	positionComponent.m_CircleTransforms[6].m_Position = Vector2D<float>(150.0f, 300.0f);
+	positionComponent.m_CircleTransforms[6].m_Radius = 44;
+	positionComponent.m_CircleTransforms[6].m_Rotation = 45;
+	
+	positionComponent.m_CircleTransforms[7].m_Position = Vector2D<float>(45.0f, 200.0f);
+	positionComponent.m_CircleTransforms[7].m_Radius = 35;
+	positionComponent.m_CircleTransforms[7].m_Rotation = 367;
+	
+	positionComponent.m_CircleTransforms[8].m_Position = Vector2D<float>(280.0f, 310.0f);
+	positionComponent.m_CircleTransforms[8].m_Radius = 53;
+	positionComponent.m_CircleTransforms[8].m_Rotation = 98;
+
+	EntityManager::Instance().AddComponentToEntity<TransformComponent>("EntityOne", std::make_shared<TransformComponent>(positionComponent));
+	
 	RenderComponent renderComponent;
-	ResourceManager::LoadTexture("resources/images/test.jpg", gl::FALSE_, "CardBackground");
-	renderComponent.m_CardBackgroundTextureID = "CardBackground";
-	EntityManager::Instance().AddComponentToEntity("EntityOne", renderComponent);
+	renderComponent.m_SymbolTextureNames[0] = &ResourceManager::LoadTexture("resources/images/cardBackground.png", gl::FALSE_, "CardBackground");
+	renderComponent.m_SymbolTextureNames[1] = &ResourceManager::LoadTexture("resources/images/symbols/airplane.png", gl::FALSE_, "airplane");
+	renderComponent.m_SymbolTextureNames[2] = &ResourceManager::LoadTexture("resources/images/symbols/apple.png", gl::FALSE_, "apple");
+	renderComponent.m_SymbolTextureNames[3] = &ResourceManager::LoadTexture("resources/images/symbols/appleTree.png", gl::FALSE_, "appleTree");
+	renderComponent.m_SymbolTextureNames[4] = &ResourceManager::LoadTexture("resources/images/symbols/bear.png", gl::FALSE_, "bear");
+	renderComponent.m_SymbolTextureNames[5] = &ResourceManager::LoadTexture("resources/images/symbols/binoculars.png", gl::FALSE_, "binoculars");
+	renderComponent.m_SymbolTextureNames[6] = &ResourceManager::LoadTexture("resources/images/symbols/blackCat.png", gl::FALSE_, "blackCat");
+	renderComponent.m_SymbolTextureNames[7] = &ResourceManager::LoadTexture("resources/images/symbols/boar.png", gl::FALSE_, "boar");
+	renderComponent.m_SymbolTextureNames[8] = &ResourceManager::LoadTexture("resources/images/symbols/bonsai.png", gl::FALSE_, "bonsai");
+	EntityManager::Instance().AddComponentToEntity<RenderComponent>("EntityOne", std::make_shared<RenderComponent>(renderComponent));
 
-	//EntityManager::Instance().RemoveEntity("EntityOne");
-	std::weak_ptr<PositionComponent> posComp = EntityManagerInstance.GetComponent<PositionComponent>("EntityOne");
-
-	auto pointer = posComp.lock();
-	std::cout << "\n\n" << pointer->m_XPosition << std::endl;
-	std::cout << pointer->m_YPosition << std::endl;
-
-	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>(m_Window);
+	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight());
 	EntityManagerInstance.AddSystem(renderSystem);
 }
 
@@ -72,8 +105,7 @@ void Game::ProcessEvents() {
 }
 
 void Game::Update(float p_DeltaTime) {
-	// TODO: Invoke entity systems
-	//EntityManagerInstance.InvokeSystems();
+	EntityManagerInstance.UpdateSystems(p_DeltaTime);
 
 	GLenum e;
 	while ((e = gl::GetError()) != gl::NO_ERROR_) {
@@ -99,7 +131,7 @@ void Game::Update(float p_DeltaTime) {
 			ASSERT(false);
 			break;
 		default:
-			Log(MessageType::FAULT) << "ERROR: Unknown";
+			Log(MessageType::FAULT) << "ERROR: UNKNOWN";
 			ASSERT(false);
 			break;
 		}
@@ -115,7 +147,7 @@ void Game::Render() {
 	gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
 	// Draw game related stuff!
-	EntityManagerInstance.InvokeSystems();
+	EntityManagerInstance.RenderSystems(m_Window);
 
 	// Switch the buffers.
 	m_Window.GetWindow().display();

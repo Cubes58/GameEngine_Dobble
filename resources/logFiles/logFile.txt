@@ -1,6 +1,7 @@
 [INFO] OpenGL version: 4.6.0 NVIDIA 398.36
 [WARNING] Unable to load: 0 functions.
-[INFO] SHADER SOURCE CODE:35633	VERTEX
+[INFO] 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 330 core
 
 layout (location = 0) in vec4 vertex;	// Vec2 Position, vec2 TexCoords.
@@ -14,7 +15,8 @@ void main() {
 	TexCoords = vertex.zw;
 	gl_Position = projection * model * vec4(vertex.xy, 0.0f, 1.0f);
 }
-[INFO] SHADER SOURCE CODE:35632	FRAGMENT
+[INFO] 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
 #version 330 core
 
 out vec4 FragColour;
@@ -26,67 +28,3 @@ uniform sampler2D image;
 void main() {
 	FragColour = texture(image, TexCoords);
 }
-[INFO] SFML key code: 15 KEY PRESSED
-[INFO] SFML key code: 14 KEY PRESSED
-[INFO] SFML key code: 11 KEY PRESSED
-[INFO] SFML key code: 14 KEY RELEASED
-[INFO] SFML key code: 11 KEY RELEASED
-[INFO] SFML key code: 15 KEY RELEASED
-[INFO] SFML key code: 10 KEY PRESSED
-[INFO] SFML key code: 12 KEY PRESSED
-[INFO] SFML key code: 10 KEY RELEASED
-[INFO] SFML key code: 12 KEY RELEASED
-[INFO] SFML key code: 11 KEY PRESSED
-[INFO] SFML key code: 14 KEY PRESSED
-[INFO] SFML key code: 10 KEY PRESSED
-[INFO] SFML key code: 11 KEY RELEASED
-[INFO] SFML key code: 10 KEY RELEASED
-[INFO] SFML key code: 14 KEY RELEASED
-[INFO] SFML key code: 9 KEY PRESSED
-[INFO] SFML key code: 13 KEY PRESSED
-[INFO] SFML key code: 9 KEY RELEASED
-[INFO] SFML key code: 13 KEY RELEASED
-[INFO] SFML key code: 8 KEY PRESSED
-[INFO] SFML key code: 10 KEY PRESSED
-[INFO] SFML key code: 9 KEY PRESSED
-[INFO] SFML key code: 10 KEY RELEASED
-[INFO] SFML key code: 8 KEY RELEASED
-[INFO] SFML key code: 9 KEY RELEASED
-[INFO] SFML key code: 1 KEY PRESSED
-[INFO] SFML key code: 7 KEY PRESSED
-[INFO] SFML key code: 7 KEY RELEASED
-[INFO] SFML key code: 1 KEY RELEASED
-[INFO] SFML key code: 9 KEY PRESSED
-[INFO] SFML key code: 20 KEY PRESSED
-[INFO] SFML key code: 7 KEY PRESSED
-[INFO] SFML key code: 7 KEY RELEASED
-[INFO] SFML key code: 9 KEY RELEASED
-[INFO] SFML key code: 20 KEY RELEASED
-[INFO] SFML key code: 21 KEY PRESSED
-[INFO] SFML key code: 6 KEY PRESSED
-[INFO] SFML key code: 6 KEY RELEASED
-[INFO] SFML key code: 21 KEY RELEASED
-[INFO] SFML key code: 24 KEY PRESSED
-[INFO] SFML key code: 20 KEY PRESSED
-[INFO] SFML key code: 6 KEY PRESSED
-[INFO] SFML key code: 19 KEY PRESSED
-[INFO] SFML key code: 20 KEY RELEASED
-[INFO] SFML key code: 6 KEY RELEASED
-[INFO] SFML key code: 19 KEY RELEASED
-[INFO] SFML key code: 24 KEY RELEASED
-[INFO] SFML key code: 5 KEY PRESSED
-[INFO] SFML key code: 2 KEY PRESSED
-[INFO] SFML key code: 2 KEY RELEASED
-[INFO] SFML key code: 5 KEY RELEASED
-[INFO] SFML key code: 19 KEY PRESSED
-[INFO] SFML key code: 24 KEY PRESSED
-[INFO] SFML key code: 17 KEY PRESSED
-[INFO] SFML key code: 20 KEY PRESSED
-[INFO] SFML key code: 24 KEY RELEASED
-[INFO] SFML key code: 20 KEY RELEASED
-[INFO] SFML key code: 17 KEY RELEASED
-[INFO] SFML key code: 19 KEY RELEASED
-[INFO] SFML key code: 3 KEY PRESSED
-[INFO] SFML key code: 5 KEY PRESSED
-[INFO] SFML key code: 3 KEY RELEASED
-[INFO] SFML key code: 5 KEY RELEASED

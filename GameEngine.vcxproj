@@ -106,7 +106,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <DisableSpecificWarnings>26495;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -126,7 +126,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>26495;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -147,7 +147,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>26495;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -171,7 +171,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>26495;</DisableSpecificWarnings>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -193,26 +193,29 @@
     <ClCompile Include="source\client\Texture2D.cpp" />
     <ClCompile Include="source\client\Window.cpp" />
     <ClCompile Include="source\EntitySystem.cpp" />
+    <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
+    <ClInclude Include="include\client\RenderComponent.h" />
+    <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
     <ClInclude Include="include\client\Shader.h" />
     <ClInclude Include="include\client\Texture2D.h" />
     <ClInclude Include="include\client\Window.h" />
-    <ClInclude Include="include\ComponentManager.h" />
-    <ClInclude Include="include\ComponentContainer.h" />
-    <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\CollisionComponent.h" />
+    <ClInclude Include="include\CollisionSystem.h" />
+    <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
-    <ClInclude Include="include\FolderFileFinder.h" />
+    <ClInclude Include="include\FileSystemHelper.h" />
+    <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
-    <ClInclude Include="include\PositionComponent.h" />
-    <ClInclude Include="include\RenderComponent.h" />
-    <ClInclude Include="include\RenderSystem.h" />
+    <ClInclude Include="include\TransformComponent.h" />
     <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\CircleShader.frag" />

@@ -12,6 +12,10 @@
 std::map<std::string, Texture2D> ResourceManager::m_Textures;
 std::map<std::string, Shader> ResourceManager::m_Shaders;
 
+ResourceManager::ResourceManager() {
+
+}
+
 Shader ResourceManager::LoadShaderFromFile(const GLchar *p_vShaderFile, const GLchar *p_fShaderFile, const GLchar *p_gShaderFile) {
 	// Retrieve the vertex/fragment source code, from the file path.
 	std::string vertexCode;
@@ -105,7 +109,7 @@ Shader &ResourceManager::GetShader(const std::string &p_Name) {
 	return m_Shaders[p_Name];
 }
 
-Texture2D ResourceManager::LoadTexture(const GLchar *p_File, GLboolean p_GammaCorrection, const std::string &p_Name) {
+Texture2D &ResourceManager::LoadTexture(const GLchar *p_File, GLboolean p_GammaCorrection, const std::string &p_Name) {
 	m_Textures[p_Name] = LoadTextureFromFile(p_File, p_GammaCorrection);
 
 	return m_Textures[p_Name];

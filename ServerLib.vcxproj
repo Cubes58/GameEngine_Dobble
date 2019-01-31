@@ -105,6 +105,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -122,6 +123,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -141,6 +143,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -162,6 +165,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -174,17 +178,28 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\EntitySystem.cpp" />
+    <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\server\main.cpp" />
     <ClCompile Include="source\server\Server.cpp" />
     <ClCompile Include="source\server\ServerGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\FolderFileFinder.h" />
+    <ClInclude Include="include\CollisionComponent.h" />
+    <ClInclude Include="include\CollisionSystem.h" />
+    <ClInclude Include="include\Component.h" />
+    <ClInclude Include="include\EntityManager.h" />
+    <ClInclude Include="include\EntitySystem.h" />
+    <ClInclude Include="include\FileSystemHelper.h" />
+    <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
+    <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\server\Randomiser.h" />
     <ClInclude Include="include\server\Server.h" />
     <ClInclude Include="include\server\ServerGame.h" />
+    <ClInclude Include="include\TransformComponent.h" />
+    <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

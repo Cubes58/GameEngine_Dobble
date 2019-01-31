@@ -2,10 +2,15 @@
 
 #define private public
 #include "ServerGame.h"
+#include "Randomiser.h"
 
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
+TEST(RandomiserTest, RealRandomNumberGenerated) {
+	float min = 0.5f;
+	float max = 10.0f;
+
+	float realRandomNumber = Randomiser::getInstance().GetRealRandomNumber<float>(min, max);
+
+	EXPECT_TRUE((realRandomNumber >= min) && (realRandomNumber <= max));
 }
 
 int main(int ac, char *av[]) {

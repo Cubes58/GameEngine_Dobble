@@ -5,8 +5,8 @@
 #include "GLCore.hpp"
 
 Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint32 p_Style) : m_Style(p_Style) {
-	sf::ContextSettings settings(0, 0, 4, 4, 4);
-	settings.depthBits = 0;			// Disabled.
+	sf::ContextSettings settings(8, 0, 4, 4, 4);
+	settings.depthBits = 8;			
 	settings.stencilBits = 0;		// Disabled.
 	settings.antialiasingLevel = 4;	// If 4 doesn't work, then it'll try 2, if that doesn't work it'll set it to 0.	
 	settings.attributeFlags = sf::ContextSettings::Attribute::Default;
@@ -31,13 +31,12 @@ Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint3
 
 	gl::Viewport(0, 0, GetWidth(), GetHeight());
 	gl::Enable(gl::CULL_FACE);
-	//gl::Enable(gl::BLEND);
-	//gl::BlendFunc(gl::SRC_ALPHA, gl::ONE_MINUS_SRC_ALPHA);
+
+	gl::Enable(gl::BLEND);
+	gl::BlendFunc(gl::SRC_ALPHA, gl::ONE_MINUS_SRC_ALPHA);
+
 	gl::Disable(gl::DEPTH_TEST);
-}
-
-Window::~Window() {
-
+	gl::DepthFunc(gl::LESS);
 }
 
 bool Window::IsOpen() {

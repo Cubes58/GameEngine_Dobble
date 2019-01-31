@@ -1,21 +1,26 @@
 #pragma once
 
-#include <unordered_map>
+#include <typeindex>
+#include <map>
+#include <set>
 #include <memory>
-#include <any>
 
-#include "Entity.h"
-#include "ComponentContainer.h"
+//#include "Window.h"
 
-class EntityManager;
+using EntityID = std::size_t;
+struct Component;
+class Window;
 
 class EntitySystem {
 protected:
-	ComponentContainer &GetComponentContainer();
+	std::set<EntityID> *m_Entities;
+
+	std::map<EntityID, std::shared_ptr<Component>> *GetComponentArray(std::type_index p_TypeIndex);
 
 public:
-	EntitySystem() = default;
+	EntitySystem();
 	virtual ~EntitySystem() = default;
 
-	virtual void Process(const EntityID &p_Entity) = 0;
+	virtual void Update(float p_DeltaTime) {}
+	virtual void Render(Window &p_Window) {}
 };
