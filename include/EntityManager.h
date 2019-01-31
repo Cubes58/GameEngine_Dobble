@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <unordered_map>
 #include <set>
 #include <typeindex>
@@ -7,17 +8,15 @@
 #include <string>
 #include <memory>
 
-#include "Window.h"
 #include "EntitySystem.h"
 #include "Component.h"
-#include "RenderComponent.h"
-#include "PositionComponent.h"
 
 #include "Logger.h"
 
 #define EntityManagerInstance EntityManager::Instance()
 
 using EntityID = std::size_t;
+class Window;
 
 class EntityManager {
 private:
@@ -25,7 +24,7 @@ private:
 
 	std::hash<std::string> m_StringHasher;
 	std::set<EntityID> m_Entities;
-	std::unordered_map<std::type_index, std::unordered_map<EntityID, std::shared_ptr<Component>>> m_Components;
+	std::unordered_map<std::type_index, std::map<EntityID, std::shared_ptr<Component>>> m_Components;
 	std::vector<std::shared_ptr<EntitySystem>> m_Systems;
 
 	EntityManager() = default;
@@ -42,9 +41,7 @@ public:
 		static bool alreadyInstantiated = false;
 		if (alreadyInstantiated)
 			return;
-
-		// If server - load all the data from files.
-		// If client - load a bunch of data, but also get some from the server.
+		
 
 		alreadyInstantiated = true;
 	}

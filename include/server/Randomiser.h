@@ -7,13 +7,9 @@ private:
 	std::random_device m_RandomDevice;
 	std::default_random_engine m_Generator;
 
-	Randomiser() : m_Generator(m_RandomDevice()) {
+	Randomiser() : m_Generator(m_RandomDevice()) {}
+	~Randomiser() = default;
 
-	}
-
-	~Randomiser() {
-
-	}
 public:
 	static Randomiser &getInstance() {
 		static Randomiser instance;

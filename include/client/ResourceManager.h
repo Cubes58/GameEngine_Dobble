@@ -10,7 +10,7 @@
 
 class ResourceManager {
 private:
-	ResourceManager() = default;
+	ResourceManager();
 
 	// Loads and generates a shader, from a file.
 	static Shader LoadShaderFromFile(const GLchar *p_vShaderFile, const GLchar *p_fShaderFile, const GLchar *p_gShaderFile);
@@ -27,7 +27,7 @@ public:
 	static Shader &GetShader(const std::string &p_Name);
 
 	// Loads (and generates) a texture from file.
-	static Texture2D LoadTexture(const GLchar *p_File, GLboolean p_GammaCorrection, const std::string &p_Name);
+	static Texture2D &LoadTexture(const GLchar *p_File, GLboolean p_GammaCorrection, const std::string &p_Name);
 	static Texture2D &GetTexture(const std::string &p_Name);
 
 	// Properly de-allocates all loaded resources.
