@@ -218,8 +218,8 @@
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CircleShader.frag" />
-    <None Include="resources\shaders\CircleShader.vert" />
+    <None Include="resources\shaders\CardShader.frag" />
+    <None Include="resources\shaders\CardShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -30,7 +30,7 @@ public:
 		m_TransformComponents = GetComponentArray(typeid(TransformComponent));
 
 		// Configure the shader.
-		m_Shader = &ResourceManager::LoadShader("resources/shaders/CircleShader.vert", "resources/shaders/CircleShader.frag", nullptr, "CircleShader");
+		m_Shader = &ResourceManager::LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag", nullptr, "CardShader");
 		glm::mat4 projection = glm::ortho(0.0f, p_WindowWidth, p_WindowHeight, 0.0f, -1.0f, 1.0f);
 
 		m_Shader->Use();
@@ -76,7 +76,7 @@ public:
 				std::shared_ptr<TransformComponent> transformComponent = std::dynamic_pointer_cast<TransformComponent>(potentialTransformComponent->second);
 
 				m_Shader->Use();
-				for (unsigned int i = 0; i < s_NUMBER_OF_SYMBOLS_ON_CARD + 1; ++i) {
+				for (unsigned int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {
 					glm::mat4 model = glm::mat4(1.0f);
 					float radius = transformComponent->m_CircleTransforms[i].m_Radius;
 

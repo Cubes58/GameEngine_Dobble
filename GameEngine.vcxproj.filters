@@ -121,10 +121,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CircleShader.frag">
+    <None Include="resources\shaders\CardShader.frag">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\shaders\CircleShader.vert">
+    <None Include="resources\shaders\CardShader.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
