@@ -30,7 +30,7 @@ public:
 		m_TransformComponents = GetComponentArray(typeid(TransformComponent));
 
 		// Configure the shader.
-		m_Shader = &ResourceManager::LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag", nullptr, "CardShader");
+		m_Shader = ResourceManager::Instance().LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag");
 		glm::mat4 projection = glm::ortho(0.0f, p_WindowWidth, p_WindowHeight, 0.0f, -1.0f, 1.0f);
 
 		m_Shader->Use();

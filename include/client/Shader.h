@@ -14,14 +14,14 @@ private:
 	// The program ID.
 	unsigned int m_ID;
 
-	void CreateShader(GLuint &p_ShaderID, const GLenum &p_ShaderType, const GLchar *p_ShaderSource, const std::string &p_TypeInformation = "Shader");
-	void CheckErrors(GLuint p_Object, const std::string &p_Type);
+	bool CreateShader(GLuint &p_ShaderID, const GLenum &p_ShaderType, const GLchar *p_ShaderSource, const std::string &p_TypeInformation = "Shader");
+	bool CheckErrors(GLuint p_Object, const std::string &p_Type);
 
 public:
 	// Constructor reads and builds the shader.
 	Shader();
 
-	void Compile(const GLchar *p_VertexPath, const GLchar *p_FragmentPath, const GLchar *p_GeometryPath = nullptr);
+	bool Compile(const GLchar *p_VertexPath, const GLchar *p_FragmentPath, const GLchar *p_GeometryPath = nullptr);
 
 	// Use/activate the shader.
 	Shader &Use();

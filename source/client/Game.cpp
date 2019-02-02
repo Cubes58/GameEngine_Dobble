@@ -58,15 +58,15 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 	EntityManager::Instance().AddComponentToEntity<TransformComponent>("EntityOne", std::make_shared<TransformComponent>(positionComponent));
 	
 	RenderComponent renderComponent;
-	renderComponent.m_SymbolTextureNames[0] = &ResourceManager::LoadTexture("resources/images/cardBackground.png", gl::FALSE_, "CardBackground");
-	renderComponent.m_SymbolTextureNames[1] = &ResourceManager::LoadTexture("resources/images/symbols/airplane.png", gl::FALSE_, "airplane");
-	renderComponent.m_SymbolTextureNames[2] = &ResourceManager::LoadTexture("resources/images/symbols/apple.png", gl::FALSE_, "apple");
-	renderComponent.m_SymbolTextureNames[3] = &ResourceManager::LoadTexture("resources/images/symbols/appleTree.png", gl::FALSE_, "appleTree");
-	renderComponent.m_SymbolTextureNames[4] = &ResourceManager::LoadTexture("resources/images/symbols/bear.png", gl::FALSE_, "bear");
-	renderComponent.m_SymbolTextureNames[5] = &ResourceManager::LoadTexture("resources/images/symbols/binoculars.png", gl::FALSE_, "binoculars");
-	renderComponent.m_SymbolTextureNames[6] = &ResourceManager::LoadTexture("resources/images/symbols/blackCat.png", gl::FALSE_, "blackCat");
-	renderComponent.m_SymbolTextureNames[7] = &ResourceManager::LoadTexture("resources/images/symbols/boar.png", gl::FALSE_, "boar");
-	renderComponent.m_SymbolTextureNames[8] = &ResourceManager::LoadTexture("resources/images/symbols/bonsai.png", gl::FALSE_, "bonsai");
+	renderComponent.m_SymbolTextureNames[0] = ResourceManager::Instance().LoadTexture("resources/images/cardBackground.png");
+	renderComponent.m_SymbolTextureNames[1] = ResourceManager::Instance().LoadTexture("resources/images/symbols/airplane.png");
+	renderComponent.m_SymbolTextureNames[2] = ResourceManager::Instance().LoadTexture("resources/images/symbols/apple.png");
+	renderComponent.m_SymbolTextureNames[3] = ResourceManager::Instance().LoadTexture("resources/images/symbols/appleTree.png");
+	renderComponent.m_SymbolTextureNames[4] = ResourceManager::Instance().LoadTexture("resources/images/symbols/bear.png");
+	renderComponent.m_SymbolTextureNames[5] = ResourceManager::Instance().LoadTexture("resources/images/symbols/binoculars.png");
+	renderComponent.m_SymbolTextureNames[6] = ResourceManager::Instance().LoadTexture("resources/images/symbols/blackCat.png");
+	renderComponent.m_SymbolTextureNames[7] = ResourceManager::Instance().LoadTexture("resources/images/symbols/boar.png");
+	renderComponent.m_SymbolTextureNames[8] = ResourceManager::Instance().LoadTexture("resources/images/symbols/bonsai.png");
 	EntityManager::Instance().AddComponentToEntity<RenderComponent>("EntityOne", std::make_shared<RenderComponent>(renderComponent));
 
 	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight());
