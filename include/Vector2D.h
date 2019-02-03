@@ -84,7 +84,11 @@ public:
 	}
 
 	Vector2D Normal() const {
-		return Vector2D(m_XValue / Magnitude(), m_YValue / Magnitude());
+		T magnitude = Magnitude();
+		if (magnitude == 0)
+			return Vector2D<T>(m_XValue, m_YValue);
+
+		return Vector2D(m_XValue / magnitude, m_YValue / magnitude);
 	}
 	Vector2D Perpendicular() const {
 		return Vector2D(m_YValue, -m_XValue);

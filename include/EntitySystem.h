@@ -5,8 +5,6 @@
 #include <set>
 #include <memory>
 
-//#include "Window.h"
-
 using EntityID = std::size_t;
 struct Component;
 class Window;

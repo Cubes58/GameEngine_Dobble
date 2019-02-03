@@ -119,6 +119,9 @@
     <ClInclude Include="include\client\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\MoveSymbolsSystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\CardShader.frag">

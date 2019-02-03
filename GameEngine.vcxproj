@@ -213,6 +213,7 @@
     <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
+    <ClInclude Include="include\MoveSymbolsSystem.h" />
     <ClInclude Include="include\TransformComponent.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Vector2D.h" />
