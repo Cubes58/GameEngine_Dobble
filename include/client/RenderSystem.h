@@ -72,8 +72,8 @@ public:
 			auto potentialRenderComponent = m_RenderComponents->find(entity);
 			auto potentialTransformComponent = m_TransformComponents->find(entity);
 			if (potentialRenderComponent != m_RenderComponents->end() && potentialTransformComponent != m_TransformComponents->end()) {
-				std::shared_ptr<RenderComponent> renderComponent = std::dynamic_pointer_cast<RenderComponent>(potentialRenderComponent->second);
-				std::shared_ptr<TransformComponent> transformComponent = std::dynamic_pointer_cast<TransformComponent>(potentialTransformComponent->second);
+				std::shared_ptr<RenderComponent> renderComponent = std::static_pointer_cast<RenderComponent>(potentialRenderComponent->second);
+				std::shared_ptr<TransformComponent> transformComponent = std::static_pointer_cast<TransformComponent>(potentialTransformComponent->second);
 
 				m_Shader->Use();
 				for (unsigned int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {

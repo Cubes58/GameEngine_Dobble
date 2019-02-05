@@ -27,7 +27,9 @@ struct CircleTransformData {
 
 struct TransformComponent : public Component {
 	std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> m_CircleTransforms;
+	std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> m_PreviousCircleTransforms;
 
 	TransformComponent() = default;
-	TransformComponent(std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> p_CirclePositions) : m_CircleTransforms(p_CirclePositions) {}
+	TransformComponent(std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> p_CirclePositions) 
+		: m_CircleTransforms(p_CirclePositions), m_PreviousCircleTransforms(p_CirclePositions) {}
 };

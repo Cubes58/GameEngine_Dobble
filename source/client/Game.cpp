@@ -92,7 +92,7 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 	positionComponentTwo.m_CircleTransforms[1].m_Rotation = 0;				
 																			
 	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - 225.0f, 200.0f);
-	positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - 155.0f, 155.0f);
+	positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(805.0f, 155.0f);
 	positionComponentTwo.m_CircleTransforms[2].m_Radius = 25;				
 	positionComponentTwo.m_CircleTransforms[2].m_Rotation = 30;				
 																			
