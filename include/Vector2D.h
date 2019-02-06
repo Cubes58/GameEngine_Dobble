@@ -59,6 +59,9 @@ public:
 	bool operator!=(const Vector2D &p_Vector) const {
 		return !((m_XValue == p_Vector.m_XValue) && (m_YValue == p_Vector.m_YValue));
 	}
+	bool operator>=(const Vector2D &p_Vector) const {
+		return (m_XValue >= p_Vector.m_XValue) && (m_YValue >= p_Vector.m_YValue);
+	}
 
 	// Negate both the x and y values.
 	Vector2D operator-() const {

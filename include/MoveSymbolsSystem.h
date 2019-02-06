@@ -10,7 +10,7 @@
 #include "CollisionComponent.h"
 #include "TransformComponent.h"
 
-static constexpr auto s_MOVE_SPEED = 0.0002f;
+static constexpr auto s_MOVE_SPEED = 0.002f;
 
 class MoveSymbolsSystem : public EntitySystem {
 private:
@@ -54,6 +54,11 @@ public:
 						}
 
 
+					}
+
+
+					if (!collisionComponent->m_WithinCard[i]) {
+						circleTransforms[i].m_Position = circleTransforms[i].m_Position - moveVector;
 					}
 				}
 			}

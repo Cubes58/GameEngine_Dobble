@@ -83,40 +83,44 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 	EntityManager::Instance().CreateEntity("EntityTwo");
 	TransformComponent positionComponentTwo;
 
-	positionComponentTwo.m_CircleTransforms[0].m_Position = Vector2D<float>(width - 200.0f, 200.0f);
+	auto var = 400.0f;
+	positionComponentTwo.m_CircleTransforms[0].m_Position = Vector2D<float>(width - (200.0f + var), 200.0f);
 	positionComponentTwo.m_CircleTransforms[0].m_Radius = 200;
 	positionComponentTwo.m_CircleTransforms[0].m_Rotation = 0;
 
-	positionComponentTwo.m_CircleTransforms[1].m_Position = Vector2D<float>(width - 150.0f, 150.0f);
+	positionComponentTwo.m_CircleTransforms[1].m_Position = Vector2D<float>(width - (150.0f + var), 150.0f);
 	positionComponentTwo.m_CircleTransforms[1].m_Radius = 40;				
 	positionComponentTwo.m_CircleTransforms[1].m_Rotation = 0;				
 																			
-	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - 225.0f, 200.0f);
-	positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(805.0f, 155.0f);
-	positionComponentTwo.m_CircleTransforms[2].m_Radius = 25;				
+	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (425.0f + var), 200.0f);	// LEFT CHECK
+	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (-100.0f + var), 200.0f);	// RIGHT CHECK
+	positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), 455.0f);	// BOTTOM CHECK
+	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), -250.0f);	// TOP CHECK
+	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), -250.0f);	// RANDOM CHECK
+	positionComponentTwo.m_CircleTransforms[2].m_Radius = 35;				
 	positionComponentTwo.m_CircleTransforms[2].m_Rotation = 30;				
 																			
-	positionComponentTwo.m_CircleTransforms[3].m_Position = Vector2D<float>(width - 100.0f, 100.0f);
+	positionComponentTwo.m_CircleTransforms[3].m_Position = Vector2D<float>(width - (100.0f + var), 100.0f);
 	positionComponentTwo.m_CircleTransforms[3].m_Radius = 25.75;			
 	positionComponentTwo.m_CircleTransforms[3].m_Rotation = 20;				
 																			
-	positionComponentTwo.m_CircleTransforms[4].m_Position = Vector2D<float>(width - 290.0f, 110.0f);
+	positionComponentTwo.m_CircleTransforms[4].m_Position = Vector2D<float>(width - (290.0f + var), 110.0f);
 	positionComponentTwo.m_CircleTransforms[4].m_Radius = 55;				
 	positionComponentTwo.m_CircleTransforms[4].m_Rotation = 70;				
 																			
-	positionComponentTwo.m_CircleTransforms[5].m_Position = Vector2D<float>(width - 200.0f, 50.0f);
+	positionComponentTwo.m_CircleTransforms[5].m_Position = Vector2D<float>(width - (200.0f + var), 50.0f);
 	positionComponentTwo.m_CircleTransforms[5].m_Radius = 27.5;				
 	positionComponentTwo.m_CircleTransforms[5].m_Rotation = 90;				
 																			
-	positionComponentTwo.m_CircleTransforms[6].m_Position = Vector2D<float>(width - 150.0f, 300.0f);
+	positionComponentTwo.m_CircleTransforms[6].m_Position = Vector2D<float>(width - (150.0f + var), 300.0f);
 	positionComponentTwo.m_CircleTransforms[6].m_Radius = 44;				
 	positionComponentTwo.m_CircleTransforms[6].m_Rotation = 45;				
 																			
-	positionComponentTwo.m_CircleTransforms[7].m_Position = Vector2D<float>(width - 45.0f, 200.0f);
+	positionComponentTwo.m_CircleTransforms[7].m_Position = Vector2D<float>(width - (45.0f + var), 200.0f);
 	positionComponentTwo.m_CircleTransforms[7].m_Radius = 35;				 
 	positionComponentTwo.m_CircleTransforms[7].m_Rotation = 367;			 
 																			 
-	positionComponentTwo.m_CircleTransforms[8].m_Position = Vector2D<float>(width - 280.0f, 310.0f);
+	positionComponentTwo.m_CircleTransforms[8].m_Position = Vector2D<float>(width - (280.0f + var), 310.0f);
 	positionComponentTwo.m_CircleTransforms[8].m_Radius = 53;
 	positionComponentTwo.m_CircleTransforms[8].m_Rotation = 98;
 

@@ -14,6 +14,8 @@ private:
 	std::map<EntityID, std::shared_ptr<Component>> *m_CollisionComponents;
 	std::map<EntityID, std::shared_ptr<Component>> *m_TransformComponents;
 
+	static constexpr float s_m_BUFFER_SIZE = 1.5f;
+
 	// Circle/Circle collision.
 	bool operator()(Vector2D<float> p_EntityOnePosition, float p_EntityOneRadius, Vector2D<float> p_EntityTwoPosition, float p_EntityTwoRadius, std::vector<Vector2D<float>> &p_CollisionVectors) {
 		Vector2D<float> distance(p_EntityOnePosition.X() - p_EntityTwoPosition.X(), p_EntityOnePosition.Y() - p_EntityTwoPosition.Y());
@@ -27,22 +29,14 @@ private:
 		return false;
 	}
 
-	bool WithinCardArea(Vector2D<float> p_CardCentrePosition, float p_CardRadius, Vector2D<float> p_EntityOnePosition, float p_EntityOneRadius) {
-		Vector2D<float> distance(p_CardCentrePosition.X() - p_EntityOnePosition.X(), p_CardCentrePosition.Y() - p_EntityOnePosition.Y());
+	bool WithinCardAreaCircleCircle(Vector2D<float> p_CardCentrePosition, float p_CardRadius, Vector2D<float> p_EntityOnePosition, float p_EntityOneRadius) {
+		float distance = std::sqrt(((p_CardCentrePosition.X() - p_EntityOnePosition.X()) * (p_CardCentrePosition.X() - p_EntityOnePosition.X())) + 
+			(p_CardCentrePosition.Y() - p_EntityOnePosition.Y()) * ((p_CardCentrePosition.Y() - p_EntityOnePosition.Y())));
+		distance += (p_EntityOneRadius + s_m_BUFFER_SIZE);
 
-		/* DEBUG INFO:
-		float valueOne = (distance.X() * distance.X()) + (distance.Y() * distance.Y()) + (p_EntityOneRadius * p_EntityOneRadius);
-		float valueTwo = (p_CardRadius * p_CardRadius);
-
-		float valueOneSquaredRoot = std::sqrt((distance.X() * distance.X()) + (distance.Y() * distance.Y()) + (p_EntityOneRadius * p_EntityOneRadius));
-		float valueTwoSquaredRoot = std::sqrt((p_CardRadius * p_CardRadius));
-		*/
-
-		// If it's furthest point is within the card then the entire symbol is.
-		if ((distance.X() * distance.X()) + (distance.Y() * distance.Y()) + (p_EntityOneRadius * p_EntityOneRadius) <= (p_CardRadius * p_CardRadius)) {
+		if (p_CardRadius >= distance) {
 			return true;
 		}
-
 		return false;
 	}
 
@@ -73,7 +67,7 @@ public:
 							transformComponent->m_CircleTransforms[j].m_Position, transformComponent->m_CircleTransforms[j].m_Radius, collisionVector->second);
 					}
 
-					collisionComponent->m_WithinCard[i] = WithinCardArea(transformComponent->m_CircleTransforms[0].m_Position, transformComponent->m_CircleTransforms[0].m_Radius,
+					collisionComponent->m_WithinCard[i] = WithinCardAreaCircleCircle(transformComponent->m_CircleTransforms[0].m_Position, transformComponent->m_CircleTransforms[0].m_Radius,
 						transformComponent->m_CircleTransforms[i].m_Position, transformComponent->m_CircleTransforms[i].m_Radius);
 				}
 			}
