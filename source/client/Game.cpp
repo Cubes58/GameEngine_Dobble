@@ -94,9 +94,9 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 																			
 	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (425.0f + var), 200.0f);	// LEFT CHECK
 	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (-100.0f + var), 200.0f);	// RIGHT CHECK
-	positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), 455.0f);	// BOTTOM CHECK
+	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), 455.0f);	// BOTTOM CHECK
 	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), -250.0f);	// TOP CHECK
-	//positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (125.0f + var), -250.0f);	// RANDOM CHECK
+	positionComponentTwo.m_CircleTransforms[2].m_Position = Vector2D<float>(width - (405.0f + var), 550.0f);	// RANDOM CHECK
 	positionComponentTwo.m_CircleTransforms[2].m_Radius = 35;				
 	positionComponentTwo.m_CircleTransforms[2].m_Rotation = 30;				
 																			

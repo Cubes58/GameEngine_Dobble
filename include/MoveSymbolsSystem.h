@@ -55,11 +55,6 @@ public:
 
 
 					}
-
-
-					if (!collisionComponent->m_WithinCard[i]) {
-						circleTransforms[i].m_Position = circleTransforms[i].m_Position - moveVector;
-					}
 				}
 			}
 		}
