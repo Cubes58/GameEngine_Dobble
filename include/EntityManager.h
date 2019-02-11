@@ -41,7 +41,6 @@ public:
 		static bool alreadyInstantiated = false;
 		if (alreadyInstantiated)
 			return;
-		
 
 		alreadyInstantiated = true;
 	}
@@ -53,6 +52,10 @@ public:
 	}
 	EntityID CreateEntity(const std::string &p_EntityName) {
 		return CreateEntity(m_StringHasher(p_EntityName));
+	}
+
+	const std::set<EntityID> *GetEntities() const {
+		return &m_Entities;
 	}
 
 	template <typename ComponentType>

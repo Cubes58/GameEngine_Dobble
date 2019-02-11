@@ -7,26 +7,49 @@ private:
 	std::random_device m_RandomDevice;
 	std::default_random_engine m_Generator;
 
+	static constexpr unsigned int s_m_MaxNumberOfAttempts = 35;
+
 	Randomiser() : m_Generator(m_RandomDevice()) {}
 	~Randomiser() = default;
 
 public:
-	static Randomiser &getInstance() {
+	static Randomiser &Instance() {
 		static Randomiser instance;
 
 		return instance;
 	}
 
 	template<typename T>
-	T GetIntegerRandomNumber(const T &p_Min, const T &p_Max) {
+	T GetUniformIntegerRandomNumber(const T &p_Min, const T &p_Max) {
 		std::uniform_int_distribution<T> distribution((T)p_Min, (T)p_Max);
 		return distribution(m_Generator);
 	}
 
 	template<typename T>
-	T GetRealRandomNumber(const T &p_Min, const T &p_Max) {
+	T GetUniformRealRandomNumber(const T &p_Min, const T &p_Max) {
 		std::uniform_real_distribution<T> distribution((T)p_Min, (T)p_Max);
 		return distribution(m_Generator);
+	}
+
+	template<typename T>
+	T GetNormalRandomNumber(const T &p_Min, const T &p_Max) {
+		static unsigned int numberOfAttempts(0);
+		std::normal_distribution<T> distribution((T)((p_Min + p_Max) / 2), (T)((p_Max - p_Min) / 6));
+
+		if (numberOfAttempts >= s_m_MaxNumberOfAttempts)
+			return T(0);
+
+		T value = 0;
+		do {
+			value = distribution(m_Generator);
+
+			distribution.reset();
+			++numberOfAttempts;
+		} while (value < p_Min || value > p_Max);
+
+		// Reset the number of attempts, if a random number within the range is generated.
+		numberOfAttempts = 0;
+		return value;
 	}
 
 	// Delete the copy and assignment operators.

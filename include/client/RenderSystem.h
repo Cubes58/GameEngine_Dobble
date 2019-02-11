@@ -1,5 +1,7 @@
 #pragma once
 
+#include <map>
+#include <vector>
 #include <memory>
 
 #include "GLCore.hpp"
@@ -18,6 +20,7 @@ class RenderSystem : public EntitySystem {
 private:
 	std::map<EntityID, std::shared_ptr<Component>> *m_RenderComponents;
 	std::map<EntityID, std::shared_ptr<Component>> *m_TransformComponents;
+	std::vector<Texture2D*> *m_TextureIDs;
 
 	Shader *m_Shader;
 	unsigned int m_VBO;
@@ -28,6 +31,8 @@ public:
 		// Get access to the components the system requires.
 		m_RenderComponents = GetComponentArray(typeid(RenderComponent));
 		m_TransformComponents = GetComponentArray(typeid(TransformComponent));
+
+		m_TextureIDs = &ResourceManager::Instance().m_TextureIDs;
 
 		// Configure the shader.
 		m_Shader = ResourceManager::Instance().LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag");
@@ -90,7 +95,7 @@ public:
 					m_Shader->SetMat4("model", model);
 					m_Shader->SetInt("image", 0);
 					gl::ActiveTexture(gl::TEXTURE0);
-					renderComponent->m_SymbolTextureNames[i]->Bind();
+					m_TextureIDs->at(renderComponent->m_SymbolTextureIDs[i])->Bind();
 
 					gl::BindVertexArray(m_VAO);
 					gl::DrawArrays(gl::TRIANGLES, 0, 6);

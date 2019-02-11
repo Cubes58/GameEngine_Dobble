@@ -34,18 +34,7 @@ private:
 		float squareDist = distance.DotProduct(distance);
 		float radiiSum = p_CardRadius - p_EntityOneRadius;
 		
-		return squareDist < radiiSum * radiiSum;;
-
-		/* WORKS - JUST EXPENSIVE (USES SQRT).
-		float distance = std::sqrt(((p_CardCentrePosition.X() - p_EntityOnePosition.X()) * (p_CardCentrePosition.X() - p_EntityOnePosition.X())) + 
-			(p_CardCentrePosition.Y() - p_EntityOnePosition.Y()) * ((p_CardCentrePosition.Y() - p_EntityOnePosition.Y())));
-		distance += (p_EntityOneRadius + 1.5f);
-
-		if (p_CardRadius >= distance) {
-			return true;
-		}
-		return false;
-		*/
+		return squareDist < radiiSum * radiiSum;
 	}
 
 public:
@@ -87,5 +76,9 @@ public:
 				}
 			}
 		}
+	}
+
+	bool &SymbolsSuccessfullyWithinCards() {
+		return m_SymbolsSuccessfullyWithinCards;
 	}
 };

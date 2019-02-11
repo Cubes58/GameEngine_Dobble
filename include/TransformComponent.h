@@ -1,6 +1,6 @@
 #pragma once
 
-#include <array>
+#include <vector>
 
 #include "Component.h"
 #include "Vector2D.h"
@@ -26,10 +26,18 @@ struct CircleTransformData {
 };
 
 struct TransformComponent : public Component {
-	std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> m_CircleTransforms;
-	std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> m_PreviousCircleTransforms;
+	std::vector<CircleTransformData> m_CircleTransforms;
+	std::vector<CircleTransformData> m_PreviousCircleTransforms;
 
 	TransformComponent() = default;
-	TransformComponent(std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> p_CirclePositions) 
+	TransformComponent(unsigned int p_NumberOfCirclesPerCard) {
+		m_CircleTransforms.reserve(p_NumberOfCirclesPerCard);
+		m_PreviousCircleTransforms.reserve(p_NumberOfCirclesPerCard);
+		for (int i = 0; i < p_NumberOfCirclesPerCard; i++) {
+			m_CircleTransforms.emplace_back(CircleTransformData());
+			m_PreviousCircleTransforms.emplace_back(CircleTransformData());
+		}
+	}
+	TransformComponent(const std::vector<CircleTransformData> &p_CirclePositions) 
 		: m_CircleTransforms(p_CirclePositions), m_PreviousCircleTransforms(p_CirclePositions) {}
 };

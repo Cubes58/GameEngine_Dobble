@@ -110,9 +110,6 @@
     <ClInclude Include="include\InputComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\RenderComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\RenderSystem.h">
       <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
@@ -121,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="include\MoveSymbolsSystem.h">
       <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RenderComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

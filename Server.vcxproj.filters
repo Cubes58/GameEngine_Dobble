@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{db6fd070-f794-4d98-9b7c-15c1a1d229e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntitySystems">
+      <UniqueIdentifier>{c19c30a9-0e5b-49a5-8f84-13b5b285e677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{8759163e-62b7-43e3-9e1a-f44ed53b30cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\server\main.cpp">
@@ -53,28 +62,7 @@
     <ClInclude Include="include\FileSystemHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CollisionSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\EntityManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\EntitySystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\InputComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\TransformComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Vector2D.h">
@@ -82,6 +70,33 @@
     </ClInclude>
     <ClInclude Include="include\server\Deck.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionSystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntityManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EntitySystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InputComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TransformComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MoveSymbolsSystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RenderComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

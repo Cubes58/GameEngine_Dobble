@@ -114,6 +114,9 @@ bool ResourceManager::LoadTextureFromFile(const std::string &p_File, GLboolean p
 
 	m_Textures.emplace(FileSystemHelper::GetNameFromFile(p_File), texture);
 
+	auto iter = m_Textures.find(FileSystemHelper::GetNameFromFile(p_File));
+	m_TextureIDs.emplace_back(&iter->second);
+
 	return true;
 }
 
@@ -217,6 +220,13 @@ Texture2D *ResourceManager::GetTexture(const std::string &p_Name) {
 	if (iter != m_Textures.end()) {
 		return &iter->second;
 	}
+
+	return nullptr;
+}
+
+Texture2D * ResourceManager::GetTexture(unsigned int p_TextureID) {
+	if (p_TextureID >= 0 && p_TextureID <= m_TextureIDs.size() - 1)
+		return m_TextureIDs.at(p_TextureID);
 
 	return nullptr;
 }

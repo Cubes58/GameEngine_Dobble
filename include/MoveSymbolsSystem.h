@@ -36,9 +36,9 @@ public:
 				// Centre of the card background.
 				Vector2D<float> centrePoint(transformComponent->m_CircleTransforms[0].m_Position);
 
-				std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> &circleTransforms = transformComponent->m_CircleTransforms;
-				std::array<CircleTransformData, s_NUMBER_OF_CIRCLES_PER_CARD> &previousCircleTransforms = transformComponent->m_PreviousCircleTransforms;
-				for (int i = 1; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {
+				std::vector<CircleTransformData> &circleTransforms = transformComponent->m_CircleTransforms;
+				std::vector<CircleTransformData> &previousCircleTransforms = transformComponent->m_PreviousCircleTransforms;
+				for (int i = 1; i < circleTransforms.size(); ++i) {
 					Vector2D<float> moveVector((circleTransforms[i].m_Position - centrePoint) * s_MOVE_SPEED);
 
 					// Check whether the symbol is within the card's area. If it isn't move it, towards the centre point.
