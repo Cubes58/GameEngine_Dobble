@@ -2,6 +2,8 @@
 
 #include <random>
 
+#define RandomiserInstance Randomiser::Instance()
+
 class Randomiser {
 private:
 	std::random_device m_RandomDevice;
@@ -50,6 +52,10 @@ public:
 		// Reset the number of attempts, if a random number within the range is generated.
 		numberOfAttempts = 0;
 		return value;
+	}
+
+	std::default_random_engine Generator() const {
+		return m_Generator;
 	}
 
 	// Delete the copy and assignment operators.

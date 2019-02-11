@@ -1,5 +1,8 @@
 #include "Deck.h"
 
+#include <algorithm>
+#include <random>
+
 #include "EntityManager.h"
 #include "Randomiser.h"
 
@@ -87,6 +90,8 @@ void Deck::GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius
 }
 
 void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
+	EntityManagerInstance.Clear();
+
 	GenerateCardSymbolIDs(p_NumberOfSymblesPerCard);
 	GenerateSymbolData(p_CardPosition, p_CardRadius, p_NumberOfSymblesPerCard);
 
@@ -102,9 +107,16 @@ void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, uns
 		EntityManagerInstance.UpdateSystems(1.0f);
 	}*/
 
+	// Vector to store a shuffled deck of entity IDs, so when it comes to sending out a card, it will be a "random" entity, chosen from the back of this vector.
+	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
+	m_EntityOrder.reserve(entities->size());
+	for (const auto &entity : *entities) {
+		m_EntityOrder.emplace_back(entity);
+	}
+
 	Shuffle();
 }
 
 void Deck::Shuffle() {
-
+	std::shuffle(m_EntityOrder.begin(), m_EntityOrder.end(), Randomiser::Instance().Generator());
 }
