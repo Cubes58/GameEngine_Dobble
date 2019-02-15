@@ -7,6 +7,7 @@ class Vector2D {
 protected:
 	T m_XValue;
 	T m_YValue;
+
 public:
 	Vector2D() : m_XValue(T(0)), m_YValue(T(0)) {}
 	Vector2D(const T &p_Values) {

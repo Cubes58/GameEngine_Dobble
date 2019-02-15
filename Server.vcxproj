@@ -196,6 +196,7 @@
     <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\MoveSymbolsSystem.h" />
+    <ClInclude Include="include\PacketTypes.h" />
     <ClInclude Include="include\RenderComponent.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\server\Deck.h" />

@@ -15,8 +15,6 @@ ServerGame::~ServerGame() {
 
 void ServerGame::Update(float p_DeltaTime) {
 
-
-
 }
 
 bool ServerGame::IsRunning() const {

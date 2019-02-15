@@ -60,6 +60,7 @@ private:
 		}
 		return fileLocation;
 	}
+
 public:
 	Log() {
 
@@ -73,7 +74,7 @@ public:
 			m_FileStream.open(fileLocation, std::ios_base::app);
 		}
 		if (m_ShowMessageType)
-			operator<< ("[" + GetLabel(p_Type) + "] ");
+			operator<< ("[" + GetLabel(p_Type) + "]: ");
 	}
 
 	~Log() {

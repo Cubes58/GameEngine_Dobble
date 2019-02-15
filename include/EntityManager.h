@@ -21,11 +21,11 @@ class Window;
 class EntityManager {
 private:
 	friend EntitySystem;
-
-	std::hash<std::string> m_StringHasher;
-	std::set<EntityID> m_Entities;
+	
 	std::unordered_map<std::type_index, std::map<EntityID, std::shared_ptr<Component>>> m_Components;
+	std::set<EntityID> m_Entities;
 	std::vector<std::shared_ptr<EntitySystem>> m_Systems;
+	std::hash<std::string> m_StringHasher;
 
 	EntityManager() = default;
 	~EntityManager() = default;
