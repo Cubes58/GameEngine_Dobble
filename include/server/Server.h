@@ -14,6 +14,7 @@ class Server {
 private:
 	static const unsigned int s_m_PortToListenOn = 8787;
 	static const unsigned int s_m_DefaultListeningCheckTime = 5;
+	static unsigned int s_m_NewClientID;
 
 	std::map<ClientID, std::shared_ptr<sf::TcpSocket>> m_Clients;
 	sf::SocketSelector m_SocketSelector;

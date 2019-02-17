@@ -4,7 +4,7 @@
 Port number: 8787
 IP Address: 127.0.0.1
 [INFO]: Connected to the server!
-[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 0
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 1
 [INFO]: 
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 330 core
@@ -20,3 +20,26 @@ void main() {
 	TexCoords = vertex.zw;
 	gl_Position = projection * model * vec4(vertex.xy, 0.0f, 1.0f);
 }
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 330 core
+
+out vec4 FragColour;
+
+in vec2 TexCoords;
+
+uniform sampler2D image;
+
+void main() {
+	FragColour = texture(image, TexCoords);
+}
+[INFO]: Disconnecting, from the server.
+[INFO]: The server has been notified!
+[INFO]: Disconnecting from a client! Client ID: 0
+[INFO]: Successfully disconnected, from the server.
+[INFO]: Successfully disconnected from a client! Client ID: 0
+[INFO]: Disconnecting, from the server.
+[INFO]: The server has been notified!
+[INFO]: Disconnecting from a client! Client ID: 1
+[INFO]: Successfully disconnected, from the server.
+[INFO]: Successfully disconnected from a client! Client ID: 1

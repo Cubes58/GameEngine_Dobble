@@ -1,6 +1,10 @@
 #include "Server.h"
 
+#include <climits>
+
 #include "Logger.h"
+
+unsigned int Server::s_m_NewClientID = 0;
 
 Server::Server() {
 	m_SocketSelector.clear();
@@ -27,7 +31,9 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 				sf::Packet connectionPacket;
 				Packet::SetPacketType(Packet::CONNECT, connectionPacket);
 
-				ClientID clientID = m_Clients.size();
+				if (s_m_NewClientID >= UINT_MAX)
+					s_m_NewClientID = (UINT_MAX - UINT_MAX);
+				ClientID clientID = s_m_NewClientID++;
 
 				// Acknowledge the connection.
 				if (client->send(connectionPacket) == sf::Socket::Done) {
@@ -90,9 +96,8 @@ void Server::Disconnect(const ClientID &p_ClientID) {
 		client->second->disconnect();
 
 		// Check whether the socket it still in use (whether the client has actually disconnected).
-		if (client->second->getRemoteAddress() == sf::IpAddress::None && status == sf::TcpSocket::Done) {
+		if (client->second->getRemoteAddress() == sf::IpAddress::None)
 			Log(MessageType::INFO) << "Successfully disconnected from a client! Client ID: " << p_ClientID;
-		}
 
 		// Remove it from the list of sockets.
 		m_Clients.erase(client);
