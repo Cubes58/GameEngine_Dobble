@@ -184,6 +184,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\client\Client.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
@@ -195,11 +196,12 @@
     <ClCompile Include="source\EntitySystem.cpp" />
     <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
+    <ClCompile Include="source\PacketTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\client\Client.h" />
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
-    <ClInclude Include="include\client\RenderComponent.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
     <ClInclude Include="include\client\Shader.h" />
@@ -213,13 +215,16 @@
     <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
+    <ClInclude Include="include\MoveSymbolsSystem.h" />
+    <ClInclude Include="include\PacketTypes.h" />
+    <ClInclude Include="include\RenderComponent.h" />
     <ClInclude Include="include\TransformComponent.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CircleShader.frag" />
-    <None Include="resources\shaders\CircleShader.vert" />
+    <None Include="resources\shaders\CardShader.frag" />
+    <None Include="resources\shaders\CardShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

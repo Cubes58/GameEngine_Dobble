@@ -1,5 +1,7 @@
 #pragma once
 
+#include <map>
+#include <vector>
 #include <memory>
 
 #include "GLCore.hpp"
@@ -18,6 +20,7 @@ class RenderSystem : public EntitySystem {
 private:
 	std::map<EntityID, std::shared_ptr<Component>> *m_RenderComponents;
 	std::map<EntityID, std::shared_ptr<Component>> *m_TransformComponents;
+	std::vector<Texture2D*> *m_TextureIDs;
 
 	Shader *m_Shader;
 	unsigned int m_VBO;
@@ -29,8 +32,10 @@ public:
 		m_RenderComponents = GetComponentArray(typeid(RenderComponent));
 		m_TransformComponents = GetComponentArray(typeid(TransformComponent));
 
+		m_TextureIDs = &ResourceManager::Instance().m_TextureIDs;
+
 		// Configure the shader.
-		m_Shader = &ResourceManager::LoadShader("resources/shaders/CircleShader.vert", "resources/shaders/CircleShader.frag", nullptr, "CircleShader");
+		m_Shader = ResourceManager::Instance().LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag");
 		glm::mat4 projection = glm::ortho(0.0f, p_WindowWidth, p_WindowHeight, 0.0f, -1.0f, 1.0f);
 
 		m_Shader->Use();
@@ -72,11 +77,11 @@ public:
 			auto potentialRenderComponent = m_RenderComponents->find(entity);
 			auto potentialTransformComponent = m_TransformComponents->find(entity);
 			if (potentialRenderComponent != m_RenderComponents->end() && potentialTransformComponent != m_TransformComponents->end()) {
-				std::shared_ptr<RenderComponent> renderComponent = std::dynamic_pointer_cast<RenderComponent>(potentialRenderComponent->second);
-				std::shared_ptr<TransformComponent> transformComponent = std::dynamic_pointer_cast<TransformComponent>(potentialTransformComponent->second);
+				std::shared_ptr<RenderComponent> renderComponent = std::static_pointer_cast<RenderComponent>(potentialRenderComponent->second);
+				std::shared_ptr<TransformComponent> transformComponent = std::static_pointer_cast<TransformComponent>(potentialTransformComponent->second);
 
 				m_Shader->Use();
-				for (unsigned int i = 0; i < s_NUMBER_OF_SYMBOLS_ON_CARD + 1; ++i) {
+				for (unsigned int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {
 					glm::mat4 model = glm::mat4(1.0f);
 					float radius = transformComponent->m_CircleTransforms[i].m_Radius;
 
@@ -90,7 +95,7 @@ public:
 					m_Shader->SetMat4("model", model);
 					m_Shader->SetInt("image", 0);
 					gl::ActiveTexture(gl::TEXTURE0);
-					renderComponent->m_SymbolTextureNames[i]->Bind();
+					m_TextureIDs->at(renderComponent->m_SymbolTextureIDs[i])->Bind();
 
 					gl::BindVertexArray(m_VAO);
 					gl::DrawArrays(gl::TRIANGLES, 0, 6);

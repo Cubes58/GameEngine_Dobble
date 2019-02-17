@@ -63,22 +63,16 @@ public:
 	static std::vector<FileInformation> GetFilesInFolder(const std::string &p_FolderLocation, bool p_SearchSubDirectories = true) {
 		std::vector<FileInformation> files;
 
-		struct stat info;
-		if (stat(p_FolderLocation.c_str(), &info) != 0) {
-			std::cerr << p_FolderLocation << " cannot be accessed." <<
-				"\nMake sure it exists." << std::endl;
-
+		if (!DoesLocationExist(p_FolderLocation))
 			return files;
-		}
 
+		std::filesystem::path pathLocation(p_FolderLocation);
 		if (!p_SearchSubDirectories) {
-			std::filesystem::path pathLocation(p_FolderLocation);
 			std::filesystem::directory_iterator start(pathLocation);
 			std::filesystem::directory_iterator end;
 			std::transform(start, end, std::back_inserter(files), PathLeafInformation());
 		}
 		else {
-			std::filesystem::path pathLocation(p_FolderLocation);
 			std::filesystem::recursive_directory_iterator rStart(pathLocation);
 			std::filesystem::recursive_directory_iterator rEnd;
 			std::transform(rStart, rEnd, std::back_inserter(files), PathLeafInformation());
@@ -150,11 +144,56 @@ public:
 	*/
 	static bool RemoveFilePath(std::string &p_FileName) {
 		size_t firstPosition = p_FileName.find_last_of('/');
+		size_t firstPositionOther = p_FileName.find_last_of("\\");
 
-		if (firstPosition == std::string::npos)
+		if (firstPosition == std::string::npos && firstPositionOther == std::string::npos)
 			return false;
 
-		p_FileName = p_FileName.substr(firstPosition + 1, p_FileName.size() - firstPosition);
+		bool canCheckFirstPosition = false;
+		if (firstPosition != std::string::npos)
+			canCheckFirstPosition = true;
+
+		bool canCheckFirstPositionOther = false;
+		if (firstPositionOther != std::string::npos)
+			canCheckFirstPositionOther = true;
+
+		if((canCheckFirstPosition && canCheckFirstPositionOther) && (firstPosition >= firstPositionOther))
+			p_FileName = p_FileName.substr(firstPosition + 1, p_FileName.size() - firstPosition);
+		else if((canCheckFirstPosition && canCheckFirstPositionOther) && (firstPosition <= firstPositionOther))
+			p_FileName = p_FileName.substr(firstPositionOther + 1, p_FileName.size() - firstPosition);
+		else if(canCheckFirstPosition)
+			p_FileName = p_FileName.substr(firstPosition + 1, p_FileName.size() - firstPosition);
+		else 
+			p_FileName = p_FileName.substr(firstPositionOther + 1, p_FileName.size() - firstPosition);
+
+		return true;
+	}
+
+	/*!
+		\brief Gets the name of a file, removing the file path, and the file extension.
+		\param p_FileName the file name to manipulate.
+		\return Returns the file's name - unmodified p_FileName, if no changes were made.
+	*/
+	static std::string GetNameFromFile(std::string p_FileName) {
+		RemoveFileExtension(p_FileName);
+		RemoveFilePath(p_FileName);
+
+		return p_FileName;
+	}
+
+	/*!
+		\brief Check whether a file exists.
+		\param p_FileName the file name check.
+		\return Returns true if the file exists, false otherwise.
+	*/
+	static bool DoesLocationExist(const std::string &p_FileName) {
+		struct stat info;
+		if (stat(p_FileName.c_str(), &info) != 0) {
+			std::cerr << p_FileName << " cannot be accessed." <<
+				"\nMake sure it exists." << std::endl;
+
+			return false;
+		}
 		return true;
 	}
 

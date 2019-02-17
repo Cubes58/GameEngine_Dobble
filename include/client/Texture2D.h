@@ -20,8 +20,10 @@ private:
 	GLuint m_WrapT;				// Wrapping mode on the T axis.
 	GLuint m_FilterMin;			// Filtering mode if texture pixels < screen pixels.
 	GLuint m_FilterMax;			// Filtering mode if textures pixels > screen pixels.
+
 public:
 	Texture2D();
+	~Texture2D() = default;
 
 	void Generate(GLuint p_Width, GLuint p_Height, unsigned char *p_Data);	// Generates a texture from image data.
 	void Bind() const;	// Binds the texture as the current active gl::TEXTURE_2D texture object.

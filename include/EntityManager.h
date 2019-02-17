@@ -21,11 +21,11 @@ class Window;
 class EntityManager {
 private:
 	friend EntitySystem;
-
-	std::hash<std::string> m_StringHasher;
-	std::set<EntityID> m_Entities;
+	
 	std::unordered_map<std::type_index, std::map<EntityID, std::shared_ptr<Component>>> m_Components;
+	std::set<EntityID> m_Entities;
 	std::vector<std::shared_ptr<EntitySystem>> m_Systems;
+	std::hash<std::string> m_StringHasher;
 
 	EntityManager() = default;
 	~EntityManager() = default;
@@ -41,7 +41,6 @@ public:
 		static bool alreadyInstantiated = false;
 		if (alreadyInstantiated)
 			return;
-		
 
 		alreadyInstantiated = true;
 	}
@@ -53,6 +52,10 @@ public:
 	}
 	EntityID CreateEntity(const std::string &p_EntityName) {
 		return CreateEntity(m_StringHasher(p_EntityName));
+	}
+
+	const std::set<EntityID> *GetEntities() const {
+		return &m_Entities;
 	}
 
 	template <typename ComponentType>

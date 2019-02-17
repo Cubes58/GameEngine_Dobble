@@ -25,6 +25,9 @@
     <Filter Include="Header Files\EntitySystems">
       <UniqueIdentifier>{fc63c542-cd3d-4b97-82a8-d071af365bbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Networking">
+      <UniqueIdentifier>{83e26ef2-09e3-40de-8188-01969bf719db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\client\main.cpp">
@@ -54,10 +57,16 @@
     <ClCompile Include="source\EntitySystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\jsoncpp.cpp">
+    <ClCompile Include="source\client\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\client\Window.cpp">
+    <ClCompile Include="source\jsoncpp.cpp">
+      <Filter>Source Files\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="include\client\Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PacketTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,21 +119,30 @@
     <ClInclude Include="include\InputComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\RenderComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\RenderSystem.h">
       <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
     <ClInclude Include="include\client\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\MoveSymbolsSystem.h">
+      <Filter>Header Files\EntitySystems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RenderComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\client\Client.h">
+      <Filter>Header Files\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PacketTypes.h">
+      <Filter>Header Files\Networking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CircleShader.frag">
+    <None Include="resources\shaders\CardShader.frag">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\shaders\CircleShader.vert">
+    <None Include="resources\shaders\CardShader.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

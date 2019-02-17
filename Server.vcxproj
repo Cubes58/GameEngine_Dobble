@@ -181,6 +181,8 @@
     <ClCompile Include="source\EntitySystem.cpp" />
     <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
+    <ClCompile Include="source\PacketTypes.cpp" />
+    <ClCompile Include="source\server\Deck.cpp" />
     <ClCompile Include="source\server\main.cpp" />
     <ClCompile Include="source\server\Server.cpp" />
     <ClCompile Include="source\server\ServerGame.cpp" />
@@ -194,7 +196,11 @@
     <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
+    <ClInclude Include="include\MoveSymbolsSystem.h" />
+    <ClInclude Include="include\PacketTypes.h" />
+    <ClInclude Include="include\RenderComponent.h" />
     <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\server\Deck.h" />
     <ClInclude Include="include\server\Randomiser.h" />
     <ClInclude Include="include\server\Server.h" />
     <ClInclude Include="include\server\ServerGame.h" />

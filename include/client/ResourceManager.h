@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <vector>
 #include <string>
 
 #include "GLCore.hpp"
@@ -8,28 +9,35 @@
 #include "Texture2D.h"
 #include "Shader.h"
 
+class RenderSystem;
+
 class ResourceManager {
 private:
-	ResourceManager();
+	friend RenderSystem;
 
-	// Loads and generates a shader, from a file.
-	static Shader LoadShaderFromFile(const GLchar *p_vShaderFile, const GLchar *p_fShaderFile, const GLchar *p_gShaderFile);
-	// Loads a single texture from a file.
-	static Texture2D LoadTextureFromFile(const GLchar *p_File, GLboolean p_GammaCorrection = false);
+	std::map<std::string, Texture2D> m_Textures;
+	std::map<std::string, Shader> m_Shaders;
+	std::vector<Texture2D*> m_TextureIDs;
+
+	ResourceManager();	
+	~ResourceManager();
+
+	bool LoadShaderFromFile(const std::string &p_VertexShaderFile, const std::string &p_FragmentShaderFile, const std::string &p_GeometryShaderFile = " ");
+	bool LoadTextureFromFile(const std::string &p_File, GLboolean p_GammaCorrection = false);
 
 public:
-	// Resource storage.
-	static std::map<std::string, Shader> m_Shaders;
-	static std::map<std::string, Texture2D> m_Textures;
+	static ResourceManager &Instance() {
+		static ResourceManager s_ResourceManager;
 
-	// Loads (and generates) a shader program from file, loading vertex, fragment (and a geometry) shader's source code.
-	static Shader &LoadShader(const GLchar *p_vShaderFile, const GLchar *p_fShaderFile, const GLchar *p_gShaderFile, const std::string &p_Name);
-	static Shader &GetShader(const std::string &p_Name);
+		return s_ResourceManager;
+	}
 
-	// Loads (and generates) a texture from file.
-	static Texture2D &LoadTexture(const GLchar *p_File, GLboolean p_GammaCorrection, const std::string &p_Name);
-	static Texture2D &GetTexture(const std::string &p_Name);
+	bool LoadShadersFromFolder(const std::string &p_FolderName);
+	Shader *LoadShader(const std::string &p_VertexShaderFile, const std::string &p_FragmentShaderFile, const std::string &p_GeometryShaderFile = " ");
+	Shader *GetShader(const std::string &p_Name);
 
-	// Properly de-allocates all loaded resources.
-	static void Clear();
+	bool LoadTexturesFromFolder(const std::string &p_FolderName);
+	Texture2D *LoadTexture(const std::string &p_File, GLboolean p_GammaCorrection = false);
+	Texture2D *GetTexture(const std::string &p_Name);
+	Texture2D *GetTexture(unsigned int p_TextureID);
 };
