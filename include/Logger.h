@@ -80,16 +80,9 @@ public:
 	~Log() {
 		if (m_FileOpened) {
 			if (m_PrintToConsole) {
-				if (m_MessageType == MessageType::FAULT) {
-					std::cout << "\n" << "FILE: " << __FILE__ << "\n" << "LINE: " << __LINE__ << "\n";
-				}
 				std::cout << std::endl;
 			}
 			if (m_PrintToOutputFile) {
-				if (m_MessageType == MessageType::FAULT) {
-					m_FileStream << "\n" << "FILE: " << __FILE__ << "\n" << "LINE: " << __LINE__ << "\n";
-				}
-
 				m_FileStream << "\n";
 				m_FileStream.close();
 			}

@@ -6,8 +6,6 @@
 
 #include "PacketTypes.h"
 
-using PlayerIdentifier = char;
-
 class Client {
 private:
 	static const int m_PortNumber = 8787;	
@@ -24,5 +22,6 @@ public:
 
 	bool Send(sf::Packet &p_Packet);
 	bool ReceiveData(sf::Packet &p_Packet);
-	bool GetConnectionState();
+
+	bool IsConnected();
 };

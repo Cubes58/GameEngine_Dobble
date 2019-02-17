@@ -4,16 +4,20 @@
 
 #include "EntityManager.h"
 #include "ResourceManager.h"
+
 #include "RenderSystem.h"
 #include "CollisionSystem.h"
 #include "MoveSymbolsSystem.h"
+
 #include "Logger.h"
 #include "Scene.h"
 
 #include "TransformComponent.h"
 #include "CollisionComponent.h"
 
-Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_ACTIVE) {
+#include "PacketTypes.h"
+
+Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::ACTIVE) {
 	for (int i = 0; i < m_s_NumberOfDifferentKeyCodes; ++i) {
 		m_Keys[i] = false;
 	}
@@ -164,15 +168,15 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::GAME_A
 	EntityManager::Instance().AddComponentToEntity<TransformComponent>("EntityTwo", std::make_shared<TransformComponent>(positionComponentTwo));
 
 	RenderComponent renderComponentTwo(9);
-	renderComponentTwo.m_SymbolTextureIDs[0] = 0;//ResourceManager::Instance().LoadTexture("resources/images/cardBackground.png");
-	renderComponentTwo.m_SymbolTextureIDs[1] = 1;//ResourceManager::Instance().LoadTexture("resources/images/symbols/airplane.png");
-	renderComponentTwo.m_SymbolTextureIDs[2] = 2;//ResourceManager::Instance().LoadTexture("resources/images/symbols/apple.png");
-	renderComponentTwo.m_SymbolTextureIDs[3] = 9;//ResourceManager::Instance().LoadTexture("resources/images/symbols/appleTree.png");
-	renderComponentTwo.m_SymbolTextureIDs[4] = 10;//ResourceManager::Instance().LoadTexture("resources/images/symbols/bear.png");
-	renderComponentTwo.m_SymbolTextureIDs[5] = 11;//ResourceManager::Instance().LoadTexture("resources/images/symbols/binoculars.png");
-	renderComponentTwo.m_SymbolTextureIDs[6] = 12;//ResourceManager::Instance().LoadTexture("resources/images/symbols/blackCat.png");
-	renderComponentTwo.m_SymbolTextureIDs[7] = 13;//ResourceManager::Instance().LoadTexture("resources/images/symbols/boar.png");
-	renderComponentTwo.m_SymbolTextureIDs[8] = 14;//ResourceManager::Instance().LoadTexture("resources/images/symbols/bonsai.png");
+	renderComponentTwo.m_SymbolTextureIDs[0] = 0;	//ResourceManager::Instance().LoadTexture("resources/images/cardBackground.png");
+	renderComponentTwo.m_SymbolTextureIDs[1] = 1;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/airplane.png");
+	renderComponentTwo.m_SymbolTextureIDs[2] = 2;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/apple.png");
+	renderComponentTwo.m_SymbolTextureIDs[3] = 9;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/appleTree.png");
+	renderComponentTwo.m_SymbolTextureIDs[4] = 10;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/bear.png");
+	renderComponentTwo.m_SymbolTextureIDs[5] = 11;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/binoculars.png");
+	renderComponentTwo.m_SymbolTextureIDs[6] = 12;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/blackCat.png");
+	renderComponentTwo.m_SymbolTextureIDs[7] = 13;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/boar.png");
+	renderComponentTwo.m_SymbolTextureIDs[8] = 14;	//ResourceManager::Instance().LoadTexture("resources/images/symbols/bonsai.png");
 	EntityManager::Instance().AddComponentToEntity<RenderComponent>("EntityTwo", std::make_shared<RenderComponent>(renderComponentTwo));
 	EntityManager::Instance().AddComponentToEntity<CollisionComponent>("EntityTwo", std::make_shared<CollisionComponent>(collisionComponent));
 
@@ -220,6 +224,14 @@ void Game::ProcessEvents() {
 
 void Game::Update(float p_DeltaTime) {
 	EntityManagerInstance.UpdateSystems(p_DeltaTime);
+
+	static float timer(0);
+	timer += p_DeltaTime;
+	if (timer >= 50) {
+		if (m_Client.IsConnected()) {
+			m_Client.Disconnect();
+		}
+	}
 
 	GLenum e;
 	while ((e = gl::GetError()) != gl::NO_ERROR_) {

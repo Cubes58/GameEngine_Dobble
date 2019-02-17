@@ -181,6 +181,7 @@
     <ClCompile Include="source\EntitySystem.cpp" />
     <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
+    <ClCompile Include="source\PacketTypes.cpp" />
     <ClCompile Include="source\server\Deck.cpp" />
     <ClCompile Include="source\server\main.cpp" />
     <ClCompile Include="source\server\Server.cpp" />

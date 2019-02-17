@@ -1,7 +1,6 @@
 #pragma once
 
 #include <map>
-#include <functional>
 #include <string>
 #include <memory>
 
@@ -11,27 +10,35 @@
 
 using ClientID = unsigned int;
 
-static constexpr unsigned int s_NUMBER_OF_PLAYERS_PER_GAME = 2;
-
 class Server {
 private:
-	static const int s_m_PortToListenOn = 8787;
+	static const unsigned int s_m_PortToListenOn = 8787;
+	static const unsigned int s_m_DefaultListeningCheckTime = 5;
+
 	std::map<ClientID, std::shared_ptr<sf::TcpSocket>> m_Clients;
 	sf::SocketSelector m_SocketSelector;
 	sf::TcpListener m_Listener;
-	std::hash<std::string> m_StringHasher;
+	bool m_Listening;
 
 public:
 	Server();
 	~Server();
 
-	void Connect();	
+	bool CheckForClientConnectionRequest(const sf::Time &p_WaitTime = sf::microseconds(s_m_DefaultListeningCheckTime));
+	void WaitForClientsToConnect(int p_NumberOfClients = 1);
 	void Disconnect(const ClientID &p_ClientID);
+	void Disconnect();
 
 	void Send(const ClientID &p_ClientID, sf::Packet &p_Packet);
 	void Send(sf::Packet &p_Packet);	
 	bool GetReceivedData(const ClientID &p_ClientID, sf::Packet &p_Packet);	
-	bool GetReceivedData(std::map<ClientID&, sf::Packet&> &p_Packets);	
+	bool GetReceivedData(std::map<ClientID, sf::Packet> &p_Packets);	
 
-	bool IsRunning();	
+	bool GetListeningState() const;
+	void SetListeningState(bool p_Listen);
+
+	std::vector<ClientID> GetClientIDs();
+	unsigned int GetNumberOfClients() const;
+
+	bool IsRunning();
 };

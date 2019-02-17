@@ -2,29 +2,24 @@
 
 #include "Logger.h"
 
-using namespace Packet;
-
 Client::Client() : m_Connected(Connect()) {
-	// Connect to the server.
-	m_ServerSocket.setBlocking(false);	// Ensure the methods return immediately.
+
 }
 
 Client::~Client() {
 	if(m_Connected)
-		Disconnect();			//CHECK
+		Disconnect();
 }
 
 bool Client::Connect() {
-	Log(MessageType::INFO) << "Attempting to connect to the server...";
+	Log(MessageType::INFO) << "Attempting to connect to the server... " << "\nPort number: " << m_PortNumber << "\nIP Address: " << m_ServerIPAddress;
 	if (m_ServerSocket.connect(m_ServerIPAddress, m_PortNumber) != sf::Socket::Done) {
 		Log(MessageType::FAULT) << "The server wasn't listening!";
 		return false;
 	}
 	Log(MessageType::INFO) << "Connected to the server!";
-
-	sf::Packet packet;
-	ReceiveData(packet);
-
+	
+	m_ServerSocket.setBlocking(false);	// Ensure the methods return immediately.
 	return true;
 }
 
@@ -32,15 +27,16 @@ void Client::Disconnect() {
 	if (!m_Connected)
 		return;
 
+	Log(MessageType::INFO) << "Disconnecting, from the server.";
 	sf::Packet packet;
-	SetPacketType(PacketType::DISCONNECT, packet);
-	sf::TcpSocket::Status socketStatus = m_ServerSocket.send(packet);
+	Packet::SetPacketType(Packet::PacketType::DISCONNECT, packet);
+	if (m_ServerSocket.send(packet) == sf::TcpSocket::Done)
+		Log(MessageType::INFO) << "The server has been notified!";
 
 	m_Connected = false;
 	m_ServerSocket.disconnect();
 
-	if (socketStatus != sf::TcpSocket::Done)
-		Log(MessageType::FAULT) << "Trying to disconnect, from the server!";
+	Log(MessageType::INFO) << "Successfully disconnected, from the server.";
 }
 
 bool Client::Send(sf::Packet &p_Packet) {
@@ -62,6 +58,6 @@ bool Client::ReceiveData(sf::Packet &p_Packet) {
 	return true;
 }
 
-bool Client::GetConnectionState() {
+bool Client::IsConnected() {
 	return m_Connected;
 }
