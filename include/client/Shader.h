@@ -27,9 +27,9 @@ public:
 	Shader &Use();
 
 	// Utility uniform functions.
-	void SetBool(const std::string &p_Name, bool p_bValue) const;
-	void SetInt(const std::string &p_Name, int p_iValue) const;
-	void SetFloat(const std::string &p_Name, float p_fValue) const;
+	void SetBool(const std::string &p_Name, bool p_Value) const;
+	void SetInt(const std::string &p_Name, int p_Value) const;
+	void SetFloat(const std::string &p_Name, float p_Value) const;
 
 	void SetVec2(const std::string &p_Name, const glm::vec2 &p_Value) const;
 	void SetVec2(const std::string &p_Name, float p_XValue, float p_YValue) const;

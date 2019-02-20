@@ -14,7 +14,7 @@ struct CollisionComponent : public Component {
 	CollisionComponent(unsigned int p_NumberOfCirclesPerCard) {
 		m_ReversePosition.reserve(p_NumberOfCirclesPerCard);
 		m_WithinCard.reserve(p_NumberOfCirclesPerCard);
-		for (int i = 0; i < p_NumberOfCirclesPerCard; ++i) {
+		for (unsigned int i = 0; i < p_NumberOfCirclesPerCard; ++i) {
 			m_CollisionVectors.emplace(i, std::vector<Vector2D<float>>());
 			m_ReversePosition.emplace_back(false);
 			m_WithinCard.emplace_back(false);

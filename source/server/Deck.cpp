@@ -9,6 +9,10 @@
 #include "CollisionSystem.h"
 #include "MoveSymbolsSystem.h"
 
+#include "TransformComponent.h"
+#include "CollisionComponent.h"
+#include "RenderComponent.h"
+
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	static constexpr unsigned int s_ConstantIncrement = 1;
 	// Check if the given number is prime;
@@ -119,4 +123,24 @@ void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, uns
 
 void Deck::Shuffle() {
 	std::shuffle(m_EntityOrder.begin(), m_EntityOrder.end(), Randomiser::Instance().Generator());
+}
+
+bool Deck::IsDeckEmpty() const {
+	if (m_EntityOrder.size() <= 0)
+		return true;
+
+	return false;
+}
+
+unsigned int Deck::GetEntityID() {
+	if (m_EntityOrder.size() <= 0)
+		return UINT_MAX;
+
+	unsigned int backID = *(m_EntityOrder.end() - 1);
+	m_EntityOrder.pop_back();
+	return backID;
+}
+
+std::vector<unsigned int> &Deck::GetEntityList() {
+	return m_EntityOrder;
 }

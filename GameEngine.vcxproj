@@ -184,10 +184,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\client\Client.cpp" />
+    <ClCompile Include="source\client\Client.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
+    <ClCompile Include="source\client\GamePlayScene.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
+    <ClCompile Include="source\client\MainMenuScene.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
     <ClCompile Include="source\client\stb_image.c" />
@@ -201,9 +203,13 @@
   <ItemGroup>
     <ClInclude Include="include\client\Client.h" />
     <ClInclude Include="include\client\Game.h" />
+    <ClInclude Include="include\client\GamePlayScene.h" />
+    <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
+    <ClInclude Include="include\client\MainMenuScene.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
+    <ClInclude Include="include\client\Scene.h" />
     <ClInclude Include="include\client\Shader.h" />
     <ClInclude Include="include\client\Texture2D.h" />
     <ClInclude Include="include\client\Window.h" />
@@ -219,7 +225,6 @@
     <ClInclude Include="include\PacketTypes.h" />
     <ClInclude Include="include\RenderComponent.h" />
     <ClInclude Include="include\TransformComponent.h" />
-    <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>

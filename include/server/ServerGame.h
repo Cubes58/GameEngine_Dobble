@@ -7,9 +7,13 @@
 
 class ServerGame {
 private:
+	static const constexpr unsigned int s_m_NumberOfPlayers = 3;
+
 	Server m_Server;
 	Deck m_Deck;
 	bool m_IsRunning;
+
+	void SendStartingInformation();
 
 public:
 	ServerGame();

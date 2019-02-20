@@ -56,7 +56,10 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 					// The client has sent some data, it can be received.
 					sf::Packet packet;
 					if (client->second->receive(packet) == sf::Socket::Done) {
-						if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
+						if (Packet::GetPacketType(packet) == Packet::CONNECT) {
+							// Maybe have the user's specify specific info, (number of cards in the deck - Could be a voting thing - user's joke, when they click on a certain game mode, etc...)
+						}
+						else if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
 							Disconnect(client->first);
 						}
 					}

@@ -33,7 +33,7 @@ struct TransformComponent : public Component {
 	TransformComponent(unsigned int p_NumberOfCirclesPerCard) {
 		m_CircleTransforms.reserve(p_NumberOfCirclesPerCard);
 		m_PreviousCircleTransforms.reserve(p_NumberOfCirclesPerCard);
-		for (int i = 0; i < p_NumberOfCirclesPerCard; i++) {
+		for (unsigned int i = 0; i < p_NumberOfCirclesPerCard; i++) {
 			m_CircleTransforms.emplace_back(CircleTransformData());
 			m_PreviousCircleTransforms.emplace_back(CircleTransformData());
 		}

@@ -3,27 +3,20 @@
 #include <memory>
 
 #include "Window.h"
-#include "Client.h"
+#include "GameState.h"
 
 class Scene;
 
-enum class GameState : unsigned int {
-	MENU = 0,
-	ACTIVE,
-	WIN,
-	LOSE,
-	SHUTDOWN
-};
-
 class Game {
 private:
+	static constexpr const unsigned int s_m_NumberOfDifferentKeyCodes = 400;
+	bool m_Keys[s_m_NumberOfDifferentKeyCodes];
+
 	Window &m_Window;
-	Client m_Client;
 	std::unique_ptr<Scene> m_Scene;
 	GameState m_GameState;
 
-	static constexpr const unsigned int m_s_NumberOfDifferentKeyCodes = 400;
-	bool m_Keys[m_s_NumberOfDifferentKeyCodes];
+	void SetScene();
 
 public:
 	Game(Window &p_Window);
