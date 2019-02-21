@@ -2,21 +2,19 @@
 
 #include "Logger.h"
 
-Client::Client() : m_Connected(Connect()) {
-
-}
-
 Client::~Client() {
 	if(m_Connected)
 		Disconnect();
 }
 
-bool Client::Connect() {
-	Log(MessageType::INFO) << "Attempting to connect to the server... " << "\nPort number: " << m_PortNumber << "\nIP Address: " << m_ServerIPAddress;
-	if (m_ServerSocket.connect(m_ServerIPAddress, m_PortNumber) != sf::Socket::Done) {
+bool Client::Connect(const sf::Time &p_ConnectWaitTimeOut) {
+	Log(MessageType::INFO) << "Attempting to connect to the server... " << "\nPort number: " << s_m_PortNumber << "\nIP Address: " << m_ServerIPAddress;
+	if (m_ServerSocket.connect(m_ServerIPAddress, s_m_PortNumber, p_ConnectWaitTimeOut) != sf::Socket::Done) {
 		Log(MessageType::FAULT) << "The server wasn't listening!";
+		m_Connected = false;
 		return false;
 	}
+	m_Connected = true;
 	Log(MessageType::INFO) << "Connected to the server!";
 	
 	m_ServerSocket.setBlocking(false);	// Ensure the methods return immediately.
@@ -60,4 +58,8 @@ bool Client::ReceiveData(sf::Packet &p_Packet) {
 
 bool Client::IsConnected() {
 	return m_Connected;
+}
+
+void Client::SetConnected(bool p_Connected) {
+	m_Connected = p_Connected;
 }

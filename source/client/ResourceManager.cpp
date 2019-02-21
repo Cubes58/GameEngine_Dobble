@@ -112,9 +112,9 @@ bool ResourceManager::LoadTextureFromFile(const std::string &p_File, GLboolean p
 	if (width == 0 && height == 0 || image == nullptr)
 		return false;
 
-	m_Textures.emplace(FileSystemHelper::GetNameFromFile(p_File), texture);
-
-	auto iter = m_Textures.find(FileSystemHelper::GetNameFromFile(p_File));
+	std::string name = FileSystemHelper::GetNameFromFile(p_File);
+	m_Textures.emplace(name, texture);
+	auto iter = m_Textures.find(name);
 	m_TextureIDs.emplace_back(&iter->second);
 
 	return true;

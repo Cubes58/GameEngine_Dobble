@@ -11,6 +11,10 @@
 #include "EntitySystem.h"
 #include "Component.h"
 
+#include "RenderComponent.h"
+#include "TransformComponent.h"
+#include "CollisionComponent.h"
+
 #include "Logger.h"
 
 #define EntityManagerInstance EntityManager::Instance()
@@ -41,6 +45,10 @@ public:
 		static bool alreadyInstantiated = false;
 		if (alreadyInstantiated)
 			return;
+
+		CreateEntity("PH");
+		AddComponentToEntity("PH", std::make_shared<RenderComponent>(9));
+		AddComponentToEntity("PH", std::make_shared<TransformComponent>(9));
 
 		alreadyInstantiated = true;
 	}
@@ -76,7 +84,7 @@ public:
 		if (componentType != m_Components.end()) {
 			auto entityWithComponent = componentType->second.find(p_Entity);
 			if (entityWithComponent != componentType->second.end()) {
-				return std::dynamic_pointer_cast<ComponentType>(entityWithComponent->second);
+				return std::static_pointer_cast<ComponentType>(entityWithComponent->second);
 			}
 		}
 

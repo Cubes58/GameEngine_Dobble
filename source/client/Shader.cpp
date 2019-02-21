@@ -75,16 +75,16 @@ Shader &Shader::Use() {
 	return *this;
 }
 
-void Shader::SetBool(const std::string &p_Name, bool p_bValue) const {
-	gl::Uniform1i(gl::GetUniformLocation(m_ID, p_Name.c_str()), static_cast<GLint>(p_bValue));
+void Shader::SetBool(const std::string &p_Name, bool p_Value) const {
+	gl::Uniform1i(gl::GetUniformLocation(m_ID, p_Name.c_str()), static_cast<GLint>(p_Value));
 }
 
-void Shader::SetInt(const std::string &p_Name, int p_iValue) const {
-	gl::Uniform1i(gl::GetUniformLocation(m_ID, p_Name.c_str()), p_iValue);
+void Shader::SetInt(const std::string &p_Name, int p_Value) const {
+	gl::Uniform1i(gl::GetUniformLocation(m_ID, p_Name.c_str()), p_Value);
 }
 
-void Shader::SetFloat(const std::string &p_Name, float p_fValue) const {
-	gl::Uniform1f(gl::GetUniformLocation(m_ID, p_Name.c_str()), p_fValue);
+void Shader::SetFloat(const std::string &p_Name, float p_Value) const {
+	gl::Uniform1f(gl::GetUniformLocation(m_ID, p_Name.c_str()), p_Value);
 }
 
 void Shader::SetVec2(const std::string &p_Name, const glm::vec2 &p_Value) const {

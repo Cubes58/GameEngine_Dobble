@@ -56,7 +56,10 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 					// The client has sent some data, it can be received.
 					sf::Packet packet;
 					if (client->second->receive(packet) == sf::Socket::Done) {
-						if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
+						if (Packet::GetPacketType(packet) == Packet::CONNECT) {
+							// Maybe have the user's specify specific info, (number of cards in the deck - Could be a voting thing - user's joke, when they click on a certain game mode, etc...)
+						}
+						else if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
 							Disconnect(client->first);
 						}
 					}
@@ -117,7 +120,7 @@ void Server::Disconnect() {
 void Server::Send(const ClientID &p_ClientID, sf::Packet &p_Packet) {
 	auto client = m_Clients.find(p_ClientID);
 	if (client != m_Clients.end()) {
-		if (client->second->send(p_Packet) != sf::Socket::Done)
+		if (client->second->send(p_Packet) == sf::Socket::Done)
 			Log(MessageType::INFO) << "Successfully sent data to a client! Client ID: " << p_ClientID;
 		else 
 			Log(MessageType::FAULT) << "Failed to send data to a client! Client ID: " << p_ClientID;

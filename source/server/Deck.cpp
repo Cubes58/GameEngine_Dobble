@@ -2,12 +2,17 @@
 
 #include <algorithm>
 #include <random>
+#include <climits>
 
 #include "EntityManager.h"
 #include "Randomiser.h"
 
 #include "CollisionSystem.h"
 #include "MoveSymbolsSystem.h"
+
+#include "TransformComponent.h"
+#include "CollisionComponent.h"
+#include "RenderComponent.h"
 
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	static constexpr unsigned int s_ConstantIncrement = 1;
@@ -69,6 +74,7 @@ void Deck::GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius
 		
 		std::vector<CircleTransformData> circleTransforms;
 		circleTransforms.reserve(p_NumberOfSymblesPerCard);
+		// Add the card background (First element in the render component is always the background).
 		circleTransforms.emplace_back(p_CardPosition, p_CardRadius);
 		for (int i = 0; i < p_NumberOfSymblesPerCard - 1; i++) {
 			CircleTransformData circleTransformData;
@@ -109,14 +115,46 @@ void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, uns
 
 	// Vector to store a shuffled deck of entity IDs, so when it comes to sending out a card, it will be a "random" entity, chosen from the back of this vector.
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
-	m_EntityOrder.reserve(entities->size());
+	m_CardOrder.reserve(entities->size());
 	for (const auto &entity : *entities) {
-		m_EntityOrder.emplace_back(entity);
+		m_CardOrder.emplace_back(entity);
 	}
 
 	Shuffle();
 }
 
 void Deck::Shuffle() {
-	std::shuffle(m_EntityOrder.begin(), m_EntityOrder.end(), Randomiser::Instance().Generator());
+	std::shuffle(m_CardOrder.begin(), m_CardOrder.end(), Randomiser::Instance().Generator());
+}
+
+bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess) {
+	for (const auto &deckCardSymbolID : p_DeckCardRenderComponent->m_SymbolTextureIDs) {
+		if (deckCardSymbolID == p_PlayerSymbolIDGuess) {
+			Log(MessageType::INFO) << "The player guessed correctly!";
+			Log(MessageType::INFO) << "Player guess: " << p_PlayerSymbolIDGuess;
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Deck::IsDeckEmpty() const {
+	if (m_CardOrder.size() <= 0)
+		return true;
+
+	return false;
+}
+
+unsigned int Deck::GetCardIDFromTop() {
+	if (m_CardOrder.size() <= 0)
+		return UINT_MAX;
+
+	unsigned int backID = *(m_CardOrder.end() - 1);
+	m_CardOrder.pop_back();
+	return backID;
+}
+
+std::vector<unsigned int> &Deck::GetCardIDs() {
+	return m_CardOrder;
 }
