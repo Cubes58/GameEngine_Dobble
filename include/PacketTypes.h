@@ -9,8 +9,10 @@ namespace Packet {
 		DISCONNECT = -1,	// Disconnect from the server.
 		CONNECT = 0,		// Connection established.
 		SYMBOL_ID,			// Players' symbol guess.
-		CARD_DATA,			// Send the information for a card.
-		GAME_FINISHED,		// Send the winner.
+		PLAYER_CARD_DATA,	// Send the information for the player's card.
+		DECK_CARD_DATA,		// Send the information for the deck's top card.
+		ROUND_FINISHED,		// Send the winner, of the round.
+		GAME_FINISHED,		// Send the winner, of the game.
 
 		NOT_AVAILABLE		// Unknown packet/ignore it.
 	};

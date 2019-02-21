@@ -79,7 +79,7 @@ public:
 			if (potentialRenderComponent != m_RenderComponents->end() && potentialTransformComponent != m_TransformComponents->end()) {
 				std::shared_ptr<RenderComponent> renderComponent = std::static_pointer_cast<RenderComponent>(potentialRenderComponent->second);
 				std::shared_ptr<TransformComponent> transformComponent = std::static_pointer_cast<TransformComponent>(potentialTransformComponent->second);
-
+				
 				m_Shader->Use();
 				for (unsigned int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {
 					glm::mat4 model = glm::mat4(1.0f);
@@ -95,7 +95,11 @@ public:
 					m_Shader->SetMat4("model", model);
 					m_Shader->SetInt("image", 0);
 					gl::ActiveTexture(gl::TEXTURE0);
-					m_TextureIDs->at(renderComponent->m_SymbolTextureIDs[i])->Bind();
+
+					if (i == 0)
+						ResourceManager::Instance().GetTexture("cardBackground")->Bind();
+					else
+						m_TextureIDs->at(renderComponent->m_SymbolTextureIDs[i])->Bind();
 
 					gl::BindVertexArray(m_VAO);
 					gl::DrawArrays(gl::TRIANGLES, 0, 6);

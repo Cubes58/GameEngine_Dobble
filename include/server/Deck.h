@@ -1,14 +1,15 @@
 #pragma once
 
 #include <vector>
-#include <climits>
+#include <memory>
 
 #include "Vector2D.h"
 
+struct RenderComponent;
+
 class Deck {
 private:
-	// Maybe have a vector, which stores key ids - shuffles that, then use that as the "deck", so get ids from that and send them to the clients.
-	std::vector<unsigned int> m_EntityOrder;
+	std::vector<unsigned int> m_CardOrder;
 	
 	bool GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard);
 	void GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard);
@@ -19,8 +20,9 @@ public:
 
 	void GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard);
 	void Shuffle();
+	static bool HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess);
 
 	bool IsDeckEmpty() const;
-	unsigned int GetEntityID();
-	std::vector<unsigned int> &GetEntityList();
+	unsigned int GetCardIDFromTop();
+	std::vector<unsigned int> &GetCardIDs();
 };

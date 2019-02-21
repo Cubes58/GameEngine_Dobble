@@ -120,7 +120,7 @@ void Server::Disconnect() {
 void Server::Send(const ClientID &p_ClientID, sf::Packet &p_Packet) {
 	auto client = m_Clients.find(p_ClientID);
 	if (client != m_Clients.end()) {
-		if (client->second->send(p_Packet) != sf::Socket::Done)
+		if (client->second->send(p_Packet) == sf::Socket::Done)
 			Log(MessageType::INFO) << "Successfully sent data to a client! Client ID: " << p_ClientID;
 		else 
 			Log(MessageType::FAULT) << "Failed to send data to a client! Client ID: " << p_ClientID;

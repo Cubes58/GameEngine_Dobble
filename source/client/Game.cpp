@@ -12,12 +12,13 @@
 #include "MainMenuScene.h"
 #include "GamePlayScene.h"
 
-Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::MAIN_MENU) {
+Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::ACTIVE) {
 	for (int i = 0; i < s_m_NumberOfDifferentKeyCodes; ++i) {
 		m_Keys[i] = false;
 	}
 	SetScene();
 
+	EntityManagerInstance.Init();
 	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight());
 	EntityManagerInstance.AddSystem(renderSystem);
 }
