@@ -44,77 +44,10 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	float heightOffset = (float)height / 2.5f;
 
 	if (packetID == Packet::PLAYER_CARD_DATA) {
-		EntityManagerInstance.DeleteComponent<RenderComponent>("DeckCard");		// IMPROVE!!! Look for a better way!
-		EntityManagerInstance.DeleteComponent<TransformComponent>("DeckCard");	// IMPROVE!!! Look for a better way!
-		EntityManagerInstance.CreateEntity("DeckCard");							// IMPROVE!!! Look for a better way!
-
-		// Render component:
-		RenderComponent renderComponent;
-		renderComponent.m_SymbolTextureIDs.emplace_back(0);
-		for (int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD - 1; i++) {
-			sf::Int32 symbolID;
-			p_Packet >> symbolID;
-			renderComponent.m_SymbolTextureIDs.emplace_back(symbolID);
-		}
-		EntityManagerInstance.AddComponentToEntity<RenderComponent>("DeckCard", std::make_shared<RenderComponent>(renderComponent));
-
-		// Transform component:
-		TransformComponent transformComponent;
-		for (int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; i++) {
-			float xPosition;
-			p_Packet >> xPosition;
-
-			float yPosition;
-			p_Packet >> yPosition;
-			Vector2D<float> position(xPosition + quarterWidth, yPosition + heightOffset);
-			//Vector2D<float> position(xPosition, yPosition);
-
-			float radius;
-			p_Packet >> radius;
-
-			float rotation;
-			p_Packet >> rotation;
-
-			Log(MessageType::INFO) << "XPos: " << xPosition << "\tYPos: " << yPosition << "\tRadius: " << radius << "\Rotation: " << rotation;
-			transformComponent.m_CircleTransforms.emplace_back(position, radius, rotation);
-		}
-		EntityManagerInstance.AddComponentToEntity<TransformComponent>("DeckCard", std::make_shared<TransformComponent>(transformComponent));
+		CreateCardEntity("DeckCard", p_Packet, Vector2D<float>(quarterWidth, heightOffset));
 	}
 	else if (packetID == Packet::DECK_CARD_DATA) {
-		EntityManagerInstance.DeleteComponent<RenderComponent>("MyCard");		// IMPROVE!!! Look for a better way!
-		EntityManagerInstance.DeleteComponent<TransformComponent>("MyCard");	// IMPROVE!!! Look for a better way!
-		EntityManagerInstance.CreateEntity("MyCard");							// IMPROVE!!! Look for a better way!
-
-		// Render component:
-		RenderComponent renderComponent;
-		renderComponent.m_SymbolTextureIDs.emplace_back(0);
-		for (int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD - 1; i++) {
-			sf::Int32 symbolID;
-			p_Packet >> symbolID;
-			renderComponent.m_SymbolTextureIDs.emplace_back(symbolID);
-		}
-		EntityManagerInstance.AddComponentToEntity<RenderComponent>("MyCard", std::make_shared<RenderComponent>(renderComponent));
-
-		// Transform component:
-		TransformComponent transformComponent;
-		for (int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; i++) {
-			float xPosition;
-			p_Packet >> xPosition;
-
-			float yPosition;
-			p_Packet >> yPosition;
-			Vector2D<float> position(xPosition + (quarterWidth * 3), yPosition + heightOffset);
-
-			float radius;
-			p_Packet >> radius;
-
-			float rotation;
-			p_Packet >> rotation;
-
-			Log(MessageType::INFO) << "XPos: " << xPosition << "\tYPos: " << yPosition << "\tRadius: " << radius << "\Rotation: " << rotation;
-			transformComponent.m_CircleTransforms.emplace_back(position, radius, rotation);
-		}
-		EntityManagerInstance.AddComponentToEntity<TransformComponent>("MyCard", std::make_shared<TransformComponent>(transformComponent));
+		CreateCardEntity("MyCard", p_Packet, Vector2D<float>(quarterWidth * 3, heightOffset));
 	}
 	else if (packetID == Packet::SYMBOL_ID) {
 		// For the client, this could be sent from the server, to inform the player which symbol was the correct guess, for them.
@@ -128,4 +61,22 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	else if (packetID == Packet::CONNECT) {
 		// Reconnect to the server.
 	}
+}
+
+void GamePlayScene::CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2D<float> &p_PositionOffset) {
+	EntityManagerInstance.DeleteComponent<RenderComponent>(p_EntityName);
+	EntityManagerInstance.DeleteComponent<TransformComponent>(p_EntityName);
+	EntityManagerInstance.CreateEntity(p_EntityName);
+
+	// Render component:
+	RenderComponent renderComponent;
+	p_Packet >> renderComponent;
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(p_EntityName, std::make_shared<RenderComponent>(renderComponent));
+
+	// Transform component:
+	TransformComponent transformComponent;
+	p_Packet >> transformComponent;
+	for (auto &tranform : transformComponent.m_CircleTransforms)
+		tranform.m_Position += p_PositionOffset;
+	EntityManagerInstance.AddComponentToEntity<TransformComponent>(p_EntityName, std::make_shared<TransformComponent>(transformComponent));
 }

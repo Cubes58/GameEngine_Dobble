@@ -107,6 +107,7 @@
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -127,6 +128,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -148,6 +150,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -172,6 +175,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

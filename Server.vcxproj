@@ -106,6 +106,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SERVER;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -124,6 +125,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SERVER;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>sfml-network-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -144,6 +146,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SERVER;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -166,6 +169,7 @@
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SERVER;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -182,10 +186,12 @@
     <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\PacketTypes.cpp" />
+    <ClCompile Include="source\RenderComponent.cpp" />
     <ClCompile Include="source\server\Deck.cpp" />
     <ClCompile Include="source\server\main.cpp" />
     <ClCompile Include="source\server\Server.cpp" />
     <ClCompile Include="source\server\ServerGame.cpp" />
+    <ClCompile Include="source\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CollisionComponent.h" />
@@ -194,7 +200,6 @@
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
     <ClInclude Include="include\FileSystemHelper.h" />
-    <ClInclude Include="include\InputComponent.h" />
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\MoveSymbolsSystem.h" />
     <ClInclude Include="include\PacketTypes.h" />

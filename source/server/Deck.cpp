@@ -30,15 +30,17 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 
 	// First card.
 	EntityManagerInstance.CreateEntity(++cardNumber);
+	renderComponent.m_SymbolTextureIDs.emplace_back(0);	// Background render ID.
 	for (int i = 0; i <= p_NumberOfSymblesPerCard; i++)
 		renderComponent.m_SymbolTextureIDs.emplace_back(i + s_ConstantIncrement);
 	EntityManagerInstance.AddComponentToEntity<RenderComponent>(cardNumber, std::make_shared<RenderComponent>(renderComponent));
 
 	// N following cards.
 	for (int i = 0; i < p_NumberOfSymblesPerCard; i++) {
-		renderComponent.m_SymbolTextureIDs.clear();	// Removes the elements but the capacity remains (reserved memory).
+		renderComponent.m_SymbolTextureIDs.clear();	// Removes the elements but the capacity (reserved memory) remains.
 
 		EntityManagerInstance.CreateEntity(++cardNumber);
+		renderComponent.m_SymbolTextureIDs.emplace_back(0);	// Background render ID.
 		renderComponent.m_SymbolTextureIDs.emplace_back(s_ConstantIncrement);
 
 		for (int j = 0; j < p_NumberOfSymblesPerCard; j++)
@@ -52,11 +54,12 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 		for (int j = 0; j < p_NumberOfSymblesPerCard; j++) {
 			renderComponent.m_SymbolTextureIDs.clear();	
 			EntityManagerInstance.CreateEntity(++cardNumber);
+			renderComponent.m_SymbolTextureIDs.emplace_back(0);	// Background render ID.
 
 			renderComponent.m_SymbolTextureIDs.emplace_back(i + s_ConstantIncrement + s_ConstantIncrement);
 			for (int k = 0; k < p_NumberOfSymblesPerCard; k++)
 				renderComponent.m_SymbolTextureIDs.emplace_back(((p_NumberOfSymblesPerCard + p_NumberOfSymblesPerCard * k + (i * k + j) % p_NumberOfSymblesPerCard)
-					+ s_ConstantIncrement + s_ConstantIncrement));	// Works properly as long as p_NumberOfSymblesPerCard - 1 is a prime number.
+					+ s_ConstantIncrement + s_ConstantIncrement));	// Works properly as long as (p_NumberOfSymblesPerCard - 1) is a prime number.
 
 			EntityManagerInstance.AddComponentToEntity<RenderComponent>(cardNumber, std::make_shared<RenderComponent>(renderComponent));
 		}
@@ -131,7 +134,7 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 	for (const auto &deckCardSymbolID : p_DeckCardRenderComponent->m_SymbolTextureIDs) {
 		if (deckCardSymbolID == p_PlayerSymbolIDGuess) {
 			Log(MessageType::INFO) << "The player guessed correctly!";
-			Log(MessageType::INFO) << "Player guess: " << p_PlayerSymbolIDGuess;
+			Log(MessageType::INFO) << "Player guess: (Symbol ID) " << p_PlayerSymbolIDGuess;
 			return true;
 		}
 	}

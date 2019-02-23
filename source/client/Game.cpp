@@ -1,7 +1,6 @@
 #include "Game.h"
 
 #include "GLCore.hpp"
-
 #include "Logger.h"
 
 #include "EntityManager.h"
