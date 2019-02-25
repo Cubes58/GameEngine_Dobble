@@ -4,10 +4,10 @@
 
 sf::Packet &operator<<(sf::Packet &p_Packet, RenderComponent &p_RenderComponent) {
 	p_Packet << sf::Int32(p_RenderComponent.m_SymbolTextureIDs.size());
-	Log(MessageType::INFO) << "Number of circle in the render component: " << p_RenderComponent.m_SymbolTextureIDs.size();
+	Log(Type::INFO) << "Number of circle in the render component: " << p_RenderComponent.m_SymbolTextureIDs.size();
 	for (auto &symbol : p_RenderComponent.m_SymbolTextureIDs) {
 		p_Packet << sf::Int32(symbol);
-		Log(MessageType::INFO) << "Symbol ID: " << symbol;
+		Log(Type::INFO) << "Symbol ID: " << symbol;
 	}
 
 	return p_Packet;

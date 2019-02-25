@@ -7,7 +7,7 @@
 
 class Window {
 private:
-	sf::RenderWindow m_Window;
+	sf::Window m_Window;
 
 	int m_Width;
 	int m_Height;
@@ -22,7 +22,7 @@ public:
 	bool IsOpen();
 	void Display();
 
-	sf::RenderWindow &GetWindow();
+	sf::Window &GetWindow();
 	const sf::Uint32 &GetStyle() const;
 
 	int GetWidth() const;

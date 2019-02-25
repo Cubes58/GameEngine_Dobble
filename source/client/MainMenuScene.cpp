@@ -1,13 +1,13 @@
 #include "MainMenuScene.h"
 
+#include <SFML/Window/Event.hpp>
+
 MainMenuScene::MainMenuScene() {
 
 }
 
-bool MainMenuScene::Change(GameState &p_GameState) {
-	// If player clicks on the start game button, then change the game state to active!
-	p_GameState = GameState::ACTIVE;
-	return true;
+void MainMenuScene::HandleInputEvent(sf::Event &p_Event) {
+	m_GameState = GameState::ACTIVE;
 }
 
 void MainMenuScene::Update(float p_DeltaTime) {

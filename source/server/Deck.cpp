@@ -133,8 +133,7 @@ void Deck::Shuffle() {
 bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess) {
 	for (const auto &deckCardSymbolID : p_DeckCardRenderComponent->m_SymbolTextureIDs) {
 		if (deckCardSymbolID == p_PlayerSymbolIDGuess) {
-			Log(MessageType::INFO) << "The player guessed correctly!";
-			Log(MessageType::INFO) << "Player guess: (Symbol ID) " << p_PlayerSymbolIDGuess;
+			Log(Type::INFO) << "The player guessed correctly!" << "\t" << "Player guess: (Symbol ID) " << p_PlayerSymbolIDGuess;
 			return true;
 		}
 	}

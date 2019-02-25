@@ -59,11 +59,11 @@ bool ResourceManager::LoadShaderFromFile(const std::string &p_VertexShaderFile, 
 		}
 	}
 	catch (std::exception p_Exception) {
-		Log(MessageType::FAULT) << "ERROR::SHADER: Failed to read shader files.";
+		Log(Type::FAULT) << "ERROR::SHADER: Failed to read shader files.";
 		return false;
 	}
 	catch (...) {
-		Log(MessageType::FAULT) << "SOMETHING BAD WENT WRONG WITH THE SHADER LOAD FROM FILE CODE.";
+		Log(Type::FAULT) << "SOMETHING BAD WENT WRONG WITH THE SHADER LOAD FROM FILE CODE.";
 		return false;
 	}
 

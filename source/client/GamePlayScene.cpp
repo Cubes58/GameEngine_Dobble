@@ -1,22 +1,49 @@
 #include "GamePlayScene.h"
 
+#include <SFML/Window/Event.hpp>
+
 #include "EntityManager.h"
 #include "Logger.h"
 
 #include "RenderComponent.h"
+#include "TransformComponent.h"
 
-GamePlayScene::GamePlayScene() {
+GamePlayScene::GamePlayScene(const Vector2D<float> &p_ScreenSize) : m_ScreenSize(p_ScreenSize) {
 	// Wait as long as it takes, to connect to the server (Maybe add to a config file, and allow a user to specify).
 	m_Client.Connect(sf::Time::Zero);
 }
 
-bool GamePlayScene::Change(GameState &p_GameState) {
-	if (static_cast<unsigned int>(m_GameState) != static_cast<unsigned int>(p_GameState)) {
-		p_GameState = m_GameState;
-		return true;
-	}
+void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
+	if (p_Event.type == sf::Event::MouseButtonPressed) {
+		Vector2D<float> mousePosition((float)p_Event.mouseButton.x, (float)p_Event.mouseButton.y);
 
-	return false;
+		auto checkIfPlayerClickedSymbol = [&](const std::string &p_EntityName)->bool { 
+			std::shared_ptr<TransformComponent> potentialTransformComponent = EntityManagerInstance.GetComponent<TransformComponent>(p_EntityName);
+			if (potentialTransformComponent != nullptr) {
+				TransformComponent &transformComponent = *potentialTransformComponent;
+				for (int i = 1; i < transformComponent.m_CircleTransforms.size(); i++) {
+					CircleTransformData &circleTransformData = transformComponent.m_CircleTransforms[i];
+					if (m_Collision(circleTransformData.m_Position, circleTransformData.m_Radius, mousePosition)) {
+						// If the player has clicked on a symbol get the symbol ID, from the render component.
+						m_PlayerSymbolIDGuess = EntityManagerInstance.GetComponent<RenderComponent>(p_EntityName)->m_SymbolTextureIDs[i];
+
+						Log(Type::INFO) << "The player has clicked on a symbol. Symbol ID: " << m_PlayerSymbolIDGuess << "\nEntity Name: " << p_EntityName;
+						return true;
+					}
+				}
+			}
+			return false;
+		};
+		if (checkIfPlayerClickedSymbol(m_PlayerEntityID)) {
+			// The player has attempted to guess the symbol, send it to the server.
+			sf::Packet packet = Packet::SetPacketType(Packet::SYMBOL_ID);
+			packet << m_PlayerSymbolIDGuess;
+			m_Client.Send(packet);
+
+			m_PlayerSymbolIDGuess = INVALID_SYMBOL_GUESS;
+		}
+		Log(Type::INFO) << "Mouse X Position: " << mousePosition.X() << "\tMouse Y Position: " << mousePosition.Y();
+	}
 }
 
 void GamePlayScene::Update(float p_DeltaTime) {
@@ -37,17 +64,14 @@ void GamePlayScene::Render(Window &p_Window) {
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	PacketID packetID = Packet::GetPacketType(p_Packet);
 
-	// TEMP:
-	int width = 1280;
-	float quarterWidth = (float)width / 4.0f;
-	int height = 720;
-	float heightOffset = (float)height / 2.5f;
-
+	static float quarterWidth = (float)m_ScreenSize.X() / 4.0f;
+	static float heightOffset = (float)m_ScreenSize.Y() / 2.5f;
+	
 	if (packetID == Packet::PLAYER_CARD_DATA) {
-		CreateCardEntity("DeckCard", p_Packet, Vector2D<float>(quarterWidth, heightOffset));
+		CreateCardEntity(m_PlayerEntityID, p_Packet, Vector2D<float>(quarterWidth, heightOffset));
 	}
 	else if (packetID == Packet::DECK_CARD_DATA) {
-		CreateCardEntity("MyCard", p_Packet, Vector2D<float>(quarterWidth * 3, heightOffset));
+		CreateCardEntity(m_DeckEntityID, p_Packet, Vector2D<float>(quarterWidth * 3, heightOffset));
 	}
 	else if (packetID == Packet::SYMBOL_ID) {
 		// For the client, this could be sent from the server, to inform the player which symbol was the correct guess, for them.

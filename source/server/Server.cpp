@@ -9,10 +9,10 @@ unsigned int Server::s_m_NewClientID = 0;
 Server::Server() {
 	m_SocketSelector.clear();
 
-	Log(MessageType::INFO) << "Dobble Server" << "\n" << "----------------" << "\n" << "Listening on port: " << s_m_PortToListenOn << "\n";
+	Log(Type::INFO) << "Dobble Server" << "\n" << "----------------" << "\n" << "Listening on port: " << s_m_PortToListenOn << "\n";
 	// Listen on the selected port.
 	if (m_Listener.listen(s_m_PortToListenOn) != sf::Socket::Done)
-		Log(MessageType::FAULT) << "Couldn't listen on port: " << s_m_PortToListenOn;
+		Log(Type::FAULT) << "Couldn't listen on port: " << s_m_PortToListenOn;
 	else {
 		m_SocketSelector.add(m_Listener);
 		m_Listening = true;
@@ -40,12 +40,12 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 					m_Clients.insert(std::pair(clientID, client));
 					m_SocketSelector.add(*client);
 
-					Log(MessageType::INFO) << "Client connected. Remote address: " << client->getRemoteAddress().toString() << " Their ID is: " << clientID;
+					Log(Type::INFO) << "Client connected. Remote address: " << client->getRemoteAddress().toString() << " Their ID is: " << clientID;
 					return true;
 				}
 			}
 			else {
-				Log(MessageType::FAULT) << "Occured during client connection. Skipping.";
+				Log(Type::FAULT) << "Occured during client connection. Skipping.";
 			}
 		}
 		else {
@@ -82,7 +82,7 @@ void Server::WaitForClientsToConnect(int p_NumberOfClients) {
 }
 
 void Server::Disconnect(const ClientID &p_ClientID) {
-	Log(MessageType::INFO) << "Disconnecting from a client! Client ID: " << p_ClientID;
+	Log(Type::INFO) << "Disconnecting from a client! Client ID: " << p_ClientID;
 	
 	auto client = m_Clients.find(p_ClientID);
 	if (client != m_Clients.end()) {
@@ -100,13 +100,13 @@ void Server::Disconnect(const ClientID &p_ClientID) {
 
 		// Check whether the socket it still in use (whether the client has actually disconnected).
 		if (client->second->getRemoteAddress() == sf::IpAddress::None)
-			Log(MessageType::INFO) << "Successfully disconnected from a client! Client ID: " << p_ClientID;
+			Log(Type::INFO) << "Successfully disconnected from a client! Client ID: " << p_ClientID;
 
 		// Remove it from the list of sockets.
 		m_Clients.erase(client);
 	}
 	else 
-		Log(MessageType::FAULT) << "Failed to disconnected from a client! Client ID: " << p_ClientID;
+		Log(Type::FAULT) << "Failed to disconnected from a client! Client ID: " << p_ClientID;
 }
 
 void Server::Disconnect() {
@@ -121,9 +121,9 @@ void Server::Send(const ClientID &p_ClientID, sf::Packet &p_Packet) {
 	auto client = m_Clients.find(p_ClientID);
 	if (client != m_Clients.end()) {
 		if (client->second->send(p_Packet) == sf::Socket::Done)
-			Log(MessageType::INFO) << "Successfully sent data to a client! Client ID: " << p_ClientID;
+			Log(Type::INFO) << "Successfully sent data to a client! Client ID: " << p_ClientID;
 		else 
-			Log(MessageType::FAULT) << "Failed to send data to a client! Client ID: " << p_ClientID;
+			Log(Type::FAULT) << "Failed to send data to a client! Client ID: " << p_ClientID;
 	}
 }
 
@@ -138,13 +138,13 @@ bool Server::GetReceivedData(const ClientID &p_ClientID, sf::Packet &p_Packet) {
 	if (client != m_Clients.end() && m_SocketSelector.wait()) {
 		if (m_SocketSelector.isReady(*client->second)) {
 			if (client->second->receive(p_Packet) == sf::TcpSocket::Done) {
-				Log(MessageType::INFO) << "Data received from a client! Client ID: " << client->first;
+				Log(Type::INFO) << "Data received from a client! Client ID: " << client->first;
 				return true;
 			}
 		}
 	}
 
-	Log(MessageType::INFO) << "No data received, from client! Client ID: " << p_ClientID;
+	Log(Type::INFO) << "No data received, from client! Client ID: " << p_ClientID;
 	p_Packet.clear();
 	return false;
 }
@@ -153,13 +153,17 @@ bool Server::GetReceivedData(std::map<ClientID, sf::Packet> &p_Packets) {
 	p_Packets.clear();
 
 	bool dataRecieved = false;
-	for (auto &client : m_Clients) {
-		sf::Packet packet;
-		if (client.second->receive(packet) == sf::TcpSocket::Done) {
-			Log(MessageType::INFO) << "Data received from a client! Client ID: " << client.first;
+	if (m_SocketSelector.wait()) {
+		for (auto &client : m_Clients) {
+			sf::Packet packet;
+			if (m_SocketSelector.isReady(*client.second)) {
+				if (client.second->receive(packet) == sf::TcpSocket::Done) {
+					Log(Type::INFO) << "Data received from a client! Client ID: " << client.first;
 
-			p_Packets.emplace(client.first, packet);
-			dataRecieved = true;
+					p_Packets.emplace(client.first, packet);
+					dataRecieved = true;
+				}
+			}
 		}
 	}
 

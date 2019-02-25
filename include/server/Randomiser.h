@@ -17,9 +17,9 @@ private:
 
 public:
 	static Randomiser &Instance() {
-		static Randomiser instance;
+		static Randomiser s_Instance;
 
-		return instance;
+		return s_Instance;
 	}
 
 	template<typename T>

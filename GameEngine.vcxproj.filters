@@ -161,6 +161,12 @@
     <ClInclude Include="include\Vector2D.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="include\client\UserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\client\Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\CardShader.frag">
