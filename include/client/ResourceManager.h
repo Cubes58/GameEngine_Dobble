@@ -11,6 +11,8 @@
 
 class RenderSystem;
 
+#define ResourceManagerInstance ResourceManager::Instance()
+
 class ResourceManager {
 private:
 	friend RenderSystem;

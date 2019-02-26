@@ -14,7 +14,6 @@ private:
 	Client m_Client;
 	std::string m_PlayerEntityID = "PlayerCard";
 	std::string m_DeckEntityID = "DeckCard";
-	Vector2D<float> m_ScreenSize;
 	sf::Int32 m_PlayerSymbolIDGuess = INVALID_SYMBOL_GUESS;
 	sf::Int32 m_RoundsWon = 0;
 	float m_Score = 0.0f;
@@ -23,7 +22,7 @@ private:
 	void CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2D<float> &p_PositionOffset = Vector2D<float>(0.0f, 0.0f));
 
 public:
-	GamePlayScene(const Vector2D<float> &p_ScreenSize);
+	GamePlayScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
 	~GamePlayScene();
 
 	virtual void HandleInputEvent(sf::Event &p_Event) override;

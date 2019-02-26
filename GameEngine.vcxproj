@@ -104,13 +104,13 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./include/client;./include;</AdditionalIncludeDirectories>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>./external/include;</AdditionalLibraryDirectories>
     </Link>
@@ -126,12 +126,12 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./include/client;./include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>./external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -148,14 +148,14 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./include/client;./include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>./external/include;</AdditionalLibraryDirectories>
     </Link>
@@ -173,14 +173,14 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./include/client;./include;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>./external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -189,6 +189,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\client\Client.cpp" />
+    <ClCompile Include="source\client\EndGameScene.cpp" />
+    <ClCompile Include="source\client\FontRenderer.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
     <ClCompile Include="source\client\GamePlayScene.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
@@ -198,6 +200,7 @@
     <ClCompile Include="source\client\Shader.cpp" />
     <ClCompile Include="source\client\stb_image.c" />
     <ClCompile Include="source\client\Texture2D.cpp" />
+    <ClCompile Include="source\client\UserInterface.cpp" />
     <ClCompile Include="source\client\Window.cpp" />
     <ClCompile Include="source\EntitySystem.cpp" />
     <ClCompile Include="source\jsoncpp.cpp" />
@@ -209,6 +212,8 @@
   <ItemGroup>
     <ClInclude Include="include\client\Client.h" />
     <ClInclude Include="include\client\Collision.h" />
+    <ClInclude Include="include\client\EndGameScene.h" />
+    <ClInclude Include="include\client\FontRenderer.h" />
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GamePlayScene.h" />
     <ClInclude Include="include\client\GameState.h" />

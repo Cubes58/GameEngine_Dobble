@@ -10,7 +10,7 @@ int main(int p_Argc, char* p_Argv[]) {
 	int width = 1280;
 	int height = 720;
 
-	Window window(sf::VideoMode(width, height), "Game Engine", sf::Style::Default);
+	Window window(sf::VideoMode(width, height), "Dobble", sf::Style::Default);
 	Game game(window);
 	const sf::Time timePerFrame = sf::seconds(1.0f / 60.0f);
 

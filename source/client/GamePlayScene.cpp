@@ -8,14 +8,16 @@
 #include "RenderComponent.h"
 #include "TransformComponent.h"
 
-GamePlayScene::GamePlayScene(const Vector2D<float> &p_ScreenSize) : m_ScreenSize(p_ScreenSize) {
+GamePlayScene::GamePlayScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) 
+	: Scene(p_ScreenSize, p_File) {
 	// Wait as long as it takes, to connect to the server (Maybe add to a config file, and allow a user to specify).
 	m_Client.Connect(sf::Time::Zero);
 }
 
 GamePlayScene::~GamePlayScene() {
 	// Disconnect from the server, gracefully.
-	m_Client.Disconnect();
+	if(m_Client.IsConnected())
+		m_Client.Disconnect();
 }
 
 void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
@@ -63,7 +65,9 @@ void GamePlayScene::Update(float p_DeltaTime) {
 void GamePlayScene::Render(Window &p_Window) {
 	EntityManagerInstance.RenderSystems(p_Window);
 
-	// Also render the user interface information (Score/Time/How many cards left in the deck/Other players score/etc..)
+	m_UserInterface->Render(p_Window);
+
+	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2D<float>(0.005f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 }
 
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {

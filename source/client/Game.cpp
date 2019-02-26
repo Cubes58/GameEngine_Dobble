@@ -10,6 +10,7 @@
 
 #include "MainMenuScene.h"
 #include "GamePlayScene.h"
+#include "EndGameScene.h"
 
 Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::ACTIVE) {
 	EntityManagerInstance.Init();
@@ -66,19 +67,20 @@ void Game::Render() {
 void Game::SetScene() {
 	switch (m_GameState) {
 	case GameState::MAIN_MENU:
-		m_Scene = std::make_unique<MainMenuScene>();
+		m_Scene = std::make_unique<MainMenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/MainMenuScene.JSON");
 		break;
 	case GameState::ACTIVE:
-		m_Scene = std::make_unique<GamePlayScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()));
+		m_Scene = std::make_unique<GamePlayScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<MainMenuScene>();
+		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<MainMenuScene>();
+		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
 		break;
 	default:
 		m_GameState = GameState::MAIN_MENU;
 		break;
 	}
+	m_Scene->m_GameState = this->m_GameState;
 }

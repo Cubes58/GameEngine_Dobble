@@ -32,10 +32,10 @@ public:
 		m_RenderComponents = GetComponentArray(typeid(RenderComponent));
 		m_TransformComponents = GetComponentArray(typeid(TransformComponent));
 
-		m_TextureIDs = &ResourceManager::Instance().m_TextureIDs;
+		m_TextureIDs = &ResourceManagerInstance.m_TextureIDs;
 
 		// Configure the shader.
-		m_Shader = ResourceManager::Instance().LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag");
+		m_Shader = ResourceManagerInstance.LoadShader("resources/shaders/CardShader.vert", "resources/shaders/CardShader.frag");
 		glm::mat4 projection = glm::ortho(0.0f, p_WindowWidth, p_WindowHeight, 0.0f, -1.0f, 1.0f);
 
 		m_Shader->Use();
@@ -97,7 +97,7 @@ public:
 					gl::ActiveTexture(gl::TEXTURE0);
 
 					if (i == 0)
-						ResourceManager::Instance().GetTexture("cardBackground")->Bind();
+						ResourceManagerInstance.GetTexture("cardBackground")->Bind();
 					else
 						m_TextureIDs->at(renderComponent->m_SymbolTextureIDs[i])->Bind();
 

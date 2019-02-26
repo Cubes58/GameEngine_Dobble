@@ -3,7 +3,8 @@
 #include "Logger.h"
 
 Client::~Client() {
-	Disconnect();
+	if (IsConnected())
+		Disconnect();
 }
 
 bool Client::Connect(const sf::Time &p_ConnectWaitTimeOut) {

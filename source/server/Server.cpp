@@ -57,7 +57,7 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 					sf::Packet packet;
 					if (client->second->receive(packet) == sf::Socket::Done) {
 						if (Packet::GetPacketType(packet) == Packet::CONNECT) {
-							// Maybe have the user's specify specific info, (number of cards in the deck - Could be a voting thing - user's joke, when they click on a certain game mode, etc...)
+							// Maybe have the user's specify specific info, (number of cards in the deck - Could be a voting thing - user's vote, when they click on a certain game mode, etc...)
 						}
 						else if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
 							Disconnect(client->first);
@@ -90,7 +90,7 @@ void Server::Disconnect(const ClientID &p_ClientID) {
 		Packet::SetPacketType(Packet::DISCONNECT, disconnectPacket);
 
 		// Tell the client the server is disconnecting, from them.
-		sf::Socket::Status status = client->second->send(disconnectPacket);
+		client->second->send(disconnectPacket);
 
 		// Order here is important, the client needs to be removed from the socket selector, before it's disconnected (strange behaviour occurs otherwise).
 		// Remove it from the socket selector.
