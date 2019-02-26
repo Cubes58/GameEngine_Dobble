@@ -237,6 +237,8 @@
   <ItemGroup>
     <None Include="resources\shaders\CardShader.frag" />
     <None Include="resources\shaders\CardShader.vert" />
+    <None Include="resources\shaders\FontShader.frag" />
+    <None Include="resources\shaders\FontShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

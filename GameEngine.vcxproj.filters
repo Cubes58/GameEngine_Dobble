@@ -175,5 +175,11 @@
     <None Include="resources\shaders\CardShader.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="resources\shaders\FontShader.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\shaders\FontShader.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

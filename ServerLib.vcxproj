@@ -186,10 +186,12 @@
     <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\PacketTypes.cpp" />
+    <ClCompile Include="source\RenderComponent.cpp" />
     <ClCompile Include="source\server\Deck.cpp" />
     <ClCompile Include="source\server\main.cpp" />
     <ClCompile Include="source\server\Server.cpp" />
     <ClCompile Include="source\server\ServerGame.cpp" />
+    <ClCompile Include="source\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CollisionComponent.h" />
