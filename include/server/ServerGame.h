@@ -1,7 +1,6 @@
 #pragma once
 
 #include <map>
-#include <vector>
 
 #include "Server.h"
 #include "Deck.h"
@@ -14,8 +13,9 @@ private:
 
 	Server m_Server;
 	Deck m_Deck;
-	std::map<ClientID, float> m_PlayerScore;
+	std::map<ClientID, float> m_PlayerScores;
 	unsigned int m_ActiveDeckCard;
+	bool m_GameOver = false;
 	bool m_IsRunning;
 
 	void SendStartingInformation();

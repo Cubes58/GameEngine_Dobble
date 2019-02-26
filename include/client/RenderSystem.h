@@ -81,7 +81,7 @@ public:
 				std::shared_ptr<TransformComponent> transformComponent = std::static_pointer_cast<TransformComponent>(potentialTransformComponent->second);
 				
 				m_Shader->Use();
-				for (unsigned int i = 0; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {
+				for (unsigned int i = 0; i < renderComponent->m_SymbolTextureIDs.size(); ++i) {
 					glm::mat4 model = glm::mat4(1.0f);
 					float radius = transformComponent->m_CircleTransforms[i].m_Radius;
 

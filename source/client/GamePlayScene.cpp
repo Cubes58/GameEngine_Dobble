@@ -13,6 +13,11 @@ GamePlayScene::GamePlayScene(const Vector2D<float> &p_ScreenSize) : m_ScreenSize
 	m_Client.Connect(sf::Time::Zero);
 }
 
+GamePlayScene::~GamePlayScene() {
+	// Disconnect from the server, gracefully.
+	m_Client.Disconnect();
+}
+
 void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 	if (p_Event.type == sf::Event::MouseButtonPressed) {
 		Vector2D<float> mousePosition((float)p_Event.mouseButton.x, (float)p_Event.mouseButton.y);
@@ -64,8 +69,8 @@ void GamePlayScene::Render(Window &p_Window) {
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	PacketID packetID = Packet::GetPacketType(p_Packet);
 
-	static float quarterWidth = (float)m_ScreenSize.X() / 4.0f;
-	static float heightOffset = (float)m_ScreenSize.Y() / 2.5f;
+	float quarterWidth = (float)m_ScreenSize.X() / 4.0f;
+	float heightOffset = (float)m_ScreenSize.Y() / 2.5f;
 	
 	if (packetID == Packet::PLAYER_CARD_DATA) {
 		CreateCardEntity(m_PlayerEntityID, p_Packet, Vector2D<float>(quarterWidth, heightOffset));
@@ -73,17 +78,31 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	else if (packetID == Packet::DECK_CARD_DATA) {
 		CreateCardEntity(m_DeckEntityID, p_Packet, Vector2D<float>(quarterWidth * 3, heightOffset));
 	}
+	else if (packetID == Packet::ROUND_FINISHED) {
+		bool hasWonRound = false;
+		p_Packet >> hasWonRound;
+		if (hasWonRound)
+			++m_RoundsWon;
+	}
+	else if (packetID == Packet::SCORE) {
+		p_Packet >> m_Score;
+		Log(Type::INFO) << "Score: " << m_Score;
+	}
 	else if (packetID == Packet::SYMBOL_ID) {
 		// For the client, this could be sent from the server, to inform the player which symbol was the correct guess, for them.
 	}
 	else if (packetID == Packet::GAME_FINISHED) {
-		// Game is over, check who won. (Might be this player, or the enemy.)
+		bool hasPlayerWonGame = false;
+		p_Packet >> hasPlayerWonGame;
+		Log(Type::INFO) << "Game over. Has player won: " << hasPlayerWonGame;
+		if (hasPlayerWonGame)
+			m_GameState = GameState::WIN;
+		else
+			m_GameState = GameState::LOSE;
 	}
 	else if (packetID == Packet::DISCONNECT) {
 		// Disconnect from the Server.
-	}
-	else if (packetID == Packet::CONNECT) {
-		// Reconnect to the server.
+		m_Client.Disconnect();
 	}
 }
 

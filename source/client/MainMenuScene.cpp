@@ -7,7 +7,7 @@ MainMenuScene::MainMenuScene() {
 }
 
 void MainMenuScene::HandleInputEvent(sf::Event &p_Event) {
-	m_GameState = GameState::ACTIVE;
+
 }
 
 void MainMenuScene::Update(float p_DeltaTime) {

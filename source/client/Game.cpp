@@ -72,13 +72,10 @@ void Game::SetScene() {
 		m_Scene = std::make_unique<GamePlayScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()));
 		break;
 	case GameState::WIN:
-
+		m_Scene = std::make_unique<MainMenuScene>();
 		break;
 	case GameState::LOSE:
-
-		break;
-	case GameState::SHUTDOWN:
-
+		m_Scene = std::make_unique<MainMenuScene>();
 		break;
 	default:
 		m_GameState = GameState::MAIN_MENU;

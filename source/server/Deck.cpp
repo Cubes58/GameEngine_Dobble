@@ -20,6 +20,7 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	p_NumberOfSymblesPerCard -= s_ConstantIncrement;
 	for (int i = 2; i <= p_NumberOfSymblesPerCard / 2; i++) {
 		if (p_NumberOfSymblesPerCard % i == 0) {
+			Log(Type::FAULT) << "Not a prime number: " << p_NumberOfSymblesPerCard;
 			return false;
 		}
 	}
@@ -89,7 +90,7 @@ void Deck::GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius
 			circleTransformData.m_Rotation = Randomiser::Instance().GetNormalRandomNumber(0.0f, 360.0f);
 
 			// Generate the size.
-			circleTransformData.m_Radius = Randomiser::Instance().GetNormalRandomNumber(10.0f, 40.0f);
+			circleTransformData.m_Radius = Randomiser::Instance().GetNormalRandomNumber(22.5f, 40.0f);
 
 			// Add the symbol's transform component.
 			circleTransforms.emplace_back(circleTransformData);
@@ -118,16 +119,16 @@ void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, uns
 
 	// Vector to store a shuffled deck of entity IDs, so when it comes to sending out a card, it will be a "random" entity, chosen from the back of this vector.
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
-	m_CardOrder.reserve(entities->size());
+	m_CardIDs.reserve(entities->size());
 	for (const auto &entity : *entities) {
-		m_CardOrder.emplace_back(entity);
+		m_CardIDs.emplace_back(entity);
 	}
 
 	Shuffle();
 }
 
 void Deck::Shuffle() {
-	std::shuffle(m_CardOrder.begin(), m_CardOrder.end(), Randomiser::Instance().Generator());
+	std::shuffle(m_CardIDs.begin(), m_CardIDs.end(), Randomiser::Instance().Generator());
 }
 
 bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess) {
@@ -142,21 +143,25 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 }
 
 bool Deck::IsDeckEmpty() const {
-	if (m_CardOrder.size() <= 0)
+	if (m_CardIDs.size() <= 0)
 		return true;
 
 	return false;
 }
 
+unsigned int Deck::NumberOfRemainingCards() const {
+	return m_CardIDs.size();
+}
+
 unsigned int Deck::GetCardIDFromTop() {
-	if (m_CardOrder.size() <= 0)
+	if (m_CardIDs.size() <= 0)
 		return UINT_MAX;
 
-	unsigned int backID = *(m_CardOrder.end() - 1);
-	m_CardOrder.pop_back();
+	unsigned int backID = *(m_CardIDs.end() - 1);
+	m_CardIDs.pop_back();
 	return backID;
 }
 
 std::vector<unsigned int> &Deck::GetCardIDs() {
-	return m_CardOrder;
+	return m_CardIDs;
 }

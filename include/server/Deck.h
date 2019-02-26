@@ -9,7 +9,7 @@ struct RenderComponent;
 
 class Deck {
 private:
-	std::vector<unsigned int> m_CardOrder;
+	std::vector<unsigned int> m_CardIDs;
 	
 	bool GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard);
 	void GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard);
@@ -23,6 +23,7 @@ public:
 	static bool HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess);
 
 	bool IsDeckEmpty() const;
+	unsigned int NumberOfRemainingCards() const;
 	unsigned int GetCardIDFromTop();
 	std::vector<unsigned int> &GetCardIDs();
 };
