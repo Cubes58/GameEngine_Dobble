@@ -30,7 +30,7 @@ void UserInterface::LoadUserInterfaceLayout(const std::string &p_File) {
 	// Load UI information from a JSON file.
 	// TEST...
 	m_Shapes.reserve(1);
-	m_Shapes.emplace_back(std::make_shared<CircleShape>(Vector2D<float>(240.0f, 360.0f), 64, 360, ResourceManagerInstance.GetTexture("apple")));
+	m_Shapes.emplace_back(std::make_shared<CircleShape>(Vector2D<float>(640.0f, 360.0f), 64, 360, ResourceManagerInstance.GetTexture("apple")));
 
 	m_Shapes.emplace_back(std::make_shared<RectangleShape>(Vector2D<float>(640.0f, 360.0f), Vector2D<float>(360.0f, 360.0f), ResourceManagerInstance.GetTexture("apple")));
 }
