@@ -15,5 +15,7 @@ void MainMenuScene::Update(float p_DeltaTime) {
 }
 
 void MainMenuScene::Render(Window &p_Window) {
-	
+	m_UserInterface->Render(p_Window);
+
+	//RenderText("Main Menu", Vector2D<float>(0.5f, 0.5f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 }

@@ -2,8 +2,7 @@
 
 #include <string>
 
-#include <SFML\Window.hpp>
-#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML/Window.hpp>
 
 class Window {
 private:

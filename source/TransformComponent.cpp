@@ -4,7 +4,7 @@
 
 sf::Packet &operator<<(sf::Packet &p_Packet, TransformComponent &p_TransformComponent) {
 	p_Packet << sf::Int32(p_TransformComponent.m_CircleTransforms.size());
-	Log(Type::INFO) << "Number of circle in the transform component: " << p_TransformComponent.m_CircleTransforms.size();
+	Log(Type::INFO) << "Number of circles in the transform component: " << p_TransformComponent.m_CircleTransforms.size();
 	for (auto &transform : p_TransformComponent.m_CircleTransforms) {
 		p_Packet << transform.m_Position.X();
 		p_Packet << transform.m_Position.Y();

@@ -188,6 +188,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\client\Circle.cpp" />
     <ClCompile Include="source\client\Client.cpp" />
     <ClCompile Include="source\client\EndGameScene.cpp" />
     <ClCompile Include="source\client\FontRenderer.cpp" />
@@ -196,6 +197,7 @@
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
     <ClCompile Include="source\client\MainMenuScene.cpp" />
+    <ClCompile Include="source\client\Rectangle.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
     <ClCompile Include="source\client\stb_image.c" />
@@ -210,6 +212,7 @@
     <ClCompile Include="source\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\client\Circle.h" />
     <ClInclude Include="include\client\Client.h" />
     <ClInclude Include="include\client\Collision.h" />
     <ClInclude Include="include\client\EndGameScene.h" />
@@ -223,6 +226,8 @@
     <ClInclude Include="include\client\ResourceManager.h" />
     <ClInclude Include="include\client\Scene.h" />
     <ClInclude Include="include\client\Shader.h" />
+    <ClInclude Include="include\client\Shape.h" />
+    <ClInclude Include="include\client\Rectangle.h" />
     <ClInclude Include="include\client\Texture2D.h" />
     <ClInclude Include="include\client\UserInterface.h" />
     <ClInclude Include="include\client\Window.h" />

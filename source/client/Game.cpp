@@ -12,7 +12,7 @@
 #include "GamePlayScene.h"
 #include "EndGameScene.h"
 
-Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::ACTIVE) {
+Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::MAIN_MENU) {
 	EntityManagerInstance.Init();
 	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()));
 

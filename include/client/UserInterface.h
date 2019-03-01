@@ -9,8 +9,8 @@
 
 class Window;
 class Scene;
-class Shader;
 class Shape;
+class Shader;
 
 class UserInterface {
 private:
@@ -18,7 +18,8 @@ private:
 
 	std::vector<std::shared_ptr<Shape>> m_Shapes;
 	std::shared_ptr<FontRenderer> m_FontRenderer;
-	Shader *m_ShapeShader;
+	//std::shared_ptr<Shape> m_Background;  This will be a rectangle shape (background image).
+	Shader *m_Shader;
 
 	void LoadUserInterfaceLayout(const std::string &p_File);
 
