@@ -2,16 +2,16 @@
 
 #include "Shape.h"
 
-class Circle : public Shape {
+class CircleShape : public Shape {
 private:
 	unsigned int m_NumberOfFaces;
 	unsigned int m_NumberOfVerticesToDraw;
 	float m_Radius;
 
 public:
-	Circle(const Vector2D<float> &p_Position = Vector2D<float>(0.0f, 0.0f), unsigned int p_NumberOfFaces = 64, 
+	CircleShape(const Vector2D<float> &p_Position = Vector2D<float>(0.0f, 0.0f), unsigned int p_NumberOfFaces = 64, 
 		float p_Radius = 1.0f, Texture2D *p_Texture = nullptr);
-	~Circle() = default;
+	~CircleShape() = default;
 
 	void Render(Shader &p_Shader) override;
 

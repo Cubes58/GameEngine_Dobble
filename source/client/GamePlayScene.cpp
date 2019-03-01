@@ -65,7 +65,7 @@ void GamePlayScene::Update(float p_DeltaTime) {
 void GamePlayScene::Render(Window &p_Window) {
 	EntityManagerInstance.RenderSystems(p_Window);
 
-	m_UserInterface->Render(p_Window);
+	m_UserInterface->Render();
 
 	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2D<float>(0.005f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 }
