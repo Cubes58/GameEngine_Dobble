@@ -28,6 +28,7 @@ void CircleShape::Render(Shader &p_Shader) {
 		m_Texture->Bind();
 	}
 	p_Shader.SetFloat("mixValue", m_ColourTextureMixValue);
+	p_Shader.SetBool("usingColourAsTextureMask", m_UsingColourAsTextureMask);
 
 	gl::BindVertexArray(m_VAO);
 	gl::DrawArrays(gl::TRIANGLES, 0, m_NumberOfVerticesToDraw);

@@ -83,7 +83,12 @@ out vec4 FragColour;
 uniform sampler2D image;
 uniform vec4 colour;
 uniform float mixValue;
+uniform bool usingColourAsTextureMask;
 
 void main() {
-	FragColour = mix(texture(image, TexCoords), colour, mixValue);
+	vec4 textureFragColour = texture(image, TexCoords);
+	if (usingColourAsTextureMask && textureFragColour.a <= 0.0f)
+		discard;
+	
+	FragColour = mix(textureFragColour, colour, mixValue);
 }

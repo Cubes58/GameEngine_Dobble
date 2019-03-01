@@ -15,6 +15,7 @@ protected:
 	float m_ColourTextureMixValue = 0.5f;
 	unsigned int m_VBO;
 	unsigned int m_VAO;
+	bool m_UsingColourAsTextureMask = false;
 	Texture2D *m_Texture;
 
 public:
@@ -57,5 +58,12 @@ public:
 	}
 	void SetColourTextureMixValue(float p_ColourTextureMixValue) {
 		m_ColourTextureMixValue = p_ColourTextureMixValue;
+	}
+
+	bool GetUsingColourAsTextureMask() const {
+		return m_UsingColourAsTextureMask;
+	}
+	void SetUsingColourAsTextureMask(bool p_UsingColourAsTextureMask) {
+		m_UsingColourAsTextureMask = p_UsingColourAsTextureMask;
 	}
 };
