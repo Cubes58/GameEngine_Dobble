@@ -8,7 +8,7 @@
 #include "RenderSystem.h"
 #include "PacketTypes.h"
 
-#include "MainMenuScene.h"
+#include "MenuScene.h"
 #include "GamePlayScene.h"
 #include "EndGameScene.h"
 
@@ -47,6 +47,9 @@ void Game::Update(float p_DeltaTime) {
 		SetScene();	// Change the scene.
 
 	m_Scene->Update(p_DeltaTime);
+
+	if (m_GameState == GameState::SHUTDOWN)
+		m_Window.Close();
 }
 
 void Game::Render() {
@@ -67,16 +70,21 @@ void Game::Render() {
 void Game::SetScene() {
 	switch (m_GameState) {
 	case GameState::MAIN_MENU:
-		m_Scene = std::make_unique<MainMenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/MainMenuScene.JSON");
+		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/MainMenuScene.JSON");
 		break;
 	case GameState::ACTIVE:
 		m_Scene = std::make_unique<GamePlayScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
+		break;
+	case GameState::HELP:
+		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/HelpLayout.JSON");
 		break;
 	case GameState::WIN:
 		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
 		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		break;
+	case GameState::SHUTDOWN:
 		break;
 	default:
 		m_GameState = GameState::MAIN_MENU;

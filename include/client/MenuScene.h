@@ -2,13 +2,13 @@
 
 #include "Scene.h"
 
-class MainMenuScene : public Scene {
+class MenuScene : public Scene {
 private:
 
 
 public:
-	MainMenuScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
-	~MainMenuScene() = default;
+	MenuScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
+	~MenuScene() = default;
 
 	virtual void HandleInputEvent(sf::Event &p_Event) override;
 	virtual void Update(float p_DeltaTime) override;

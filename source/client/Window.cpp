@@ -43,6 +43,10 @@ bool Window::IsOpen() {
 	return m_Window.isOpen();
 }
 
+void Window::Close() {
+	m_Window.close();
+}
+
 void Window::Display() {
 	m_Window.display();
 }

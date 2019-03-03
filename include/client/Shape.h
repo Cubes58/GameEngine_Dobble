@@ -12,7 +12,7 @@ protected:
 	glm::vec4 m_Colour;
 	Vector2D<float> m_Position;
 	float m_Rotation = 0.0f;
-	float m_ColourTextureMixValue = 0.5f;
+	float m_ColourTextureMixValue = 0.0f;
 	unsigned int m_VBO;
 	unsigned int m_VAO;
 	bool m_UsingColourAsTextureMask = false;
@@ -37,6 +37,13 @@ public:
 	}
 	void SetPosition(const Vector2D<float> &p_Position) {
 		m_Position = p_Position;
+	}
+
+	float GetRotation() const {
+		return m_Rotation;
+	}
+	void SetRotation(float p_Rotation) {
+		m_Rotation = p_Rotation;
 	}
 
 	const Texture2D *GetTexture() const {

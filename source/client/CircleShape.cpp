@@ -14,10 +14,11 @@ CircleShape::CircleShape(const Vector2D<float> &p_Position, unsigned int p_Numbe
 
 void CircleShape::Render(Shader &p_Shader) {
 	glm::mat4 model = glm::mat4(1.0f);
+	m_Radius *= 2.0f;
 	model = glm::translate(model, glm::vec3(m_Position.X(), m_Position.Y(), 0.0f));
 	model = glm::rotate(model, glm::radians(m_Rotation), glm::vec3(0.0f, 0.0f, 1.0f));	
 	// Centre the object.
-	model = glm::translate(model, glm::vec3(-m_Radius / 2, -m_Radius / 2, 0.0f));
+	model = glm::translate(model, glm::vec3(-m_Radius / 2.0f, -m_Radius / 2.0f, 0.0f));
 	model = glm::scale(model, glm::vec3(m_Radius, m_Radius, 1.0f));
 	p_Shader.SetMat4("model", model);
 

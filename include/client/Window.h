@@ -19,6 +19,7 @@ public:
 	~Window() = default;
 
 	bool IsOpen();
+	void Close();
 	void Display();
 
 	sf::Window &GetWindow();

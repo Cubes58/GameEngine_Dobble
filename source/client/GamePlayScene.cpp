@@ -55,7 +55,7 @@ void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 
 void GamePlayScene::Update(float p_DeltaTime) {
 	EntityManagerInstance.UpdateSystems(p_DeltaTime);
-
+	
 	sf::Packet packet;
 	if (m_Client.ReceiveData(packet)) {
 		HandlePacket(packet);
@@ -63,9 +63,9 @@ void GamePlayScene::Update(float p_DeltaTime) {
 }
 
 void GamePlayScene::Render(Window &p_Window) {
-	EntityManagerInstance.RenderSystems(p_Window);
-
 	m_UserInterface->Render();
+
+	EntityManagerInstance.RenderSystems(p_Window);
 
 	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2D<float>(0.005f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 }
@@ -92,9 +92,6 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 		p_Packet >> m_Score;
 		Log(Type::INFO) << "Score: " << m_Score;
 	}
-	else if (packetID == Packet::SYMBOL_ID) {
-		// For the client, this could be sent from the server, to inform the player which symbol was the correct guess, for them.
-	}
 	else if (packetID == Packet::GAME_FINISHED) {
 		bool hasPlayerWonGame = false;
 		p_Packet >> hasPlayerWonGame;
@@ -105,8 +102,7 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 			m_GameState = GameState::LOSE;
 	}
 	else if (packetID == Packet::DISCONNECT) {
-		// Disconnect from the Server.
-		m_Client.Disconnect();
+		m_GameState = GameState::MAIN_MENU;
 	}
 }
 

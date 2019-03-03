@@ -17,15 +17,10 @@ public:
 	}
 
 	bool operator()(const Vector2D<float> &p_Position, const Vector2D<float> &p_Size, const Vector2D<float> &p_MouseClickPosition) {
-		glm::vec2 entityOneXAxisLine(p_Position.X() - p_Size.X(), p_Position.X() + p_Size.X());
-		glm::vec2 entityOneYAxisLine(p_Position.Y() - p_Size.Y(), p_Position.Y() + p_Size.Y());
-
-		glm::vec2 entityTwoXAxisLine(p_MouseClickPosition.X(), p_MouseClickPosition.X());
-		glm::vec2 entityTwoYAxisLine(p_MouseClickPosition.Y(), p_MouseClickPosition.Y());
-
-		if (entityOneXAxisLine.x >= entityTwoXAxisLine.x && entityOneXAxisLine.y <= entityTwoXAxisLine.y
-			&& entityOneYAxisLine.x >= entityTwoYAxisLine.x && entityOneYAxisLine.y <= entityTwoYAxisLine.y)
+		if (p_Position.X() + (p_Size.X() / 2.0f) >= p_MouseClickPosition.X() && p_MouseClickPosition.X() >= p_Position.X() - (p_Size.X() / 2.0f)
+			&& p_Position.Y() + (p_Size.Y() /2.0f) >= p_MouseClickPosition.Y() && p_MouseClickPosition.Y() >= p_Position.Y() - (p_Size.Y() / 2.0f)) {
 			return true;
+		}
 
 		return false;
 	}
