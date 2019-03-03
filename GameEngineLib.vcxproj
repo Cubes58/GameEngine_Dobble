@@ -104,9 +104,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -125,8 +126,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -146,8 +148,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -170,8 +173,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
+      <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -185,9 +189,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\client\Client.cpp" />
+    <ClCompile Include="source\client\FontRenderer.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
+    <ClCompile Include="source\client\GamePlayScene.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
+    <ClCompile Include="source\client\MainMenuScene.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
     <ClCompile Include="source\client\stb_image.c" />
@@ -197,16 +204,24 @@
     <ClCompile Include="source\jsoncpp.cpp" />
     <ClCompile Include="source\Logger.cpp" />
     <ClCompile Include="source\PacketTypes.cpp" />
+    <ClCompile Include="source\RenderComponent.cpp" />
+    <ClCompile Include="source\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\client\Client.h" />
+    <ClInclude Include="include\client\Collision.h" />
+    <ClInclude Include="include\client\FontRenderer.h" />
     <ClInclude Include="include\client\Game.h" />
+    <ClInclude Include="include\client\GamePlayScene.h" />
+    <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
+    <ClInclude Include="include\client\MainMenuScene.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
     <ClInclude Include="include\client\Scene.h" />
     <ClInclude Include="include\client\Shader.h" />
     <ClInclude Include="include\client\Texture2D.h" />
+    <ClInclude Include="include\client\UserInterface.h" />
     <ClInclude Include="include\client\Window.h" />
     <ClInclude Include="include\CollisionComponent.h" />
     <ClInclude Include="include\CollisionSystem.h" />
@@ -224,8 +239,10 @@
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CircleShader.frag" />
-    <None Include="resources\shaders\CircleShader.vert" />
+    <None Include="resources\shaders\CardShader.frag" />
+    <None Include="resources\shaders\CardShader.vert" />
+    <None Include="resources\shaders\FontShader.frag" />
+    <None Include="resources\shaders\FontShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

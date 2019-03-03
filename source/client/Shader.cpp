@@ -39,7 +39,7 @@ bool Shader::Compile(const GLchar *p_VertexPath, const GLchar *p_FragmentPath, c
 }
 
 bool Shader::CreateShader(GLuint &p_ShaderID, const GLenum &p_ShaderType, const GLchar *p_ShaderSource, const std::string &p_TypeInformation) {
-	Log(MessageType::INFO) << "\nSHADER SOURCE CODE:" << p_ShaderType << "	" << "SHADER TYPE: " << p_TypeInformation << "\n" << p_ShaderSource;
+	Log(Type::INFO) << "\nSHADER SOURCE CODE:" << p_ShaderType << "	" << "SHADER TYPE: " << p_TypeInformation << "\n" << p_ShaderSource;
 
 	p_ShaderID = gl::CreateShader(p_ShaderType);
 
@@ -55,7 +55,7 @@ bool Shader::CheckErrors(GLuint p_Object, const std::string &p_Type) {
 		gl::GetShaderiv(p_Object, gl::COMPILE_STATUS, &success);
 		if (!success) {
 			gl::GetShaderInfoLog(p_Object, 1024, NULL, infoLog);
-			Log(MessageType::FAULT) << "| ERROR::SHADER: Compile-time error: Type: " << p_Type << "\n" << infoLog << "\n -- --------------------------------------------------- -- ";
+			Log(Type::FAULT) << "| SHADER: Compile-time error: Type: " << p_Type << "\n" << infoLog << "\n -- --------------------------------------------------- -- ";
 			return false;
 		}
 	}
@@ -63,7 +63,7 @@ bool Shader::CheckErrors(GLuint p_Object, const std::string &p_Type) {
 		gl::GetProgramiv(p_Object, gl::LINK_STATUS, &success);
 		if (!success) {
 			gl::GetProgramInfoLog(p_Object, 1024, NULL, infoLog);
-			Log(MessageType::FAULT) << "| ERROR::SHADER: Compile-time error: Type: " << p_Type << "\n" << infoLog << "\n -- --------------------------------------------------- -- ";
+			Log(Type::FAULT) << "| SHADER: Compile-time error: Type: " << p_Type << "\n" << infoLog << "\n -- --------------------------------------------------- -- ";
 			return false;
 		}
 	}

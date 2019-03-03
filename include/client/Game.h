@@ -9,9 +9,6 @@ class Scene;
 
 class Game {
 private:
-	static constexpr const unsigned int s_m_NumberOfDifferentKeyCodes = 400;
-	bool m_Keys[s_m_NumberOfDifferentKeyCodes];
-
 	Window &m_Window;
 	std::unique_ptr<Scene> m_Scene;
 	GameState m_GameState;

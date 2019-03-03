@@ -1,10 +1,11 @@
 #pragma once
 
 #include <map>
-#include <vector>
 
 #include "Server.h"
 #include "Deck.h"
+
+#define SCORE_GAINED_PER_GUESS 25.0f
 
 class ServerGame {
 private:
@@ -12,10 +13,13 @@ private:
 
 	Server m_Server;
 	Deck m_Deck;
+	std::map<ClientID, float> m_PlayerScores;
 	unsigned int m_ActiveDeckCard;
+	bool m_GameOver = false;
 	bool m_IsRunning;
 
 	void SendStartingInformation();
+	void HandlePackets(std::map<ClientID, sf::Packet> &p_Data);
 	bool CheckIfPlayerWonRound(const ClientID &p_ClientID, sf::Packet &p_Packet);
 
 public:

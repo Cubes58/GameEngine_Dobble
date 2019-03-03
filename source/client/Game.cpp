@@ -1,7 +1,6 @@
 #include "Game.h"
 
 #include "GLCore.hpp"
-
 #include "Logger.h"
 
 #include "EntityManager.h"
@@ -9,18 +8,15 @@
 #include "RenderSystem.h"
 #include "PacketTypes.h"
 
-#include "MainMenuScene.h"
+#include "MenuScene.h"
 #include "GamePlayScene.h"
+#include "EndGameScene.h"
 
-Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::ACTIVE) {
-	for (int i = 0; i < s_m_NumberOfDifferentKeyCodes; ++i) {
-		m_Keys[i] = false;
-	}
-	SetScene();
-
+Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::MAIN_MENU) {
 	EntityManagerInstance.Init();
-	std::shared_ptr<RenderSystem> renderSystem = std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight());
-	EntityManagerInstance.AddSystem(renderSystem);
+	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()));
+
+	SetScene();
 }
 
 Game::~Game() {
@@ -30,24 +26,17 @@ Game::~Game() {
 void Game::ProcessEvents() {
 	sf::Event event;
 	while (m_Window.GetWindow().pollEvent(event)) {
-		if (event.type == sf::Event::Closed) {
+		switch (event.type) {
+		case sf::Event::Closed:
 			m_Window.GetWindow().close();
 			return;
-		}
-		else if (event.type == sf::Event::Resized)
+			break;
+		case sf::Event::Resized:
 			gl::Viewport(0, 0, event.size.width, event.size.height);
-		else {
-			unsigned int keyCode = event.key.code;
-			if (keyCode >= 0 && keyCode < s_m_NumberOfDifferentKeyCodes) {
-				if (event.type == sf::Event::KeyPressed) {
-					m_Keys[keyCode] = gl::TRUE_;
-					Log(MessageType::INFO) << "SFML key code: " << keyCode << " KEY PRESSED";
-				}
-				else if (event.type == sf::Event::KeyReleased) {
-					m_Keys[keyCode] = gl::FALSE_;
-					Log(MessageType::INFO) << "SFML key code: " << keyCode << " KEY RELEASED";
-				}
-			}
+			break;
+		default:
+			m_Scene->HandleInputEvent(event);
+			break;
 		}
 	}
 }
@@ -58,6 +47,9 @@ void Game::Update(float p_DeltaTime) {
 		SetScene();	// Change the scene.
 
 	m_Scene->Update(p_DeltaTime);
+
+	if (m_GameState == GameState::SHUTDOWN)
+		m_Window.Close();
 }
 
 void Game::Render() {
@@ -78,22 +70,25 @@ void Game::Render() {
 void Game::SetScene() {
 	switch (m_GameState) {
 	case GameState::MAIN_MENU:
-		m_Scene = std::make_unique<MainMenuScene>();
+		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/MainMenuScene.JSON");
 		break;
 	case GameState::ACTIVE:
-		m_Scene = std::make_unique<GamePlayScene>();
+		m_Scene = std::make_unique<GamePlayScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
+		break;
+	case GameState::HELP:
+		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/HelpLayout.JSON");
 		break;
 	case GameState::WIN:
-
+		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
-
+		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
 		break;
 	case GameState::SHUTDOWN:
-
 		break;
 	default:
 		m_GameState = GameState::MAIN_MENU;
 		break;
 	}
+	m_Scene->m_GameState = this->m_GameState;
 }

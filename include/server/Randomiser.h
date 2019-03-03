@@ -7,7 +7,8 @@
 class Randomiser {
 private:
 	std::random_device m_RandomDevice;
-	std::default_random_engine m_Generator;
+	std::mt19937 m_Generator;
+	//std::default_random_engine m_Generator;
 
 	static constexpr unsigned int s_m_MaxNumberOfAttempts = 35;
 
@@ -16,9 +17,9 @@ private:
 
 public:
 	static Randomiser &Instance() {
-		static Randomiser instance;
+		static Randomiser s_Instance;
 
-		return instance;
+		return s_Instance;
 	}
 
 	template<typename T>

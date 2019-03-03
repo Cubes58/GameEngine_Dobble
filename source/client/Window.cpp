@@ -19,15 +19,15 @@ Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint3
 	m_Window.create(p_Mode, p_Title, p_Style, settings);
 	m_Window.setVerticalSyncEnabled(true);
 	m_Window.setActive(true);
+	m_Window.setFramerateLimit(0);	// Disable the frame rate limit.
 
 	// Load OpenGL functions.
 	gl::exts::LoadTest loaded = gl::sys::LoadFunctions();
-
 	if (!loaded)
-		Log(MessageType::FAULT) << "Unable to load GL functions.";
+		Log(Type::FAULT) << "Unable to load GL functions.";
 
-	Log(MessageType::INFO) << "OpenGL version: " << gl::GetString(gl::VERSION);
-	Log(MessageType::WARNING) << "Unable to load: " << loaded.GetNumMissing() << " functions.";
+	Log(Type::INFO) << "OpenGL version: " << gl::GetString(gl::VERSION);
+	Log(Type::WARNING) << "Unable to load: " << loaded.GetNumMissing() << " functions.";
 
 	gl::Viewport(0, 0, GetWidth(), GetHeight());
 	gl::Enable(gl::CULL_FACE);
@@ -43,11 +43,15 @@ bool Window::IsOpen() {
 	return m_Window.isOpen();
 }
 
+void Window::Close() {
+	m_Window.close();
+}
+
 void Window::Display() {
 	m_Window.display();
 }
 
-sf::RenderWindow &Window::GetWindow() {
+sf::Window &Window::GetWindow() {
 	return m_Window;
 }
 

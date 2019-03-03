@@ -20,6 +20,7 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	p_NumberOfSymblesPerCard -= s_ConstantIncrement;
 	for (int i = 2; i <= p_NumberOfSymblesPerCard / 2; i++) {
 		if (p_NumberOfSymblesPerCard % i == 0) {
+			Log(Type::FAULT) << "Not a prime number: " << p_NumberOfSymblesPerCard;
 			return false;
 		}
 	}
@@ -30,15 +31,17 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 
 	// First card.
 	EntityManagerInstance.CreateEntity(++cardNumber);
+	renderComponent.m_SymbolTextureIDs.emplace_back(0);	// Background render ID.
 	for (int i = 0; i <= p_NumberOfSymblesPerCard; i++)
 		renderComponent.m_SymbolTextureIDs.emplace_back(i + s_ConstantIncrement);
 	EntityManagerInstance.AddComponentToEntity<RenderComponent>(cardNumber, std::make_shared<RenderComponent>(renderComponent));
 
 	// N following cards.
 	for (int i = 0; i < p_NumberOfSymblesPerCard; i++) {
-		renderComponent.m_SymbolTextureIDs.clear();	// Removes the elements but the capacity remains (reserved memory).
+		renderComponent.m_SymbolTextureIDs.clear();	// Removes the elements but the capacity (reserved memory) remains.
 
 		EntityManagerInstance.CreateEntity(++cardNumber);
+		renderComponent.m_SymbolTextureIDs.emplace_back(0);	// Background render ID.
 		renderComponent.m_SymbolTextureIDs.emplace_back(s_ConstantIncrement);
 
 		for (int j = 0; j < p_NumberOfSymblesPerCard; j++)
@@ -52,11 +55,12 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 		for (int j = 0; j < p_NumberOfSymblesPerCard; j++) {
 			renderComponent.m_SymbolTextureIDs.clear();	
 			EntityManagerInstance.CreateEntity(++cardNumber);
+			renderComponent.m_SymbolTextureIDs.emplace_back(0);	// Background render ID.
 
 			renderComponent.m_SymbolTextureIDs.emplace_back(i + s_ConstantIncrement + s_ConstantIncrement);
 			for (int k = 0; k < p_NumberOfSymblesPerCard; k++)
 				renderComponent.m_SymbolTextureIDs.emplace_back(((p_NumberOfSymblesPerCard + p_NumberOfSymblesPerCard * k + (i * k + j) % p_NumberOfSymblesPerCard)
-					+ s_ConstantIncrement + s_ConstantIncrement));	// Works properly as long as p_NumberOfSymblesPerCard - 1 is a prime number.
+					+ s_ConstantIncrement + s_ConstantIncrement));	// Works properly as long as (p_NumberOfSymblesPerCard - 1) is a prime number.
 
 			EntityManagerInstance.AddComponentToEntity<RenderComponent>(cardNumber, std::make_shared<RenderComponent>(renderComponent));
 		}
@@ -86,7 +90,7 @@ void Deck::GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius
 			circleTransformData.m_Rotation = Randomiser::Instance().GetNormalRandomNumber(0.0f, 360.0f);
 
 			// Generate the size.
-			circleTransformData.m_Radius = Randomiser::Instance().GetNormalRandomNumber(10.0f, 40.0f);
+			circleTransformData.m_Radius = Randomiser::Instance().GetNormalRandomNumber(22.5f, 40.0f);
 
 			// Add the symbol's transform component.
 			circleTransforms.emplace_back(circleTransformData);
@@ -115,23 +119,22 @@ void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, uns
 
 	// Vector to store a shuffled deck of entity IDs, so when it comes to sending out a card, it will be a "random" entity, chosen from the back of this vector.
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
-	m_CardOrder.reserve(entities->size());
+	m_CardIDs.reserve(entities->size());
 	for (const auto &entity : *entities) {
-		m_CardOrder.emplace_back(entity);
+		m_CardIDs.emplace_back(entity);
 	}
 
 	Shuffle();
 }
 
 void Deck::Shuffle() {
-	std::shuffle(m_CardOrder.begin(), m_CardOrder.end(), Randomiser::Instance().Generator());
+	std::shuffle(m_CardIDs.begin(), m_CardIDs.end(), Randomiser::Instance().Generator());
 }
 
 bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess) {
 	for (const auto &deckCardSymbolID : p_DeckCardRenderComponent->m_SymbolTextureIDs) {
 		if (deckCardSymbolID == p_PlayerSymbolIDGuess) {
-			Log(MessageType::INFO) << "The player guessed correctly!";
-			Log(MessageType::INFO) << "Player guess: " << p_PlayerSymbolIDGuess;
+			Log(Type::INFO) << "The player guessed correctly!" << "\t" << "Player guess: (Symbol ID) " << p_PlayerSymbolIDGuess;
 			return true;
 		}
 	}
@@ -140,21 +143,25 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 }
 
 bool Deck::IsDeckEmpty() const {
-	if (m_CardOrder.size() <= 0)
+	if (m_CardIDs.size() <= 0)
 		return true;
 
 	return false;
 }
 
+unsigned int Deck::NumberOfRemainingCards() const {
+	return m_CardIDs.size();
+}
+
 unsigned int Deck::GetCardIDFromTop() {
-	if (m_CardOrder.size() <= 0)
+	if (m_CardIDs.size() <= 0)
 		return UINT_MAX;
 
-	unsigned int backID = *(m_CardOrder.end() - 1);
-	m_CardOrder.pop_back();
+	unsigned int backID = *(m_CardIDs.end() - 1);
+	m_CardIDs.pop_back();
 	return backID;
 }
 
 std::vector<unsigned int> &Deck::GetCardIDs() {
-	return m_CardOrder;
+	return m_CardIDs;
 }

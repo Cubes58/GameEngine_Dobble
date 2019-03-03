@@ -2,12 +2,11 @@
 
 #include <string>
 
-#include <SFML\Window.hpp>
-#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML/Window.hpp>
 
 class Window {
 private:
-	sf::RenderWindow m_Window;
+	sf::Window m_Window;
 
 	int m_Width;
 	int m_Height;
@@ -20,9 +19,10 @@ public:
 	~Window() = default;
 
 	bool IsOpen();
+	void Close();
 	void Display();
 
-	sf::RenderWindow &GetWindow();
+	sf::Window &GetWindow();
 	const sf::Uint32 &GetStyle() const;
 
 	int GetWidth() const;

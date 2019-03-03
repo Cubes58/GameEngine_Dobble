@@ -13,7 +13,6 @@
 
 #include "RenderComponent.h"
 #include "TransformComponent.h"
-#include "CollisionComponent.h"
 
 #include "Logger.h"
 
@@ -46,9 +45,11 @@ public:
 		if (alreadyInstantiated)
 			return;
 
-		CreateEntity("PH");
-		AddComponentToEntity("PH", std::make_shared<RenderComponent>(9));
-		AddComponentToEntity("PH", std::make_shared<TransformComponent>(9));
+#ifdef GAME_ENGINE
+		m_Components.reserve(2);
+		m_Components[typeid(RenderComponent)];
+		m_Components[typeid(TransformComponent)];
+#endif
 
 		alreadyInstantiated = true;
 	}

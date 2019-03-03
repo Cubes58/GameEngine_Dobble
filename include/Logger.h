@@ -13,7 +13,7 @@
 #define LOG_FILES_FOLDER "./resources/logFiles"
 #define DEFAULT_LOG_FILE  "logFile"
 
-enum class MessageType : unsigned char {
+enum class Type : unsigned char {
 	INFO = 0,
 	WARNING,
 	FAULT
@@ -28,19 +28,19 @@ private:
 	bool m_ShowMessageType = true;
 	bool m_PrintToOutputFile = true;
 	bool m_PrintToConsole = true;
-	MessageType m_MessageType = MessageType::INFO;
+	Type m_MessageType = Type::INFO;
 
-	std::string GetLabel(const MessageType &p_Type) {
+	std::string GetLabel(const Type &p_Type) {
 		std::string label("");
 
 		switch (p_Type) {
-		case MessageType::INFO:
+		case Type::INFO:
 			label = "INFO";
 			break;
-		case MessageType::WARNING:
+		case Type::WARNING:
 			label = "WARNING";
 			break;
-		case MessageType::FAULT:
+		case Type::FAULT:
 			label = "FAULT(ERROR)";
 			break;
 		default:
@@ -66,7 +66,7 @@ public:
 
 	}
 
-	Log(const MessageType &p_Type, const std::string &p_FileName = DEFAULT_LOG_FILE) {
+	Log(const Type &p_Type, const std::string &p_FileName = DEFAULT_LOG_FILE) {
 		m_MessageType = p_Type;
 
 		if (m_PrintToOutputFile) {

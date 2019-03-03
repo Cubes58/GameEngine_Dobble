@@ -12,6 +12,7 @@ namespace Packet {
 		PLAYER_CARD_DATA,	// Send the information for the player's card.
 		DECK_CARD_DATA,		// Send the information for the deck's top card.
 		ROUND_FINISHED,		// Send the winner, of the round.
+		SCORE,				// Send the player's score.
 		GAME_FINISHED,		// Send the winner, of the game.
 
 		NOT_AVAILABLE		// Unknown packet/ignore it.

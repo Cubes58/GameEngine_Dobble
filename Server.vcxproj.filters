@@ -25,6 +25,9 @@
     <Filter Include="Header Files\Networking">
       <UniqueIdentifier>{99f32647-51d0-4ff6-839b-4f09c4468a1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Tools">
+      <UniqueIdentifier>{3d2e1be9-537b-4956-9703-8f33b9e793ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\server\main.cpp">
@@ -51,21 +54,15 @@
     <ClCompile Include="source\PacketTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\RenderComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TransformComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\server\Randomiser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\server\ServerGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\FileSystemHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Vector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\server\Deck.h">
@@ -86,9 +83,6 @@
     <ClInclude Include="include\EntitySystem.h">
       <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
-    <ClInclude Include="include\InputComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\TransformComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -103,6 +97,18 @@
     </ClInclude>
     <ClInclude Include="include\PacketTypes.h">
       <Filter>Header Files\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileSystemHelper.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Logger.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\server\Randomiser.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vector2D.h">
+      <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
