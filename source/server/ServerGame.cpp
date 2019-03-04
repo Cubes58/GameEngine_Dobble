@@ -12,7 +12,7 @@ ServerGame::ServerGame() : m_IsRunning(true) {
 	m_Server.WaitForClientsToConnect(s_m_NumberOfPlayers);	// Once two people have connected wait another 7.5 seconds for more players - with a max.
 
 	// Create Cards. (Need to get the number of cards/circles from the clients (Connect packet).) This generates cards, at origin, with a radius of 200.
-	m_Deck.GenerateCards(Vector2D<float>(0.0f, 0.0f), 200.0f, 6);
+	m_Deck.GenerateCards(Vector2D<float>(0.0f, 0.0f), 250.0f, 6);
 	SendStartingInformation();
 }
 

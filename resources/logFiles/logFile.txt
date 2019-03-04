@@ -1,33 +1,9 @@
+[INFO]: Dobble Server
+----------------
+Listening on port: 8787
+
 [INFO]: OpenGL version: 4.6.0 NVIDIA 398.36
 [WARNING]: Unable to load: 0 functions.
-[INFO]: 
-SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
-#version 430 core
-
-layout (location = 0) in vec4 vertex;	// Vec2 Position, vec2 TexCoords.
-
-out vec2 TexCoords;
-
-uniform mat4 model;
-uniform mat4 projection;
-
-void main() {
-	TexCoords = vertex.zw;
-	gl_Position = projection * model * vec4(vertex.xy, 0.0f, 1.0f);
-}
-[INFO]: 
-SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
-#version 430 core
-
-in vec2 TexCoords;
-
-out vec4 FragColour;
-
-uniform sampler2D image;
-
-void main() {
-	FragColour = texture(image, TexCoords);
-}
 [INFO]: 
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 430 core
@@ -98,64 +74,235 @@ IP Address: 127.0.0.1
 [INFO]: Connected to the server!
 [INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 0
 [INFO]: Packet being received, from the server.
-[INFO]: Number of circles in the render component: 9
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 2
+[INFO]: Symbol ID: 10
+[INFO]: Symbol ID: 15
+[INFO]: Symbol ID: 20
+[INFO]: Symbol ID: 25
+[INFO]: Symbol ID: 30
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: 104.689	YPos: 155.265	Radius: 31.8843	Rotation:119.273
+[INFO]: Transform data: XPos: -218.307	YPos: -59.4036	Radius: 27.5734	Rotation:147.555
+[INFO]: Transform data: XPos: -46.8615	YPos: -7.19727	Radius: 31.146	Rotation:226.474
+[INFO]: Transform data: XPos: -127.502	YPos: -0.958069	Radius: 31.1884	Rotation:118.336
+[INFO]: Transform data: XPos: -167.336	YPos: -109.256	Radius: 33.2032	Rotation:208.743
+[INFO]: Transform data: XPos: 239.754	YPos: -237.665	Radius: 28.197	Rotation:149.727
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Number of circles in the render component: 7
+[INFO]: Packet being received, from the server.
+[INFO]: Symbol ID: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Symbol ID: 5
+[INFO]: XPos: 104.689	YPos: 155.265	Radius: 31.8843	Rotation: 119.273
+[INFO]: Symbol ID: 10
+[INFO]: XPos: -218.307	YPos: -59.4036	Radius: 27.5734	Rotation: 147.555
+[INFO]: Symbol ID: 13
+[INFO]: XPos: -46.8615	YPos: -7.19727	Radius: 31.146	Rotation: 226.474
+[INFO]: Symbol ID: 21
+[INFO]: XPos: -127.502	YPos: -0.958069	Radius: 31.1884	Rotation: 118.336
+[INFO]: Symbol ID: 24
+[INFO]: XPos: -167.336	YPos: -109.256	Radius: 33.2032	Rotation: 208.743
+[INFO]: Symbol ID: 27
+[INFO]: XPos: 239.754	YPos: -237.665	Radius: 28.197	Rotation: 149.727
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: -4.78723	YPos: 235.721	Radius: 30.3931	Rotation:122.2
+[INFO]: Transform data: XPos: 92.1485	YPos: 9.888	Radius: 26.2544	Rotation:265.963
+[INFO]: Transform data: XPos: -41.1239	YPos: -205.086	Radius: 30.8105	Rotation:32.5659
+[INFO]: Transform data: XPos: 203.919	YPos: 218.105	Radius: 31.6174	Rotation:116.238
+[INFO]: Transform data: XPos: -209.334	YPos: 139.234	Radius: 29.7232	Rotation:188.432
+[INFO]: Transform data: XPos: -186.303	YPos: 242.607	Radius: 32.4965	Rotation:309.299
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -4.78723	YPos: 235.721	Radius: 30.3931	Rotation: 122.2
+[INFO]: XPos: 92.1485	YPos: 9.888	Radius: 26.2544	Rotation: 265.963
+[INFO]: XPos: -41.1239	YPos: -205.086	Radius: 30.8105	Rotation: 32.5659
+[INFO]: XPos: 203.919	YPos: 218.105	Radius: 31.6174	Rotation: 116.238
+[INFO]: XPos: -209.334	YPos: 139.234	Radius: 29.7232	Rotation: 188.432
+[INFO]: XPos: -186.303	YPos: 242.607	Radius: 32.4965	Rotation: 309.299
+[INFO]: The player has clicked on a symbol. Symbol ID: 10
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Packet being sent, to the server.
+[INFO]: Data received from a client! Client ID: 0
+[INFO]: The player guessed correctly!	Player guess: (Symbol ID) 10
+[INFO]: Mouse X Position: 422	Mouse Y Position: 372
+[INFO]: Client ID: 0	Score: 25
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 3
+[INFO]: Symbol ID: 9
+[INFO]: Packet being received, from the server.
+[INFO]: Symbol ID: 15
+[INFO]: Symbol ID: 21
+[INFO]: Symbol ID: 22
+[INFO]: Symbol ID: 28
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: 218.711	YPos: 238.096	Radius: 26.6707	Rotation:179.317
+[INFO]: Transform data: XPos: -3.40739	YPos: 62.955	Radius: 32.0586	Rotation:43.1392
+[INFO]: Transform data: XPos: -13.5294	YPos: 77.9037	Radius: 26.7114	Rotation:151.882
+[INFO]: Transform data: XPos: 93.7441	YPos: 113.453	Radius: 35.454	Rotation:169.316
+[INFO]: Transform data: XPos: 109.842	YPos: 8.2226	Radius: 33.6695	Rotation:205.143
+[INFO]: Transform data: XPos: 183.115	YPos: 175.775	Radius: 31.0184	Rotation:47.9332
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Number of circles in the render component: 7
 [INFO]: Symbol ID: 0
 [INFO]: Symbol ID: 5
-[INFO]: Symbol ID: 10
+[INFO]: Symbol ID: 9
+[INFO]: Symbol ID: 12
 [INFO]: Symbol ID: 20
+[INFO]: Packet being received, from the server.
 [INFO]: Symbol ID: 23
-[INFO]: Symbol ID: 33
-[INFO]: Symbol ID: 43
-[INFO]: Symbol ID: 46
-[INFO]: Symbol ID: 56
-[INFO]: Number of circles in the transform component: 9
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 200	Rotation:0
-[INFO]: Transform data: XPos: -77.6523	YPos: -189.073	Radius: 33.7216	Rotation:214.985
-[INFO]: Transform data: XPos: -158.731	YPos: 119.346	Radius: 30.7659	Rotation:103.469
-[INFO]: Transform data: XPos: 159.422	YPos: -103.587	Radius: 33.2785	Rotation:200.896
-[INFO]: Transform data: XPos: 35.733	YPos: -129.725	Radius: 28.868	Rotation:213.513
-[INFO]: Transform data: XPos: 113.494	YPos: 35.9281	Radius: 35.0923	Rotation:184.15
-[INFO]: Transform data: XPos: 83.6011	YPos: -64.306	Radius: 33.9201	Rotation:172.553
-[INFO]: Transform data: XPos: -82.4586	YPos: 185.846	Radius: 24.5066	Rotation:211.029
-[INFO]: Transform data: XPos: -24.9658	YPos: 89.1119	Radius: 33.1337	Rotation:235.715
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Symbol ID: 31
+[INFO]: XPos: 218.711	YPos: 238.096	Radius: 26.6707	Rotation: 179.317
+[INFO]: Number of circles in the transform component: 7
+[INFO]: XPos: -3.40739	YPos: 62.955	Radius: 32.0586	Rotation: 43.1392
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: XPos: -13.5294	YPos: 77.9037	Radius: 26.7114	Rotation: 151.882
+[INFO]: Transform data: XPos: -21.925	YPos: 203.355	Radius: 35.1869	Rotation:88.76
+[INFO]: XPos: 93.7441	YPos: 113.453	Radius: 35.454	Rotation: 169.316
+[INFO]: XPos: 109.842	YPos: 8.2226	Radius: 33.6695	Rotation: 205.143
+[INFO]: Transform data: XPos: 236.036	YPos: -76.9776	Radius: 31.3178	Rotation:51.5276
+[INFO]: XPos: 183.115	YPos: 175.775	Radius: 31.0184	Rotation: 47.9332
+[INFO]: Transform data: XPos: -21.5802	YPos: 19.5897	Radius: 34.1911	Rotation:208.077
+[INFO]: Packet being received, from the server.
+[INFO]: Transform data: XPos: -206.756	YPos: 195.597	Radius: 34.432	Rotation:28.5981
+[INFO]: Score: 25
+[INFO]: Transform data: XPos: 62.5227	YPos: -248.114	Radius: 37.7815	Rotation:202.76
+[INFO]: Transform data: XPos: -222.48	YPos: -114.966	Radius: 31.1732	Rotation:211.265
 [INFO]: Successfully sent data to a client! Client ID: 0
-[INFO]: Number of circles in the render component: 9
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -21.925	YPos: 203.355	Radius: 35.1869	Rotation: 88.76
+[INFO]: XPos: 236.036	YPos: -76.9776	Radius: 31.3178	Rotation: 51.5276
+[INFO]: XPos: -21.5802	YPos: 19.5897	Radius: 34.1911	Rotation: 208.077
+[INFO]: XPos: -206.756	YPos: 195.597	Radius: 34.432	Rotation: 28.5981
+[INFO]: XPos: 62.5227	YPos: -248.114	Radius: 37.7815	Rotation: 202.76
+[INFO]: XPos: -222.48	YPos: -114.966	Radius: 31.1732	Rotation: 211.265
+[INFO]: The player has clicked on a symbol. Symbol ID: 22
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Packet being sent, to the server.
+[INFO]: Data received from a client! Client ID: 0
+[INFO]: Mouse X Position: 427	Mouse Y Position: 364
+[INFO]: The player has clicked on a symbol. Symbol ID: 22
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 434	Mouse Y Position: 362
+[INFO]: The player has clicked on a symbol. Symbol ID: 21
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 386	Mouse Y Position: 483
+[INFO]: The player has clicked on a symbol. Symbol ID: 21
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 388	Mouse Y Position: 482
+[INFO]: The player has clicked on a symbol. Symbol ID: 21
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 399	Mouse Y Position: 468
+[INFO]: The player has clicked on a symbol. Symbol ID: 9
+Entity Name: PlayerCard
+[INFO]: The player has clicked on a symbol. Symbol ID: 15
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 290	Mouse Y Position: 431
+[INFO]: The player has clicked on a symbol. Symbol ID: 9
+Entity Name: PlayerCard
+[INFO]: The player has clicked on a symbol. Symbol ID: 15
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 311	Mouse Y Position: 432
+[INFO]: Mouse X Position: 559	Mouse Y Position: 523
+[INFO]: The player has clicked on a symbol. Symbol ID: 28
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 485	Mouse Y Position: 532
+[INFO]: The player has clicked on a symbol. Symbol ID: 28
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 485	Mouse Y Position: 533
+[INFO]: The player has clicked on a symbol. Symbol ID: 28
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 494	Mouse Y Position: 537
+[INFO]: The player has clicked on a symbol. Symbol ID: 3
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 516	Mouse Y Position: 590
+[INFO]: The player has clicked on a symbol. Symbol ID: 3
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 534	Mouse Y Position: 600
+[INFO]: The player has clicked on a symbol. Symbol ID: 3
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 548	Mouse Y Position: 608
+[INFO]: The player has clicked on a symbol. Symbol ID: 9
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Packet being sent, to the server.
+[INFO]: Data received from a client! Client ID: 0
+[INFO]: The player guessed correctly!	Player guess: (Symbol ID) 9
+[INFO]: Mouse X Position: 325	Mouse Y Position: 406
+[INFO]: Client ID: 0	Score: 50
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Number of circles in the render component: 7
 [INFO]: Symbol ID: 0
 [INFO]: Symbol ID: 6
-[INFO]: Symbol ID: 11
-[INFO]: Symbol ID: 22
-[INFO]: Symbol ID: 26
-[INFO]: Symbol ID: 30
-[INFO]: Symbol ID: 41
-[INFO]: Symbol ID: 45
-[INFO]: Symbol ID: 56
+[INFO]: Symbol ID: 8
 [INFO]: Packet being received, from the server.
-[INFO]: Number of circles in the transform component: 9
-[INFO]: XPos: 0	YPos: 0	Radius: 200	Rotation: 0
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 200	Rotation:0
-[INFO]: XPos: -77.6523	YPos: -189.073	Radius: 33.7216	Rotation: 214.985
-[INFO]: XPos: -158.731	YPos: 119.346	Radius: 30.7659	Rotation: 103.469
-[INFO]: Transform data: XPos: 78.9918	YPos: 24.8832	Radius: 31.3262	Rotation:256.858
-[INFO]: Transform data: XPos: 27.4333	YPos: -79.9697	Radius: 30.2626	Rotation:206.099
-[INFO]: Transform data: XPos: -178.734	YPos: 72.5695	Radius: 33.0847	Rotation:169.494
-[INFO]: XPos: 35.733	YPos: -129.725	Radius: 28.868	Rotation: 213.513
-[INFO]: XPos: 113.494	YPos: 35.9281	Radius: 35.0923	Rotation: 184.15
-[INFO]: Transform data: XPos: -65.3547	YPos: 17.9888	Radius: 30.4605	Rotation:33.4834
-[INFO]: XPos: 83.6011	YPos: -64.306	Radius: 33.9201	Rotation: 172.553
-[INFO]: Transform data: XPos: 93.9122	YPos: -149.135	Radius: 35.8759	Rotation:123.76
-[INFO]: Transform data: XPos: 183.103	YPos: 35.4987	Radius: 33.2735	Rotation:308.506
-[INFO]: XPos: -82.4586	YPos: 185.846	Radius: 24.5066	Rotation: 211.029
-[INFO]: XPos: -24.9658	YPos: 89.1119	Radius: 33.1337	Rotation: 235.715
-[INFO]: Transform data: XPos: -185.807	YPos: -142.343	Radius: 31.1072	Rotation:70.0545
-[INFO]: Transform data: XPos: -172.529	YPos: -77.5103	Radius: 26.4813	Rotation:170.637
+[INFO]: Symbol ID: 12
+[INFO]: Symbol ID: 21
+[INFO]: Symbol ID: 25
+[INFO]: Symbol ID: 29
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: -236.528	YPos: 20.7865	Radius: 32.2629	Rotation:115.835
+[INFO]: Transform data: XPos: 227.321	YPos: -184.369	Radius: 33.1901	Rotation:213.019
+[INFO]: Transform data: XPos: -56.8923	YPos: 107.534	Radius: 29.8641	Rotation:180.297
+[INFO]: Transform data: XPos: 152.232	YPos: -5.7771	Radius: 28.6831	Rotation:197.094
+[INFO]: Transform data: XPos: -167.453	YPos: -201.986	Radius: 36.263	Rotation:194.45
+[INFO]: Transform data: XPos: -201.551	YPos: -242.501	Radius: 37.3619	Rotation:154.113
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 1
+[INFO]: Symbol ID: 7
+[INFO]: Symbol ID: 8
+[INFO]: Packet being received, from the server.
+[INFO]: Symbol ID: 9
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Symbol ID: 10
+[INFO]: XPos: -236.528	YPos: 20.7865	Radius: 32.2629	Rotation: 115.835
+[INFO]: Symbol ID: 11
+[INFO]: XPos: 227.321	YPos: -184.369	Radius: 33.1901	Rotation: 213.019
+[INFO]: Number of circles in the transform component: 7
+[INFO]: XPos: -56.8923	YPos: 107.534	Radius: 29.8641	Rotation: 180.297
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: XPos: 152.232	YPos: -5.7771	Radius: 28.6831	Rotation: 197.094
+[INFO]: Transform data: XPos: -150.975	YPos: -103.616	Radius: 35.2553	Rotation:209.251
+[INFO]: XPos: -167.453	YPos: -201.986	Radius: 36.263	Rotation: 194.45
+[INFO]: Transform data: XPos: -78.5044	YPos: -8.18993	Radius: 33.9287	Rotation:176.83
+[INFO]: XPos: -201.551	YPos: -242.501	Radius: 37.3619	Rotation: 154.113
+[INFO]: Packet being received, from the server.
+[INFO]: Transform data: XPos: 109.201	YPos: 40.6852	Radius: 28.1857	Rotation:90.059
+[INFO]: Score: 50
+[INFO]: Transform data: XPos: 77.9534	YPos: -214.377	Radius: 32.1343	Rotation:177.31
+[INFO]: Transform data: XPos: 133.213	YPos: 242.08	Radius: 30.3794	Rotation:166.261
+[INFO]: Transform data: XPos: -158.12	YPos: -33.8396	Radius: 28.8451	Rotation:200.663
 [INFO]: Successfully sent data to a client! Client ID: 0
 [INFO]: Packet being received, from the server.
-[INFO]: XPos: 0	YPos: 0	Radius: 200	Rotation: 0
-[INFO]: XPos: 78.9918	YPos: 24.8832	Radius: 31.3262	Rotation: 256.858
-[INFO]: XPos: 27.4333	YPos: -79.9697	Radius: 30.2626	Rotation: 206.099
-[INFO]: XPos: -178.734	YPos: 72.5695	Radius: 33.0847	Rotation: 169.494
-[INFO]: XPos: -65.3547	YPos: 17.9888	Radius: 30.4605	Rotation: 33.4834
-[INFO]: XPos: 93.9122	YPos: -149.135	Radius: 35.8759	Rotation: 123.76
-[INFO]: XPos: 183.103	YPos: 35.4987	Radius: 33.2735	Rotation: 308.506
-[INFO]: XPos: -185.807	YPos: -142.343	Radius: 31.1072	Rotation: 70.0545
-[INFO]: XPos: -172.529	YPos: -77.5103	Radius: 26.4813	Rotation: 170.637
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -150.975	YPos: -103.616	Radius: 35.2553	Rotation: 209.251
+[INFO]: XPos: -78.5044	YPos: -8.18993	Radius: 33.9287	Rotation: 176.83
+[INFO]: XPos: 109.201	YPos: 40.6852	Radius: 28.1857	Rotation: 90.059
+[INFO]: XPos: 77.9534	YPos: -214.377	Radius: 32.1343	Rotation: 177.31
+[INFO]: XPos: 133.213	YPos: 242.08	Radius: 30.3794	Rotation: 166.261
+[INFO]: XPos: -158.12	YPos: -33.8396	Radius: 28.8451	Rotation: 200.663
+[INFO]: The player has clicked on a symbol. Symbol ID: 21
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Packet being sent, to the server.
+[INFO]: Data received from a client! Client ID: 0
+[INFO]: Mouse X Position: 477	Mouse Y Position: 352
+[INFO]: The player has clicked on a symbol. Symbol ID: 21
+Entity Name: PlayerCard
+[INFO]: Mouse X Position: 477	Mouse Y Position: 353

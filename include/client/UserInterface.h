@@ -44,6 +44,13 @@ public:
 		m_ScreenSize = p_ScreenSize;
 	}
 
+	const float &Time() const {
+		return m_Time;
+	}
+	void ResetTime() {
+		m_Time = 0.0f;
+	}
+
 	std::vector<std::shared_ptr<Button>> &GetButtons() {
 		return m_Buttons;
 	}

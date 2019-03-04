@@ -79,10 +79,10 @@ void Game::SetScene() {
 		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/HelpLayout.JSON");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
+		m_Scene = std::make_unique<EndGameScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		m_Scene = std::make_unique<EndGameScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
 		break;
 	case GameState::SHUTDOWN:
 		break;

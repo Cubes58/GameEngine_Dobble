@@ -1,17 +1,23 @@
 #pragma once
 
-#include "Scene.h"
+#include "MenuScene.h"
 
-class EndGameScreen : public Scene {
+class EndGameScene : public MenuScene {
 private:
-
+	float m_FinalPlayerScore;
+	unsigned int m_NumberOfRoundsWon;
 
 public:
-	EndGameScreen(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
-	~EndGameScreen() = default;
+	EndGameScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
+	~EndGameScene() = default;
 
-	virtual void HandleInputEvent(sf::Event &p_Event) override;
-
-	virtual void Update(float p_DeltaTime) override;
 	virtual void Render(Window &p_Window) override;
+
+	void SetFinalPlayerScore(float p_FinalPlayerScore) {
+		m_FinalPlayerScore = p_FinalPlayerScore;
+	}
+
+	void SetNumberOfRoundsWon(unsigned int p_NumberOfRoundsWon) {
+		m_NumberOfRoundsWon = p_NumberOfRoundsWon;
+	}
 };

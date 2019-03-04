@@ -247,8 +247,6 @@
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CardShader.frag" />
-    <None Include="resources\shaders\CardShader.vert" />
     <None Include="resources\shaders\FontShader.frag" />
     <None Include="resources\shaders\FontShader.vert" />
     <None Include="resources\shaders\ShapesShader.frag" />

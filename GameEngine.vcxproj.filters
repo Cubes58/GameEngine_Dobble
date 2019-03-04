@@ -96,9 +96,6 @@
     <ClCompile Include="source\client\UserInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\client\EndGameScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\client\RectangleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -106,6 +103,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\client\MenuScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\client\EndGameScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,9 +188,6 @@
     <ClInclude Include="include\client\FontRenderer.h">
       <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\EndGameScene.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\Shape.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
@@ -209,14 +206,11 @@
     <ClInclude Include="include\client\Text.h">
       <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
+    <ClInclude Include="include\client\EndGameScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CardShader.frag">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="resources\shaders\CardShader.vert">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="resources\shaders\FontShader.frag">
       <Filter>Resource Files</Filter>
     </None>
