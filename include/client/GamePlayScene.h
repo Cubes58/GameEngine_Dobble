@@ -8,7 +8,7 @@
 #include "Vector2D.h"
 
 #define INVALID_SYMBOL_GUESS -1
-#define ATTEMPT_DELAY 15.0f
+#define ATTEMPT_DELAY 4.0f
 
 class GamePlayScene : public Scene {
 private:
