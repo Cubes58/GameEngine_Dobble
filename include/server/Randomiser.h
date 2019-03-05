@@ -8,7 +8,6 @@ class Randomiser {
 private:
 	std::random_device m_RandomDevice;
 	std::mt19937 m_Generator;
-	//std::default_random_engine m_Generator;
 
 	static constexpr unsigned int s_m_MaxNumberOfAttempts = 35;
 
@@ -55,7 +54,7 @@ public:
 		return value;
 	}
 
-	std::default_random_engine Generator() const {
+	std::mt19937 Generator() const {
 		return m_Generator;
 	}
 

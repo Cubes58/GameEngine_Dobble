@@ -12,7 +12,7 @@ ServerGame::ServerGame() : m_IsRunning(true) {
 	m_Server.WaitForClientsToConnect(s_m_NumberOfPlayers);	// Once two people have connected wait another 7.5 seconds for more players - with a max.
 
 	// Create Cards. (Need to get the number of cards/circles from the clients (Connect packet).) This generates cards, at origin, with a radius of 200.
-	m_Deck.GenerateCards(Vector2D<float>(0.0f, 0.0f), 250.0f, 6);
+	m_Deck.GenerateCards(Vector2D<float>(0.0f, 0.0f), 250.0f, (unsigned int)6);
 	SendStartingInformation();
 }
 
@@ -21,7 +21,7 @@ ServerGame::~ServerGame() {
 }
 
 void ServerGame::SendStartingInformation() {
-	// For every client connect, send starting information, such as: Their starting card, the card to match the symbol with (top of the deck).
+	// For every client connected, send starting information, such as: Their starting card, the card to match the symbol with (top of the deck).
 	sf::Packet deckCardPacket = Packet::SetPacketType(Packet::DECK_CARD_DATA);
 	m_ActiveDeckCard = m_Deck.GetCardIDFromTop(); 
 	deckCardPacket << *EntityManagerInstance.GetComponent<RenderComponent>(m_ActiveDeckCard);
@@ -81,7 +81,7 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 						auto playerScore = m_PlayerScores.find(iter->first);
 						if (playerScore == m_PlayerScores.end()) {
 							// If the player's score cannot be found then create a score to manage, for the player.
-							m_PlayerScores.emplace(iter->first, 0);
+							m_PlayerScores.emplace(iter->first, 0.0f);
 							playerScore = m_PlayerScores.find(iter->first);
 						}
 
