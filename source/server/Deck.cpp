@@ -17,6 +17,7 @@
 #include "CollisionComponent.h"
 #include "RenderComponent.h"
 
+/*
 std::vector<Vector2D<float>> Deck::GeneratePositionsWithinCircle(Vector2D<float> p_CirclePosition, float p_CircleRadius) {
 	std::vector<Vector2D<float>> m_CirclePositions;
 	unsigned int numberOfPositions = static_cast<unsigned int>(M_PI * (p_CircleRadius * p_CircleRadius));
@@ -32,14 +33,14 @@ std::vector<Vector2D<float>> Deck::GeneratePositionsWithinCircle(Vector2D<float>
 		for (float xPosition = circleLeft; xPosition <= circleRight; xPosition++) {
 			Vector2D<float> position(xPosition, yPosition);
 
-			if (IsPositionWithinCircle(p_CirclePosition, p_CircleRadius, position)) {
+			if (m_Collision.IsCircleInCircle(p_CirclePosition, p_CircleRadius, position)) {
 				m_CirclePositions.emplace_back(position);
 			}
 		}
 	}
 
 	return m_CirclePositions;
-}
+}*/
 
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	static constexpr unsigned int s_ConstantIncrement = 1;
@@ -123,10 +124,21 @@ void Deck::GenerateSymbolTransformData(Vector2D<float> p_CardPosition, float p_C
 			circleTransformData.m_Radius = RandomiserInstance.GetUniformRealRandomNumber(minimumCircleRadius, maximumCircleRadius);
 
 			// Generate the position.
+			bool inOtherCircle = false;
 			do {
 				circleTransformData.m_Position = Vector2D<float>(RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius),
 					RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius));
-			} while (!IsCircleWithinCircle(p_CardPosition, p_CardRadius, circleTransformData.m_Position, circleTransformData.m_Radius));
+
+				for (int i = 1; i < circleTransforms.size(); i++) {
+					if (m_Collision(circleTransformData.m_Position, circleTransformData.m_Radius, circleTransforms[i].m_Position, circleTransforms[i].m_Radius)) {
+						inOtherCircle = true;
+						break;
+					}
+					else
+						inOtherCircle = false;
+				}
+
+			} while (!m_Collision.IsCircleInCircle(p_CardPosition, p_CardRadius, circleTransformData.m_Position, circleTransformData.m_Radius) || inOtherCircle);
 
 			// Add the symbol's transform component.
 			circleTransforms.emplace_back(circleTransformData);
@@ -166,6 +178,7 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 	return false;
 }
 
+/*
 bool Deck::IsPositionWithinCircle(Vector2D<float> p_CirclePosition, float p_CircleRadius, Vector2D<float> p_Position) {
 	Vector2D<float> distance(p_CirclePosition - p_Position);
 	float squareDist = distance.DotProduct(distance);
@@ -179,7 +192,7 @@ bool Deck::IsCircleWithinCircle(Vector2D<float> p_CardCentrePosition, float p_Ca
 	float radiiSum = p_CardRadius - p_EntityOneRadius;
 
 	return squareDist < radiiSum * radiiSum;
-}
+}*/
 
 std::vector<Vector2D<float>> Deck::CreateDirectionLine(Vector2D<float> p_CirclePosition, float p_LineLength, float p_Angle) {
 	std::vector<Vector2D<float>> line;
