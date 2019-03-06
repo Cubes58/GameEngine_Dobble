@@ -32,6 +32,10 @@ public:
 
 	virtual void Render(Shader &p_Shader) = 0;
 
+	unsigned int GetVAOID() const {
+		return m_VAO;
+	}
+
 	const Vector2D<float> &GetPosition() const {
 		return m_Position;
 	}

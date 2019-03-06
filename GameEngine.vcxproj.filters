@@ -108,6 +108,9 @@
     <ClCompile Include="source\client\EndGameScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\client\PostProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\client\Game.h">
@@ -179,9 +182,6 @@
     <ClInclude Include="include\Vector2D.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\Collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\UserInterface.h">
       <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
@@ -209,6 +209,12 @@
     <ClInclude Include="include\client\EndGameScene.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="include\client\PostProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\FontShader.frag">
@@ -221,6 +227,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="resources\shaders\ShapesShader.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\shaders\PostProcessingEffects.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\shaders\PostProcessingEffects.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

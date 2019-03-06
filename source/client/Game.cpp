@@ -34,6 +34,7 @@ void Game::ProcessEvents() {
 			break;
 		case sf::Event::Resized:
 			gl::Viewport(0, 0, event.size.width, event.size.height);
+			m_Scene->SetScreenSize(Vector2Df(static_cast<float>(event.size.width), static_cast<float>(event.size.height)));
 			break;
 		case sf::Event::EventType::MouseButtonPressed:
 		case sf::Event::EventType::MouseButtonReleased:
@@ -67,7 +68,7 @@ void Game::Render() {
 		return;
 
 	// Clear the window with grey.
-	gl::ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+	gl::ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
 	// Draw game related stuff!

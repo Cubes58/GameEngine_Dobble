@@ -53,10 +53,18 @@ void Window::Display() {
 	m_Window.display();
 }
 
-void Window::SetIcon(const std::string &p_IconFileLocation) {
+bool Window::SetIcon(const std::string &p_IconFileLocation) {
 	sf::Image image;
-	image.loadFromFile(p_IconFileLocation);
-	m_Window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
+	if (image.loadFromFile(p_IconFileLocation)) {
+		m_Window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
+		return true;
+	}
+	return false;
+}
+
+void Window::SetScreenSize(int p_Width, int p_Height) {
+	m_Width = p_Width;
+	m_Height = p_Height;
 }
 
 sf::RenderWindow &Window::GetWindow() {

@@ -55,9 +55,9 @@ public:
 				std::shared_ptr<TransformComponent> transformComponent = std::static_pointer_cast<TransformComponent>(potentialTransformComponent->second);
 				
 				collisionComponent->m_WithinCard[0] = true;
-				for (int i = 1; i < s_NUMBER_OF_CIRCLES_PER_CARD; ++i) {
+				for (int i = 1; i < transformComponent->m_CircleTransforms.size(); ++i) {
 					auto collisionVector = collisionComponent->m_CollisionVectors.find(i);
-					for (int j = 1; j < s_NUMBER_OF_CIRCLES_PER_CARD; ++j) {
+					for (int j = 1; j < transformComponent->m_CircleTransforms.size(); ++j) {
 						if (i == j)
 							continue;
 

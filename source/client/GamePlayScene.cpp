@@ -71,6 +71,15 @@ void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 void GamePlayScene::Update(float p_DeltaTime) {
 	EntityManagerInstance.UpdateSystems(p_DeltaTime);
 	m_UserInterface->Update(p_DeltaTime);
+	m_PostProcessor->Update(p_DeltaTime);
+
+	static float timePassed;
+	timePassed += p_DeltaTime;
+	if (timePassed >= 10.0f) {
+		m_PostProcessor->SetShakeState(true);
+		m_PostProcessor->SetShakeTime(4.5f);
+		timePassed = 0.0f;
+	}
 
 	sf::Packet packet;
 	if (m_Client.ReceiveData(packet)) {
@@ -79,9 +88,15 @@ void GamePlayScene::Update(float p_DeltaTime) {
 }
 
 void GamePlayScene::Render(Window &p_Window) {
+	// Start rendering to the post processing quad.
+	m_PostProcessor->BeginRender();
 	m_UserInterface->Render();
 
 	EntityManagerInstance.RenderSystems(p_Window);
+
+	// End rendering to the post processing quad.
+	m_PostProcessor->EndRender();
+	m_PostProcessor->Render();
 
 	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2D<float>(0.01f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2D<float>(0.88f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));

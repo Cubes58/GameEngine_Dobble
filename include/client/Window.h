@@ -23,7 +23,8 @@ public:
 	void Close();
 	void Display();
 
-	void SetIcon(const std::string &p_IconFileLocation);
+	bool SetIcon(const std::string &p_IconFileLocation);
+	void SetScreenSize(int p_Width, int p_Height);
 
 	sf::RenderWindow &GetWindow();
 	const sf::Uint32 &GetStyle() const;

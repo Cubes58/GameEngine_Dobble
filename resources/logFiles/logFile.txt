@@ -33,6 +33,77 @@ void main() {
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 430 core
 
+layout (location = 0) in vec4 vertex;	// Vec2 Position, vec2 TextureCoordinates //
+
+out vec2 TexCoords;
+
+uniform bool shake;
+uniform bool invertColours;
+uniform bool chaos;
+uniform float time;
+
+void main() {
+	gl_Position = vec4(vertex.xy, 0.0f, 1.0f);
+	TexCoords = vertex.zw;
+
+	// Shake the screen around.
+	if (shake) {
+		float strength = 0.0125f;
+		gl_Position.x += cos(time * 10.0f) * strength;
+		gl_Position.y += cos(time * 15.0f) * strength;
+	}
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 FragColour;
+
+uniform sampler2D scene;
+uniform vec2 offsets[9];
+uniform int edgeKernel[9];
+uniform float blurKernel[9];
+uniform bool shake;
+uniform bool invertColours;
+uniform bool chaos;
+
+void main() {
+	FragColour = vec4(0.0f);
+	vec3 sampleData[9];
+
+	// Sample from texture offsets if using convolution matrix.
+	if (chaos || shake) {
+		for (int i = 0; i < 9; i++) {
+			sampleData[i] = vec3(texture(scene, TexCoords.st + offsets[i]));
+		}
+	}
+
+	// Process effects.
+	if (invertColours) {
+		FragColour = vec4(1.0f - texture(scene, TexCoords).rgb, 1.0f);
+	}
+	else if (chaos) {
+		for (int i = 0; i < 9; i++) {
+			FragColour += vec4(sampleData[i] * edgeKernel[i], 0.0f);
+		}
+		FragColour.a = 1.0f;
+	}
+	else if (shake) {
+		for (int i = 0; i < 9; i++) {
+			FragColour += vec4(sampleData[i] * blurKernel[i], 0.0f);
+		}
+		FragColour.a = 1.0f;
+	}
+	else {
+		FragColour = texture(scene, TexCoords);
+	}
+}
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
 layout (location = 0) in vec2 vertex;
 
 out vec2 TexCoords;
@@ -64,3 +135,70 @@ void main() {
 	
 	FragColour = mix(textureFragColour, colour, mixValue);
 }
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server!
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 0
+[INFO]: Packet being received, from the server.
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 4
+[INFO]: Symbol ID: 8
+[INFO]: Symbol ID: 15
+[INFO]: Symbol ID: 17
+[INFO]: Symbol ID: 24
+[INFO]: Symbol ID: 31
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: -146.584	YPos: -118.638	Radius: 56.5411	Rotation:97.755
+[INFO]: Transform data: XPos: 133.707	YPos: -79.4303	Radius: 64.0277	Rotation:24.3748
+[INFO]: Transform data: XPos: -23.19	YPos: 191.055	Radius: 45.749	Rotation:166.28
+[INFO]: Transform data: XPos: 44.9888	YPos: 89.2909	Radius: 53.8495	Rotation:172.894
+[INFO]: Transform data: XPos: 109.3	YPos: 76.1533	Radius: 44.1602	Rotation:234.293
+[INFO]: Transform data: XPos: -26.7807	YPos: -47.2496	Radius: 57.0809	Rotation:328.841
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 1
+[INFO]: Symbol ID: 2
+[INFO]: Symbol ID: 3
+[INFO]: Symbol ID: 4
+[INFO]: Symbol ID: 5
+[INFO]: Symbol ID: 6
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Number of circles in the transform component: 7
+[INFO]: XPos: -146.584	YPos: -118.638	Radius: 56.5411	Rotation: 97.755
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: XPos: 133.707	YPos: -79.4303	Radius: 64.0277	Rotation: 24.3748
+[INFO]: Transform data: XPos: -88.6817	YPos: 93.0541	Radius: 63.1905	Rotation:78.1982
+[INFO]: XPos: -23.19	YPos: 191.055	Radius: 45.749	Rotation: 166.28
+[INFO]: Transform data: XPos: -85.3849	YPos: 139.373	Radius: 48.8941	Rotation:136.924
+[INFO]: XPos: 44.9888	YPos: 89.2909	Radius: 53.8495	Rotation: 172.894
+[INFO]: Transform data: XPos: 50.9803	YPos: 8.88536	Radius: 48.654	Rotation:141.491
+[INFO]: XPos: 109.3	YPos: 76.1533	Radius: 44.1602	Rotation: 234.293
+[INFO]: Transform data: XPos: 150.495	YPos: -90.6525	Radius: 54.1358	Rotation:349.858
+[INFO]: XPos: -26.7807	YPos: -47.2496	Radius: 57.0809	Rotation: 328.841
+[INFO]: Transform data: XPos: 179.511	YPos: -43.7081	Radius: 46.4782	Rotation:241.232
+[INFO]: Transform data: XPos: 119.872	YPos: 77.6381	Radius: 60.5617	Rotation:151.155
+[INFO]: Successfully sent data to a client! Client ID: 0
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -88.6817	YPos: 93.0541	Radius: 63.1905	Rotation: 78.1982
+[INFO]: XPos: -85.3849	YPos: 139.373	Radius: 48.8941	Rotation: 136.924
+[INFO]: XPos: 50.9803	YPos: 8.88536	Radius: 48.654	Rotation: 141.491
+[INFO]: XPos: 150.495	YPos: -90.6525	Radius: 54.1358	Rotation: 349.858
+[INFO]: XPos: 179.511	YPos: -43.7081	Radius: 46.4782	Rotation: 241.232
+[INFO]: XPos: 119.872	YPos: 77.6381	Radius: 60.5617	Rotation: 151.155
+[INFO]: Mouse X Position: 100	Mouse Y Position: 678
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Disconnecting, from the server.
+[INFO]: The server has been notified!
+[INFO]: Data received from a client! Client ID: 0
+[INFO]: Successfully disconnected, from the server.
+[INFO]: Disconnecting from a client! Client ID: 0
+[INFO]: Successfully disconnected from a client! Client ID: 0
+[INFO]: Disconnecting from a client. Client ID: 0
