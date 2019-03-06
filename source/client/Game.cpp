@@ -25,6 +25,7 @@ Game::~Game() {
 
 void Game::ProcessEvents() {
 	sf::Event event;
+	sf::Vector2f mouseWorld;
 	while (m_Window.GetWindow().pollEvent(event)) {
 		switch (event.type) {
 		case sf::Event::Closed:
@@ -34,8 +35,17 @@ void Game::ProcessEvents() {
 		case sf::Event::Resized:
 			gl::Viewport(0, 0, event.size.width, event.size.height);
 			break;
-		default:
+		case sf::Event::EventType::MouseButtonPressed:
+		case sf::Event::EventType::MouseButtonReleased:
+		case sf::Event::EventType::MouseMoved:		
+			mouseWorld = m_Window.GetWindow().mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+			event.mouseButton.x = static_cast<int>(mouseWorld.x);
+			event.mouseButton.y = static_cast<int>(mouseWorld.y);
+
 			m_Scene->HandleInputEvent(event);
+			break;
+
+		default:
 			break;
 		}
 	}

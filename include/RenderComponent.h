@@ -12,7 +12,7 @@ struct RenderComponent : public Component {
 	RenderComponent(unsigned int p_NumberOfCirclesPerCard) {
 		m_SymbolTextureIDs.resize(p_NumberOfCirclesPerCard);
 	}
-	RenderComponent(const std::vector<unsigned int> &p_SymbolNamesIDs) : m_SymbolTextureIDs(p_SymbolNamesIDs) {}
+	RenderComponent(const std::vector<unsigned int> &p_SymbolTextureIDs) : m_SymbolTextureIDs(p_SymbolTextureIDs) {}
 };
 
 sf::Packet &operator<<(sf::Packet &p_Packet, RenderComponent &p_RenderComponent);

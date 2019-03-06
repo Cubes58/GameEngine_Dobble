@@ -16,7 +16,7 @@ Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint3
 	m_Width = p_Mode.width;
 	m_Height = p_Mode.height;
 
-	m_Window.create(p_Mode, p_Title, p_Style, settings);
+	m_Window.create(p_Mode, p_Title, m_Style, settings);
 	m_Window.setVerticalSyncEnabled(true);
 	m_Window.setActive(true);
 	m_Window.setFramerateLimit(0);	// Disable the frame rate limit.
@@ -37,6 +37,8 @@ Window::Window(sf::VideoMode p_Mode, const std::string &p_Title, const sf::Uint3
 
 	gl::Disable(gl::DEPTH_TEST);
 	gl::DepthFunc(gl::LESS);
+
+	SetIcon("resources/images/dobbleIcon.png");
 }
 
 bool Window::IsOpen() {
@@ -51,7 +53,13 @@ void Window::Display() {
 	m_Window.display();
 }
 
-sf::Window &Window::GetWindow() {
+void Window::SetIcon(const std::string &p_IconFileLocation) {
+	sf::Image image;
+	image.loadFromFile(p_IconFileLocation);
+	m_Window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
+}
+
+sf::RenderWindow &Window::GetWindow() {
 	return m_Window;
 }
 

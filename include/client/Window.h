@@ -3,10 +3,11 @@
 #include <string>
 
 #include <SFML/Window.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 class Window {
 private:
-	sf::Window m_Window;
+	sf::RenderWindow m_Window;
 
 	int m_Width;
 	int m_Height;
@@ -22,7 +23,9 @@ public:
 	void Close();
 	void Display();
 
-	sf::Window &GetWindow();
+	void SetIcon(const std::string &p_IconFileLocation);
+
+	sf::RenderWindow &GetWindow();
 	const sf::Uint32 &GetStyle() const;
 
 	int GetWidth() const;
