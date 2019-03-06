@@ -10,6 +10,7 @@
 #include "Vector2D.h"
 
 #include "UserInterface.h"
+#include "PostProcessor.h"
 #include "Collision.h"
 
 class Game;
@@ -20,14 +21,16 @@ private:
 	friend Game;
 
 protected:
-	std::shared_ptr<UserInterface> m_UserInterface;
 	Collision m_Collision;
 	Vector2D<float> m_ScreenSize;
 	GameState m_GameState;
+	std::shared_ptr<UserInterface> m_UserInterface;
+	std::shared_ptr<PostProcessor> m_PostProcessor;
 
 public:
 	Scene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) : m_ScreenSize(p_ScreenSize) {
 		m_UserInterface = std::make_shared<UserInterface>(m_ScreenSize, p_File);
+		m_PostProcessor = std::make_shared<PostProcessor>(m_ScreenSize);
 	}
 	virtual ~Scene() = default;
 
@@ -49,5 +52,11 @@ public:
 	}
 	void RenderText(const std::string &p_Text, const Vector2D<float> &p_Position, float p_Scale, const glm::vec3 &p_Colour) {
 		m_UserInterface->m_FontRenderer->RenderText(p_Text, p_Position.X(), p_Position.Y(), p_Scale, p_Colour);
+	}
+
+	void SetScreenSize(const Vector2Df &p_ScreenSize) {
+		m_ScreenSize = p_ScreenSize;
+
+		m_PostProcessor = std::make_shared<PostProcessor>(m_ScreenSize);
 	}
 };

@@ -8,6 +8,7 @@
 #include "Vector2D.h"
 
 #define INVALID_SYMBOL_GUESS -1
+#define ATTEMPT_DELAY 4.0f
 
 class GamePlayScene : public Scene {
 private:
@@ -17,6 +18,7 @@ private:
 	sf::Int32 m_PlayerSymbolIDGuess = INVALID_SYMBOL_GUESS;
 	sf::Int32 m_RoundsWon = 0;
 	float m_Score = 0.0f;
+	float m_TimeOfLastAttempt = -ATTEMPT_DELAY;
 
 	void HandlePacket(sf::Packet &p_Packet);
 	void CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2D<float> &p_PositionOffset = Vector2D<float>(0.0f, 0.0f));

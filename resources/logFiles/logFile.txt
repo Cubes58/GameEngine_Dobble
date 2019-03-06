@@ -4,34 +4,6 @@
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 430 core
 
-layout (location = 0) in vec4 vertex;	// Vec2 Position, vec2 TexCoords.
-
-out vec2 TexCoords;
-
-uniform mat4 model;
-uniform mat4 projection;
-
-void main() {
-	TexCoords = vertex.zw;
-	gl_Position = projection * model * vec4(vertex.xy, 0.0f, 1.0f);
-}
-[INFO]: 
-SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
-#version 430 core
-
-in vec2 TexCoords;
-
-out vec4 FragColour;
-
-uniform sampler2D image;
-
-void main() {
-	FragColour = texture(image, TexCoords);
-}
-[INFO]: 
-SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
-#version 430 core
-
 layout (location = 0) in vec4 vertex; // <vec2 position, vec2 texture>
 
 out vec2 TexCoords;
@@ -56,6 +28,77 @@ uniform vec3 textColour;
 void main() {
 	vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);
 	colour = vec4(textColour, 1.0) * sampled;
+}
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
+layout (location = 0) in vec4 vertex;	// Vec2 Position, vec2 TextureCoordinates //
+
+out vec2 TexCoords;
+
+uniform bool shake;
+uniform bool invertColours;
+uniform bool chaos;
+uniform float time;
+
+void main() {
+	gl_Position = vec4(vertex.xy, 0.0f, 1.0f);
+	TexCoords = vertex.zw;
+
+	// Shake the screen around.
+	if (shake) {
+		float strength = 0.0125f;
+		gl_Position.x += cos(time * 10.0f) * strength;
+		gl_Position.y += cos(time * 15.0f) * strength;
+	}
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 FragColour;
+
+uniform sampler2D scene;
+uniform vec2 offsets[9];
+uniform int edgeKernel[9];
+uniform float blurKernel[9];
+uniform bool shake;
+uniform bool invertColours;
+uniform bool chaos;
+
+void main() {
+	FragColour = vec4(0.0f);
+	vec3 sampleData[9];
+
+	// Sample from texture offsets if using convolution matrix.
+	if (chaos || shake) {
+		for (int i = 0; i < 9; i++) {
+			sampleData[i] = vec3(texture(scene, TexCoords.st + offsets[i]));
+		}
+	}
+
+	// Process effects.
+	if (invertColours) {
+		FragColour = vec4(1.0f - texture(scene, TexCoords).rgb, 1.0f);
+	}
+	else if (chaos) {
+		for (int i = 0; i < 9; i++) {
+			FragColour += vec4(sampleData[i] * edgeKernel[i], 0.0f);
+		}
+		FragColour.a = 1.0f;
+	}
+	else if (shake) {
+		for (int i = 0; i < 9; i++) {
+			FragColour += vec4(sampleData[i] * blurKernel[i], 0.0f);
+		}
+		FragColour.a = 1.0f;
+	}
+	else {
+		FragColour = texture(scene, TexCoords);
+	}
 }
 [INFO]: 
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
@@ -92,70 +135,61 @@ void main() {
 	
 	FragColour = mix(textureFragColour, colour, mixValue);
 }
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Texture width: 1280	Texture height: 720
 [INFO]: Attempting to connect to the server... 
 Port number: 8787
 IP Address: 127.0.0.1
 [INFO]: Connected to the server!
 [INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 0
 [INFO]: Packet being received, from the server.
-[INFO]: Number of circles in the render component: 9
+[INFO]: Number of circles in the render component: 7
 [INFO]: Symbol ID: 0
-[INFO]: Symbol ID: 5
-[INFO]: Symbol ID: 10
+[INFO]: Symbol ID: 1
+[INFO]: Symbol ID: 17
+[INFO]: Symbol ID: 18
+[INFO]: Symbol ID: 19
 [INFO]: Symbol ID: 20
-[INFO]: Symbol ID: 23
-[INFO]: Symbol ID: 33
-[INFO]: Symbol ID: 43
-[INFO]: Symbol ID: 46
-[INFO]: Symbol ID: 56
-[INFO]: Number of circles in the transform component: 9
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 200	Rotation:0
-[INFO]: Transform data: XPos: -77.6523	YPos: -189.073	Radius: 33.7216	Rotation:214.985
-[INFO]: Transform data: XPos: -158.731	YPos: 119.346	Radius: 30.7659	Rotation:103.469
-[INFO]: Transform data: XPos: 159.422	YPos: -103.587	Radius: 33.2785	Rotation:200.896
-[INFO]: Transform data: XPos: 35.733	YPos: -129.725	Radius: 28.868	Rotation:213.513
-[INFO]: Transform data: XPos: 113.494	YPos: 35.9281	Radius: 35.0923	Rotation:184.15
-[INFO]: Transform data: XPos: 83.6011	YPos: -64.306	Radius: 33.9201	Rotation:172.553
-[INFO]: Transform data: XPos: -82.4586	YPos: 185.846	Radius: 24.5066	Rotation:211.029
-[INFO]: Transform data: XPos: -24.9658	YPos: 89.1119	Radius: 33.1337	Rotation:235.715
+[INFO]: Symbol ID: 21
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: -162.814	YPos: -13.9027	Radius: 49.1307	Rotation:150.54
+[INFO]: Transform data: XPos: 135.01	YPos: 84.0095	Radius: 53.6325	Rotation:122.292
+[INFO]: Transform data: XPos: 41.5256	YPos: -102.718	Radius: 56.6711	Rotation:317.489
+[INFO]: Transform data: XPos: -30.9787	YPos: 181.104	Radius: 45.1397	Rotation:71.4499
+[INFO]: Transform data: XPos: 170.201	YPos: -36.6267	Radius: 52.4981	Rotation:337.344
+[INFO]: Transform data: XPos: -110.377	YPos: -127.47	Radius: 59.1439	Rotation:17.8482
 [INFO]: Successfully sent data to a client! Client ID: 0
-[INFO]: Number of circles in the render component: 9
+[INFO]: Number of circles in the render component: 7
 [INFO]: Symbol ID: 0
-[INFO]: Symbol ID: 6
-[INFO]: Symbol ID: 11
-[INFO]: Symbol ID: 22
-[INFO]: Symbol ID: 26
-[INFO]: Symbol ID: 30
-[INFO]: Symbol ID: 41
-[INFO]: Symbol ID: 45
-[INFO]: Symbol ID: 56
 [INFO]: Packet being received, from the server.
-[INFO]: Number of circles in the transform component: 9
-[INFO]: XPos: 0	YPos: 0	Radius: 200	Rotation: 0
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 200	Rotation:0
-[INFO]: XPos: -77.6523	YPos: -189.073	Radius: 33.7216	Rotation: 214.985
-[INFO]: XPos: -158.731	YPos: 119.346	Radius: 30.7659	Rotation: 103.469
-[INFO]: Transform data: XPos: 78.9918	YPos: 24.8832	Radius: 31.3262	Rotation:256.858
-[INFO]: Transform data: XPos: 27.4333	YPos: -79.9697	Radius: 30.2626	Rotation:206.099
-[INFO]: Transform data: XPos: -178.734	YPos: 72.5695	Radius: 33.0847	Rotation:169.494
-[INFO]: XPos: 35.733	YPos: -129.725	Radius: 28.868	Rotation: 213.513
-[INFO]: XPos: 113.494	YPos: 35.9281	Radius: 35.0923	Rotation: 184.15
-[INFO]: Transform data: XPos: -65.3547	YPos: 17.9888	Radius: 30.4605	Rotation:33.4834
-[INFO]: XPos: 83.6011	YPos: -64.306	Radius: 33.9201	Rotation: 172.553
-[INFO]: Transform data: XPos: 93.9122	YPos: -149.135	Radius: 35.8759	Rotation:123.76
-[INFO]: Transform data: XPos: 183.103	YPos: 35.4987	Radius: 33.2735	Rotation:308.506
-[INFO]: XPos: -82.4586	YPos: 185.846	Radius: 24.5066	Rotation: 211.029
-[INFO]: XPos: -24.9658	YPos: 89.1119	Radius: 33.1337	Rotation: 235.715
-[INFO]: Transform data: XPos: -185.807	YPos: -142.343	Radius: 31.1072	Rotation:70.0545
-[INFO]: Transform data: XPos: -172.529	YPos: -77.5103	Radius: 26.4813	Rotation:170.637
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Symbol ID: 4
+[INFO]: XPos: -162.814	YPos: -13.9027	Radius: 49.1307	Rotation: 150.54
+[INFO]: Symbol ID: 11
+[INFO]: XPos: 135.01	YPos: 84.0095	Radius: 53.6325	Rotation: 122.292
+[INFO]: Symbol ID: 13
+[INFO]: XPos: 41.5256	YPos: -102.718	Radius: 56.6711	Rotation: 317.489
+[INFO]: Symbol ID: 20
+[INFO]: XPos: -30.9787	YPos: 181.104	Radius: 45.1397	Rotation: 71.4499
+[INFO]: Symbol ID: 22
+[INFO]: XPos: 170.201	YPos: -36.6267	Radius: 52.4981	Rotation: 337.344
+[INFO]: Symbol ID: 29
+[INFO]: XPos: -110.377	YPos: -127.47	Radius: 59.1439	Rotation: 17.8482
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: -32.3999	YPos: -158.021	Radius: 61.4646	Rotation:167.439
+[INFO]: Transform data: XPos: 40.4202	YPos: 135.389	Radius: 44.9151	Rotation:125.972
+[INFO]: Transform data: XPos: 151.63	YPos: 72.4468	Radius: 62.9847	Rotation:29.1111
+[INFO]: Transform data: XPos: -24.7894	YPos: 7.21991	Radius: 54.2035	Rotation:0.471552
+[INFO]: Transform data: XPos: -124.633	YPos: -38.1849	Radius: 47.0861	Rotation:97.3556
+[INFO]: Transform data: XPos: 85.9947	YPos: -72.5108	Radius: 47.496	Rotation:3.87013
 [INFO]: Successfully sent data to a client! Client ID: 0
 [INFO]: Packet being received, from the server.
-[INFO]: XPos: 0	YPos: 0	Radius: 200	Rotation: 0
-[INFO]: XPos: 78.9918	YPos: 24.8832	Radius: 31.3262	Rotation: 256.858
-[INFO]: XPos: 27.4333	YPos: -79.9697	Radius: 30.2626	Rotation: 206.099
-[INFO]: XPos: -178.734	YPos: 72.5695	Radius: 33.0847	Rotation: 169.494
-[INFO]: XPos: -65.3547	YPos: 17.9888	Radius: 30.4605	Rotation: 33.4834
-[INFO]: XPos: 93.9122	YPos: -149.135	Radius: 35.8759	Rotation: 123.76
-[INFO]: XPos: 183.103	YPos: 35.4987	Radius: 33.2735	Rotation: 308.506
-[INFO]: XPos: -185.807	YPos: -142.343	Radius: 31.1072	Rotation: 70.0545
-[INFO]: XPos: -172.529	YPos: -77.5103	Radius: 26.4813	Rotation: 170.637
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -32.3999	YPos: -158.021	Radius: 61.4646	Rotation: 167.439
+[INFO]: XPos: 40.4202	YPos: 135.389	Radius: 44.9151	Rotation: 125.972
+[INFO]: XPos: 151.63	YPos: 72.4468	Radius: 62.9847	Rotation: 29.1111
+[INFO]: XPos: -24.7894	YPos: 7.21991	Radius: 54.2035	Rotation: 0.471552
+[INFO]: XPos: -124.633	YPos: -38.1849	Radius: 47.0861	Rotation: 97.3556
+[INFO]: XPos: 85.9947	YPos: -72.5108	Radius: 47.496	Rotation: 3.87013

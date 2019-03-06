@@ -18,7 +18,7 @@ void MenuScene::HandleInputEvent(sf::Event &p_Event) {
 					m_GameState = button->m_GameState;
 			}
 			else
-				;//Animate button.
+				;//Animate button/Set colour mask.
 		}
 		else {
 			std::shared_ptr<CircleShape> shape = std::static_pointer_cast<CircleShape>(button->m_Shape);
@@ -27,20 +27,16 @@ void MenuScene::HandleInputEvent(sf::Event &p_Event) {
 					m_GameState = button->m_GameState;
 			}
 			else
-				;//Animate button.
+				;//Animate button/Set colour mask.
 		}
 	}
 
 }
 
 void MenuScene::Update(float p_DeltaTime) {
-
+	m_UserInterface->Update(p_DeltaTime);
 }
 
 void MenuScene::Render(Window &p_Window) {
 	m_UserInterface->Render();
-
-	RenderText("Play", Vector2D<float>(0.36f, 0.735f), 1.0f, glm::vec3(0.098f, 0.098f, 0.439f));
-	RenderText("Help", Vector2D<float>(0.36f, 0.565f), 1.0f, glm::vec3(0.098f, 0.098f, 0.439f));
-	RenderText("Quit", Vector2D<float>(0.36f, 0.385f), 1.0f, glm::vec3(0.098f, 0.098f, 0.439f));
 }

@@ -4,6 +4,9 @@
 #include <random>
 #include <climits>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include "EntityManager.h"
 #include "Randomiser.h"
 
@@ -13,6 +16,31 @@
 #include "TransformComponent.h"
 #include "CollisionComponent.h"
 #include "RenderComponent.h"
+
+/*
+std::vector<Vector2D<float>> Deck::GeneratePositionsWithinCircle(Vector2D<float> p_CirclePosition, float p_CircleRadius) {
+	std::vector<Vector2D<float>> m_CirclePositions;
+	unsigned int numberOfPositions = static_cast<unsigned int>(M_PI * (p_CircleRadius * p_CircleRadius));
+	m_CirclePositions.reserve(numberOfPositions);
+
+	float circleLeft = p_CirclePosition.X() - p_CircleRadius;		// Left of the screen is 0
+	float circleRight = p_CirclePosition.X() + p_CircleRadius;
+
+	float circleTop = p_CirclePosition.Y() - p_CircleRadius;		// Top of screen is 0
+	float circleBottom = p_CirclePosition.Y() + p_CircleRadius;
+
+	for (float yPosition = circleTop; yPosition <= circleBottom; yPosition++) {
+		for (float xPosition = circleLeft; xPosition <= circleRight; xPosition++) {
+			Vector2D<float> position(xPosition, yPosition);
+
+			if (m_Collision.IsCircleInCircle(p_CirclePosition, p_CircleRadius, position)) {
+				m_CirclePositions.emplace_back(position);
+			}
+		}
+	}
+
+	return m_CirclePositions;
+}*/
 
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	static constexpr unsigned int s_ConstantIncrement = 1;
@@ -69,7 +97,12 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	return true;
 }
 
-void Deck::GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
+void Deck::GenerateSymbolTransformData(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
+	float minimumCircleRadius = (p_CardRadius / p_NumberOfSymblesPerCard) / 0.95f;
+	float maximumCircleRadius = (p_CardRadius / p_NumberOfSymblesPerCard) / 0.65f;
+
+	//m_ValidSymbolStartingPositions = GeneratePositionsWithinCircle(p_CardPosition, p_CardRadius * 0.25f);
+
 	p_NumberOfSymblesPerCard += 1;	// Add one for the card background (position/collision test).
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
 	for (const auto &entity : *entities) {
@@ -80,17 +113,32 @@ void Deck::GenerateSymbolData(Vector2D<float> p_CardPosition, float p_CardRadius
 		circleTransforms.reserve(p_NumberOfSymblesPerCard);
 		// Add the card background (First element in the render component is always the background).
 		circleTransforms.emplace_back(p_CardPosition, p_CardRadius);
+
 		for (int i = 0; i < p_NumberOfSymblesPerCard - 1; i++) {
 			CircleTransformData circleTransformData;
-			// Generate the position.
-			circleTransformData.m_Position = Vector2D<float>(Randomiser::Instance().GetUniformRealRandomNumber(-p_CardRadius, p_CardRadius), 
-				Randomiser::Instance().GetUniformRealRandomNumber(-p_CardRadius, p_CardRadius));
-
+			
 			// Generate the orientation.
-			circleTransformData.m_Rotation = Randomiser::Instance().GetNormalRandomNumber(0.0f, 360.0f);
+			circleTransformData.m_Rotation = RandomiserInstance.GetUniformRealRandomNumber(0.0f, 360.0f);
 
 			// Generate the size.
-			circleTransformData.m_Radius = Randomiser::Instance().GetNormalRandomNumber(22.5f, 40.0f);
+			circleTransformData.m_Radius = RandomiserInstance.GetUniformRealRandomNumber(minimumCircleRadius, maximumCircleRadius);
+
+			// Generate the position.
+			bool inOtherCircle = false;
+			do {
+				circleTransformData.m_Position = Vector2D<float>(RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius),
+					RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius));
+
+				for (int i = 1; i < circleTransforms.size(); i++) {
+					if (m_Collision(circleTransformData.m_Position, circleTransformData.m_Radius, circleTransforms[i].m_Position, circleTransforms[i].m_Radius)) {
+						inOtherCircle = true;
+						break;
+					}
+					else
+						inOtherCircle = false;
+				}
+
+			} while (!m_Collision.IsCircleInCircle(p_CardPosition, p_CardRadius, circleTransformData.m_Position, circleTransformData.m_Radius) || inOtherCircle);
 
 			// Add the symbol's transform component.
 			circleTransforms.emplace_back(circleTransformData);
@@ -103,19 +151,7 @@ void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, uns
 	EntityManagerInstance.Clear();
 
 	GenerateCardSymbolIDs(p_NumberOfSymblesPerCard);
-	GenerateSymbolData(p_CardPosition, p_CardRadius, p_NumberOfSymblesPerCard);
-
-	std::shared_ptr<CollisionSystem> collisionSystem = std::make_shared<CollisionSystem>();
-	bool &SymbolsSuccessfullyWithinCards = collisionSystem->SymbolsSuccessfullyWithinCards();
-	EntityManagerInstance.AddSystem(collisionSystem);
-
-	std::shared_ptr<MoveSymbolsSystem> moveSymbolsSystem = std::make_shared<MoveSymbolsSystem>();
-	EntityManagerInstance.AddSystem(moveSymbolsSystem);
-
-	/* Need to finish the MoveSymbolsSystem
-	while (!SymbolsSuccessfullyWithinCards) {
-		EntityManagerInstance.UpdateSystems(1.0f);
-	}*/
+	GenerateSymbolTransformData(p_CardPosition, p_CardRadius, p_NumberOfSymblesPerCard);
 
 	// Vector to store a shuffled deck of entity IDs, so when it comes to sending out a card, it will be a "random" entity, chosen from the back of this vector.
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
@@ -140,6 +176,32 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 	}
 
 	return false;
+}
+
+/*
+bool Deck::IsPositionWithinCircle(Vector2D<float> p_CirclePosition, float p_CircleRadius, Vector2D<float> p_Position) {
+	Vector2D<float> distance(p_CirclePosition - p_Position);
+	float squareDist = distance.DotProduct(distance);
+
+	return squareDist < p_CircleRadius * p_CircleRadius;
+}
+
+bool Deck::IsCircleWithinCircle(Vector2D<float> p_CardCentrePosition, float p_CardRadius, Vector2D<float> p_EntityOnePosition, float p_EntityOneRadius) {
+	Vector2D<float> distance(p_CardCentrePosition - p_EntityOnePosition);
+	float squareDist = distance.DotProduct(distance);
+	float radiiSum = p_CardRadius - p_EntityOneRadius;
+
+	return squareDist < radiiSum * radiiSum;
+}*/
+
+std::vector<Vector2D<float>> Deck::CreateDirectionLine(Vector2D<float> p_CirclePosition, float p_LineLength, float p_Angle) {
+	std::vector<Vector2D<float>> line;
+	line.reserve((unsigned int)((unsigned int)p_LineLength * (unsigned int)p_LineLength));
+
+	for (float length = 0.0f; length < p_LineLength; length++)
+		line.emplace_back(length * cos(p_Angle), length * sin(p_Angle));
+
+	return line;
 }
 
 bool Deck::IsDeckEmpty() const {

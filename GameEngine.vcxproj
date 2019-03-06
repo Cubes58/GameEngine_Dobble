@@ -155,9 +155,10 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>./external/include;</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
@@ -180,8 +181,9 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype281.lib;opengl32.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>./external/include;</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
@@ -197,6 +199,7 @@
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
     <ClCompile Include="source\client\MenuScene.cpp" />
+    <ClCompile Include="source\client\PostProcessor.cpp" />
     <ClCompile Include="source\client\RectangleShape.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
@@ -215,7 +218,6 @@
     <ClInclude Include="include\client\Button.h" />
     <ClInclude Include="include\client\CircleShape.h" />
     <ClInclude Include="include\client\Client.h" />
-    <ClInclude Include="include\client\Collision.h" />
     <ClInclude Include="include\client\EndGameScene.h" />
     <ClInclude Include="include\client\FontRenderer.h" />
     <ClInclude Include="include\client\Game.h" />
@@ -223,6 +225,7 @@
     <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
     <ClInclude Include="include\client\MenuScene.h" />
+    <ClInclude Include="include\client\PostProcessor.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
     <ClInclude Include="include\client\Scene.h" />
@@ -233,6 +236,7 @@
     <ClInclude Include="include\client\Texture2D.h" />
     <ClInclude Include="include\client\UserInterface.h" />
     <ClInclude Include="include\client\Window.h" />
+    <ClInclude Include="include\Collision.h" />
     <ClInclude Include="include\CollisionComponent.h" />
     <ClInclude Include="include\CollisionSystem.h" />
     <ClInclude Include="include\Component.h" />
@@ -247,10 +251,10 @@
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\CardShader.frag" />
-    <None Include="resources\shaders\CardShader.vert" />
     <None Include="resources\shaders\FontShader.frag" />
     <None Include="resources\shaders\FontShader.vert" />
+    <None Include="resources\shaders\PostProcessingEffects.frag" />
+    <None Include="resources\shaders\PostProcessingEffects.vert" />
     <None Include="resources\shaders\ShapesShader.frag" />
     <None Include="resources\shaders\ShapesShader.vert" />
   </ItemGroup>

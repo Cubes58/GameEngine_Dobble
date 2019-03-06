@@ -102,3 +102,9 @@ public:
 		return Vector2D(m_YValue, -m_XValue);
 	}
 };
+
+using Vector2Df = Vector2D<float>;
+using Vector2Dd = Vector2D<double>;
+using Vector2Di = Vector2D<int>;
+using Vector2Du = Vector2D<unsigned int>;
+using Vector2Dl = Vector2D<long>;

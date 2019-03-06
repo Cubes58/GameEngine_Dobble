@@ -1,18 +1,12 @@
 #include "EndGameScene.h"
 
-EndGameScreen::EndGameScreen(const Vector2D<float>& p_ScreenSize, const std::string &p_File) 
-	: Scene(p_ScreenSize, p_File) {
-
+EndGameScene::EndGameScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) 
+	: MenuScene(p_ScreenSize, p_File) {
 }
 
-void EndGameScreen::HandleInputEvent(sf::Event & p_Event) {
+void EndGameScene::Render(Window &p_Window) {
+	m_UserInterface->Render();
 
-}
-
-void EndGameScreen::Update(float p_DeltaTime) {
-
-}
-
-void EndGameScreen::Render(Window & p_Window) {
-
+	RenderText("Final Score: " + std::to_string(static_cast<int>(m_FinalPlayerScore)), Vector2D<float>(0.20f, 0.125f), 0.7f, glm::vec3(0.098f, 0.439f, 0.098f));
+	RenderText("Rounds Won: " + std::to_string(static_cast<int>(m_NumberOfRoundsWon)), Vector2D<float>(0.60f, 0.125f), 0.7f, glm::vec3(0.098f, 0.439f, 0.098f));
 }

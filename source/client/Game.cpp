@@ -25,6 +25,7 @@ Game::~Game() {
 
 void Game::ProcessEvents() {
 	sf::Event event;
+	sf::Vector2f mouseWorld;
 	while (m_Window.GetWindow().pollEvent(event)) {
 		switch (event.type) {
 		case sf::Event::Closed:
@@ -33,9 +34,19 @@ void Game::ProcessEvents() {
 			break;
 		case sf::Event::Resized:
 			gl::Viewport(0, 0, event.size.width, event.size.height);
+			m_Scene->SetScreenSize(Vector2Df(static_cast<float>(event.size.width), static_cast<float>(event.size.height)));
 			break;
-		default:
+		case sf::Event::EventType::MouseButtonPressed:
+		case sf::Event::EventType::MouseButtonReleased:
+		case sf::Event::EventType::MouseMoved:		
+			mouseWorld = m_Window.GetWindow().mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+			event.mouseButton.x = static_cast<int>(mouseWorld.x);
+			event.mouseButton.y = static_cast<int>(mouseWorld.y);
+
 			m_Scene->HandleInputEvent(event);
+			break;
+
+		default:
 			break;
 		}
 	}
@@ -57,7 +68,7 @@ void Game::Render() {
 		return;
 
 	// Clear the window with grey.
-	gl::ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+	gl::ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
 	// Draw game related stuff!
@@ -79,10 +90,10 @@ void Game::SetScene() {
 		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/HelpLayout.JSON");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
+		m_Scene = std::make_unique<EndGameScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<EndGameScreen>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		m_Scene = std::make_unique<EndGameScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
 		break;
 	case GameState::SHUTDOWN:
 		break;

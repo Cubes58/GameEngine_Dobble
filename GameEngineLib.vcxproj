@@ -188,17 +188,21 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\client\CircleShape.cpp" />
     <ClCompile Include="source\client\Client.cpp" />
+    <ClCompile Include="source\client\EndGameScene.cpp" />
     <ClCompile Include="source\client\FontRenderer.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
     <ClCompile Include="source\client\GamePlayScene.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
-    <ClCompile Include="source\client\MainMenuScene.cpp" />
+    <ClCompile Include="source\client\MenuScene.cpp" />
+    <ClCompile Include="source\client\RectangleShape.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
     <ClCompile Include="source\client\stb_image.c" />
     <ClCompile Include="source\client\Texture2D.cpp" />
+    <ClCompile Include="source\client\UserInterface.cpp" />
     <ClCompile Include="source\client\Window.cpp" />
     <ClCompile Include="source\EntitySystem.cpp" />
     <ClCompile Include="source\jsoncpp.cpp" />
@@ -208,21 +212,28 @@
     <ClCompile Include="source\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\client\Button.h" />
+    <ClInclude Include="include\client\CircleShape.h" />
     <ClInclude Include="include\client\Client.h" />
-    <ClInclude Include="include\client\Collision.h" />
+    <ClInclude Include="include\client\EndGameScene.h" />
     <ClInclude Include="include\client\FontRenderer.h" />
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GamePlayScene.h" />
     <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
-    <ClInclude Include="include\client\MainMenuScene.h" />
+    <ClInclude Include="include\client\MenuScene.h" />
+    <ClInclude Include="include\client\PostProcessor.h" />
+    <ClInclude Include="include\client\RectangleShape.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
     <ClInclude Include="include\client\Scene.h" />
     <ClInclude Include="include\client\Shader.h" />
+    <ClInclude Include="include\client\Shape.h" />
+    <ClInclude Include="include\client\Text.h" />
     <ClInclude Include="include\client\Texture2D.h" />
     <ClInclude Include="include\client\UserInterface.h" />
     <ClInclude Include="include\client\Window.h" />
+    <ClInclude Include="include\Collision.h" />
     <ClInclude Include="include\CollisionComponent.h" />
     <ClInclude Include="include\CollisionSystem.h" />
     <ClInclude Include="include\Component.h" />
