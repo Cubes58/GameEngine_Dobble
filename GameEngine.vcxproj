@@ -240,13 +240,11 @@
     <ClInclude Include="include\client\Window.h" />
     <ClInclude Include="include\Collision.h" />
     <ClInclude Include="include\CollisionComponent.h" />
-    <ClInclude Include="include\CollisionSystem.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
     <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\Logger.h" />
-    <ClInclude Include="include\MoveSymbolsSystem.h" />
     <ClInclude Include="include\PacketTypes.h" />
     <ClInclude Include="include\Randomiser.h" />
     <ClInclude Include="include\RenderComponent.h" />

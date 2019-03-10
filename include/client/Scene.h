@@ -22,13 +22,13 @@ private:
 
 protected:
 	Collision m_Collision;
-	Vector2D<float> m_ScreenSize;
+	Vector2Df m_ScreenSize;
 	GameState m_GameState;
 	std::shared_ptr<UserInterface> m_UserInterface;
 	std::shared_ptr<PostProcessor> m_PostProcessor;
 
 public:
-	Scene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) : m_ScreenSize(p_ScreenSize) {
+	Scene(const Vector2Df &p_ScreenSize, const std::string &p_File) : m_ScreenSize(p_ScreenSize) {
 		m_UserInterface = std::make_shared<UserInterface>(m_ScreenSize, p_File);
 		m_PostProcessor = std::make_shared<PostProcessor>(m_ScreenSize);
 	}
@@ -50,7 +50,7 @@ public:
 	void RenderText(const std::string &p_Text, float p_XPosition, float p_YPosition, float p_Scale, const glm::vec3 &p_Colour) {
 		m_UserInterface->m_FontRenderer->RenderText(p_Text, p_XPosition, p_YPosition, p_Scale, p_Colour);
 	}
-	void RenderText(const std::string &p_Text, const Vector2D<float> &p_Position, float p_Scale, const glm::vec3 &p_Colour) {
+	void RenderText(const std::string &p_Text, const Vector2Df &p_Position, float p_Scale, const glm::vec3 &p_Colour) {
 		m_UserInterface->m_FontRenderer->RenderText(p_Text, p_Position.X(), p_Position.Y(), p_Scale, p_Colour);
 	}
 

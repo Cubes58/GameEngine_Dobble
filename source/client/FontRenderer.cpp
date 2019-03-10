@@ -11,7 +11,7 @@
 #include "ResourceManager.h"
 #include "Logger.h"
 
-FontRenderer::FontRenderer(const std::string &p_FontPath, const Vector2D<float> &p_ScreenSize)
+FontRenderer::FontRenderer(const std::string &p_FontPath, const Vector2Df &p_ScreenSize)
 	: m_FontPath(p_FontPath), m_ScreenSize(p_ScreenSize) {
 
 	m_FontShader = ResourceManagerInstance.LoadShader("resources/shaders/FontShader.vert", "resources/shaders/FontShader.frag");
@@ -149,6 +149,6 @@ void FontRenderer::SetFont(const std::string &p_FontPath) {
 	InitFont();
 }
 
-void FontRenderer::SetScreenSize(const Vector2D<float> &p_ScreenSize) {
+void FontRenderer::SetScreenSize(const Vector2Df &p_ScreenSize) {
 	m_ScreenSize = p_ScreenSize;
 }

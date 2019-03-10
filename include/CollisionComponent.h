@@ -7,7 +7,7 @@
 #include "Vector2D.h"
 
 struct CollisionComponent : public Component {
-	std::unordered_map<unsigned int, std::vector<Vector2D<float>>> m_CollisionVectors;
+	std::unordered_map<unsigned int, std::vector<Vector2Df>> m_CollisionVectors;
 	std::vector<bool> m_ReversePosition;
 	std::vector<bool> m_WithinCard;
 
@@ -15,7 +15,7 @@ struct CollisionComponent : public Component {
 		m_ReversePosition.reserve(p_NumberOfCirclesPerCard);
 		m_WithinCard.reserve(p_NumberOfCirclesPerCard);
 		for (unsigned int i = 0; i < p_NumberOfCirclesPerCard; ++i) {
-			m_CollisionVectors.emplace(i, std::vector<Vector2D<float>>());
+			m_CollisionVectors.emplace(i, std::vector<Vector2Df>());
 			m_ReversePosition.emplace_back(false);
 			m_WithinCard.emplace_back(false);
 		}

@@ -10,16 +10,13 @@
 #include "EntityManager.h"
 #include "Randomiser.h"
 
-#include "CollisionSystem.h"
-#include "MoveSymbolsSystem.h"
-
 #include "TransformComponent.h"
 #include "CollisionComponent.h"
 #include "RenderComponent.h"
 
 /*
-std::vector<Vector2D<float>> Deck::GeneratePositionsWithinCircle(Vector2D<float> p_CirclePosition, float p_CircleRadius) {
-	std::vector<Vector2D<float>> m_CirclePositions;
+std::vector<Vector2Df> Deck::GeneratePositionsWithinCircle(Vector2Df p_CirclePosition, float p_CircleRadius) {
+	std::vector<Vector2Df> m_CirclePositions;
 	unsigned int numberOfPositions = static_cast<unsigned int>(M_PI * (p_CircleRadius * p_CircleRadius));
 	m_CirclePositions.reserve(numberOfPositions);
 
@@ -31,7 +28,7 @@ std::vector<Vector2D<float>> Deck::GeneratePositionsWithinCircle(Vector2D<float>
 
 	for (float yPosition = circleTop; yPosition <= circleBottom; yPosition++) {
 		for (float xPosition = circleLeft; xPosition <= circleRight; xPosition++) {
-			Vector2D<float> position(xPosition, yPosition);
+			Vector2Df position(xPosition, yPosition);
 
 			if (m_Collision.IsCircleInCircle(p_CirclePosition, p_CircleRadius, position)) {
 				m_CirclePositions.emplace_back(position);
@@ -97,7 +94,7 @@ bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	return true;
 }
 
-void Deck::GenerateSymbolTransformData(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
+void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
 	float minimumCircleRadius = (p_CardRadius / p_NumberOfSymblesPerCard) / 0.95f;
 	float maximumCircleRadius = (p_CardRadius / p_NumberOfSymblesPerCard) / 0.65f;
 
@@ -126,7 +123,7 @@ void Deck::GenerateSymbolTransformData(Vector2D<float> p_CardPosition, float p_C
 			// Generate the position.
 			bool inOtherCircle = false;
 			do {
-				circleTransformData.m_Position = Vector2D<float>(RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius),
+				circleTransformData.m_Position = Vector2Df(RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius),
 					RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius));
 
 				for (int i = 1; i < circleTransforms.size(); i++) {
@@ -147,7 +144,7 @@ void Deck::GenerateSymbolTransformData(Vector2D<float> p_CardPosition, float p_C
 	}
 }
 
-void Deck::GenerateCards(Vector2D<float> p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
+void Deck::GenerateCards(Vector2Df p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
 	EntityManagerInstance.Clear();
 
 	GenerateCardSymbolIDs(p_NumberOfSymblesPerCard);
@@ -179,23 +176,23 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 }
 
 /*
-bool Deck::IsPositionWithinCircle(Vector2D<float> p_CirclePosition, float p_CircleRadius, Vector2D<float> p_Position) {
-	Vector2D<float> distance(p_CirclePosition - p_Position);
+bool Deck::IsPositionWithinCircle(Vector2Df p_CirclePosition, float p_CircleRadius, Vector2Df p_Position) {
+	Vector2Df distance(p_CirclePosition - p_Position);
 	float squareDist = distance.DotProduct(distance);
 
 	return squareDist < p_CircleRadius * p_CircleRadius;
 }
 
-bool Deck::IsCircleWithinCircle(Vector2D<float> p_CardCentrePosition, float p_CardRadius, Vector2D<float> p_EntityOnePosition, float p_EntityOneRadius) {
-	Vector2D<float> distance(p_CardCentrePosition - p_EntityOnePosition);
+bool Deck::IsCircleWithinCircle(Vector2Df p_CardCentrePosition, float p_CardRadius, Vector2Df p_EntityOnePosition, float p_EntityOneRadius) {
+	Vector2Df distance(p_CardCentrePosition - p_EntityOnePosition);
 	float squareDist = distance.DotProduct(distance);
 	float radiiSum = p_CardRadius - p_EntityOneRadius;
 
 	return squareDist < radiiSum * radiiSum;
 }*/
 
-std::vector<Vector2D<float>> Deck::CreateDirectionLine(Vector2D<float> p_CirclePosition, float p_LineLength, float p_Angle) {
-	std::vector<Vector2D<float>> line;
+std::vector<Vector2Df> Deck::CreateDirectionLine(Vector2Df p_CirclePosition, float p_LineLength, float p_Angle) {
+	std::vector<Vector2Df> line;
 	line.reserve((unsigned int)((unsigned int)p_LineLength * (unsigned int)p_LineLength));
 
 	for (float length = 0.0f; length < p_LineLength; length++)

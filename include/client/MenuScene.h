@@ -4,7 +4,7 @@
 
 class MenuScene : public Scene {
 public:
-	MenuScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
+	MenuScene(const Vector2Df &p_ScreenSize, const std::string &p_File);
 	~MenuScene() = default;
 
 	virtual void HandleInputEvent(sf::Event &p_Event) override;

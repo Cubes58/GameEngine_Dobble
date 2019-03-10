@@ -140,9 +140,6 @@
     <ClInclude Include="include\TransformComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionSystem.h">
-      <Filter>Header Files\EntitySystems</Filter>
-    </ClInclude>
     <ClInclude Include="include\CollisionComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -151,9 +148,6 @@
     </ClInclude>
     <ClInclude Include="include\client\Window.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MoveSymbolsSystem.h">
-      <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
     <ClInclude Include="include\RenderComponent.h">
       <Filter>Header Files\Components</Filter>

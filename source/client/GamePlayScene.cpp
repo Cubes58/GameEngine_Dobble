@@ -9,7 +9,7 @@
 #include "RenderComponent.h"
 #include "TransformComponent.h"
 
-GamePlayScene::GamePlayScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) 
+GamePlayScene::GamePlayScene(const Vector2Df &p_ScreenSize, const std::string &p_File) 
 	: Scene(p_ScreenSize, p_File) {
 	m_ParticleManager = std::make_shared<ParticleManager>(p_ScreenSize, MAX_NUMBER_OF_PARTICLES);
 	
@@ -26,7 +26,7 @@ void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 	m_MousePosition = Vector2Df((float)p_Event.mouseMove.x, (float)p_Event.mouseMove.y);
 
 	if (p_Event.type == sf::Event::MouseButtonPressed) {
-		Vector2D<float> mousePosition((float)p_Event.mouseMove.x, (float)p_Event.mouseMove.y);
+		Vector2Df mousePosition((float)p_Event.mouseMove.x, (float)p_Event.mouseMove.y);
 
 		for (auto &button : m_UserInterface->GetButtons()) {
 			if (button->m_ShapeType == typeid(RectangleShape)) {
@@ -106,8 +106,8 @@ void GamePlayScene::Render(Window &p_Window) {
 	m_PostProcessor->EndRender();
 	m_PostProcessor->Render();
 
-	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2D<float>(0.01f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
-	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2D<float>(0.88f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
+	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
+	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 }
 
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
@@ -117,10 +117,10 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	float heightOffset = (float)m_ScreenSize.Y() / 2.0f;
 	
 	if (packetID == Packet::PLAYER_CARD_DATA) {
-		CreateCardEntity(m_PlayerEntityID, p_Packet, Vector2D<float>(quarterWidth, heightOffset));
+		CreateCardEntity(m_PlayerEntityID, p_Packet, Vector2Df(quarterWidth, heightOffset));
 	}
 	else if (packetID == Packet::DECK_CARD_DATA) {
-		CreateCardEntity(m_DeckEntityID, p_Packet, Vector2D<float>(quarterWidth * 3, heightOffset));
+		CreateCardEntity(m_DeckEntityID, p_Packet, Vector2Df(quarterWidth * 3, heightOffset));
 	}
 	else if (packetID == Packet::ROUND_FINISHED) {
 		bool hasWonRound = false;
@@ -148,7 +148,7 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	}
 }
 
-void GamePlayScene::CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2D<float> &p_PositionOffset) {
+void GamePlayScene::CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2Df &p_PositionOffset) {
 	EntityManagerInstance.DeleteComponent<RenderComponent>(p_EntityName);
 	EntityManagerInstance.DeleteComponent<TransformComponent>(p_EntityName);
 	EntityManagerInstance.CreateEntity(p_EntityName);

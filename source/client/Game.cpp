@@ -25,7 +25,6 @@ Game::~Game() {
 
 void Game::ProcessEvents() {
 	sf::Event event;
-	sf::Vector2i mouse;
 	sf::Vector2f mouseWorld;
 	while (m_Window.GetWindow().pollEvent(event)) {
 		switch (event.type) {
@@ -37,11 +36,10 @@ void Game::ProcessEvents() {
 			gl::Viewport(0, 0, event.size.width, event.size.height);
 			m_Scene->SetScreenSize(Vector2Df(static_cast<float>(event.size.width), static_cast<float>(event.size.height)));
 			break;
+		case sf::Event::EventType::MouseMoved:
 		case sf::Event::EventType::MouseButtonPressed:
 		case sf::Event::EventType::MouseButtonReleased:
-		case sf::Event::EventType::MouseMoved:		
-			mouse = sf::Mouse::getPosition(m_Window.GetWindow());
-			mouseWorld = m_Window.GetWindow().mapPixelToCoords(mouse);
+			mouseWorld = m_Window.GetWindow().mapPixelToCoords(sf::Mouse::getPosition(m_Window.GetWindow()));
 			event.mouseMove.x = static_cast<int>(mouseWorld.x);
 			event.mouseMove.y = static_cast<int>(mouseWorld.y);
 
@@ -83,19 +81,19 @@ void Game::Render() {
 void Game::SetScene() {
 	switch (m_GameState) {
 	case GameState::MAIN_MENU:
-		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/MainMenuScene.JSON");
+		m_Scene = std::make_unique<MenuScene>(Vector2Df((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/MainMenuScene.JSON");
 		break;
 	case GameState::ACTIVE:
-		m_Scene = std::make_unique<GamePlayScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
+		m_Scene = std::make_unique<GamePlayScene>(Vector2Df((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
 		break;
 	case GameState::HELP:
-		m_Scene = std::make_unique<MenuScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/HelpLayout.JSON");
+		m_Scene = std::make_unique<MenuScene>(Vector2Df((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/HelpLayout.JSON");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<EndGameScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
+		m_Scene = std::make_unique<EndGameScene>(Vector2Df((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<EndGameScene>(Vector2D<float>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		m_Scene = std::make_unique<EndGameScene>(Vector2Df((float)m_Window.GetWidth(), (float)m_Window.GetHeight()), "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
 		break;
 	case GameState::SHUTDOWN:
 		break;

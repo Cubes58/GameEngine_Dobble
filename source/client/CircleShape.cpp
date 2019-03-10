@@ -7,7 +7,7 @@
 
 #include "Shader.h"
 
-CircleShape::CircleShape(const Vector2D<float> &p_Position, unsigned int p_NumberOfFaces, float p_Radius, Texture2D *p_Texture) 
+CircleShape::CircleShape(const Vector2Df &p_Position, unsigned int p_NumberOfFaces, float p_Radius, Texture2D *p_Texture) 
 	: Shape(p_Position, p_Texture), m_NumberOfFaces(p_NumberOfFaces), m_Radius(p_Radius) {
 	GenerateFaces(m_NumberOfFaces);
 }

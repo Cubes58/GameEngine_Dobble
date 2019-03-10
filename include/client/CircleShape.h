@@ -9,7 +9,7 @@ private:
 	float m_Radius;
 
 public:
-	CircleShape(const Vector2D<float> &p_Position = Vector2D<float>(0.0f, 0.0f), unsigned int p_NumberOfFaces = 64, 
+	CircleShape(const Vector2Df &p_Position = Vector2Df(0.0f, 0.0f), unsigned int p_NumberOfFaces = 64, 
 		float p_Radius = 1.0f, Texture2D *p_Texture = nullptr);
 	~CircleShape() = default;
 

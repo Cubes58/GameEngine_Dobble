@@ -26,10 +26,10 @@ private:
 	std::shared_ptr<ParticleManager> m_ParticleManager;
 
 	void HandlePacket(sf::Packet &p_Packet);
-	void CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2D<float> &p_PositionOffset = Vector2D<float>(0.0f, 0.0f));
+	void CreateCardEntity(const std::string &p_EntityName, sf::Packet &p_Packet, const Vector2Df &p_PositionOffset = Vector2Df(0.0f, 0.0f));
 
 public:
-	GamePlayScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
+	GamePlayScene(const Vector2Df &p_ScreenSize, const std::string &p_File);
 	~GamePlayScene();
 
 	virtual void HandleInputEvent(sf::Event &p_Event) override;

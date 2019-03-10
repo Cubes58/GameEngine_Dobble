@@ -8,7 +8,7 @@ private:
 	unsigned int m_NumberOfRoundsWon;
 
 public:
-	EndGameScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File);
+	EndGameScene(const Vector2Df &p_ScreenSize, const std::string &p_File);
 	~EndGameScene() = default;
 
 	virtual void Render(Window &p_Window) override;

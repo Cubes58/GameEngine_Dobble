@@ -4,7 +4,7 @@
 
 #include "Shader.h"
 
-RectangleShape::RectangleShape(const Vector2D<float> &p_Position, const Vector2D<float> &p_Size, Texture2D *p_Texture)
+RectangleShape::RectangleShape(const Vector2Df &p_Position, const Vector2Df &p_Size, Texture2D *p_Texture)
 	: Shape(p_Position, p_Texture), m_Size(p_Size) {
 	GenerateVertexData();
 }
