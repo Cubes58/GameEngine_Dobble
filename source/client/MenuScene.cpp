@@ -9,7 +9,7 @@ MenuScene::MenuScene(const Vector2D<float> &p_ScreenSize, const std::string &p_F
 }
 
 void MenuScene::HandleInputEvent(sf::Event &p_Event) {
-	Vector2D<float> mousePosition((float)p_Event.mouseButton.x, (float)p_Event.mouseButton.y);
+	Vector2D<float> mousePosition((float)p_Event.mouseMove.x, (float)p_Event.mouseMove.y);
 	for (auto &button : m_UserInterface->GetButtons()) {
 		if (button->m_ShapeType == typeid(RectangleShape)) {
 			std::shared_ptr<RectangleShape> shape = std::static_pointer_cast<RectangleShape>(button->m_Shape);

@@ -111,6 +111,9 @@
     <ClCompile Include="source\client\PostProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\client\ParticleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\client\Game.h">
@@ -214,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="include\Collision.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Randomiser.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\client\ParticleManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

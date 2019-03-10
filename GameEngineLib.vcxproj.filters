@@ -191,6 +191,9 @@
     <ClInclude Include="include\client\PostProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Randomiser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\CardShader.frag">

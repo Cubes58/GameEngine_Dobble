@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "EntityManager.h"
+#include "ParticleManager.h"
 #include "Logger.h"
 
 #include "RenderComponent.h"
@@ -10,7 +11,8 @@
 
 GamePlayScene::GamePlayScene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) 
 	: Scene(p_ScreenSize, p_File) {
-	// Wait as long as it takes, to connect to the server (Maybe add to a config file, and allow a user to specify).
+	m_ParticleManager = std::make_shared<ParticleManager>(p_ScreenSize, MAX_NUMBER_OF_PARTICLES);
+	
 	m_Client.Connect(sf::Time::Zero);
 }
 
@@ -21,8 +23,10 @@ GamePlayScene::~GamePlayScene() {
 }
 
 void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
+	m_MousePosition = Vector2Df((float)p_Event.mouseMove.x, (float)p_Event.mouseMove.y);
+
 	if (p_Event.type == sf::Event::MouseButtonPressed) {
-		Vector2D<float> mousePosition((float)p_Event.mouseButton.x, (float)p_Event.mouseButton.y);
+		Vector2D<float> mousePosition((float)p_Event.mouseMove.x, (float)p_Event.mouseMove.y);
 
 		for (auto &button : m_UserInterface->GetButtons()) {
 			if (button->m_ShapeType == typeid(RectangleShape)) {
@@ -81,6 +85,8 @@ void GamePlayScene::Update(float p_DeltaTime) {
 		timePassed = 0.0f;
 	}
 
+	m_ParticleManager->Update(p_DeltaTime, m_MousePosition);
+
 	sf::Packet packet;
 	if (m_Client.ReceiveData(packet)) {
 		HandlePacket(packet);
@@ -93,6 +99,8 @@ void GamePlayScene::Render(Window &p_Window) {
 	m_UserInterface->Render();
 
 	EntityManagerInstance.RenderSystems(p_Window);
+
+	m_ParticleManager->Render();
 
 	// End rendering to the post processing quad.
 	m_PostProcessor->EndRender();
