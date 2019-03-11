@@ -4,17 +4,17 @@
 #include <vector>
 #include <memory>
 
-#include "Vector2D.h"
-#include "FontRenderer.h"
+#include <SFML/Window/Event.hpp>
 
-#include "Shape.h"
-#include "CircleShape.h"
-#include "RectangleShape.h"
-#include "Button.h"
-#include "Text.h"
+#include "Vector2D.h"
+#include "GameState.h"
 
 class Scene;
 class Shader;
+class FontRenderer;
+class Shape;
+struct Button;
+struct Text;
 
 class UserInterface {
 private:
@@ -22,7 +22,7 @@ private:
 
 	std::vector<std::shared_ptr<Button>> m_Buttons;
 	std::vector<std::shared_ptr<Shape>> m_Shapes;
-	std::vector<Text> m_Text;
+	std::vector<std::shared_ptr<Text>> m_Text;
 	Vector2Df m_ScreenSize;
 	float m_Time = 0.0f;
 	std::shared_ptr<FontRenderer> m_FontRenderer;
@@ -34,6 +34,7 @@ public:
 	UserInterface(const Vector2Df &p_ScreenSize, const std::string &p_File);
 	~UserInterface() = default;
 
+	GameState HandleInput(sf::Event &p_Event, const GameState &p_CurrentGameState);
 	void Update(float p_DeltaTime);
 	void Render();
 

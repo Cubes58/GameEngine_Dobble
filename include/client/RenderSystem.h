@@ -42,7 +42,7 @@ public:
 	}
 	~RenderSystem() = default;
 
-	virtual void Render(Window &p_Window) override {
+	virtual void Render() override {
 		for (const auto &entity : *m_Entities) {
 			auto potentialRenderComponent = m_RenderComponents->find(entity);
 			auto potentialTransformComponent = m_TransformComponents->find(entity);

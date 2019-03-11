@@ -140,7 +140,8 @@ void FontRenderer::RenderText(const std::string &p_Text, float p_XPosition, floa
 	gl::BindTexture(gl::TEXTURE_2D, 0);
 }
 
-void FontRenderer::RenderText(const Text &p_Text) {
+void FontRenderer::RenderText(Text &p_Text) {
+	p_Text.Update();
 	RenderText(p_Text.m_Text, p_Text.m_Position.X(), p_Text.m_Position.Y(), p_Text.m_Size, p_Text.m_Colour);
 }
 

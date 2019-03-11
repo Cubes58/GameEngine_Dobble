@@ -196,7 +196,6 @@
     <ClCompile Include="source\client\GamePlayScene.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
-    <ClCompile Include="source\client\MenuScene.cpp" />
     <ClCompile Include="source\client\RectangleShape.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
@@ -221,7 +220,6 @@
     <ClInclude Include="include\client\GamePlayScene.h" />
     <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
-    <ClInclude Include="include\client\MenuScene.h" />
     <ClInclude Include="include\client\PostProcessor.h" />
     <ClInclude Include="include\client\RectangleShape.h" />
     <ClInclude Include="include\client\RenderSystem.h" />

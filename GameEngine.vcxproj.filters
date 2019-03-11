@@ -102,9 +102,6 @@
     <ClCompile Include="source\client\CircleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\client\MenuScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\client\EndGameScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -112,6 +109,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\client\ParticleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\client\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,9 +194,6 @@
     <ClInclude Include="include\client\CircleShape.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\MenuScene.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\Button.h">
       <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
@@ -230,12 +227,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="resources\shaders\ShapesShader.vert">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="resources\shaders\PostProcessingEffects.frag">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="resources\shaders\PostProcessingEffects.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

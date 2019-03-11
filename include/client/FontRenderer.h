@@ -50,7 +50,7 @@ public:
 		\param p_Colour the colour of the text.
 	*/
 	void RenderText(const std::string &p_Text, float p_XPosition, float p_YPosition, float p_Scale, const glm::vec3 &p_Colour);
-	void RenderText(const Text &p_Text);
+	void RenderText(Text &p_Text);
 
 	void SetFont(const std::string &p_FontPath);
 	void SetScreenSize(const Vector2Df &p_ScreenSize);
