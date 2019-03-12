@@ -9,7 +9,7 @@
 #include "PacketTypes.h"
 
 #include "GamePlayScene.h"
-#include "EndGameScene.h"
+#include "Text.h"
 
 Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::MAIN_MENU) {
 	EntityManagerInstance.Init();
@@ -98,10 +98,10 @@ void Game::SetScene() {
 		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/HelpLayout.JSON");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<EndGameScene>(screenSize, "resources/userInterfaceLayouts/EndGameWinScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/EndGameWinScene.JSON");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<EndGameScene>(screenSize, "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
 		break;
 	case GameState::SHUTDOWN:
 		break;
@@ -113,9 +113,17 @@ void Game::SetScene() {
 	m_PreviousState = this->m_GameState;
 	m_Scene->m_GameState = this->m_GameState;
 
-	if (m_GameState == GameState::WIN || m_GameState == GameState::LOSE) {
-		EndGameScene *scene = static_cast<EndGameScene*>(m_Scene.get());
-		scene->SetFinalPlayerScore(playerScore);
-		scene->SetNumberOfRoundsWon(numberOfRoundsWon);
+	auto SetEndGameText = [&](Scene *p_Scene, const glm::vec3 &p_Colour) {
+		p_Scene->AddText(std::make_shared<Text>("Final Score: " + std::to_string((int)playerScore), Vector2Df(0.20f, 0.125f), 0.7f, p_Colour));
+		p_Scene->AddText(std::make_shared<Text>("Rounds Won: " + std::to_string(numberOfRoundsWon), Vector2Df(0.60f, 0.125f), 0.7f, p_Colour));
+	};
+
+	if (m_GameState == GameState::WIN) {
+		Scene *scene = static_cast<Scene*>(m_Scene.get());		
+		SetEndGameText(scene, glm::vec3(0.098f, 0.439f, 0.098f));
+	}
+	else if (m_GameState == GameState::LOSE) {
+		Scene *scene = static_cast<Scene*>(m_Scene.get());
+		SetEndGameText(scene, glm::vec3(0.439f, 0.098f, 0.098f));
 	}
 }

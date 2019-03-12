@@ -14,31 +14,6 @@
 #include "CollisionComponent.h"
 #include "RenderComponent.h"
 
-/*
-std::vector<Vector2Df> Deck::GeneratePositionsWithinCircle(Vector2Df p_CirclePosition, float p_CircleRadius) {
-	std::vector<Vector2Df> m_CirclePositions;
-	unsigned int numberOfPositions = static_cast<unsigned int>(M_PI * (p_CircleRadius * p_CircleRadius));
-	m_CirclePositions.reserve(numberOfPositions);
-
-	float circleLeft = p_CirclePosition.X() - p_CircleRadius;		// Left of the screen is 0
-	float circleRight = p_CirclePosition.X() + p_CircleRadius;
-
-	float circleTop = p_CirclePosition.Y() - p_CircleRadius;		// Top of screen is 0
-	float circleBottom = p_CirclePosition.Y() + p_CircleRadius;
-
-	for (float yPosition = circleTop; yPosition <= circleBottom; yPosition++) {
-		for (float xPosition = circleLeft; xPosition <= circleRight; xPosition++) {
-			Vector2Df position(xPosition, yPosition);
-
-			if (m_Collision.IsCircleInCircle(p_CirclePosition, p_CircleRadius, position)) {
-				m_CirclePositions.emplace_back(position);
-			}
-		}
-	}
-
-	return m_CirclePositions;
-}*/
-
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	static constexpr unsigned int s_ConstantIncrement = 1;
 	// Check if the given number is prime;
@@ -174,22 +149,6 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 
 	return false;
 }
-
-/*
-bool Deck::IsPositionWithinCircle(Vector2Df p_CirclePosition, float p_CircleRadius, Vector2Df p_Position) {
-	Vector2Df distance(p_CirclePosition - p_Position);
-	float squareDist = distance.DotProduct(distance);
-
-	return squareDist < p_CircleRadius * p_CircleRadius;
-}
-
-bool Deck::IsCircleWithinCircle(Vector2Df p_CardCentrePosition, float p_CardRadius, Vector2Df p_EntityOnePosition, float p_EntityOneRadius) {
-	Vector2Df distance(p_CardCentrePosition - p_EntityOnePosition);
-	float squareDist = distance.DotProduct(distance);
-	float radiiSum = p_CardRadius - p_EntityOneRadius;
-
-	return squareDist < radiiSum * radiiSum;
-}*/
 
 std::vector<Vector2Df> Deck::CreateDirectionLine(Vector2Df p_CirclePosition, float p_LineLength, float p_Angle) {
 	std::vector<Vector2Df> line;

@@ -40,4 +40,5 @@ public:
 
 	void AddText(std::shared_ptr<Text> p_Text);
 	void SetScreenSize(const Vector2Df &p_ScreenSize);
+	void SetGameState(const GameState &p_GameState);
 };

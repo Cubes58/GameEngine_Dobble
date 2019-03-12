@@ -23,6 +23,7 @@ private:
 	sf::Int32 m_RoundsWon = 0;
 	float m_Score = 0.0f;
 	float m_TimeOfLastAttempt = -ATTEMPT_DELAY;
+	bool m_CouldConnect = true;
 	std::shared_ptr<ParticleManager> m_ParticleManager;
 
 	void HandlePacket(sf::Packet &p_Packet);

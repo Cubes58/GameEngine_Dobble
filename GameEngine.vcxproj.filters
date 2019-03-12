@@ -102,9 +102,6 @@
     <ClCompile Include="source\client\CircleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\client\EndGameScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\client\PostProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -199,9 +196,6 @@
     </ClInclude>
     <ClInclude Include="include\client\Text.h">
       <Filter>Header Files\UserInterface</Filter>
-    </ClInclude>
-    <ClInclude Include="include\client\EndGameScene.h">
-      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="include\client\PostProcessor.h">
       <Filter>Header Files</Filter>

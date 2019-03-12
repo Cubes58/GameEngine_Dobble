@@ -190,7 +190,6 @@
   <ItemGroup>
     <ClCompile Include="source\client\CircleShape.cpp" />
     <ClCompile Include="source\client\Client.cpp" />
-    <ClCompile Include="source\client\EndGameScene.cpp" />
     <ClCompile Include="source\client\FontRenderer.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
     <ClCompile Include="source\client\GamePlayScene.cpp" />
@@ -214,7 +213,6 @@
     <ClInclude Include="include\client\Button.h" />
     <ClInclude Include="include\client\CircleShape.h" />
     <ClInclude Include="include\client\Client.h" />
-    <ClInclude Include="include\client\EndGameScene.h" />
     <ClInclude Include="include\client\FontRenderer.h" />
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GamePlayScene.h" />

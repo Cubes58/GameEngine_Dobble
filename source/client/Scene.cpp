@@ -46,3 +46,7 @@ void Scene::SetScreenSize(const Vector2Df &p_ScreenSize) {
 
 	m_PostProcessor = std::make_shared<PostProcessor>(m_ScreenSize);
 }
+
+void Scene::SetGameState(const GameState &p_GameState) {
+	m_GameState = p_GameState;
+}

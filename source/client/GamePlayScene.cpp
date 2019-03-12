@@ -16,12 +16,13 @@ GamePlayScene::GamePlayScene(const Vector2Df &p_ScreenSize, const std::string &p
 	: Scene(p_ScreenSize, p_File) {
 	m_ParticleManager = std::make_shared<ParticleManager>(p_ScreenSize, MAX_NUMBER_OF_PARTICLES);
 	
-	m_Client.Connect(sf::Time::Zero);
+	m_CouldConnect = m_Client.Connect(sf::Time::Zero);
 }
 
 GamePlayScene::~GamePlayScene() {
 	// Disconnect from the server, gracefully.
 	m_Client.Disconnect();
+	EntityManagerInstance.Clear();
 }
 
 void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
@@ -57,6 +58,11 @@ void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 }
 
 void GamePlayScene::Update(float p_DeltaTime) {
+	if (!m_CouldConnect) {
+		m_GameState = GameState::MAIN_MENU;
+		return;
+	}
+
 	EntityManagerInstance.UpdateSystems(p_DeltaTime);
 	m_UserInterface->Update(p_DeltaTime);
 	m_PostProcessor->Update(p_DeltaTime);
@@ -95,15 +101,12 @@ void GamePlayScene::Render() {
 
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	PacketID packetID = Packet::GetPacketType(p_Packet);
-
-	float quarterWidth = (float)m_ScreenSize.X() / 4.0f;
-	float heightOffset = (float)m_ScreenSize.Y() / 2.0f;
 	
 	if (packetID == Packet::PLAYER_CARD_DATA) {
-		CreateCardEntity(m_PlayerEntityID, p_Packet, Vector2Df(quarterWidth, heightOffset));
+		CreateCardEntity(m_PlayerEntityID, p_Packet, Vector2Df((float)m_ScreenSize.X() / 4.0f, (float)m_ScreenSize.Y() / 2.0f));
 	}
 	else if (packetID == Packet::DECK_CARD_DATA) {
-		CreateCardEntity(m_DeckEntityID, p_Packet, Vector2Df(quarterWidth * 3, heightOffset));
+		CreateCardEntity(m_DeckEntityID, p_Packet, Vector2Df(((float)m_ScreenSize.X() / 4.0f) * 3, (float)m_ScreenSize.Y() / 2.0f));
 	}
 	else if (packetID == Packet::ROUND_FINISHED) {
 		bool hasWonRound = false;
