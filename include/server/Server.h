@@ -19,6 +19,8 @@ private:
 	std::map<ClientID, std::shared_ptr<sf::TcpSocket>> m_Clients;
 	sf::SocketSelector m_SocketSelector;
 	sf::TcpListener m_Listener;
+	sf::TcpListener m_LobbyListener;
+	sf::Int32 m_GamePortNumber = -1;
 	bool m_Listening;
 
 public:

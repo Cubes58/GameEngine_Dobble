@@ -14,10 +14,28 @@ bool Client::Connect(const sf::Time &p_ConnectWaitTimeOut) {
 		m_Connected = false;
 		return false;
 	}
-	m_Connected = true;
-	Log(Type::INFO) << "Connected to the server!";
+	Log(Type::INFO) << "Connected to the server listener!";
 	
+	sf::Packet packet;
+	if (ReceiveData(packet)) {
+		if (Packet::GetPacketType(packet) == Packet::CONNECT) {
+			// Get the new port number.
+			packet >> m_PlayPortNumber;
+
+			m_ServerSocket.disconnect();
+			// Connect to the server, on this port.
+			if (m_ServerSocket.connect(m_ServerIPAddress, m_PlayPortNumber, sf::Time::Zero) != sf::Socket::Done) {
+				Log(Type::FAULT) << "Couldn't connect to the new server port, to play the game. Port number: " << m_PlayPortNumber;
+				return false;
+			}
+			else {
+				m_Connected = true;
+				Log(Type::INFO) << "Connected to a game on the server (in lobby)!";
+			}
+		}
+	}
 	m_ServerSocket.setBlocking(false);	// Ensure the methods return immediately.
+
 	return true;
 }
 
@@ -38,8 +56,10 @@ void Client::Disconnect() {
 }
 
 bool Client::Send(sf::Packet &p_Packet) {
-	if (!m_Connected || m_ServerSocket.send(p_Packet) != sf::Socket::Done)
+	if (!m_Connected || m_ServerSocket.send(p_Packet) != sf::Socket::Done) {
+		Log(Type::FAULT) << "Couldn't send packet, to the server." << "\n" << "Connection state: " << m_Connected;
 		return false;
+	}
 
 	Log(Type::INFO) << "Packet being sent, to the server.";
 	return true;

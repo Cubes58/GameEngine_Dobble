@@ -40,6 +40,10 @@ void ServerGame::SendStartingInformation() {
 		playerCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(playerCard);
 		m_Server.Send(client, playerCardPacket);
 	}
+
+	m_Server.SetListeningState(false);
+	sf::Packet startingPacket = Packet::SetPacketType(Packet::STARTING_GAME);
+	m_Server.Send(startingPacket);
 }
 
 void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {

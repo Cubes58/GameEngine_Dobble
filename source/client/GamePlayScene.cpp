@@ -129,6 +129,9 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 		else
 			m_GameState = GameState::LOSE;
 	}
+	else if (packetID == Packet::STARTING_GAME) {
+		m_UserInterface->ResetTime();
+	}
 	else if (packetID == Packet::DISCONNECT) {
 		m_GameState = GameState::MAIN_MENU;
 	}

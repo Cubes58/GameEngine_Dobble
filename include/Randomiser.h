@@ -6,12 +6,11 @@
 
 class Randomiser {
 private:
-	std::random_device m_RandomDevice;
-	std::mt19937 m_Generator;
+	std::mt19937 m_Generator{std::random_device{}()};
 
 	static constexpr unsigned int s_m_MaxNumberOfAttempts = 35;
 
-	Randomiser() : m_Generator(m_RandomDevice()) {}
+	Randomiser() = default;
 	~Randomiser() = default;
 
 public:

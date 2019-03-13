@@ -1,7 +1,4 @@
-[INFO]: Dobble Server
-----------------
-Listening on port: 8787
-
+[INFO]: The game will be played on port: 8920
 [INFO]: OpenGL version: 4.6.0 NVIDIA 398.36
 [WARNING]: Unable to load: 0 functions.
 [INFO]: 
@@ -144,98 +141,7 @@ void main() {
 [INFO]: Attempting to connect to the server... 
 Port number: 8787
 IP Address: 127.0.0.1
-[INFO]: Connected to the server!
-[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 0
-[INFO]: Number of circles in the render component: 7
+[INFO]: Connected to the server listener!
 [INFO]: Packet being received, from the server.
-[INFO]: Symbol ID: 0
-[INFO]: Symbol ID: 6
-[INFO]: Symbol ID: 10
-[INFO]: Symbol ID: 14
-[INFO]: Symbol ID: 18
-[INFO]: Symbol ID: 22
-[INFO]: Symbol ID: 31
-[INFO]: Number of circles in the transform component: 7
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
-[INFO]: Transform data: XPos: 34.8592	YPos: -42.4316	Radius: 60.4232	Rotation:215.583
-[INFO]: Transform data: XPos: 140.158	YPos: 106.418	Radius: 60.8922	Rotation:104.173
-[INFO]: Transform data: XPos: -35.4198	YPos: 152.953	Radius: 59.7465	Rotation:180.159
-[INFO]: Transform data: XPos: -101.123	YPos: 19.712	Radius: 46.9208	Rotation:197.903
-[INFO]: Transform data: XPos: -9.48697	YPos: -186.414	Radius: 59.127	Rotation:62.3424
-[INFO]: Transform data: XPos: 174.178	YPos: -45.8754	Radius: 61.3233	Rotation:272.461
-[INFO]: Successfully sent data to a client! Client ID: 0
-[INFO]: Number of circles in the render component: 7
-[INFO]: Symbol ID: 0
-[INFO]: Symbol ID: 2
-[INFO]: Symbol ID: 11
-[INFO]: Packet being received, from the server.
-[INFO]: Symbol ID: 16
-[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
-[INFO]: Symbol ID: 21
-[INFO]: XPos: 34.8592	YPos: -42.4316	Radius: 60.4232	Rotation: 215.583
-[INFO]: Symbol ID: 26
-[INFO]: XPos: 140.158	YPos: 106.418	Radius: 60.8922	Rotation: 104.173
-[INFO]: Symbol ID: 31
-[INFO]: XPos: -35.4198	YPos: 152.953	Radius: 59.7465	Rotation: 180.159
-[INFO]: Number of circles in the transform component: 7
-[INFO]: XPos: -101.123	YPos: 19.712	Radius: 46.9208	Rotation: 197.903
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
-[INFO]: XPos: -9.48697	YPos: -186.414	Radius: 59.127	Rotation: 62.3424
-[INFO]: XPos: 174.178	YPos: -45.8754	Radius: 61.3233	Rotation: 272.461
-[INFO]: Transform data: XPos: -87.0236	YPos: -83.0127	Radius: 53.9609	Rotation:188.359
-[INFO]: Transform data: XPos: -2.58952	YPos: 47.8396	Radius: 52.4169	Rotation:100.406
-[INFO]: Transform data: XPos: 162.459	YPos: -30.8022	Radius: 61.794	Rotation:265.574
-[INFO]: Transform data: XPos: -33.8441	YPos: 171.405	Radius: 62.283	Rotation:196.867
-[INFO]: Transform data: XPos: 118.864	YPos: 135.837	Radius: 56.9983	Rotation:330.166
-[INFO]: Transform data: XPos: 26.9788	YPos: -99.9988	Radius: 50.9887	Rotation:263.794
-[INFO]: Successfully sent data to a client! Client ID: 0
-[INFO]: Packet being received, from the server.
-[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
-[INFO]: XPos: -87.0236	YPos: -83.0127	Radius: 53.9609	Rotation: 188.359
-[INFO]: XPos: -2.58952	YPos: 47.8396	Radius: 52.4169	Rotation: 100.406
-[INFO]: XPos: 162.459	YPos: -30.8022	Radius: 61.794	Rotation: 265.574
-[INFO]: XPos: -33.8441	YPos: 171.405	Radius: 62.283	Rotation: 196.867
-[INFO]: XPos: 118.864	YPos: 135.837	Radius: 56.9983	Rotation: 330.166
-[INFO]: XPos: 26.9788	YPos: -99.9988	Radius: 50.9887	Rotation: 263.794
-[INFO]: The player has clicked on a symbol. Symbol ID: 16
-Entity Name: PlayerCard
-[INFO]: Symbol sent to the server!PlayerCard
-[INFO]: Packet being sent, to the server.
-[INFO]: The player has clicked on a symbol. Symbol ID: 16
-Entity Name: PlayerCard
-[INFO]: The player has clicked on a symbol. Symbol ID: 16
-Entity Name: PlayerCard
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Disconnecting, from the server.
-[INFO]: The server has been notified!
-[INFO]: Successfully disconnected, from the server.
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Attempting to connect to the server... 
-Port number: 8787
-IP Address: 127.0.0.1
-[FAULT(ERROR)]: The server wasn't listening!
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Attempting to connect to the server... 
-Port number: 8787
-IP Address: 127.0.0.1
-[FAULT(ERROR)]: The server wasn't listening!
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Attempting to connect to the server... 
-Port number: 8787
-IP Address: 127.0.0.1
-[FAULT(ERROR)]: The server wasn't listening!
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Attempting to connect to the server... 
-Port number: 8787
-IP Address: 127.0.0.1
-[FAULT(ERROR)]: The server wasn't listening!
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Attempting to connect to the server... 
-Port number: 8787
-IP Address: 127.0.0.1
-[FAULT(ERROR)]: The server wasn't listening!
-[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 1

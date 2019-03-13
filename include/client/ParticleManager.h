@@ -10,12 +10,13 @@ class Shader;
 class Texture2D;
 
 struct Particle {
+	glm::vec4 m_Colour;
 	Vector2Df m_Position;
 	Vector2Df m_Velocity;
-	glm::vec4 m_Colour;
+	float m_Orientation;
 	float m_Life;
 
-	Particle() : m_Position(0.0f), m_Velocity(0.0f), m_Colour(1.0f), m_Life(0.0f) {
+	Particle() : m_Position(0.0f), m_Velocity(0.0f), m_Colour(1.0f), m_Life(0.0f), m_Orientation(0.0f) {
 	}
 };
 

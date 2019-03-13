@@ -1,5 +1,8 @@
 #include "PostProcessor.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include "ResourceManager.h"
 #include "Logger.h"
 
@@ -41,7 +44,7 @@ PostProcessor::PostProcessor(const Vector2Df &p_TextureSize) : m_TextureSize(p_T
 
 	InitializeRenderData();
 
-	// Set "static" uniforms.
+	// Set uniforms.
 	m_Shader->Use();
 	m_Shader->SetInt("scene", 0);
 	float offset = 1.0f / 300.0f;
@@ -65,12 +68,8 @@ PostProcessor::PostProcessor(const Vector2Df &p_TextureSize) : m_TextureSize(p_T
 	};
 	gl::Uniform1iv(gl::GetUniformLocation(m_Shader->GetID(), "edgeKernel"), 9, edgeKernel);
 
-	float blurKernel[9] = {
-		1.0f / 16.0f, 2.0f / 16.0f, 1.0f / 16.0f,
-		2.0f / 16.0f, 4.0f / 16.0f, 2.0f / 16.0f,
-		1.0f / 16.0f, 2.0f / 16.0f, 1.0f / 16.0f
-	};
-	gl::Uniform1fv(gl::GetUniformLocation(m_Shader->GetID(), "blurKernel"), 9, blurKernel);
+	InitializeBlurKernels();
+	gl::Uniform1fv(gl::GetUniformLocation(m_Shader->GetID(), "blurKernel"), 9, &m_BlurKernels[9][0]);
 }
 
 PostProcessor::~PostProcessor() {
@@ -110,6 +109,69 @@ void PostProcessor::InitializeRenderData() {
 	// Unbind.
 	gl::BindBuffer(gl::ARRAY_BUFFER, 0);
 	gl::BindVertexArray(0);
+}
+
+void PostProcessor::InitializeBlurKernels() {
+	// Sigma 0.1
+	m_BlurKernels[0] = {
+		0,	0,			0,
+		0,	0.999998,	0,
+		0,	0,			0
+	};
+	// Sigma 0.2
+	m_BlurKernels[1] = {
+		0.000039,	0.006133,	0.000039,
+		0.006133,	0.975316,	0.006133,
+		0.000039,	0.006133,	0.000039
+	};
+	// Sigma 0.3
+	m_BlurKernels[2] = {
+		0.002284,	0.043222,	0.002284,
+		0.043222,	0.817976,	0.043222,
+		0.002284,	0.043222,	0.002284
+	};
+	// Sigma 0.4
+	m_BlurKernels[3] = {
+		0.011147,	0.083286,	0.011147,
+		0.083286,	0.622269,	0.083286,
+		0.011147,	0.083286,	0.011147
+	};
+	// Sigma 0.5
+	m_BlurKernels[4] = {
+		0.024879,	0.107973,	0.024879,
+		0.107973,	0.468592,	0.107973,
+		0.024879,	0.107973,	0.024879
+	};
+	// Sigma 0.6
+	m_BlurKernels[5] = {
+		0.039436,	0.119713,	0.039436,
+		0.119713,	0.363404,	0.119713,
+		0.039436,	0.119713,	0.039436
+	};
+	// Sigma 0.7
+	m_BlurKernels[6] = {
+		0.052356,	0.124103,	0.052356,
+		0.124103,	0.294168,	0.124103,
+		0.052356,	0.124103,	0.052356
+	};
+	// Sigma 0.8
+	m_BlurKernels[7] = {
+		0.06292,	0.124998,	0.06292,
+		0.124998,	0.248326,	0.124998,
+		0.06292,	0.124998,	0.06292
+	};
+	// Sigma 0.9
+	m_BlurKernels[8] = {
+		0.071282,	0.124423,	0.071282,
+		0.124423,	0.217183,	0.124423,
+		0.071282,	0.124423,	0.071282
+	};
+	// Sigma 1.0
+	m_BlurKernels[9] = {
+		0.077847,	0.123317,	0.077847,
+		0.123317,	0.195346,	0.123317,
+		0.077847,	0.123317,	0.077847
+	};
 }
 
 void PostProcessor::Update(float p_DeltaTime) {

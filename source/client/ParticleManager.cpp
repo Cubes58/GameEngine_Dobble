@@ -1,5 +1,8 @@
 #include "ParticleManager.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include "GLCore.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -47,7 +50,7 @@ unsigned int ParticleManager::FirstUnusedParticle() {
 		}
 	}
 
-	// Else, do a linear search.
+	// Do a linear search.
 	for (unsigned int i = 0; i < s_LastUsedParticleIndex; ++i) {
 		if (m_Particles[i].m_Life <= 0.0f) {
 			s_LastUsedParticleIndex = i;
@@ -61,12 +64,29 @@ unsigned int ParticleManager::FirstUnusedParticle() {
 }
 
 void ParticleManager::RespawnParticle(Particle &p_Particle, Vector2Df p_Position, Vector2Df p_Velocity) {
+	// Another particle is spawned in the same position as the previous, but the velocity is nothing.
+	// This causes the particle to "aim" in a different direction. (More aesthetically pleasing.)
+	static float s_PreviousAngle(0.0f);
 	float randomNumber = RandomiserInstance.GetUniformRealRandomNumber(0.0f, 1.0f);
 
 	p_Particle.m_Position = p_Position + randomNumber;
 	p_Particle.m_Colour = glm::vec4(randomNumber, randomNumber, randomNumber, 1.0f);
 	p_Particle.m_Life = m_ParticleLifeDuration;
 	p_Particle.m_Velocity = p_Velocity * 0.1f;
+
+	float angle(0.0f);
+	if (p_Particle.m_Velocity.Magnitude() <= 0.05f) {
+		angle = s_PreviousAngle;
+	}
+	else {
+		// Calculate an angle between where the particle and the direction it's heading in.
+		Vector2Df difference = (p_Particle.m_Position - p_Particle.m_Velocity * 100.0f) - p_Particle.m_Position;
+		angle = std::atan2f(difference.Y(), difference.X());
+		angle = (angle * 180.0f / M_PI) + 90.0f;
+	}
+
+	p_Particle.m_Orientation = angle;
+	s_PreviousAngle = angle;
 }
 
 void ParticleManager::Update(float p_DeltaTime, Vector2Df p_MousePosition) {
@@ -103,6 +123,7 @@ void ParticleManager::Render() {
 		if (particle.m_Life > 0.0f) {
 			s_RectangleShape.SetPosition(particle.m_Position);
 			s_RectangleShape.SetColour(particle.m_Colour);
+			s_RectangleShape.SetRotation(particle.m_Orientation);
 			s_RectangleShape.Render(*m_Shader);
 		}
 	}
