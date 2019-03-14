@@ -9,7 +9,7 @@
 
 class FontRenderer {
 private:
-	Vector2D<float> m_ScreenSize;	//!< Screen dimensions.
+	Vector2Df m_ScreenSize;	//!< Screen dimensions.
 
 	/**
 	* A structure to represent a Character.
@@ -39,7 +39,7 @@ public:
 		\param p_FontPath directory path to the font, that'll be used, to render the text.
 		\param p_ScreenSize size of the screen.
 	*/
-	FontRenderer(const std::string &p_FontPath, const Vector2D<float> &p_ScreenSize);
+	FontRenderer(const std::string &p_FontPath, const Vector2Df &p_ScreenSize);
 
 	/*!
 		\brief Used to render text.
@@ -50,8 +50,8 @@ public:
 		\param p_Colour the colour of the text.
 	*/
 	void RenderText(const std::string &p_Text, float p_XPosition, float p_YPosition, float p_Scale, const glm::vec3 &p_Colour);
-	void RenderText(const Text &p_Text);
+	void RenderText(Text &p_Text);
 
 	void SetFont(const std::string &p_FontPath);
-	void SetScreenSize(const Vector2D<float> &p_ScreenSize);
+	void SetScreenSize(const Vector2Df &p_ScreenSize);
 };

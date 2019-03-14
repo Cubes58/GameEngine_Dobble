@@ -5,14 +5,19 @@
 
 #include "EntityManager.h"
 #include "Component.h"
+#include "Randomiser.h"
 #include "Logger.h"
 
 ServerGame::ServerGame() : m_IsRunning(true) {
+	int rand = Randomiser::Instance().GetUniformIntegerRandomNumber(1, 100);
+	if (rand % 2 == 0)
+		m_Deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, (unsigned int)6);
+	else
+		m_Deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, (unsigned int)8);
+	
 	// Connect to the server.
-	m_Server.WaitForClientsToConnect(s_m_NumberOfPlayers);	// Once two people have connected wait another 7.5 seconds for more players - with a max.
-
-	// Create Cards. (Need to get the number of cards/circles from the clients (Connect packet).) This generates cards, at origin, with a radius of 200.
-	m_Deck.GenerateCards(Vector2D<float>(0.0f, 0.0f), 250.0f, (unsigned int)6);
+	m_Server.WaitForClientsToConnect(s_m_NumberOfPlayers);
+	
 	SendStartingInformation();
 }
 
@@ -35,6 +40,10 @@ void ServerGame::SendStartingInformation() {
 		playerCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(playerCard);
 		m_Server.Send(client, playerCardPacket);
 	}
+
+	m_Server.SetListeningState(false);
+	sf::Packet startingPacket = Packet::SetPacketType(Packet::STARTING_GAME);
+	m_Server.Send(startingPacket);
 }
 
 void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
@@ -65,7 +74,7 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 	}
 
 	bool gameOver = false;
-	if (roundWon) {										// Deck card will also be needed to carry on the game (+1).
+	if (roundWon) {		// Deck card will also be needed to carry on the game (+1).
 		if (m_Deck.NumberOfRemainingCards() < numberOfPlayersThatWon + 1) {
 			m_GameOver = true;
 		}

@@ -11,6 +11,7 @@ private:
 	static const int s_m_PortNumber = 8787;	
 	sf::IpAddress m_ServerIPAddress = "127.0.0.1";			
 	sf::TcpSocket m_ServerSocket;			
+	sf::Int32 m_PlayPortNumber = -1;
 	bool m_Connected;						
 
 public:

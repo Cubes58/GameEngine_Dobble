@@ -1,13 +1,20 @@
 #pragma once
 
+#include <array>
+
 #include "Vector2D.h"
 #include "Texture2D.h"
 
 class Shader;
 
+static const constexpr unsigned int s_NumberOfBlurKernels = 10;
+
 class PostProcessor {
 private:
 	Texture2D m_Texture;
+	
+	std::array<std::array<float, 9>, s_NumberOfBlurKernels> m_BlurKernels;
+	float GKernel[3][3];
 	Vector2Df m_TextureSize;
 
 	unsigned int m_MultisampledFrameBufferObject;
@@ -26,6 +33,7 @@ private:
 	Shader *m_Shader;
 
 	void InitializeRenderData();
+	void InitializeBlurKernels();
 
 public:
 	PostProcessor(const Vector2Df &p_TextureSize);

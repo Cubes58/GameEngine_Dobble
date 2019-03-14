@@ -2,8 +2,6 @@
 
 #include "EntityManager.h"
 
-
-
 EntitySystem::EntitySystem() {
 	m_Entities = &EntityManagerInstance.m_Entities;
 }

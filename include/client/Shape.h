@@ -10,7 +10,7 @@ class Shader;
 class Shape {
 protected:
 	glm::vec4 m_Colour;
-	Vector2D<float> m_Position;
+	Vector2Df m_Position;
 	float m_Rotation = 0.0f;
 	float m_ColourTextureMixValue = 0.0f;
 	unsigned int m_VBO;
@@ -20,10 +20,10 @@ protected:
 
 public:
 	Shape() = default;
-	Shape(const Vector2D<float> &p_Position) : m_Position(p_Position) { }
+	Shape(const Vector2Df &p_Position) : m_Position(p_Position) { }
 	Shape(Texture2D *p_Texture) : m_Texture(p_Texture) { }
 	Shape(const glm::vec4 &p_Colour) : m_Colour(p_Colour) { }
-	Shape(const Vector2D<float> &p_Position, Texture2D *p_Texture = nullptr, float p_Rotation = 0.0f, const glm::vec4 &p_Colour = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f))
+	Shape(const Vector2Df &p_Position, Texture2D *p_Texture = nullptr, float p_Rotation = 0.0f, const glm::vec4 &p_Colour = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f))
 		: m_Position(p_Position), m_Texture(p_Texture), m_Rotation(p_Rotation), m_Colour(p_Colour) { }
 	~Shape() {
 		gl::DeleteBuffers(1, &m_VBO);
@@ -36,10 +36,10 @@ public:
 		return m_VAO;
 	}
 
-	const Vector2D<float> &GetPosition() const {
+	const Vector2Df &GetPosition() const {
 		return m_Position;
 	}
-	void SetPosition(const Vector2D<float> &p_Position) {
+	void SetPosition(const Vector2Df &p_Position) {
 		m_Position = p_Position;
 	}
 

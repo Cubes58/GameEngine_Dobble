@@ -8,6 +8,7 @@ namespace Packet {
 	enum PacketType {
 		DISCONNECT = -1,	// Disconnect from the server.
 		CONNECT = 0,		// Connection established.
+		STARTING_GAME,		// When the game is starting.
 		SYMBOL_ID,			// Players' symbol guess.
 		PLAYER_CARD_DATA,	// Send the information for the player's card.
 		DECK_CARD_DATA,		// Send the information for the deck's top card.

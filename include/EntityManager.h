@@ -135,9 +135,9 @@ public:
 		}
 	}
 
-	void RenderSystems(Window &p_Window) {
+	void RenderSystems() {
 		for (auto &entitySystem : m_Systems) {
-			entitySystem->Render(p_Window);
+			entitySystem->Render();
 		}
 	}
 

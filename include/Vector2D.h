@@ -44,6 +44,10 @@ public:
 		*this = *this + p_Vector;
 		return *this;
 	}
+	Vector2D& operator-=(const Vector2D& p_Vector) {
+		*this = *this - p_Vector;
+		return *this;
+	}
 	Vector2D operator-(const Vector2D &p_Vector) const {
 		return Vector2D(m_XValue - p_Vector.m_XValue, m_YValue - p_Vector.m_YValue);
 	}

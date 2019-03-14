@@ -7,7 +7,6 @@
 
 using EntityID = std::size_t;
 struct Component;
-class Window;
 
 class EntitySystem {
 protected:
@@ -20,5 +19,5 @@ public:
 	virtual ~EntitySystem() = default;
 
 	virtual void Update(float p_DeltaTime) {}
-	virtual void Render(Window &p_Window) {}
+	virtual void Render() {}
 };

@@ -74,28 +74,28 @@
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
     <IncludePath>./include/client;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/client;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
     <IncludePath>./include/client;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/client;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
     <IncludePath>./include/client;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/client;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
     <IncludePath>./include/client;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/client;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -192,16 +192,16 @@
   <ItemGroup>
     <ClCompile Include="source\client\CircleShape.cpp" />
     <ClCompile Include="source\client\Client.cpp" />
-    <ClCompile Include="source\client\EndGameScene.cpp" />
     <ClCompile Include="source\client\FontRenderer.cpp" />
     <ClCompile Include="source\client\Game.cpp" />
     <ClCompile Include="source\client\GamePlayScene.cpp" />
     <ClCompile Include="source\client\GLCore.cpp" />
     <ClCompile Include="source\client\main.cpp" />
-    <ClCompile Include="source\client\MenuScene.cpp" />
+    <ClCompile Include="source\client\ParticleManager.cpp" />
     <ClCompile Include="source\client\PostProcessor.cpp" />
     <ClCompile Include="source\client\RectangleShape.cpp" />
     <ClCompile Include="source\client\ResourceManager.cpp" />
+    <ClCompile Include="source\client\Scene.cpp" />
     <ClCompile Include="source\client\Shader.cpp" />
     <ClCompile Include="source\client\stb_image.c" />
     <ClCompile Include="source\client\Texture2D.cpp" />
@@ -218,13 +218,12 @@
     <ClInclude Include="include\client\Button.h" />
     <ClInclude Include="include\client\CircleShape.h" />
     <ClInclude Include="include\client\Client.h" />
-    <ClInclude Include="include\client\EndGameScene.h" />
     <ClInclude Include="include\client\FontRenderer.h" />
     <ClInclude Include="include\client\Game.h" />
     <ClInclude Include="include\client\GamePlayScene.h" />
     <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
-    <ClInclude Include="include\client\MenuScene.h" />
+    <ClInclude Include="include\client\ParticleManager.h" />
     <ClInclude Include="include\client\PostProcessor.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
     <ClInclude Include="include\client\ResourceManager.h" />
@@ -238,14 +237,13 @@
     <ClInclude Include="include\client\Window.h" />
     <ClInclude Include="include\Collision.h" />
     <ClInclude Include="include\CollisionComponent.h" />
-    <ClInclude Include="include\CollisionSystem.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
     <ClInclude Include="include\FileSystemHelper.h" />
     <ClInclude Include="include\Logger.h" />
-    <ClInclude Include="include\MoveSymbolsSystem.h" />
     <ClInclude Include="include\PacketTypes.h" />
+    <ClInclude Include="include\Randomiser.h" />
     <ClInclude Include="include\RenderComponent.h" />
     <ClInclude Include="include\TransformComponent.h" />
     <ClInclude Include="include\Vector2D.h" />
@@ -253,8 +251,6 @@
   <ItemGroup>
     <None Include="resources\shaders\FontShader.frag" />
     <None Include="resources\shaders\FontShader.vert" />
-    <None Include="resources\shaders\PostProcessingEffects.frag" />
-    <None Include="resources\shaders\PostProcessingEffects.vert" />
     <None Include="resources\shaders\ShapesShader.frag" />
     <None Include="resources\shaders\ShapesShader.vert" />
   </ItemGroup>

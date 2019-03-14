@@ -74,9 +74,6 @@
     <ClInclude Include="include\Component.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionSystem.h">
-      <Filter>Header Files\EntitySystems</Filter>
-    </ClInclude>
     <ClInclude Include="include\EntityManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
@@ -85,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="include\TransformComponent.h">
       <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MoveSymbolsSystem.h">
-      <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
     <ClInclude Include="include\RenderComponent.h">
       <Filter>Header Files\Components</Filter>
@@ -104,14 +98,14 @@
     <ClInclude Include="include\Logger.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
-    <ClInclude Include="include\server\Randomiser.h">
-      <Filter>Header Files\Tools</Filter>
-    </ClInclude>
     <ClInclude Include="include\Vector2D.h">
       <Filter>Header Files\Tools</Filter>
     </ClInclude>
     <ClInclude Include="include\Collision.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Randomiser.h">
+      <Filter>Header Files\Tools</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

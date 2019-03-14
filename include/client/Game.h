@@ -12,6 +12,7 @@ private:
 	Window &m_Window;
 	std::unique_ptr<Scene> m_Scene;
 	GameState m_GameState;
+	GameState m_PreviousState;
 
 	void SetScene();
 

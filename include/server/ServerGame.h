@@ -9,7 +9,7 @@
 
 class ServerGame {
 private:
-	static const constexpr unsigned int s_m_NumberOfPlayers = 1;//3;
+	static const constexpr unsigned int s_m_NumberOfPlayers = 2;
 
 	Server m_Server;
 	Deck m_Deck;

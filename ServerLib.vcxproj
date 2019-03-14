@@ -72,28 +72,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>./include/server;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/server;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>./include/server;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/server;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>./include/server;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/server;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>./include/server;./include;./external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>./source/server;./source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <LibraryPath>./external/libs;./external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
   </PropertyGroup>
@@ -205,9 +205,9 @@
     <ClInclude Include="include\Logger.h" />
     <ClInclude Include="include\MoveSymbolsSystem.h" />
     <ClInclude Include="include\PacketTypes.h" />
+    <ClInclude Include="include\Randomiser.h" />
     <ClInclude Include="include\RenderComponent.h" />
     <ClInclude Include="include\server\Deck.h" />
-    <ClInclude Include="include\server\Randomiser.h" />
     <ClInclude Include="include\server\Server.h" />
     <ClInclude Include="include\server\ServerGame.h" />
     <ClInclude Include="include\TransformComponent.h" />

@@ -53,9 +53,6 @@
     <ClInclude Include="include\server\Server.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\server\Randomiser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\server\ServerGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -99,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Randomiser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

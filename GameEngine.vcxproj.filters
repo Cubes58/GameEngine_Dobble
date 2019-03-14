@@ -102,13 +102,13 @@
     <ClCompile Include="source\client\CircleShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\client\MenuScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\client\EndGameScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\client\PostProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\client\ParticleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\client\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,9 +137,6 @@
     <ClInclude Include="include\TransformComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionSystem.h">
-      <Filter>Header Files\EntitySystems</Filter>
-    </ClInclude>
     <ClInclude Include="include\CollisionComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -148,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="include\client\Window.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MoveSymbolsSystem.h">
-      <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
     <ClInclude Include="include\RenderComponent.h">
       <Filter>Header Files\Components</Filter>
@@ -197,23 +191,23 @@
     <ClInclude Include="include\client\CircleShape.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\MenuScene.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\Button.h">
       <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
     <ClInclude Include="include\client\Text.h">
       <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
-    <ClInclude Include="include\client\EndGameScene.h">
-      <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\PostProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Collision.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Randomiser.h">
+      <Filter>Header Files\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="include\client\ParticleManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -227,12 +221,6 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="resources\shaders\ShapesShader.vert">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="resources\shaders\PostProcessingEffects.frag">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="resources\shaders\PostProcessingEffects.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

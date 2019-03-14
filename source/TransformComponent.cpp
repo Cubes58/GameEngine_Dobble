@@ -34,7 +34,7 @@ sf::Packet &operator>>(sf::Packet &p_Packet, TransformComponent &p_TransformComp
 		p_Packet >> rotation;
 
 		Log(Type::INFO) << "XPos: " << xPosition << "\tYPos: " << yPosition << "\tRadius: " << radius << "\tRotation: " << rotation;
-		p_TransformComponent.m_CircleTransforms.emplace_back(Vector2D<float>(xPosition, yPosition), radius, rotation);
+		p_TransformComponent.m_CircleTransforms.emplace_back(Vector2Df(xPosition, yPosition), radius, rotation);
 	}
 
 	return p_Packet;

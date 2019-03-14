@@ -2,6 +2,7 @@
 
 #include <climits>
 
+#include "Randomiser.h"
 #include "Logger.h"
 
 unsigned int Server::s_m_NewClientID = 0;
@@ -17,6 +18,14 @@ Server::Server() {
 		m_SocketSelector.add(m_Listener);
 		m_Listening = true;
 	}
+
+	m_GamePortNumber = RandomiserInstance.GetUniformIntegerRandomNumber(8000, 10000);
+	if (m_LobbyListener.listen(m_GamePortNumber) != sf::Socket::Done)
+		Log(Type::FAULT) << "Couldn't listen on port: " << m_GamePortNumber;
+	else {
+		m_SocketSelector.add(m_LobbyListener);
+		Log(Type::INFO) << "The game will be played on port: " << m_GamePortNumber;
+	}
 }
 
 Server::~Server() {
@@ -28,24 +37,26 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 		if (m_SocketSelector.isReady(m_Listener)) {
 			std::shared_ptr<sf::TcpSocket> client = std::make_shared<sf::TcpSocket>();
 			if (m_Listener.accept(*client) == sf::Socket::Done) {
-				sf::Packet connectionPacket;
-				Packet::SetPacketType(Packet::CONNECT, connectionPacket);
-
-				if (s_m_NewClientID >= UINT_MAX)
-					s_m_NewClientID = (UINT_MAX - UINT_MAX);
-				ClientID clientID = s_m_NewClientID++;
-
-				// Acknowledge the connection.
-				if (client->send(connectionPacket) == sf::Socket::Done) {
-					m_Clients.insert(std::pair(clientID, client));
-					m_SocketSelector.add(*client);
-
-					Log(Type::INFO) << "Client connected. Remote address: " << client->getRemoteAddress().toString() << " Their ID is: " << clientID;
-					return true;
-				}
+				sf::Packet connectionPacket = Packet::SetPacketType(Packet::CONNECT);
+				connectionPacket << m_GamePortNumber;
+				client->send(connectionPacket);
 			}
 			else {
-				Log(Type::FAULT) << "Occured during client connection. Skipping.";
+				Log(Type::FAULT) << "A problem occured during client connection. Skipping.";
+			}
+		}
+		else if (m_SocketSelector.isReady(m_LobbyListener)) {
+			std::shared_ptr<sf::TcpSocket> client = std::make_shared<sf::TcpSocket>();
+			if (m_LobbyListener.accept(*client) == sf::Socket::Done) {
+				// Acknowledge the connection.
+				if (s_m_NewClientID >= UINT_MAX) {
+					s_m_NewClientID = (UINT_MAX - UINT_MAX);
+				}
+				m_Clients.insert(std::pair(++s_m_NewClientID, client));
+				m_SocketSelector.add(*client);
+
+				Log(Type::INFO) << "Client connected. Remote address: " << client->getRemoteAddress().toString() << " Their ID is: " << s_m_NewClientID;
+				return true;
 			}
 		}
 		else {
@@ -56,10 +67,7 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 					// The client has sent some data, it can be received.
 					sf::Packet packet;
 					if (client->second->receive(packet) == sf::Socket::Done) {
-						if (Packet::GetPacketType(packet) == Packet::CONNECT) {
-							// Maybe have the user's specify specific info, (number of cards in the deck - Could be a voting thing - user's vote, when they click on a certain game mode, etc...)
-						}
-						else if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
+						if (Packet::GetPacketType(packet) == Packet::DISCONNECT) {
 							Disconnect(client->first);
 						}
 					}
@@ -179,8 +187,10 @@ void Server::SetListeningState(bool p_Listen) {
 
 	if (p_Listen)
 		m_Listener.listen(s_m_PortToListenOn);
-	else
-		m_Listener.close();
+	else {
+		// Switch it, to listening for incoming "game" packets, and not new connections.
+		m_Listener.listen(m_GamePortNumber);
+	}
 }
 
 std::vector<ClientID> Server::GetClientIDs() {

@@ -7,19 +7,19 @@
 
 #include "Shader.h"
 
-CircleShape::CircleShape(const Vector2D<float> &p_Position, unsigned int p_NumberOfFaces, float p_Radius, Texture2D *p_Texture) 
+CircleShape::CircleShape(const Vector2Df &p_Position, unsigned int p_NumberOfFaces, float p_Radius, Texture2D *p_Texture) 
 	: Shape(p_Position, p_Texture), m_NumberOfFaces(p_NumberOfFaces), m_Radius(p_Radius) {
 	GenerateFaces(m_NumberOfFaces);
 }
 
 void CircleShape::Render(Shader &p_Shader) {
 	glm::mat4 model = glm::mat4(1.0f);
-	m_Radius *= 2.0f;
+
 	model = glm::translate(model, glm::vec3(m_Position.X(), m_Position.Y(), 0.0f));
 	model = glm::rotate(model, glm::radians(m_Rotation), glm::vec3(0.0f, 0.0f, 1.0f));	
 	// Centre the object.
-	model = glm::translate(model, glm::vec3(-m_Radius / 2.0f, -m_Radius / 2.0f, 0.0f));
-	model = glm::scale(model, glm::vec3(m_Radius, m_Radius, 1.0f));
+	model = glm::translate(model, glm::vec3(-m_Radius, -m_Radius, 0.0f));
+	model = glm::scale(model, glm::vec3(m_Radius * 2.0f, m_Radius * 2.0f, 1.0f));
 	p_Shader.SetMat4("model", model);
 
 	p_Shader.SetVec4("colour", m_Colour);
@@ -37,7 +37,7 @@ void CircleShape::Render(Shader &p_Shader) {
 }
 
 void CircleShape::GenerateFaces(unsigned int p_NumberOfFaces) {
-	const constexpr unsigned int numberOfAxis = 2; // X and Y
+	const constexpr unsigned int numberOfAxis = 2; // X and Y (Two axis).
 	const constexpr unsigned int numberOfVerticesPerTriangle = 3; // Three vertices to create a triangle shape.
 
 	m_NumberOfFaces = p_NumberOfFaces;
@@ -54,7 +54,7 @@ void CircleShape::GenerateFaces(unsigned int p_NumberOfFaces) {
 	circleVerticesX[0] = 0.5f;
 	circleVerticesY[0] = 0.5f;
 
-	// Construct all of the vertex point positions, for the cirle. (Add two float, one for x, the other for y.)
+	// Construct all of the vertex point positions, for the cirle. (Add two floats, one for x, the other for y.)
 	for (int i = 1; i < numberOfVertices; i++) {
 		circleVerticesX[i] = 0.5f + (radius * cos(i *  twicePi / m_NumberOfFaces));
 		circleVerticesY[i] = 1.0f -  (0.5f + (radius * sin(i * twicePi / m_NumberOfFaces)));

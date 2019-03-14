@@ -91,7 +91,7 @@ TEST(TransformComponentTest, DataInitialization) {
 	circleTransformData.reserve(numberOfCirclesPerCard);
 
 	for (unsigned int i = 0; i < numberOfCirclesPerCard; i++) {
-		circleTransformData.emplace_back(Vector2D<float>((float)i, (float)i), i * 10.0f, i * 15.0f);
+		circleTransformData.emplace_back(Vector2Df((float)i, (float)i), i * 10.0f, i * 15.0f);
 	}
 	TransformComponent transformComponent(circleTransformData);
 
@@ -115,7 +115,7 @@ TEST(TransformComponentTest, DataChange) {
 	circleTransformData.reserve(numberOfCirclesPerCard);
 
 	for (unsigned int i = 0; i < numberOfCirclesPerCard; i++) {
-		circleTransformData.emplace_back(Vector2D<float>((float)i, (float)i), i * 10.0f, i * 15.0f);
+		circleTransformData.emplace_back(Vector2Df((float)i, (float)i), i * 10.0f, i * 15.0f);
 	}
 	TransformComponent transformComponent(circleTransformData);
 
@@ -124,7 +124,7 @@ TEST(TransformComponentTest, DataChange) {
 		sameData = false;
 	}
 
-	circleTransformData[0].m_Position = Vector2D<float>(1.0f, 1000.0f);
+	circleTransformData[0].m_Position = Vector2Df(1.0f, 1000.0f);
 
 	for (unsigned int i = 0; i < numberOfCirclesPerCard; i++) {
 		if (circleTransformData[i] != transformComponent.m_CircleTransforms[i]) {
@@ -158,15 +158,15 @@ TEST(MouseInputTest, symbolGuess) {
 	circleTransformData.reserve(numberOfCirclesPerCard);
 
 	for (unsigned int i = 0; i < numberOfCirclesPerCard; i++) {
-		circleTransformData.emplace_back(Vector2D<float>((float)i, (float)i), i * 10.0f, i * 15.0f);
+		circleTransformData.emplace_back(Vector2Df((float)i, (float)i), i * 10.0f, i * 15.0f);
 	}
 	TransformComponent transformComponent(circleTransformData);
-	transformComponent.m_CircleTransforms[0].m_Position = Vector2D<float>(10.0f, 10.0f);
+	transformComponent.m_CircleTransforms[0].m_Position = Vector2Df(10.0f, 10.0f);
 	transformComponent.m_CircleTransforms[0].m_Radius = 50.0f;
 
 	bool success = false;
 	Collision collisionChecker;
-	if (collisionChecker(transformComponent.m_CircleTransforms[0].m_Position, transformComponent.m_CircleTransforms[0].m_Radius, Vector2D<float>(mousePosition.x, mousePosition.y)))
+	if (collisionChecker(transformComponent.m_CircleTransforms[0].m_Position, transformComponent.m_CircleTransforms[0].m_Radius, Vector2Df(mousePosition.x, mousePosition.y)))
 		success = true;
 
 	EXPECT_TRUE(success);

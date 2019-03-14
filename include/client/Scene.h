@@ -4,17 +4,16 @@
 #include <string>
 
 #include <glm/detail/type_vec3.hpp>
+#include <SFML/Window/Event.hpp>
 
-#include "Window.h"
-#include "GameState.h"
 #include "Vector2D.h"
-
-#include "UserInterface.h"
-#include "PostProcessor.h"
+#include "GameState.h"
 #include "Collision.h"
 
 class Game;
-class sf::Event;
+class UserInterface;
+class PostProcessor;
+struct Text;
 
 class Scene {
 private:
@@ -22,41 +21,24 @@ private:
 
 protected:
 	Collision m_Collision;
-	Vector2D<float> m_ScreenSize;
+	Vector2Df m_ScreenSize;
 	GameState m_GameState;
 	std::shared_ptr<UserInterface> m_UserInterface;
 	std::shared_ptr<PostProcessor> m_PostProcessor;
 
 public:
-	Scene(const Vector2D<float> &p_ScreenSize, const std::string &p_File) : m_ScreenSize(p_ScreenSize) {
-		m_UserInterface = std::make_shared<UserInterface>(m_ScreenSize, p_File);
-		m_PostProcessor = std::make_shared<PostProcessor>(m_ScreenSize);
-	}
+	Scene(const Vector2Df &p_ScreenSize, const std::string &p_File);
 	virtual ~Scene() = default;
 
-	virtual bool Change(GameState &p_GameState) {
-		if (static_cast<unsigned int>(m_GameState) != static_cast<unsigned int>(p_GameState)) {
-			p_GameState = m_GameState;
-			return true;
-		}
+	virtual bool Change(GameState &p_GameState);
+	virtual void HandleInputEvent(sf::Event &p_Event);
+	virtual void Update(float p_DeltaTime);
+	virtual void Render();
 
-		return false;
-	}
+	void RenderText(const std::string &p_Text, float p_XPosition, float p_YPosition, float p_Scale, const glm::vec3 &p_Colour);
+	void RenderText(const std::string &p_Text, const Vector2Df &p_Position, float p_Scale, const glm::vec3 &p_Colour);
 
-	virtual void HandleInputEvent(sf::Event &p_Event) = 0;
-	virtual void Update(float p_DeltaTime) = 0;
-	virtual void Render(Window &p_Window) = 0;
-
-	void RenderText(const std::string &p_Text, float p_XPosition, float p_YPosition, float p_Scale, const glm::vec3 &p_Colour) {
-		m_UserInterface->m_FontRenderer->RenderText(p_Text, p_XPosition, p_YPosition, p_Scale, p_Colour);
-	}
-	void RenderText(const std::string &p_Text, const Vector2D<float> &p_Position, float p_Scale, const glm::vec3 &p_Colour) {
-		m_UserInterface->m_FontRenderer->RenderText(p_Text, p_Position.X(), p_Position.Y(), p_Scale, p_Colour);
-	}
-
-	void SetScreenSize(const Vector2Df &p_ScreenSize) {
-		m_ScreenSize = p_ScreenSize;
-
-		m_PostProcessor = std::make_shared<PostProcessor>(m_ScreenSize);
-	}
+	void AddText(std::shared_ptr<Text> p_Text);
+	void SetScreenSize(const Vector2Df &p_ScreenSize);
+	void SetGameState(const GameState &p_GameState);
 };

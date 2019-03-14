@@ -38,7 +38,7 @@ TEST(RandomiserTest, NormalRandomNumberGenerated) {
 TEST(SymbolGeneration, SingleSymbolMatchPerCardPair) {
 	Deck deck;
 	unsigned int numberOfSymbolsPerCard = 8;
-	deck.GenerateCards(Vector2D<float>(0.0f, 0.0f), 250.0f, numberOfSymbolsPerCard);
+	deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, numberOfSymbolsPerCard);
 
 	bool singleSymbolMatchPerCardPair = true;
 	for (unsigned int i = 0; i < deck.m_CardIDs.size(); i++) {
