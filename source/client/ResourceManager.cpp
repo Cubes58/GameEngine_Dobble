@@ -13,7 +13,6 @@
 ResourceManager::ResourceManager() {
 	LoadShadersFromFolder("resources/shaders/");
 	LoadTexturesFromFolder("resources/images/symbols/");
-	//LoadTexturesFromFolder("resources/images/otherSymbols/");
 	LoadTexturesFromFolder("resources/images/");
 }
 

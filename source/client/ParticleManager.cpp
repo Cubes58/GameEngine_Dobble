@@ -82,7 +82,7 @@ void ParticleManager::RespawnParticle(Particle &p_Particle, Vector2Df p_Position
 		// Calculate an angle between where the particle and the direction it's heading in.
 		Vector2Df difference = (p_Particle.m_Position - p_Particle.m_Velocity * 100.0f) - p_Particle.m_Position;
 		angle = std::atan2f(difference.Y(), difference.X());
-		angle = (angle * 180.0f / M_PI) + 90.0f;
+		angle = static_cast<float>((angle * 180.0f / M_PI) + 90.0f);
 	}
 
 	p_Particle.m_Orientation = angle;
