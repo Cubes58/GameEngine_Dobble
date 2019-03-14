@@ -23,11 +23,11 @@ private:
 	unsigned int m_VAO;
 	unsigned int m_VBO;
 
-	bool m_Shake = false;
 	float m_ShakeTime = 0.0f;
 	float m_TimePassedSinceShakeActive = 0.0f;
 	float m_AccumulatedTime = 0.0f;
 
+	bool m_Shake = false;
 	bool m_InvertColours = false;
 	bool m_Chaos = false;
 	Shader *m_Shader;

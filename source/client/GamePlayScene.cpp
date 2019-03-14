@@ -88,12 +88,11 @@ void GamePlayScene::Render() {
 	m_UserInterface->Render();
 
 	EntityManagerInstance.RenderSystems();
+	m_ParticleManager->Render();
 
 	// End rendering to the post processing quad.
 	m_PostProcessor->EndRender();
 	m_PostProcessor->Render();
-
-	m_ParticleManager->Render();
 
 	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
 	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));

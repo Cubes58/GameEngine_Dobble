@@ -58,8 +58,10 @@ void UserInterface::LoadUserInterfaceLayout(const std::string &p_File) {
 		m_Buttons.emplace_back(std::make_shared<Button>(std::make_shared<RectangleShape>(Vector2Df(90.0f, 680.0f), Vector2Df(140.0f, 45.0f),
 			ResourceManagerInstance.GetTexture("paintStroke")), typeid(RectangleShape), GameState::MAIN_MENU));
 
-		m_Text.reserve(1);
+		m_Text.reserve(3);
 		m_Text.emplace_back(std::make_shared<Text>("Leave", Vector2Df(0.03f, 0.04f), 0.7f, glm::vec3(0.098f, 0.439f, 0.098f)));
+		m_Text.emplace_back(std::make_shared<Text>("Your Card: ", Vector2Df(0.200f, 0.865f), 0.55f, glm::vec3(0.0f, 0.0f, 0.0f)));
+		m_Text.emplace_back(std::make_shared<Text>("Deck Card: ", Vector2Df(0.705f, 0.865f), 0.55f, glm::vec3(0.0f, 0.0f, 0.0f)));
 	}
 	else if (p_File == "resources/userInterfaceLayouts/EndGameWinScene.JSON") {
 		m_Shapes.reserve(1);

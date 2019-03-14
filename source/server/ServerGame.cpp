@@ -62,10 +62,16 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 			}
 		}
 		else if (packetType == Packet::DISCONNECT) {
-			// Remove the client, and send them a DISCONNECT packet. UNTESTED!
+			// Remove the client, and send them a DISCONNECT packet.
 			m_Server.Disconnect(clientData.first);
 			m_PlayerScores.erase(clientData.first);
-			Log(Type::INFO) << "Disconnecting from a client. Client ID: " << clientData.first;
+
+			if (m_Server.GetClientIDs().size() <= 1) {
+				sf::Packet gameFinishedPacket = Packet::SetPacketType(Packet::GAME_FINISHED);
+				gameFinishedPacket << true;	// If there's only one player left tell them they've won.
+				m_Server.Send(gameFinishedPacket);
+			}
+
 			continue;
 		}
 		else {
@@ -172,6 +178,8 @@ void ServerGame::Update(float p_DeltaTime) {
 	std::map<ClientID, sf::Packet> incomingData;
 	if (m_Server.GetReceivedData(incomingData))
 		HandlePackets(incomingData);
+
+	m_IsRunning = !m_GameOver;
 }
 
 bool ServerGame::IsRunning() const {
