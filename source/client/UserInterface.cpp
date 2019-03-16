@@ -102,15 +102,14 @@ void UserInterface::LoadUserInterfaceLayout(const std::string &p_File) {
 		m_Buttons.emplace_back(std::make_shared<Button>(std::make_shared<RectangleShape>(Vector2Df(90.0f, 680.0f), Vector2Df(140.0f, 65.0f),
 			ResourceManagerInstance.GetTexture("paintStroke")), typeid(RectangleShape), GameState::MAIN_MENU));
 
-		m_Text.reserve(4);
+		m_Text.reserve(7);
 		m_Text.emplace_back(std::make_shared<Text>("Back", Vector2Df(0.03f, 0.04f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
 		m_Text.emplace_back(std::make_shared<Text>("Help:", Vector2Df(0.135f, 0.78f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
-		m_Text.emplace_back(std::make_shared<Text>("Vote for 6 or 8 symbols per card.", Vector2Df(0.135f, 0.72f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
-		m_Text.emplace_back(std::make_shared<Text>("Two cards are displayed, one is unique to you, and", Vector2Df(0.135f, 0.66f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
-		m_Text.emplace_back(std::make_shared<Text>("the other is the deck card. There will always be one,", Vector2Df(0.135f, 0.6f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
-		m_Text.emplace_back(std::make_shared<Text>("and only one symbol that matches on both cards.", Vector2Df(0.135f, 0.54f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
-		m_Text.emplace_back(std::make_shared<Text>("Click on that symbol, before any other player, and", Vector2Df(0.135f, 0.48f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
-		m_Text.emplace_back(std::make_shared<Text>("win the round, againing score.", Vector2Df(0.135f, 0.42f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
+		m_Text.emplace_back(std::make_shared<Text>("Two cards are displayed, one is unique to you, and", Vector2Df(0.135f, 0.72f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
+		m_Text.emplace_back(std::make_shared<Text>("the other is the deck card. There will always be one,", Vector2Df(0.135f, 0.66f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
+		m_Text.emplace_back(std::make_shared<Text>("and only one symbol that matches on both cards.", Vector2Df(0.135f, 0.6f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
+		m_Text.emplace_back(std::make_shared<Text>("Click on that symbol, before any other player, and", Vector2Df(0.135f, 0.54f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
+		m_Text.emplace_back(std::make_shared<Text>("win the round, gaining score.", Vector2Df(0.135f, 0.48f), 0.7f, glm::vec3(0.2902f, 0.7765f, 0.8f)));
 	}
 }
 

@@ -137,9 +137,6 @@
     <ClInclude Include="include\TransformComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\client\RenderSystem.h">
       <Filter>Header Files\EntitySystems</Filter>
     </ClInclude>
@@ -209,6 +206,9 @@
     <ClInclude Include="include\client\ParticleManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="include\client\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\FontShader.frag">
@@ -221,6 +221,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="resources\shaders\ShapesShader.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\shaders\PostProcessingEffects.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resources\shaders\PostProcessingEffects.vert">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

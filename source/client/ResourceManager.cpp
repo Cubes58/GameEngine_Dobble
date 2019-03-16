@@ -121,8 +121,8 @@ bool ResourceManager::LoadTextureFromFile(const std::string &p_File, GLboolean p
 	return true;
 }
 
-bool ResourceManager::LoadShadersFromFolder(const std::string &p_FolderName) {
-	std::vector<FileInformation> shaderFiles = FileSystemHelper::GetFilesInFolder(p_FolderName);
+bool ResourceManager::LoadShadersFromFolder(const std::string &p_FolderPath) {
+	std::vector<FileInformation> shaderFiles = FileSystemHelper::GetFilesInFolder(p_FolderPath);
 	FileSystemHelper::RetainRemoveFilesWithExtensions(shaderFiles, { ".vert", ".VERT", ".frag", ".FRAG", ".geom", ".GEOM" });
 
 	struct ShaderGroup {
@@ -186,8 +186,8 @@ Shader *ResourceManager::GetShader(const std::string &p_Name) {
 	return nullptr;
 }
 
-bool ResourceManager::LoadTexturesFromFolder(const std::string &p_FolderName) {
-	std::vector<FileInformation> textureFiles = FileSystemHelper::GetFilesInFolder(p_FolderName);
+bool ResourceManager::LoadTexturesFromFolder(const std::string &p_FolderPath) {
+	std::vector<FileInformation> textureFiles = FileSystemHelper::GetFilesInFolder(p_FolderPath);
 	FileSystemHelper::RetainRemoveFilesWithExtensions(textureFiles, { ".png", ".PNG", ".jpeg", ".JPEG", ".tiff", ".TIFF", ".bmp", ".BMP", ".hdr", ".HDR", ".tga", ".TGA" });
 
 	bool allSuccessful = true;

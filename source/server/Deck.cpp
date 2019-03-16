@@ -11,7 +11,6 @@
 #include "Randomiser.h"
 
 #include "TransformComponent.h"
-#include "CollisionComponent.h"
 #include "RenderComponent.h"
 
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
@@ -78,9 +77,7 @@ void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRad
 	p_NumberOfSymblesPerCard += 1;	// Add one for the card background (position/collision test).
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
 	for (const auto &entity : *entities) {
-		// Generate collision and transform components.
-		EntityManagerInstance.AddComponentToEntity(entity, std::make_shared<CollisionComponent>(p_NumberOfSymblesPerCard));
-		
+		// Generate transform components.		
 		std::vector<CircleTransformData> circleTransforms;
 		circleTransforms.reserve(p_NumberOfSymblesPerCard);
 		// Add the card background (First element in the render component is always the background).

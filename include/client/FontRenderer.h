@@ -1,3 +1,7 @@
+/**
+@file FontRenderer.h
+@brief Renders text to the screen.
+*/
 #pragma once
 
 #include <map>
@@ -6,6 +10,10 @@
 #include "Vector2D.h"
 #include "Shader.h"
 #include "Text.h"
+
+/*! \class FontRenderer
+	\brief Renders text to the screen.
+*/
 
 class FontRenderer {
 private:
@@ -50,8 +58,21 @@ public:
 		\param p_Colour the colour of the text.
 	*/
 	void RenderText(const std::string &p_Text, float p_XPosition, float p_YPosition, float p_Scale, const glm::vec3 &p_Colour);
+	/*!
+		\brief Used to render text.
+		\param p_Text The text object, to render.
+	*/
 	void RenderText(Text &p_Text);
 
+	/*!
+		\brief Sets the font used to render the text.
+		\param p_FontPath The relative file path, to the font.
+	*/
 	void SetFont(const std::string &p_FontPath);
+
+	/*!
+		\brief Sets the screen's size.
+		\param p_ScreenSize The screen's size.
+	*/
 	void SetScreenSize(const Vector2Df &p_ScreenSize);
 };

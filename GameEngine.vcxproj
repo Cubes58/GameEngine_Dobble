@@ -223,6 +223,7 @@
     <ClInclude Include="include\client\GamePlayScene.h" />
     <ClInclude Include="include\client\GameState.h" />
     <ClInclude Include="include\client\GLCore.hpp" />
+    <ClInclude Include="include\client\Particle.h" />
     <ClInclude Include="include\client\ParticleManager.h" />
     <ClInclude Include="include\client\PostProcessor.h" />
     <ClInclude Include="include\client\RenderSystem.h" />
@@ -236,7 +237,6 @@
     <ClInclude Include="include\client\UserInterface.h" />
     <ClInclude Include="include\client\Window.h" />
     <ClInclude Include="include\Collision.h" />
-    <ClInclude Include="include\CollisionComponent.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EntitySystem.h" />
@@ -251,6 +251,8 @@
   <ItemGroup>
     <None Include="resources\shaders\FontShader.frag" />
     <None Include="resources\shaders\FontShader.vert" />
+    <None Include="resources\shaders\PostProcessingEffects.frag" />
+    <None Include="resources\shaders\PostProcessingEffects.vert" />
     <None Include="resources\shaders\ShapesShader.frag" />
     <None Include="resources\shaders\ShapesShader.vert" />
   </ItemGroup>

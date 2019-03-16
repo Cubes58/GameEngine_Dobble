@@ -1,8 +1,3 @@
-[INFO]: Dobble Server
-----------------
-Listening on port: 8787
-
-[INFO]: The game will be played on port: 8427
 [INFO]: OpenGL version: 4.6.0 NVIDIA 398.36
 [WARNING]: Unable to load: 0 functions.
 [INFO]: 
@@ -141,7 +136,6 @@ void main() {
 	FragColour = mix(textureFragColour, colour, mixValue);
 }
 [INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Texture width: 1920	Texture height: 1017
 [INFO]: Texture width: 1280	Texture height: 720
 [INFO]: Attempting to connect to the server... 
 Port number: 8787
@@ -151,4 +145,97 @@ IP Address: 127.0.0.1
 [INFO]: Connected to a game on the server (in lobby)!
 [INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 1
 [INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Texture width: 1920	Texture height: 1017
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server listener!
+[INFO]: Packet being received, from the server.
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 2
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 1
+[INFO]: Symbol ID: 7
+[INFO]: Symbol ID: 8
+[INFO]: Symbol ID: 9
+[INFO]: Symbol ID: 10
+[INFO]: Symbol ID: 11
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: -130.376	YPos: 120.987	Radius: 58.1247	Rotation:47.5082
+[INFO]: Transform data: XPos: 98.734	YPos: -14.4606	Radius: 45.2879	Rotation:125.706
+[INFO]: Transform data: XPos: 32.6691	YPos: -156.428	Radius: 50.1111	Rotation:42.0241
+[INFO]: Transform data: XPos: 107.47	YPos: 117.287	Radius: 63.7842	Rotation:120.087
+[INFO]: Transform data: XPos: -1.5679	YPos: 180.852	Radius: 60.919	Rotation:126.519
+[INFO]: Transform data: XPos: 142.383	YPos: -108.878	Radius: 50.1687	Rotation:168.285
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Symbol ID: 1
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Symbol ID: 17
+[INFO]: XPos: -130.376	YPos: 120.987	Radius: 58.1247	Rotation: 47.5082
+[INFO]: Symbol ID: 18
+[INFO]: XPos: 98.734	YPos: -14.4606	Radius: 45.2879	Rotation: 125.706
+[INFO]: XPos: 98.734	YPos: -14.4606	Radius: 45.2879	Rotation: 125.706
+[INFO]: Symbol ID: 19
+[INFO]: XPos: 32.6691	YPos: -156.428	Radius: 50.1111	Rotation: 42.0241
+[INFO]: XPos: 32.6691	YPos: -156.428	Radius: 50.1111	Rotation: 42.0241
+[INFO]: Symbol ID: 20
+[INFO]: XPos: 107.47	YPos: 117.287	Radius: 63.7842	Rotation: 120.087
+[INFO]: XPos: 107.47	YPos: 117.287	Radius: 63.7842	Rotation: 120.087
+[INFO]: Symbol ID: 21
+[INFO]: XPos: -1.5679	YPos: 180.852	Radius: 60.919	Rotation: 126.519
+[INFO]: XPos: -1.5679	YPos: 180.852	Radius: 60.919	Rotation: 126.519
+[INFO]: Number of circles in the transform component: 7
+[INFO]: XPos: 142.383	YPos: -108.878	Radius: 50.1687	Rotation: 168.285
+[INFO]: XPos: 142.383	YPos: -108.878	Radius: 50.1687	Rotation: 168.285
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: Transform data: XPos: 28.7908	YPos: -120.456	Radius: 56.308	Rotation:151.213
+[INFO]: Transform data: XPos: -44.4296	YPos: 109.118	Radius: 49.4089	Rotation:265.564
+[INFO]: Transform data: XPos: 90.8563	YPos: 66.764	Radius: 47.6607	Rotation:257.622
+[INFO]: Transform data: XPos: -125.598	YPos: -29.0219	Radius: 62.7606	Rotation:120.001
+[INFO]: Transform data: XPos: 165.976	YPos: -46.053	Radius: 49.7875	Rotation:5.50914
+[INFO]: Transform data: XPos: -15.6712	YPos: 5.58173	Radius: 51.6851	Rotation:34.7908
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 6
+[INFO]: Symbol ID: 9
+[INFO]: Symbol ID: 13
+[INFO]: Symbol ID: 17
+[INFO]: Symbol ID: 26
+[INFO]: Packet being received, from the server.
+[INFO]: Symbol ID: 30
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Number of circles in the transform component: 7
+[INFO]: XPos: 28.7908	YPos: -120.456	Radius: 56.308	Rotation: 151.213
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation:0
+[INFO]: XPos: -44.4296	YPos: 109.118	Radius: 49.4089	Rotation: 265.564
+[INFO]: Transform data: XPos: 39.5534	YPos: 130.878	Radius: 63.3346	Rotation:152.639
+[INFO]: XPos: 90.8563	YPos: 66.764	Radius: 47.6607	Rotation: 257.622
+[INFO]: XPos: -125.598	YPos: -29.0219	Radius: 62.7606	Rotation: 120.001
+[INFO]: Transform data: XPos: 65.8079	YPos: -39.373	Radius: 44.4356	Rotation:65.6657
+[INFO]: Transform data: XPos: 194.074	YPos: 28.4782	Radius: 48.2133	Rotation:168.315
+[INFO]: XPos: 165.976	YPos: -46.053	Radius: 49.7875	Rotation: 5.50914
+[INFO]: Transform data: XPos: -181.292	YPos: 1.65477	Radius: 55.6458	Rotation:240.935
+[INFO]: XPos: -15.6712	YPos: 5.58173	Radius: 51.6851	Rotation: 34.7908
+[INFO]: Transform data: XPos: 145.518	YPos: -90.467	Radius: 45.9749	Rotation:217.376
+[INFO]: Transform data: XPos: 19.1947	YPos: -180.196	Radius: 56.2484	Rotation:245.935
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 39.5534	YPos: 130.878	Radius: 63.3346	Rotation: 152.639
+[INFO]: XPos: 65.8079	YPos: -39.373	Radius: 44.4356	Rotation: 65.6657
+[INFO]: XPos: 194.074	YPos: 28.4782	Radius: 48.2133	Rotation: 168.315
+[INFO]: XPos: -181.292	YPos: 1.65477	Radius: 55.6458	Rotation: 240.935
+[INFO]: XPos: 145.518	YPos: -90.467	Radius: 45.9749	Rotation: 217.376
+[INFO]: XPos: 19.1947	YPos: -180.196	Radius: 56.2484	Rotation: 245.935
+[INFO]: Packet being received, from the server.
