@@ -230,7 +230,6 @@
     <ClInclude Include="include\client\UserInterface.h" />
     <ClInclude Include="include\client\Window.h" />
     <ClInclude Include="include\Collision.h" />
-    <ClInclude Include="include\CollisionComponent.h" />
     <ClInclude Include="include\CollisionSystem.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\Entity.h" />

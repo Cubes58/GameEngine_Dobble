@@ -29,11 +29,6 @@ void Game::ProcessEvents() {
 			m_Window.GetWindow().close();
 			return;
 			break;
-		case sf::Event::Resized:
-			gl::Viewport(0, 0, event.size.width, event.size.height);
-			m_Scene->SetScreenSize(Vector2Df(static_cast<float>(event.size.width), static_cast<float>(event.size.height)));
-			//m_Window.SetScreenSize(event.size.width, event.size.height);
-			break;
 		case sf::Event::EventType::MouseMoved:
 		case sf::Event::EventType::MouseButtonPressed:
 		case sf::Event::EventType::MouseButtonReleased:

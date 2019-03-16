@@ -12,7 +12,7 @@
 #include <iostream>
 
 /**
-	* A structure to represent file Information.
+	\brief A structure to represent file Information.
 */
 struct FileInformation {
 	std::string m_Name;	//!< The name of the file.

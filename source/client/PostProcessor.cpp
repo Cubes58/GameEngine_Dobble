@@ -69,7 +69,7 @@ PostProcessor::PostProcessor(const Vector2Df &p_TextureSize) : m_TextureSize(p_T
 	gl::Uniform1iv(gl::GetUniformLocation(m_Shader->GetID(), "edgeKernel"), 9, edgeKernel);
 
 	InitializeBlurKernels();
-	gl::Uniform1fv(gl::GetUniformLocation(m_Shader->GetID(), "blurKernel"), 9, &m_BlurKernels[9][0]);
+	gl::Uniform1fv(gl::GetUniformLocation(m_Shader->GetID(), "blurKernel"), 9, &m_BlurKernels[0][0]);
 }
 
 PostProcessor::~PostProcessor() {
@@ -114,63 +114,63 @@ void PostProcessor::InitializeRenderData() {
 void PostProcessor::InitializeBlurKernels() {
 	// Sigma 0.1
 	m_BlurKernels[0] = {
-		0,	0,			0,
-		0,	0.999998,	0,
-		0,	0,			0
+		0.0f,	0.0f,		0.0f,
+		0.0f,	0.999998f,	0.0f,
+		0.0f,	0.0f,		0.0f
 	};
 	// Sigma 0.2
 	m_BlurKernels[1] = {
-		0.000039,	0.006133,	0.000039,
-		0.006133,	0.975316,	0.006133,
-		0.000039,	0.006133,	0.000039
+		0.000039f,	0.006133f,	0.000039f,
+		0.006133f,	0.975316f,	0.006133f,
+		0.000039f,	0.006133f,	0.000039f
 	};
 	// Sigma 0.3
 	m_BlurKernels[2] = {
-		0.002284,	0.043222,	0.002284,
-		0.043222,	0.817976,	0.043222,
-		0.002284,	0.043222,	0.002284
+		0.002284f,	0.043222f,	0.002284f,
+		0.043222f,	0.817976f,	0.043222f,
+		0.002284f,	0.043222f,	0.002284f
 	};
 	// Sigma 0.4
 	m_BlurKernels[3] = {
-		0.011147,	0.083286,	0.011147,
-		0.083286,	0.622269,	0.083286,
-		0.011147,	0.083286,	0.011147
+		0.011147f,	0.083286f,	0.011147f,
+		0.083286f,	0.622269f,	0.083286f,
+		0.011147f,	0.083286f,	0.011147f
 	};
 	// Sigma 0.5
 	m_BlurKernels[4] = {
-		0.024879,	0.107973,	0.024879,
-		0.107973,	0.468592,	0.107973,
-		0.024879,	0.107973,	0.024879
+		0.024879f,	0.107973f,	0.024879f,
+		0.107973f,	0.468592f,	0.107973f,
+		0.024879f,	0.107973f,	0.024879f
 	};
 	// Sigma 0.6
 	m_BlurKernels[5] = {
-		0.039436,	0.119713,	0.039436,
-		0.119713,	0.363404,	0.119713,
-		0.039436,	0.119713,	0.039436
+		0.039436f,	0.119713f,	0.039436f,
+		0.119713f,	0.363404f,	0.119713f,
+		0.039436f,	0.119713f,	0.039436f
 	};
 	// Sigma 0.7
 	m_BlurKernels[6] = {
-		0.052356,	0.124103,	0.052356,
-		0.124103,	0.294168,	0.124103,
-		0.052356,	0.124103,	0.052356
+		0.052356f,	0.124103f,	0.052356f,
+		0.124103f,	0.294168f,	0.124103f,
+		0.052356f,	0.124103f,	0.052356f
 	};
 	// Sigma 0.8
 	m_BlurKernels[7] = {
-		0.06292,	0.124998,	0.06292,
-		0.124998,	0.248326,	0.124998,
-		0.06292,	0.124998,	0.06292
+		0.06292f,	0.124998f,	0.06292f,
+		0.124998f,	0.248326f,	0.124998f,
+		0.06292f,	0.124998f,	0.06292f
 	};
 	// Sigma 0.9
 	m_BlurKernels[8] = {
-		0.071282,	0.124423,	0.071282,
-		0.124423,	0.217183,	0.124423,
-		0.071282,	0.124423,	0.071282
+		0.071282f,	0.124423f,	0.071282f,
+		0.124423f,	0.217183f,	0.124423f,
+		0.071282f,	0.124423f,	0.071282f
 	};
 	// Sigma 1.0
 	m_BlurKernels[9] = {
-		0.077847,	0.123317,	0.077847,
-		0.123317,	0.195346,	0.123317,
-		0.077847,	0.123317,	0.077847
+		0.077847f,	0.123317f,	0.077847f,
+		0.123317f,	0.195346f,	0.123317f,
+		0.077847f,	0.123317f,	0.077847f
 	};
 }
 
@@ -180,6 +180,18 @@ void PostProcessor::Update(float p_DeltaTime) {
 
 	m_Shader->Use();
 	m_Shader->SetFloat("time", m_AccumulatedTime);
+
+	float fadeTime = m_ShakeTime / 3.5f;
+	// Fade in effect.
+	if (m_TimePassedSinceShakeActive <= fadeTime) {
+		float fadeSlice = static_cast<float>((fadeTime) / (float)s_NumberOfBlurKernels);
+		for (unsigned int i = 0; i < s_NumberOfBlurKernels; ++i) {
+			if (fadeSlice * i <= m_TimePassedSinceShakeActive)
+				gl::Uniform1fv(gl::GetUniformLocation(m_Shader->GetID(), "blurKernel"), 9, &m_BlurKernels[i][0]);
+			else
+				break;
+		}
+	}
 
 	if (m_TimePassedSinceShakeActive >= m_ShakeTime) {
 		m_Shake = false;

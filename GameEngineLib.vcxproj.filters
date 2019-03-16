@@ -116,9 +116,6 @@
     <ClInclude Include="include\client\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\CollisionSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>

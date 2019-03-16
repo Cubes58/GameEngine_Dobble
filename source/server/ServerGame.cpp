@@ -62,10 +62,16 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 			}
 		}
 		else if (packetType == Packet::DISCONNECT) {
-			// Remove the client, and send them a DISCONNECT packet. UNTESTED!
+			// Remove the client, and send them a DISCONNECT packet.
 			m_Server.Disconnect(clientData.first);
 			m_PlayerScores.erase(clientData.first);
-			Log(Type::INFO) << "Disconnecting from a client. Client ID: " << clientData.first;
+
+			if (m_Server.GetClientIDs().size() <= 1) {
+				sf::Packet gameFinishedPacket = Packet::SetPacketType(Packet::GAME_FINISHED);
+				gameFinishedPacket << true;	// If there's only one player left tell them they've won.
+				m_Server.Send(gameFinishedPacket);
+			}
+
 			continue;
 		}
 		else {
@@ -73,85 +79,94 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 		}
 	}
 
-	bool gameOver = false;
-	if (roundWon) {		// Deck card will also be needed to carry on the game (+1).
-		if (m_Deck.NumberOfRemainingCards() < numberOfPlayersThatWon + 1) {
-			m_GameOver = true;
-		}
-		else {
-			for (auto &client : m_Server.GetClientIDs()) {
-				sf::Packet roundFinishedPacket = Packet::SetPacketType(Packet::ROUND_FINISHED);
+	
+	if (roundWon) {	
+		HandleRoundWon(numberOfPlayersThatWon, hasPlayerWonRound);
+	}
+}
 
-				auto iter = hasPlayerWonRound.find(client);
-				if (iter != hasPlayerWonRound.end()) {
-					// Check whether the player has won.
-					if (iter->second) {
-						// Increase the player's score.
-						auto playerScore = m_PlayerScores.find(iter->first);
-						if (playerScore == m_PlayerScores.end()) {
-							// If the player's score cannot be found then create a score to manage, for the player.
-							m_PlayerScores.emplace(iter->first, 0.0f);
-							playerScore = m_PlayerScores.find(iter->first);
-						}
+void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_map<ClientID, bool> &p_PlayerRoundState) {
+	// Deck card will also be needed to carry on the game (+1).
+	if (m_Deck.NumberOfRemainingCards() < p_NumberOfPlayersWonRound + 1) {
+		m_GameOver = true;
+	}
+	else {
+		m_GameOver = false;
+		for (auto &client : m_Server.GetClientIDs()) {
+			sf::Packet roundFinishedPacket = Packet::SetPacketType(Packet::ROUND_FINISHED);
 
-						// Add the player's score.
-						playerScore->second = playerScore->second + SCORE_GAINED_PER_GUESS;
-						Log(Type::INFO) << "Client ID: " << playerScore->first << "\t" << "Score: " << playerScore->second;
-
-						// Tell the player they've won the round.
-						roundFinishedPacket << iter->second;
-						m_Server.Send(client, roundFinishedPacket);
-
-						// Send the player their new card.
-						if (!gameOver) {
-							sf::Packet playerCardPacket = Packet::SetPacketType(Packet::PLAYER_CARD_DATA);
-							unsigned int playerCard = m_Deck.GetCardIDFromTop();
-							playerCardPacket << *EntityManagerInstance.GetComponent<RenderComponent>(playerCard);
-							playerCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(playerCard);
-							m_Server.Send(client, playerCardPacket);
-						}
-						continue;
+			auto iter = p_PlayerRoundState.find(client);
+			if (iter != p_PlayerRoundState.end()) {
+				// Check whether the player has won.
+				if (iter->second) {
+					// Increase the player's score.
+					auto playerScore = m_PlayerScores.find(iter->first);
+					if (playerScore == m_PlayerScores.end()) {
+						// If the player's score cannot be found then create a score to manage, for the player.
+						m_PlayerScores.emplace(iter->first, 0.0f);
+						playerScore = m_PlayerScores.find(iter->first);
 					}
-				}
-				// Player didn't win.
-				roundFinishedPacket << false;
-				m_Server.Send(client, roundFinishedPacket);
-			}
-		}
 
+					// Add the player's score.
+					playerScore->second = playerScore->second + SCORE_GAINED_PER_GUESS;
+					Log(Type::INFO) << "Client ID: " << playerScore->first << "\t" << "Score: " << playerScore->second;
+
+					// Tell the player they've won the round.
+					roundFinishedPacket << iter->second;
+					m_Server.Send(client, roundFinishedPacket);
+
+					// Send the player their new card.
+					sf::Packet playerCardPacket = Packet::SetPacketType(Packet::PLAYER_CARD_DATA);
+					unsigned int playerCard = m_Deck.GetCardIDFromTop();
+					playerCardPacket << *EntityManagerInstance.GetComponent<RenderComponent>(playerCard);
+					playerCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(playerCard);
+					m_Server.Send(client, playerCardPacket);
+					continue;
+				}
+			}
+			// Player didn't win.
+			roundFinishedPacket << false;
+			m_Server.Send(client, roundFinishedPacket);
+		}
+	}
+
+	// Send the players their score.
+	for (auto &playerScore : m_PlayerScores) {
+		sf::Packet scorePacket = Packet::SetPacketType(Packet::SCORE);
+		scorePacket << playerScore.second;
+		m_Server.Send(playerScore.first, scorePacket);
+	}
+
+	HandleGameOver();
+}
+
+void ServerGame::HandleGameOver() {
+	if (!m_GameOver) {
+		// Set the new deck card.
+		sf::Packet deckCardPacket = Packet::SetPacketType(Packet::DECK_CARD_DATA);
+		m_ActiveDeckCard = m_Deck.GetCardIDFromTop();
+		deckCardPacket << *EntityManagerInstance.GetComponent<RenderComponent>(m_ActiveDeckCard);
+		deckCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(m_ActiveDeckCard);
+		m_Server.Send(deckCardPacket);
+	}
+	else {
+		// Check to see who has the highest score, then send inform all player's if they've won or lost.
+		ClientID clientWithHighestScore = UINT_MAX;
+		float highestScore = 0.0f;
 		for (auto &playerScore : m_PlayerScores) {
-			sf::Packet scorePacket = Packet::SetPacketType(Packet::SCORE);
-			scorePacket << playerScore.second;
-			m_Server.Send(playerScore.first, scorePacket);
-		}
-
-		if (!m_GameOver) {
-			// Set the new deck card.
-			sf::Packet deckCardPacket = Packet::SetPacketType(Packet::DECK_CARD_DATA);
-			m_ActiveDeckCard = m_Deck.GetCardIDFromTop();
-			deckCardPacket << *EntityManagerInstance.GetComponent<RenderComponent>(m_ActiveDeckCard);
-			deckCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(m_ActiveDeckCard);
-			m_Server.Send(deckCardPacket);
-		}
-		else {
-			// Check to see who has the highest score, then send inform all player's if they've won or lost.
-			ClientID clientWithHighestScore = UINT_MAX;
-			float highestScore = 0.0f;
-			for (auto &playerScore : m_PlayerScores) {
-				if (playerScore.second >= highestScore) {
-					clientWithHighestScore = playerScore.first;
-					highestScore = playerScore.second;
-				}
+			if (playerScore.second >= highestScore) {
+				clientWithHighestScore = playerScore.first;
+				highestScore = playerScore.second;
 			}
-			for (auto &client : m_Server.GetClientIDs()) {
-				sf::Packet gameFinishedPacket = Packet::SetPacketType(Packet::GAME_FINISHED);
-				bool hasClientWon = false;
-				if (client == clientWithHighestScore)
-					hasClientWon = true;
-				gameFinishedPacket << hasClientWon;
+		}
+		for (auto &client : m_Server.GetClientIDs()) {
+			sf::Packet gameFinishedPacket = Packet::SetPacketType(Packet::GAME_FINISHED);
+			bool hasClientWon = false;
+			if (client == clientWithHighestScore)
+				hasClientWon = true;
+			gameFinishedPacket << hasClientWon;
 
-				m_Server.Send(client, gameFinishedPacket);
-			}
+			m_Server.Send(client, gameFinishedPacket);
 		}
 	}
 }
@@ -172,6 +187,8 @@ void ServerGame::Update(float p_DeltaTime) {
 	std::map<ClientID, sf::Packet> incomingData;
 	if (m_Server.GetReceivedData(incomingData))
 		HandlePackets(incomingData);
+
+	m_IsRunning = !m_GameOver;
 }
 
 bool ServerGame::IsRunning() const {

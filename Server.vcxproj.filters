@@ -68,9 +68,6 @@
     <ClInclude Include="include\server\Deck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionComponent.h">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="include\Component.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
