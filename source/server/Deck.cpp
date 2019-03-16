@@ -149,7 +149,7 @@ bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderCo
 
 std::vector<Vector2Df> Deck::CreateDirectionLine(Vector2Df p_CirclePosition, float p_LineLength, float p_Angle) {
 	std::vector<Vector2Df> line;
-	line.reserve((unsigned int)((unsigned int)p_LineLength * (unsigned int)p_LineLength));
+	line.reserve((unsigned int)(p_LineLength * p_LineLength));
 
 	for (float length = 0.0f; length < p_LineLength; length++)
 		line.emplace_back(length * cos(p_Angle), length * sin(p_Angle));

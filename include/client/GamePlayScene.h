@@ -67,7 +67,7 @@ public:
 
 	/*!
 		\brief Updates the game play scene.
-		\param the delta time between the current frame and the previous.
+		\param p_DeltaTime The delta time between the current frame and the previous.
 		\return Nothing.
 	*/
 	virtual void Update(float p_DeltaTime) override;

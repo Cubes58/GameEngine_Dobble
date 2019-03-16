@@ -13,7 +13,7 @@
 class Shape;
 
 /**
-	* A structure which manages the properties required to create a button.
+	\brief A structure which manages the properties required to create a button.
 */
 
 struct Button {

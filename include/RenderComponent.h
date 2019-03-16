@@ -10,7 +10,7 @@
 #include "PacketTypes.h"
 
 /**
-	* A structure to represent a render component.
+	\brief A structure to represent a render component.
 */
 
 struct RenderComponent : public Component {
@@ -32,11 +32,17 @@ struct RenderComponent : public Component {
 };
 
 /*!
-	@ref sf::Packet::operator<<(sf::Packet &, RenderComponent &)
+	\brief Writes a render component's properties into a packet.
+	\param p_Packet The packet to add the render component's data to.
+	\param p_RenderComponent The render component's data, to add to the packet.
+	\return Returns the packet, with the render component data added.
 */
 sf::Packet &operator<<(sf::Packet &p_Packet, RenderComponent &p_RenderComponent);
 
 /*!
-	@ref sf::Packet::operator>>(sf::Packet &, RenderComponent &)
+	\brief Reads a render component's properties from a packet.
+	\param p_Packet The packet to get the render component data from.
+	\param p_RenderComponent The render data, read from the packet.
+	\return Returns the packet, with the data removed.
 */
 sf::Packet &operator>>(sf::Packet &p_Packet, RenderComponent &p_RenderComponent);

@@ -9,7 +9,7 @@
 using PacketID = sf::Int8;	//!< First 8 bits are the PacketID, using PacketID as an sf::Int8.
 
 /**
-@file PacketType.h
+@file PacketTypes.h
 @enum PacketType
 @brief The different packet types available.
 */

@@ -1,5 +1,5 @@
 /**
-@file Log.h
+@file Logger.h
 @brief Manages outputting debugging information to the console and/or files.
 */
 #pragma once
@@ -18,7 +18,7 @@
 #define DEFAULT_LOG_FILE  "logFile"	//!< The default log file.
 
 /**
-	@file Log.h
+	@file Logger.h
 	@enum Type
 	@brief The different types of logging information.
 */

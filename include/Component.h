@@ -5,7 +5,7 @@
 #pragma once
 
 /**
-	* A structure to represent a component.
+	\brief A based structure to represent a component.
 */
 
 struct Component {

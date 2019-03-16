@@ -91,50 +91,114 @@ public:
 		return m_YValue;
 	}
 
+	/*!
+		\brief Adds two vectors together.
+		\param p_Vector The vector to add.
+		\return Returns the value of the addition.
+	*/
 	Vector2D operator+(const Vector2D &p_Vector) const {
 		return Vector2D(m_XValue + p_Vector.m_XValue, m_YValue + p_Vector.m_YValue);
 	}
+	/*!
+		\brief Adds two vectors together, and assigns the value of the addition to this vector.
+		\param p_Vector The vector to add.
+		\return Returns the value of the addition.
+	*/
 	Vector2D& operator+=(const Vector2D& p_Vector) {
 		*this = *this + p_Vector;
 		return *this;
 	}
+	/*!
+		\brief Subtracts two vectors from each other, and assigns the value to this vector.
+		\param p_Vector The vector to subtract.
+		\return Returns the value of the subtraction.
+	*/
 	Vector2D& operator-=(const Vector2D& p_Vector) {
 		*this = *this - p_Vector;
 		return *this;
 	}
+	/*!
+		\brief Subtracts two vectors from each other.
+		\param p_Vector The vector to subtract.
+		\return Returns the value of the subtraction.
+	*/
 	Vector2D operator-(const Vector2D &p_Vector) const {
 		return Vector2D(m_XValue - p_Vector.m_XValue, m_YValue - p_Vector.m_YValue);
 	}
+	/*!
+		\brief Multiplies this vector with another.
+		\param p_Vector The vector to multiply by.
+		\return Returns the value of the multiplication.
+	*/
 	Vector2D operator*(const Vector2D &p_Vector) const {
 		return Vector2D(m_XValue * p_Vector.m_XValue, m_YValue * p_Vector.m_YValue);
 	}
+	/*!
+		\brief Divides this vector by another.
+		\param p_Vector The vector to divide by.
+		\return Returns the value of the division.
+	*/
 	Vector2D operator/(const Vector2D &p_Vector) const {
 		return Vector2D(m_XValue / p_Vector.m_XValue, m_YValue / p_Vector.m_YValue);
 	}
 
+	/*!
+		\brief Assigns the values from a vector to this vector.
+		\param p_Vector The vector to assign the values from.
+		\return Nothing.
+	*/
 	void operator=(const Vector2D &p_Vector) {
 		m_XValue = p_Vector.m_XValue; m_YValue = p_Vector.m_YValue;
 	}
 
+	/*!
+		\brief Checks if two vectors are identical.
+		\param p_Vector The vector to check with.
+		\return Returns true if the two vectors are identical, otherwise false.
+	*/
 	bool operator==(const Vector2D &p_Vector) const {
 		return ((m_XValue == p_Vector.m_XValue) && (m_YValue == p_Vector.m_YValue));
 	}
+	/*!
+		\brief Checks if two vectors are not identical.
+		\param p_Vector The vector to check with.
+		\return Returns true if the two vectors are not identical, otherwise false.
+	*/
 	bool operator!=(const Vector2D &p_Vector) const {
 		return !((m_XValue == p_Vector.m_XValue) && (m_YValue == p_Vector.m_YValue));
 	}
+	/*!
+		\brief Checks if one vector is greater than or equal to another.
+		\param p_Vector The vector to check with.
+		\return Returns true if the vector is greater than or equal to the other vector.
+	*/
 	bool operator>=(const Vector2D &p_Vector) const {
 		return (m_XValue >= p_Vector.m_XValue) && (m_YValue >= p_Vector.m_YValue);
 	}
 
-	// Negate both the x and y values.
+	/*!
+		\brief Negate both the x and y values.
+		\return Returns the negated vector.
+	*/
 	Vector2D operator-() const {
 		return Vector2D(-m_XValue, -m_YValue);
 	}
 
-	// Scale both the x and y values.
+	/*!
+		\tparam T The type of the vector values.
+		\brief Scale both the x and y values.
+		\param p_Scalar The scalar to multiply by.
+		\return Returns the scaled vector.
+	*/
 	Vector2D operator*(const T &p_Scalar) const {
 		return Vector2D(m_XValue * p_Scalar, m_YValue * p_Scalar);
 	}
+	/*!
+		\tparam T The type of the vector values.
+		\brief Divides both the x and y values.
+		\param p_Scalar The scalar to divide by.
+		\return Returns the divided vector.
+	*/
 	Vector2D operator/(const T &p_Scalar) const {
 		return Vector2D(m_XValue / p_Scalar, m_YValue / p_Scalar);
 	}
@@ -183,8 +247,8 @@ public:
 	}
 };
 
-using Vector2Df = Vector2D<float>;
-using Vector2Dd = Vector2D<double>;
-using Vector2Di = Vector2D<int>;
-using Vector2Du = Vector2D<unsigned int>;
-using Vector2Dl = Vector2D<long>;
+using Vector2Df = Vector2D<float>;	//!< Using Vector2Df as Vector2D<float>
+using Vector2Dd = Vector2D<double>;	//!< Using Vector2Dd as Vector2D<double>
+using Vector2Di = Vector2D<int>;	//!< Using Vector2Di as Vector2D<int>
+using Vector2Du = Vector2D<unsigned int>;	//!< Using Vector2Du as Vector2D<unsigned int>
+using Vector2Dl = Vector2D<long>;	//!< Using Vector2Dl as Vector2D<long>

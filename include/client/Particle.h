@@ -9,7 +9,7 @@
 #include <glm/vec4.hpp>
 
 /**
-	* A structure which contains all of the properties required to create a particle.
+	\brief A structure which contains all of the properties required to create a particle.
 */
 
 struct Particle {

@@ -51,6 +51,7 @@ public:
 	/*!
 		\brief Constructor.
 		\param p_ScreenSize The size of the screen.
+		\param p_Shader A pointer to the shader that the particle manager will use.
 		\param p_Texture A pointer to the texture the particles will use.
 		\param p_NumberOfParticles The number of particles that'll be used.
 	*/

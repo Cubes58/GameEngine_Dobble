@@ -11,7 +11,7 @@
 #include "Vector2D.h"
 
 /**
-	* A structure to represent data of a Text object.
+	\brief A structure to represents data of a Text object.
 */
 
 struct Text {
@@ -47,7 +47,7 @@ struct Text {
 };
 
 /**
-	* A structure to represent data of a Text object, tied to another object.
+	\brief A structure to represents data of a Text object, tied to another object.
 */
 template<typename Type>
 struct ReferenceText : Text {

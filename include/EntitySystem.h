@@ -9,7 +9,7 @@
 #include <set>
 #include <memory>
 
-using EntityID = std::size_t;
+using EntityID = std::size_t;	//!< Using EntityID as std::size_t
 struct Component;
 
 /*! \class EntitySystem

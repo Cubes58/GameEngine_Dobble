@@ -11,7 +11,7 @@
 #include "PacketTypes.h"
 
 /**
-	* A structure to represent circle transform data.
+	\brief A structure to represent circle transform data.
 */
 
 struct CircleTransformData {
@@ -43,7 +43,9 @@ struct CircleTransformData {
 	CircleTransformData(Vector2Df p_Position, float p_Radius, float p_Rotation) : m_Position(p_Position), m_Radius(p_Radius), m_Rotation(p_Rotation) {}
 
 	/*!
-		@ref CircleTransform::operator==(CircleTransformData &)
+		\brief Checks whether two circle transform data instances are the same.
+		\param p_CircleTransformData The other circle transform data to check this one with.
+		\return Returns true if the circle transform data is the same, otherwise false.
 	*/
 	bool operator==(const CircleTransformData &p_CircleTransformData) {
 		return (this->m_Position == p_CircleTransformData.m_Position 
@@ -51,7 +53,9 @@ struct CircleTransformData {
 			&& this->m_Rotation == p_CircleTransformData.m_Rotation);
 	}
 	/*!
-		@ref CircleTransform::operator!=(CircleTransformData &)
+		\brief Checks whether two circle transform data instances are not the same.
+		\param p_CircleTransformData The other circle transform data to check this one with.
+		\return Returns true if the circle transform data is not the same, otherwise false.
 	*/
 	bool operator!=(const CircleTransformData &p_CircleTransformData) {
 		return !(*this == p_CircleTransformData);
@@ -59,7 +63,7 @@ struct CircleTransformData {
 };
 
 /**
-	* A structure to represent a transform component.
+	\brief A structure to represent a transform component.
 */
 struct TransformComponent : public Component {
 	std::vector<CircleTransformData> m_CircleTransforms;	//!< The circle transform data.
@@ -84,11 +88,17 @@ struct TransformComponent : public Component {
 };
 
 /*!
-	@ref sf::Packet::operator<<(sf::Packet &, TransformComponent &)
+	\brief Writes a transform's properties into a packet.
+	\param p_Packet The packet to add the transform data to.
+	\param p_TransformComponent The transform data, to add to the component.
+	\return Returns the packet, with the transform data added.
 */
 sf::Packet &operator<<(sf::Packet &p_Packet, TransformComponent &p_TransformComponent);
 
 /*!
-	@ref sf::Packet::operator>>(sf::Packet &, TransformComponent &)
+	\brief Reads a transform's properties from a packet.
+	\param p_Packet The packet to get the transform data from.
+	\param p_TransformComponent The transform data, read from the packet.
+	\return Returns the packet, with the data removed.
 */
 sf::Packet &operator>>(sf::Packet &p_Packet, TransformComponent &p_TransformComponent);

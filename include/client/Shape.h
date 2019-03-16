@@ -152,7 +152,7 @@ public:
 	}
 	/*!
 		\brief Sets the shape's colour texture mix value.
-		\param The shape's new colour texture mix value.
+		\param p_ColourTextureMixValue The shape's new colour texture mix value.
 		\return Nothing.
 	*/
 	void SetColourTextureMixValue(float p_ColourTextureMixValue) {
