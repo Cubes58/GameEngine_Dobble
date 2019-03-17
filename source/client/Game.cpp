@@ -84,19 +84,19 @@ void Game::SetScene() {
 
 	switch (m_GameState) {
 	case GameState::MAIN_MENU:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/MainMenuScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/mainMenuScene.json");
 		break;
 	case GameState::ACTIVE:
-		m_Scene = std::make_unique<GamePlayScene>(screenSize, "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
+		m_Scene = std::make_unique<GamePlayScene>(screenSize, "resources/userInterfaceLayouts/gamePlayActiveScene.json");
 		break;
 	case GameState::HELP:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/HelpLayout.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/helpScene.json");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/EndGameWinScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/endGameWinScene.json");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/endGameLoseScene.json");
 		break;
 	case GameState::SHUTDOWN:
 		break;

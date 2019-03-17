@@ -42,9 +42,17 @@ private:
 
 	/*!
 		\brief Loads the user interface layout.
-		\return Nothing.
+		\param p_File The json file to read the user interface data from.
+		\return Returns true, if the user interface data was successfully read, otherwise false.
 	*/
-	void LoadUserInterfaceLayout(const std::string &p_File);
+	bool LoadUserInterfaceLayout(const std::string &p_File);
+
+	/*!
+		\brief Gets a game state, when passed the name of it
+		\param p_GameStateName The name of the game state.
+		\return Returns a game state, if it can find one with the name passed in, otherwise it returns the NOT_AVAILABLE state.
+	*/
+	GameState GetGameStateFromName(const std::string &p_GameStateName);
 
 public:
 	/*!

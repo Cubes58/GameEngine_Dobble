@@ -90,7 +90,7 @@ void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRad
 			circleTransformData.m_Rotation = RandomiserInstance.GetUniformRealRandomNumber(0.0f, 360.0f);
 
 			// Generate the size.
-			circleTransformData.m_Radius = RandomiserInstance.GetUniformRealRandomNumber(maximumCircleRadius * 1.5f, maximumCircleRadius * 1.5f);
+			circleTransformData.m_Radius = RandomiserInstance.GetUniformRealRandomNumber(maximumCircleRadius * 1.5f, maximumCircleRadius * 2.0f);
 
 			// Generate the position.
 			bool inOtherCircle = false;
@@ -162,7 +162,7 @@ void Deck::GenerateCards(Vector2Df p_CardPosition, float p_CardRadius, unsigned 
 }
 
 void Deck::Shuffle() {
-	std::shuffle(m_CardIDs.begin(), m_CardIDs.end(), Randomiser::Instance().Generator());
+	std::shuffle(m_CardIDs.begin(), m_CardIDs.end(), RandomiserInstance.Generator());
 }
 
 bool Deck::HasMatchingSymbol(std::shared_ptr<RenderComponent> p_DeckCardRenderComponent, unsigned int p_PlayerSymbolIDGuess) {
@@ -187,7 +187,15 @@ std::vector<Vector2Df> Deck::CreateDirectionLine(Vector2Df p_CirclePosition, flo
 }
 
 bool Deck::ImproveTransformData(std::vector<CircleTransformData> &p_CircleTransforms, float p_MinimumRadius, float p_MaximumRadius) {
+	// Find the smallest circle
+	// Check to see how far away all of the others circles are, and how close it is to the edge of the card.
+	// Grow the circle, as much as possible. Stop if/when it hits the maximum radius, or if it collides with another circle, or leaves the card's area.
 
+	// KEEP TRACK OF THE CIRCLES THAT'VE BEEN CHANGED - don't try to improve them again here.
+	// If further improvement it wanted then call the method again, on the same component, with the same or different min/max values.
+
+	// Move to the next cirle that's smaller than the rest.
+	// Improve the size of this.
 
 	return false;
 }

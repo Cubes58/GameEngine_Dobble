@@ -1,0 +1,117 @@
+{
+  "UserInterfaceObjects": [
+    {
+      "type": "shape",
+      "shapeType": "rectangleShape",
+      "orientation": [
+        0.0,
+        0.0
+      ],
+      "position": [
+        640.0,
+        360.0
+      ],
+      "size": [
+        1280.0,
+        720.0
+      ],
+      "texture": "menuBackgroundCottage"
+    },
+    {
+      "type": "button",
+      "shapeType": "rectangleShape",
+      "orientation": [
+        0.0,
+        0.0
+      ],
+      "position": [
+        520.0,
+        180.0
+      ],
+      "size": [
+        280.0,
+        90.0
+      ],
+      "texture": "paintStroke5",
+      "stateChange": "ACTIVE"
+    },
+    {
+      "type": "button",
+      "shapeType": "rectangleShape",
+      "orientation": [
+        0.0,
+        0.0
+      ],
+      "position": [
+        520.0,
+        300.0
+      ],
+      "size": [
+        280.0,
+        90.0
+      ],
+      "texture": "paintStroke10",
+      "stateChange": "HELP"
+    },
+    {
+      "type": "button",
+      "shapeType": "rectangleShape",
+      "orientation": [
+        0.0,
+        0.0
+      ],
+      "position": [
+        520.0,
+        420.0
+      ],
+      "size": [
+        280.0,
+        90.0
+      ],
+      "texture": "paintStroke3",
+      "stateChange": "SHUTDOWN"
+    },
+    {
+      "type": "text",
+      "text": "Play",
+      "position": [
+        0.36,
+        0.735
+      ],
+      "scale": 1.0,
+      "colour": [
+        0.098,
+        0.098,
+        0.439
+      ]
+    },
+    {
+      "type": "text",
+      "text": "Help",
+      "position": [
+        0.36,
+        0.565
+      ],
+      "scale": 1.0,
+      "colour": [
+        0.098,
+        0.098,
+        0.439
+      ]
+    },
+    {
+      "type": "text",
+      "text": "Quit",
+      "position": [
+        0.36,
+        0.385
+      ],
+      "scale": 1.0,
+      "colour": [
+        0.098,
+        0.098,
+        0.439
+      ]
+    }
+  ]
+}

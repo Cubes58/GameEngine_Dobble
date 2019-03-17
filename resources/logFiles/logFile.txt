@@ -1,120 +1,124 @@
-[INFO]: The game will be played on port: 9703
+[INFO]: The game will be played on port: 8449
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 1 is equal to: 2
 [INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 1 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 3
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 1 is equal to: 8
-[INFO]: Total number of attempts to place the symbol = 258
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 1 is equal to: 12
-[INFO]: Total number of attempts to place the symbol = 262
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 1 is equal to: 2
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 1 is equal to: 2
 [INFO]: Total number of attempts to place the symbol = 252
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 1 is equal to: 10
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 1 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 1 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 1 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 1 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 252
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 2 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 3
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 2 is equal to: 10
 [INFO]: Total number of attempts to place the symbol = 260
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 2 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 2 is equal to: 17
-[INFO]: Total number of attempts to place the symbol = 17
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 2 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 2 is equal to: 5
-[INFO]: Total number of attempts to place the symbol = 255
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 2 is equal to: 22
-[INFO]: Total number of attempts to place the symbol = 272
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 2 is equal to: 29
-[INFO]: Total number of attempts to place the symbol = 279
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 2 is equal to: 7
+[INFO]: Total number of attempts to place the symbol = 257
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 2 is equal to: 21
+[INFO]: Total number of attempts to place the symbol = 271
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 2 is equal to: 5
+[INFO]: Total number of attempts to place the symbol = 505
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 2 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 504
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 3 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 3 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 3 is equal to: 14
-[INFO]: Total number of attempts to place the symbol = 264
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 3 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 3 is equal to: 15
-[INFO]: Total number of attempts to place the symbol = 265
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 3 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 3 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 3 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 3 is equal to: 34
+[INFO]: Total number of attempts to place the symbol = 34
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 3 is equal to: 50
+[INFO]: Total number of attempts to place the symbol = 300
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 3 is equal to: 35
+[INFO]: Total number of attempts to place the symbol = 285
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 4 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 4 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 4
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 4 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 6
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 4 is equal to: 38
-[INFO]: Total number of attempts to place the symbol = 288
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 4 is equal to: 55
-[INFO]: Total number of attempts to place the symbol = 305
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 4 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 5 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 5 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 6
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 5 is equal to: 5
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 4 is equal to: 8
+[INFO]: Total number of attempts to place the symbol = 258
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 4 is equal to: 5
 [INFO]: Total number of attempts to place the symbol = 255
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 5 is equal to: 12
-[INFO]: Total number of attempts to place the symbol = 262
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 5 is equal to: 11
-[INFO]: Total number of attempts to place the symbol = 261
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 5 is equal to: 55
-[INFO]: Total number of attempts to place the symbol = 305
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 4 is equal to: 19
+[INFO]: Total number of attempts to place the symbol = 269
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 4 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 4 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 504
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 5 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 1
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 5 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 5 is equal to: 103
+[INFO]: Total number of attempts to place the symbol = 103
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 5 is equal to: 8
+[INFO]: Total number of attempts to place the symbol = 258
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 5 is equal to: 18
+[INFO]: Total number of attempts to place the symbol = 518
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 5 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 503
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 6 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 6 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 6
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 6 is equal to: 37
-[INFO]: Total number of attempts to place the symbol = 37
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 6 is equal to: 35
-[INFO]: Total number of attempts to place the symbol = 285
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 6 is equal to: 15
+[INFO]: Total number of attempts to place the symbol = 265
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 6 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 252
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 6 is equal to: 9
+[INFO]: Total number of attempts to place the symbol = 259
 [INFO]: Number of attempts to place the symbol ID: 4 within the entity: 6 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 6 is equal to: 88
-[INFO]: Total number of attempts to place the symbol = 338
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 7 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 3
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 7 is equal to: 1
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 6 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 503
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 7 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 7 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 7 is equal to: 46
-[INFO]: Total number of attempts to place the symbol = 296
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 7 is equal to: 62
-[INFO]: Total number of attempts to place the symbol = 312
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 7 is equal to: 16
-[INFO]: Total number of attempts to place the symbol = 516
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 7 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 7 is equal to: 39
+[INFO]: Total number of attempts to place the symbol = 39
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 7 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 252
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 7 is equal to: 143
+[INFO]: Total number of attempts to place the symbol = 393
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 7 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 8 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 8 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 6
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 8 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 8 is equal to: 5
-[INFO]: Total number of attempts to place the symbol = 255
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 8 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 256
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 8 is equal to: 19
-[INFO]: Total number of attempts to place the symbol = 269
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 9 is equal to: 1
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 8 is equal to: 31
+[INFO]: Total number of attempts to place the symbol = 31
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 8 is equal to: 7
+[INFO]: Total number of attempts to place the symbol = 257
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 8 is equal to: 10
+[INFO]: Total number of attempts to place the symbol = 260
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 8 is equal to: 17
+[INFO]: Total number of attempts to place the symbol = 267
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 8 is equal to: 29
+[INFO]: Total number of attempts to place the symbol = 529
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 9 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 2
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 9 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 9 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 9 is equal to: 26
+[INFO]: Total number of attempts to place the symbol = 276
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 9 is equal to: 162
+[INFO]: Total number of attempts to place the symbol = 412
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 9 is equal to: 16
+[INFO]: Total number of attempts to place the symbol = 516
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 10 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 9 is equal to: 17
-[INFO]: Total number of attempts to place the symbol = 17
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 9 is equal to: 19
-[INFO]: Total number of attempts to place the symbol = 19
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 9 is equal to: 12
-[INFO]: Total number of attempts to place the symbol = 262
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 9 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 253
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 9 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 10 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 3
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 10 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 10 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 10 is equal to: 7
+[INFO]: Total number of attempts to place the symbol = 257
 [INFO]: OpenGL version: 4.6.0 NVIDIA 398.36
 [WARNING]: Unable to load: 0 functions.
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 10 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 10 is equal to: 166
+[INFO]: Total number of attempts to place the symbol = 416
 [INFO]: 
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 430 core
@@ -129,8 +133,9 @@ void main() {
 	gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);
 	TexCoords = vertex.zw;
 }
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 10 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 10 is equal to: 100
+[INFO]: Total number of attempts to place the symbol = 350
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 11 is equal to: 1
 [INFO]: 
 SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
 #version 430 core
@@ -146,7 +151,7 @@ void main() {
 	vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);
 	colour = vec4(textColour, 1.0) * sampled;
 }
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 10 is equal to: 0
+[INFO]: Total number of attempts to place the symbol = 1
 [INFO]: 
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 430 core
@@ -171,6 +176,7 @@ void main() {
 		gl_Position.y += cos(time * 15.0f) * strength;
 	}
 }
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 11 is equal to: 9
 [INFO]: 
 SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
 #version 430 core
@@ -218,8 +224,7 @@ void main() {
 		FragColour = texture(scene, TexCoords);
 	}
 }
-[INFO]: Total number of attempts to place the symbol = 250
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 10 is equal to: 11
+[INFO]: Total number of attempts to place the symbol = 259
 [INFO]: 
 SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
 #version 430 core
@@ -235,6 +240,7 @@ void main() {
 	TexCoords = vertex;
 	gl_Position = projection * model * vec4(vertex, 0.0f, 1.0f);
 }
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 11 is equal to: 1
 [INFO]: 
 SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
 #version 430 core
@@ -255,318 +261,253 @@ void main() {
 	
 	FragColour = mix(textureFragColour, colour, mixValue);
 }
-[INFO]: Total number of attempts to place the symbol = 261
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 11 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 11 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 11 is equal to: 90
-[INFO]: Total number of attempts to place the symbol = 90
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 11 is equal to: 11
-[INFO]: Total number of attempts to place the symbol = 261
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 11 is equal to: 21
-[INFO]: Total number of attempts to place the symbol = 271
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 11 is equal to: 207
-[INFO]: Total number of attempts to place the symbol = 457
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 11 is equal to: 16
+[INFO]: Total number of attempts to place the symbol = 266
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 11 is equal to: 61
+[INFO]: Total number of attempts to place the symbol = 311
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 11 is equal to: 72
+[INFO]: Total number of attempts to place the symbol = 322
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 12 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 12 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 4
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 12 is equal to: 54
-[INFO]: Total number of attempts to place the symbol = 54
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 12 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 256
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 12 is equal to: 13
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 12 is equal to: 65
+[INFO]: Total number of attempts to place the symbol = 65
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 12 is equal to: 13
 [INFO]: Total number of attempts to place the symbol = 263
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 12 is equal to: 169
-[INFO]: Total number of attempts to place the symbol = 419
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 12 is equal to: 12
+[INFO]: Total number of attempts to place the symbol = 262
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 12 is equal to: 7
+[INFO]: Total number of attempts to place the symbol = 257
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 12 is equal to: 17
+[INFO]: Total number of attempts to place the symbol = 517
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 13 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 13 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 13 is equal to: 7
-[INFO]: Total number of attempts to place the symbol = 257
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 13 is equal to: 3
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 13 is equal to: 5
+[INFO]: Total number of attempts to place the symbol = 255
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 13 is equal to: 20
+[INFO]: Total number of attempts to place the symbol = 270
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 13 is equal to: 5
+[INFO]: Total number of attempts to place the symbol = 255
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 13 is equal to: 3
 [INFO]: Total number of attempts to place the symbol = 253
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 13 is equal to: 10
-[INFO]: Total number of attempts to place the symbol = 260
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 13 is equal to: 19
-[INFO]: Total number of attempts to place the symbol = 269
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 13 is equal to: 8
+[INFO]: Total number of attempts to place the symbol = 258
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 14 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 14 is equal to: 2
 [INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 14 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 3
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 14 is equal to: 21
-[INFO]: Total number of attempts to place the symbol = 271
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 14 is equal to: 24
-[INFO]: Total number of attempts to place the symbol = 274
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 14 is equal to: 174
-[INFO]: Total number of attempts to place the symbol = 424
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 14 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 14 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 14 is equal to: 14
+[INFO]: Total number of attempts to place the symbol = 264
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 14 is equal to: 69
+[INFO]: Total number of attempts to place the symbol = 319
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 15 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 15 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 4
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 15 is equal to: 7
-[INFO]: Total number of attempts to place the symbol = 257
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 15 is equal to: 5
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 15 is equal to: 5
 [INFO]: Total number of attempts to place the symbol = 255
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 15 is equal to: 26
-[INFO]: Total number of attempts to place the symbol = 276
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 15 is equal to: 12
-[INFO]: Total number of attempts to place the symbol = 262
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 16 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 15 is equal to: 6
+[INFO]: Total number of attempts to place the symbol = 256
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 15 is equal to: 6
+[INFO]: Total number of attempts to place the symbol = 256
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 15 is equal to: 70
+[INFO]: Total number of attempts to place the symbol = 320
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 15 is equal to: 5
+[INFO]: Total number of attempts to place the symbol = 505
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 16 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 2
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 16 is equal to: 2
 [INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 16 is equal to: 48
-[INFO]: Total number of attempts to place the symbol = 48
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 16 is equal to: 12
-[INFO]: Total number of attempts to place the symbol = 262
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 16 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 252
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 16 is equal to: 63
-[INFO]: Total number of attempts to place the symbol = 313
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 16 is equal to: 9
+[INFO]: Total number of attempts to place the symbol = 259
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 16 is equal to: 22
+[INFO]: Total number of attempts to place the symbol = 272
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 16 is equal to: 234
+[INFO]: Total number of attempts to place the symbol = 484
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 16 is equal to: 22
+[INFO]: Total number of attempts to place the symbol = 522
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 17 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 17 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 17 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 252
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 17 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 17 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 17 is equal to: 18
-[INFO]: Total number of attempts to place the symbol = 268
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 17 is equal to: 21
+[INFO]: Total number of attempts to place the symbol = 271
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 17 is equal to: 7
+[INFO]: Total number of attempts to place the symbol = 257
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 17 is equal to: 15
+[INFO]: Total number of attempts to place the symbol = 265
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 17 is equal to: 6
+[INFO]: Total number of attempts to place the symbol = 256
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 18 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 18 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 3
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 18 is equal to: 21
-[INFO]: Total number of attempts to place the symbol = 21
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 18 is equal to: 67
-[INFO]: Total number of attempts to place the symbol = 317
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 18 is equal to: 35
-[INFO]: Total number of attempts to place the symbol = 285
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 18 is equal to: 153
-[INFO]: Total number of attempts to place the symbol = 403
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 18 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 18 is equal to: 62
+[INFO]: Total number of attempts to place the symbol = 312
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 18 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 18 is equal to: 8
+[INFO]: Total number of attempts to place the symbol = 508
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 19 is equal to: 2
 [INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 19 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 19 is equal to: 7
-[INFO]: Total number of attempts to place the symbol = 257
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 19 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 251
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 19 is equal to: 26
-[INFO]: Total number of attempts to place the symbol = 276
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 19 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 256
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 19 is equal to: 34
+[INFO]: Total number of attempts to place the symbol = 34
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 19 is equal to: 31
+[INFO]: Total number of attempts to place the symbol = 281
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 19 is equal to: 13
+[INFO]: Total number of attempts to place the symbol = 263
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 19 is equal to: 107
+[INFO]: Total number of attempts to place the symbol = 357
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 19 is equal to: 14
+[INFO]: Total number of attempts to place the symbol = 514
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 20 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 20 is equal to: 7
 [INFO]: Total number of attempts to place the symbol = 7
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 20 is equal to: 25
-[INFO]: Total number of attempts to place the symbol = 25
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 20 is equal to: 37
-[INFO]: Total number of attempts to place the symbol = 287
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 20 is equal to: 22
-[INFO]: Total number of attempts to place the symbol = 272
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 20 is equal to: 150
-[INFO]: Total number of attempts to place the symbol = 400
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 20 is equal to: 232
+[INFO]: Total number of attempts to place the symbol = 232
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 20 is equal to: 18
+[INFO]: Total number of attempts to place the symbol = 268
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 20 is equal to: 5
+[INFO]: Total number of attempts to place the symbol = 255
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 20 is equal to: 54
+[INFO]: Total number of attempts to place the symbol = 554
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 21 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
 [INFO]: Number of attempts to place the symbol ID: 1 within the entity: 21 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 21 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 4
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 21 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 21 is equal to: 165
-[INFO]: Total number of attempts to place the symbol = 415
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 21 is equal to: 19
-[INFO]: Total number of attempts to place the symbol = 269
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 21 is equal to: 14
+[INFO]: Total number of attempts to place the symbol = 264
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 21 is equal to: 23
+[INFO]: Total number of attempts to place the symbol = 273
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 21 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 21 is equal to: 18
+[INFO]: Total number of attempts to place the symbol = 518
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 22 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 22 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 22 is equal to: 21
-[INFO]: Total number of attempts to place the symbol = 21
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 22 is equal to: 47
-[INFO]: Total number of attempts to place the symbol = 297
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 22 is equal to: 76
-[INFO]: Total number of attempts to place the symbol = 326
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 22 is equal to: 112
-[INFO]: Total number of attempts to place the symbol = 362
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 23 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 23 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 23 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 23 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 256
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 23 is equal to: 116
-[INFO]: Total number of attempts to place the symbol = 366
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 23 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 504
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 24 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 24 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 6
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 24 is equal to: 5
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 22 is equal to: 5
 [INFO]: Total number of attempts to place the symbol = 5
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 24 is equal to: 4
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 22 is equal to: 4
 [INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 24 is equal to: 19
-[INFO]: Total number of attempts to place the symbol = 269
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 24 is equal to: 189
-[INFO]: Total number of attempts to place the symbol = 439
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 25 is equal to: 2
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 22 is equal to: 81
+[INFO]: Total number of attempts to place the symbol = 331
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 22 is equal to: 180
+[INFO]: Total number of attempts to place the symbol = 430
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 22 is equal to: 98
+[INFO]: Total number of attempts to place the symbol = 348
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 23 is equal to: 2
 [INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 25 is equal to: 3
-[INFO]: Total number of attempts to place the symbol = 3
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 25 is equal to: 5
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 23 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 23 is equal to: 5
 [INFO]: Total number of attempts to place the symbol = 255
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 25 is equal to: 7
-[INFO]: Total number of attempts to place the symbol = 257
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 25 is equal to: 61
-[INFO]: Total number of attempts to place the symbol = 311
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 25 is equal to: 14
-[INFO]: Total number of attempts to place the symbol = 264
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 26 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 26 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 6
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 26 is equal to: 188
-[INFO]: Total number of attempts to place the symbol = 188
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 26 is equal to: 5
-[INFO]: Total number of attempts to place the symbol = 255
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 26 is equal to: 11
-[INFO]: Total number of attempts to place the symbol = 261
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 26 is equal to: 43
-[INFO]: Total number of attempts to place the symbol = 293
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 27 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 27 is equal to: 5
-[INFO]: Total number of attempts to place the symbol = 5
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 27 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 2
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 27 is equal to: 16
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 23 is equal to: 4
+[INFO]: Total number of attempts to place the symbol = 254
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 23 is equal to: 16
 [INFO]: Total number of attempts to place the symbol = 266
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 27 is equal to: 4
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 23 is equal to: 42
+[INFO]: Total number of attempts to place the symbol = 292
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 24 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 2
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 24 is equal to: 4
 [INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 27 is equal to: 154
-[INFO]: Total number of attempts to place the symbol = 404
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 28 is equal to: 1
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 24 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 253
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 24 is equal to: 6
+[INFO]: Total number of attempts to place the symbol = 256
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 24 is equal to: 40
+[INFO]: Total number of attempts to place the symbol = 290
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 24 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 25 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 28 is equal to: 10
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 25 is equal to: 10
 [INFO]: Total number of attempts to place the symbol = 10
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 28 is equal to: 6
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 25 is equal to: 22
+[INFO]: Total number of attempts to place the symbol = 272
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 25 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 25 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 25 is equal to: 6
+[INFO]: Total number of attempts to place the symbol = 506
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 26 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 2
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 26 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 2
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 26 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 252
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 26 is equal to: 82
+[INFO]: Total number of attempts to place the symbol = 82
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 26 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 26 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 27 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 1
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 27 is equal to: 10
+[INFO]: Total number of attempts to place the symbol = 10
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 27 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 251
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 27 is equal to: 6
 [INFO]: Total number of attempts to place the symbol = 256
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 28 is equal to: 6
-[INFO]: Total number of attempts to place the symbol = 256
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 28 is equal to: 8
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 27 is equal to: 14
+[INFO]: Total number of attempts to place the symbol = 264
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 27 is equal to: 6
+[INFO]: Total number of attempts to place the symbol = 506
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 28 is equal to: 3
+[INFO]: Total number of attempts to place the symbol = 3
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 28 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 1
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 28 is equal to: 58
+[INFO]: Total number of attempts to place the symbol = 58
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 28 is equal to: 10
+[INFO]: Total number of attempts to place the symbol = 510
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 28 is equal to: 46
+[INFO]: Total number of attempts to place the symbol = 296
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 28 is equal to: 8
 [INFO]: Total number of attempts to place the symbol = 258
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 28 is equal to: 10
-[INFO]: Total number of attempts to place the symbol = 260
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 29 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 29 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 29 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 29 is equal to: 4
-[INFO]: Total number of attempts to place the symbol = 254
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 29 is equal to: 12
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 29 is equal to: 22
+[INFO]: Total number of attempts to place the symbol = 272
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 29 is equal to: 31
+[INFO]: Total number of attempts to place the symbol = 281
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 29 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 29 is equal to: 141
+[INFO]: Total number of attempts to place the symbol = 391
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 29 is equal to: 1
+[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 30 is equal to: 2
+[INFO]: Total number of attempts to place the symbol = 2
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 30 is equal to: 7
+[INFO]: Total number of attempts to place the symbol = 257
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 30 is equal to: 12
 [INFO]: Total number of attempts to place the symbol = 262
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 29 is equal to: 10
-[INFO]: Total number of attempts to place the symbol = 260
-[INFO]: Number of attempts to place the symbol ID: 0 within the entity: 30 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 30 is equal to: 16
-[INFO]: Total number of attempts to place the symbol = 16
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 30 is equal to: 7
-[INFO]: Total number of attempts to place the symbol = 7
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 30 is equal to: 21
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 30 is equal to: 9
+[INFO]: Total number of attempts to place the symbol = 259
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 30 is equal to: 21
 [INFO]: Total number of attempts to place the symbol = 271
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 30 is equal to: 115
-[INFO]: Total number of attempts to place the symbol = 365
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 30 is equal to: 98
-[INFO]: Total number of attempts to place the symbol = 348
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 30 is equal to: 64
+[INFO]: Total number of attempts to place the symbol = 314
 [INFO]: Number of attempts to place the symbol ID: 0 within the entity: 31 is equal to: 1
 [INFO]: Total number of attempts to place the symbol = 1
-[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 31 is equal to: 13
-[INFO]: Total number of attempts to place the symbol = 13
-[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 31 is equal to: 85
-[INFO]: Total number of attempts to place the symbol = 85
-[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 31 is equal to: 2
-[INFO]: Total number of attempts to place the symbol = 252
-[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 31 is equal to: 93
-[INFO]: Total number of attempts to place the symbol = 343
-[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 31 is equal to: 1
-[INFO]: Total number of attempts to place the symbol = 501
+[INFO]: Number of attempts to place the symbol ID: 1 within the entity: 31 is equal to: 16
+[INFO]: Total number of attempts to place the symbol = 16
+[INFO]: Number of attempts to place the symbol ID: 2 within the entity: 31 is equal to: 45
+[INFO]: Total number of attempts to place the symbol = 295
+[INFO]: Number of attempts to place the symbol ID: 3 within the entity: 31 is equal to: 43
+[INFO]: Total number of attempts to place the symbol = 293
+[INFO]: Number of attempts to place the symbol ID: 4 within the entity: 31 is equal to: 37
+[INFO]: Total number of attempts to place the symbol = 287
+[INFO]: Number of attempts to place the symbol ID: 5 within the entity: 31 is equal to: 29
+[INFO]: Total number of attempts to place the symbol = 529
 [INFO]: All of the card entities have been created.
 [INFO]: Texture width: 1280	Texture height: 720
-[INFO]: Attempting to connect to the server... 
-Port number: 8787
-IP Address: 127.0.0.1
-[INFO]: Connected to the server listener!
-[INFO]: Packet being received, from the server.
-[INFO]: Connected to a game on the server (in lobby)!
-[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 1
-[INFO]: Number of circles in the render component: 7
-[INFO]: Symbol ID: 0
-[INFO]: Symbol ID: 4
-[INFO]: Symbol ID: 7
-[INFO]: Symbol ID: 14
-[INFO]: Symbol ID: 21
-[INFO]: Symbol ID: 23
-[INFO]: Symbol ID: 30
-[INFO]: Number of circles in the transform component: 7
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
-[INFO]: Transform data: XPos: -20.0611	YPos: -20.6099	Radius: 96.1539	Rotation: 9.31199
-[INFO]: Transform data: XPos: 89.3143	YPos: 108.997	Radius: 48.0769	Rotation: 222.757
-[INFO]: Transform data: XPos: -111.749	YPos: -146.816	Radius: 48.0769	Rotation: 59.832
-[INFO]: Transform data: XPos: 180.597	YPos: -40.6711	Radius: 48.0769	Rotation: 338.626
-[INFO]: Transform data: XPos: -15.7897	YPos: -199.024	Radius: 48.0769	Rotation: 181.964
-[INFO]: Transform data: XPos: -38.6646	YPos: 126.652	Radius: 48.0769	Rotation: 137.331
-[INFO]: Successfully sent data to a client! Client ID: 1
-[INFO]: Number of circles in the render component: 7
-[INFO]: Symbol ID: 0
-[INFO]: Symbol ID: 5
-[INFO]: Packet being received, from the server.
-[INFO]: Symbol ID: 10
-[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
-[INFO]: Symbol ID: 13
-[INFO]: XPos: -20.0611	YPos: -20.6099	Radius: 96.1539	Rotation: 9.31199
-[INFO]: Symbol ID: 21
-[INFO]: XPos: 89.3143	YPos: 108.997	Radius: 48.0769	Rotation: 222.757
-[INFO]: Symbol ID: 24
-[INFO]: XPos: -111.749	YPos: -146.816	Radius: 48.0769	Rotation: 59.832
-[INFO]: Symbol ID: 27
-[INFO]: XPos: 180.597	YPos: -40.6711	Radius: 48.0769	Rotation: 338.626
-[INFO]: Number of circles in the transform component: 7
-[INFO]: XPos: -15.7897	YPos: -199.024	Radius: 48.0769	Rotation: 181.964
-[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
-[INFO]: XPos: -38.6646	YPos: 126.652	Radius: 48.0769	Rotation: 137.331
-[INFO]: Transform data: XPos: -48.6381	YPos: 38.9271	Radius: 96.1539	Rotation: 323.178
-[INFO]: Transform data: XPos: 83.5353	YPos: -115.49	Radius: 96.1539	Rotation: 186.746
-[INFO]: Transform data: XPos: 133.763	YPos: 101.673	Radius: 48.0769	Rotation: 50.3865
-[INFO]: Transform data: XPos: -81.3216	YPos: -124.881	Radius: 48.0769	Rotation: 118.636
-[INFO]: Transform data: XPos: -168.337	YPos: -48.2643	Radius: 48.0769	Rotation: 248.442
-[INFO]: Transform data: XPos: 19.8363	YPos: 167.582	Radius: 48.0769	Rotation: 321.976
-[INFO]: Successfully sent data to a client! Client ID: 1
-[INFO]: Successfully sent data to a client! Client ID: 1
-[INFO]: Packet being received, from the server.
-[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
-[INFO]: XPos: -48.6381	YPos: 38.9271	Radius: 96.1539	Rotation: 323.178
-[INFO]: XPos: 83.5353	YPos: -115.49	Radius: 96.1539	Rotation: 186.746
-[INFO]: XPos: 133.763	YPos: 101.673	Radius: 48.0769	Rotation: 50.3865
-[INFO]: XPos: -81.3216	YPos: -124.881	Radius: 48.0769	Rotation: 118.636
-[INFO]: XPos: -168.337	YPos: -48.2643	Radius: 48.0769	Rotation: 248.442
-[INFO]: XPos: 19.8363	YPos: 167.582	Radius: 48.0769	Rotation: 321.976
-[INFO]: Packet being received, from the server.
+[INFO]: Texture width: 1280	Texture height: 720
