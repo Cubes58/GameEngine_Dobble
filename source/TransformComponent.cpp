@@ -11,7 +11,7 @@ sf::Packet &operator<<(sf::Packet &p_Packet, TransformComponent &p_TransformComp
 		p_Packet << transform.m_Radius;
 		p_Packet << transform.m_Rotation;
 		Log(Type::INFO) << "Transform data: XPos: " << transform.m_Position.X() << "\tYPos: " << transform.m_Position.Y() <<
-			"\tRadius: " << transform.m_Radius << "\tRotation:" << transform.m_Rotation;
+			"\tRadius: " << transform.m_Radius << "\tRotation: " << transform.m_Rotation;
 	}
 
 	return p_Packet;

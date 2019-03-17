@@ -13,6 +13,8 @@
 #include "TransformComponent.h"
 #include "RenderComponent.h"
 
+#include "Logger.h"
+
 bool Deck::GenerateCardSymbolIDs(unsigned int p_NumberOfSymblesPerCard) {
 	static constexpr unsigned int s_ConstantIncrement = 1;
 	// Check if the given number is prime;
@@ -72,8 +74,6 @@ void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRad
 	float minimumCircleRadius = (p_CardRadius / p_NumberOfSymblesPerCard) / 0.95f;
 	float maximumCircleRadius = (p_CardRadius / p_NumberOfSymblesPerCard) / 0.65f;
 
-	//m_ValidSymbolStartingPositions = GeneratePositionsWithinCircle(p_CardPosition, p_CardRadius * 0.25f);
-
 	p_NumberOfSymblesPerCard += 1;	// Add one for the card background (position/collision test).
 	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
 	for (const auto &entity : *entities) {
@@ -90,10 +90,13 @@ void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRad
 			circleTransformData.m_Rotation = RandomiserInstance.GetUniformRealRandomNumber(0.0f, 360.0f);
 
 			// Generate the size.
-			circleTransformData.m_Radius = RandomiserInstance.GetUniformRealRandomNumber(minimumCircleRadius, maximumCircleRadius);
+			circleTransformData.m_Radius = RandomiserInstance.GetUniformRealRandomNumber(maximumCircleRadius * 1.5f, maximumCircleRadius * 1.5f);
 
 			// Generate the position.
 			bool inOtherCircle = false;
+			unsigned int numberOfAttemps = 0;
+			unsigned int totalNumberOfAttempts = 0;
+			unsigned int indexOfCircleToShrink = 2;
 			do {
 				circleTransformData.m_Position = Vector2Df(RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius),
 					RandomiserInstance.GetUniformRealRandomNumber(-p_CardRadius + circleTransformData.m_Radius, p_CardRadius - circleTransformData.m_Radius));
@@ -106,14 +109,40 @@ void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRad
 					else
 						inOtherCircle = false;
 				}
+				++numberOfAttemps;
+				++totalNumberOfAttempts;
+
+				if (numberOfAttemps >= MAX_NUMBER_OF_ATTEMPTS_BEFORE_SHRINKING_CIRCLE) {
+					// If the circle is smaller than half of the minimum, then shrink one of the other circles on the card.
+					if (circleTransformData.m_Radius < minimumCircleRadius / 2.0f) {
+						if (indexOfCircleToShrink == circleTransforms.size()) {
+							indexOfCircleToShrink = 2;
+						}
+
+						circleTransforms[indexOfCircleToShrink].m_Radius = circleTransforms[indexOfCircleToShrink].m_Radius / 2.0f;	// Half the radius of a circle, on the card.
+						++indexOfCircleToShrink;
+					}
+					else
+						circleTransformData.m_Radius = circleTransformData.m_Radius / 2.0f;	// Shrink the circle.
+
+					numberOfAttemps = 0;	// Attempt to add the card again.
+				}
 
 			} while (!m_Collision.IsCircleInCircle(p_CardPosition, p_CardRadius, circleTransformData.m_Position, circleTransformData.m_Radius) || inOtherCircle);
+
+			Log(Type::INFO) << "Number of attempts to place the symbol ID: " << i << " within the entity: " << entity << " is equal to: " << numberOfAttemps;
+			Log(Type::INFO) << "Total number of attempts to place the symbol = " << totalNumberOfAttempts;
+
 
 			// Add the symbol's transform component.
 			circleTransforms.emplace_back(circleTransformData);
 		}
+		ImproveTransformData(circleTransforms, minimumCircleRadius, maximumCircleRadius);
+
 		EntityManagerInstance.AddComponentToEntity(entity, std::make_shared<TransformComponent>(circleTransforms));
 	}
+
+	Log(Type::INFO) << "All of the card entities have been created.";
 }
 
 void Deck::GenerateCards(Vector2Df p_CardPosition, float p_CardRadius, unsigned int p_NumberOfSymblesPerCard) {
@@ -155,6 +184,12 @@ std::vector<Vector2Df> Deck::CreateDirectionLine(Vector2Df p_CirclePosition, flo
 		line.emplace_back(length * cos(p_Angle), length * sin(p_Angle));
 
 	return line;
+}
+
+bool Deck::ImproveTransformData(std::vector<CircleTransformData> &p_CircleTransforms, float p_MinimumRadius, float p_MaximumRadius) {
+
+
+	return false;
 }
 
 bool Deck::IsDeckEmpty() const {

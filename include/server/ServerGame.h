@@ -18,7 +18,7 @@
 
 class ServerGame {
 private:
-	static const constexpr unsigned int s_m_NumberOfPlayers = 2;	//!< The minimum number of players, per game.
+	static const constexpr unsigned int s_m_NumberOfPlayers = 1;	//!< The minimum number of players, per game.
 
 	Server m_Server;	//!< A server instance, which handles the communication between the server and clients.
 	Deck m_Deck;	//!< Generates the cards, and helps control the entites.

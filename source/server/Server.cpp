@@ -188,8 +188,7 @@ void Server::SetListeningState(bool p_Listen) {
 	if (p_Listen)
 		m_Listener.listen(s_m_PortToListenOn);
 	else {
-		// Switch it, to listening for incoming "game" packets, and not new connections.
-		m_Listener.listen(m_GamePortNumber);
+		m_Listener.listen(sf::TcpListener::AnyPort);
 	}
 }
 
