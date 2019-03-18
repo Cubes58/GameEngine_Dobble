@@ -190,6 +190,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\client\AudioManager.cpp" />
     <ClCompile Include="source\client\CircleShape.cpp" />
     <ClCompile Include="source\client\Client.cpp" />
     <ClCompile Include="source\client\FontRenderer.cpp" />
@@ -215,6 +216,7 @@
     <ClCompile Include="source\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\client\AudioManager.h" />
     <ClInclude Include="include\client\Button.h" />
     <ClInclude Include="include\client\CircleShape.h" />
     <ClInclude Include="include\client\Client.h" />

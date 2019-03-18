@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "EntityManager.h"
+#include "AudioManager.h"
 #include "ParticleManager.h"
 #include "UserInterface.h"
 #include "FontRenderer.h"
@@ -15,7 +16,7 @@
 GamePlayScene::GamePlayScene(const Vector2Df &p_ScreenSize, const std::string &p_File) 
 	: Scene(p_ScreenSize, p_File) {
 	m_ParticleManager = std::make_shared<ParticleManager>(p_ScreenSize, MAX_NUMBER_OF_PARTICLES);
-	
+
 	m_CouldConnect = m_Client.Connect(sf::Time::Zero);
 }
 
@@ -43,6 +44,7 @@ void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 					// Check whether a certain amount of time has passed, since the previous guess, to stop the player spamming guesses.
 					if (m_UserInterface->Time() - m_TimeOfLastAttempt >= ATTEMPT_DELAY) {
 						Log(Type::INFO) << "Symbol sent to the server!" << m_PlayerEntityID;
+						AudioManagerInstance.PlaySoundEffect("symbolGuess");
 						// The player has attempted to guess the symbol, send it to the server.
 						sf::Packet packet = Packet::SetPacketType(Packet::SYMBOL_ID);
 						packet << m_PlayerSymbolIDGuess;
@@ -50,6 +52,8 @@ void GamePlayScene::HandleInputEvent(sf::Event &p_Event) {
 
 						m_TimeOfLastAttempt = m_UserInterface->Time();
 					}
+					else 
+						AudioManagerInstance.PlaySoundEffect("squat");
 					m_PlayerSymbolIDGuess = INVALID_SYMBOL_GUESS;
 				}
 			}

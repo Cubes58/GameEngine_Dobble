@@ -4,6 +4,7 @@
 #include "Logger.h"
 
 #include "EntityManager.h"
+#include "AudioManager.h"
 #include "ResourceManager.h"
 #include "RenderSystem.h"
 #include "PacketTypes.h"
@@ -84,19 +85,24 @@ void Game::SetScene() {
 
 	switch (m_GameState) {
 	case GameState::MAIN_MENU:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/MainMenuScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/mainMenuScene.json");
+		AudioManagerInstance.OpenMusicFile("resources/audio/music/dobbleTheme.wav");
 		break;
 	case GameState::ACTIVE:
-		m_Scene = std::make_unique<GamePlayScene>(screenSize, "resources/userInterfaceLayouts/GamePlayActiveLayout.JSON");
+		m_Scene = std::make_unique<GamePlayScene>(screenSize, "resources/userInterfaceLayouts/gamePlayActiveScene.json");
+		AudioManagerInstance.OpenMusicFile("resources/audio/music/retroTheme.wav");
 		break;
 	case GameState::HELP:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/HelpLayout.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/helpScene.json");
+		AudioManagerInstance.OpenMusicFile("resources/audio/music/magicBells.wav");
 		break;
 	case GameState::WIN:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/EndGameWinScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/endGameWinScene.json");
+		AudioManagerInstance.OpenMusicFile("resources/audio/music/ambientChill.wav");
 		break;
 	case GameState::LOSE:
-		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/EndGameLoseScene.JSON");
+		m_Scene = std::make_unique<Scene>(screenSize, "resources/userInterfaceLayouts/endGameLoseScene.json");
+		AudioManagerInstance.OpenMusicFile("resources/audio/music/ambientChill.wav");
 		break;
 	case GameState::SHUTDOWN:
 		break;
