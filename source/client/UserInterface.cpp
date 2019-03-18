@@ -10,6 +10,7 @@
 #include <json/json.h>
 
 #include "ResourceManager.h"
+#include "AudioManager.h"
 #include "FontRenderer.h"
 #include "Shader.h"
 #include "Collision.h"
@@ -197,8 +198,10 @@ GameState UserInterface::HandleInput(sf::Event &p_Event, const GameState &p_Curr
 		if (m_Buttons[i]->m_ShapeType == typeid(RectangleShape)) {
 			std::shared_ptr<RectangleShape> shape = std::static_pointer_cast<RectangleShape>(m_Buttons[i]->m_Shape);
 			if (collision(shape->GetPosition(), shape->GetSize(), mousePosition)) {
-				if (p_Event.type == p_Event.MouseButtonPressed)
+				if (p_Event.type == p_Event.MouseButtonPressed) {
+					AudioManagerInstance.PlaySoundEffect("bleep");
 					return m_Buttons[i]->m_GameState;
+				}
 				else {
 					highlightButton = true;
 					buttonToHighlightIndex = i;
@@ -208,8 +211,9 @@ GameState UserInterface::HandleInput(sf::Event &p_Event, const GameState &p_Curr
 		else {
 			std::shared_ptr<CircleShape> shape = std::static_pointer_cast<CircleShape>(m_Buttons[i]->m_Shape);
 			if (collision(shape->GetPosition(), shape->GetRadius(), mousePosition)) {
-				if (p_Event.type == p_Event.MouseButtonPressed)
+				if (p_Event.type == p_Event.MouseButtonPressed) {
 					return m_Buttons[i]->m_GameState;
+				}
 				else {
 					highlightButton = true;
 					buttonToHighlightIndex = i;
