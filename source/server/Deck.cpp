@@ -137,7 +137,7 @@ void Deck::GenerateSymbolTransformData(Vector2Df p_CardPosition, float p_CardRad
 			// Add the symbol's transform component.
 			circleTransforms.emplace_back(circleTransformData);
 		}
-		ImproveTransformData(circleTransforms, minimumCircleRadius, maximumCircleRadius);
+		ImproveTransformData(circleTransforms);
 
 		EntityManagerInstance.AddComponentToEntity(entity, std::make_shared<TransformComponent>(circleTransforms));
 	}
@@ -186,18 +186,40 @@ std::vector<Vector2Df> Deck::CreateDirectionLine(Vector2Df p_CirclePosition, flo
 	return line;
 }
 
-bool Deck::ImproveTransformData(std::vector<CircleTransformData> &p_CircleTransforms, float p_MinimumRadius, float p_MaximumRadius) {
-	// Find the smallest circle
-	// Check to see how far away all of the others circles are, and how close it is to the edge of the card.
-	// Grow the circle, as much as possible. Stop if/when it hits the maximum radius, or if it collides with another circle, or leaves the card's area.
+void Deck::ImproveTransformData(std::vector<CircleTransformData> &p_CircleTransforms) {
+	// Order the circles from smallest to largest.
+	std::sort(p_CircleTransforms.begin(), p_CircleTransforms.end());
 
-	// KEEP TRACK OF THE CIRCLES THAT'VE BEEN CHANGED - don't try to improve them again here.
-	// If further improvement it wanted then call the method again, on the same component, with the same or different min/max values.
+	// Loop through the circles, from smallest to largest, growing them.
+	for (unsigned int i = 0; i < p_CircleTransforms.size() - 1; ++i) {
+		float sizeIncrease = 100.0f;
+		for (unsigned int j = 0; j < p_CircleTransforms.size() - 1; ++j) {
+			if (i == j)
+				continue;
+			Vector2Df distanceVec(p_CircleTransforms[j].m_Position - p_CircleTransforms[i].m_Position);
+			distanceVec = distanceVec * distanceVec;
+			float distance = std::sqrt(distanceVec.X() + distanceVec.Y()) - (p_CircleTransforms[i].m_Radius + p_CircleTransforms[j].m_Radius);
+			if (distance < sizeIncrease) {
+				sizeIncrease = distance;
+			}
+		}
 
-	// Move to the next cirle that's smaller than the rest.
-	// Improve the size of this.
+		// Check how much the circle can grow, without going outside of the card.
+		Vector2Df distance(p_CircleTransforms[p_CircleTransforms.size() - 1].m_Position - p_CircleTransforms[i].m_Position);
+		float squareDistance = distance.DotProduct(distance);
+		float distanceToReachCardEdge = (p_CircleTransforms[p_CircleTransforms.size() - 1].m_Radius - p_CircleTransforms[i].m_Radius) - std::sqrt(squareDistance);
 
-	return false;
+		// If the distance to reach the edge of the card is smaller than the distance between any of the other circles,
+		// then only grow it until the edge of the card.
+		if (distanceToReachCardEdge < sizeIncrease) {
+			sizeIncrease = distanceToReachCardEdge;
+		}
+		p_CircleTransforms[i].m_Radius += sizeIncrease;
+	}
+
+	// Ensure the card's background circle is the first element.
+	// The card will always have the biggest radius, so it'll always be last.
+	std::swap(p_CircleTransforms[0], p_CircleTransforms[p_CircleTransforms.size() - 1]);
 }
 
 bool Deck::IsDeckEmpty() const {

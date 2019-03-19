@@ -50,11 +50,9 @@ private:
 	/*!
 		\brief Improves circle transform data.
 		\param p_CircleTransforms The vector of circle transforms, to improve.
-		\param p_MinimumRadius The minimum size a circle can have.
-		\param p_MaximumRadius The maximum radius a circle can have.
-		\return Returns true, if there was improvement in the placement of the transform data.
+		\return Nothing.
 	*/
-	bool ImproveTransformData(std::vector<CircleTransformData> &p_CircleTransforms, float p_MinimumRadius, float p_MaximumRadius);
+	void ImproveTransformData(std::vector<CircleTransformData> &p_CircleTransforms);
 
 public:
 	Deck() = default;	//!< Constructor.

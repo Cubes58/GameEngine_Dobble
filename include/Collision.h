@@ -68,17 +68,17 @@ public:
 
 	/*!
 		\brief Checks whether a circle is within another circle.
-		\param p_CircleCentrePosition The position of the circle.
-		\param p_CircleRadius The radius of the circle.
+		\param p_CircleCentrePosition The position of the encapsulating circle.
+		\param p_CircleRadius The radius of the encapsulating circle.
 		\param p_CircleToCheckIfInsidePosition The position of the inside circle.
 		\param p_CircleToCheckIfInsideRadius The radius of the inside circle.
 		\return Returns true if a circle is within the other circle, otherwise false.
 	*/
 	bool IsCircleInCircle(const Vector2Df &p_CircleCentrePosition, float p_CircleRadius, const Vector2Df &p_CircleToCheckIfInsidePosition, float p_CircleToCheckIfInsideRadius) {
 		Vector2Df distance(p_CircleCentrePosition - p_CircleToCheckIfInsidePosition);
-		float squareDist = distance.DotProduct(distance);
+		float squareDistance = distance.DotProduct(distance);
 		float radiiSum = p_CircleRadius - p_CircleToCheckIfInsideRadius;
 
-		return squareDist < radiiSum * radiiSum;
+		return squareDistance < radiiSum * radiiSum;
 	}
 };

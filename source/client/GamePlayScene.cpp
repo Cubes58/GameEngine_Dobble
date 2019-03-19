@@ -98,8 +98,12 @@ void GamePlayScene::Render() {
 	m_PostProcessor->EndRender();
 	m_PostProcessor->Render();
 
-	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
-	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
+	glm::vec3 colour = glm::vec3(0.2f, 0.5f, 0.1f);
+	if (!(m_UserInterface->Time() - m_TimeOfLastAttempt >= ATTEMPT_DELAY)) 
+		colour = glm::vec3(0.439, 0.098, 0.098);
+
+	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, colour);
+	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, colour);
 }
 
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {

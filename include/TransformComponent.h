@@ -60,6 +60,15 @@ struct CircleTransformData {
 	bool operator!=(const CircleTransformData &p_CircleTransformData) {
 		return !(*this == p_CircleTransformData);
 	}
+
+	/*!
+		\brief Checks a circle transform's radius is smaller than another.
+		\param p_CircleTransformData The other circle transform data to check this one with.
+		\return Returns true if this circle transform's radius is less than p_CircleTransformData, otherwise false.
+	*/
+	bool operator<(const CircleTransformData &p_CircleTransformData) {
+		return this->m_Radius < p_CircleTransformData.m_Radius;
+	}
 };
 
 /**
