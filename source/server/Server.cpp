@@ -80,11 +80,21 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 }
 
 void Server::WaitForClientsToConnect(int p_NumberOfClients) {
-	unsigned int numberOfClientsAdded(0);
+	Log(Type::INFO) << "Waiting for " << p_NumberOfClients << " new clients.";
+
+	int numberOfClientsAdded(0);
+	int numberOfClientsBeforeWaiting = m_Clients.size();
 	while (numberOfClientsAdded < p_NumberOfClients) {
 		// Maximum time to wait, (use Time::Zero for infinity).
 		if (CheckForClientConnectionRequest(sf::Time::Zero)) {
 			++numberOfClientsAdded;
+			Log(Type::INFO) << "Number of clients added: " << numberOfClientsAdded;
+
+			// Check if a client has disconnected, while they were waiting.
+			if (m_Clients.size() < numberOfClientsBeforeWaiting + p_NumberOfClients) {
+				numberOfClientsAdded = (numberOfClientsBeforeWaiting + p_NumberOfClients) - m_Clients.size();
+				Log(Type::INFO) << "Number of clients still needed: " << numberOfClientsAdded;
+			}
 		}
 	}
 }

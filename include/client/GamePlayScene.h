@@ -7,6 +7,7 @@
 #include "Scene.h"
 
 #include <string>
+#include <vector>
 
 #include "Client.h"
 #include "Vector2D.h"
@@ -37,6 +38,7 @@ class ParticleManager;
 class GamePlayScene : public Scene {
 private:
 	Client m_Client;	//!< A client instance, used to communicate with the server.
+	std::vector<float> m_EnemyScores;	//!< The scores of the other players.
 	std::string m_PlayerEntityID = "PlayerCard";	//!< The name of the player's card entity.
 	std::string m_DeckEntityID = "DeckCard";	//!< The name of the dekc's card entity.
 	Vector2Df m_MousePosition;	//!< The mouse position, within the window.
@@ -45,11 +47,18 @@ private:
 	float m_Score = 0.0f;	//!< The score the player has accumulated, by winning rounds.
 	float m_TimeOfLastAttempt = -ATTEMPT_DELAY;	//!< The last time the player guessed a symbol.
 	float m_TimePassedSinceShakeEffectActivated = 0.0f;	//!< The time passed since the shake effect was activated.
-	float m_ShakeEffectActivationGap = MIN_GAP_DURATION_BETWEEN_SHAKE_EFFECT;
+	float m_ShakeEffectActivationGap = MIN_GAP_DURATION_BETWEEN_SHAKE_EFFECT;	//!< The time gap between each shake effect.
 	float m_TimePassedSinceOtherEffectActivated = 0.0f;	//!< The time passed since the other effect was activated.
-	float m_OtherEffectActivationGap = MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT;
+	float m_OtherEffectActivationGap = MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT;	//!< The time gap between each other effect.
 	std::shared_ptr<ParticleManager> m_ParticleManager;	//!< Pointer to a particle manager, which manages the particle system.
 	bool m_CouldConnect = true;	//!< Manages the connection state between the server and the client.
+
+	/*!
+		\brief Handles incoming score packets, from the server.
+		\param p_Packet The packet to get the score from (received from the server).
+		\return Nothing.
+	*/
+	void ReadScore(sf::Packet &p_Packet);
 
 	/*!
 		\brief Handles incoming packets, from the server.

@@ -6,16 +6,12 @@
 #include "EntityManager.h"
 #include "AudioManager.h"
 #include "ResourceManager.h"
-#include "RenderSystem.h"
 #include "PacketTypes.h"
 
 #include "GamePlayScene.h"
 #include "Text.h"
 
 Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::MAIN_MENU) {
-	EntityManagerInstance.Init();
-	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>((float)m_Window.GetWidth(), (float)m_Window.GetHeight()));
-
 	SetScene();
 }
 

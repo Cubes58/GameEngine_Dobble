@@ -10,6 +10,8 @@
 #include "Server.h"
 #include "Deck.h"
 
+#define TIME_TO_WAIT_FOR_MORE_CLIENTS 5.0f
+
 #define SCORE_GAINED_PER_GUESS 25.0f	//!< The score a player earns per correct guess.
 #define SCORE_LOST_TIME_GAP_DURATION 5.0f	//!< How long before the amount of score earned, for winning the round, is reduced.
 #define SCORE_VALUE_REDUCTION_DUE_TO_TIME (SCORE_GAINED_PER_GUESS / 5.0f)	//!< The amount of score lost each round, when a certain amount of time has passed.
@@ -20,7 +22,7 @@
 
 class ServerGame {
 private:
-	static const constexpr unsigned int s_m_NumberOfPlayers = 1;	//!< The minimum number of players, per game.
+	static const constexpr unsigned int s_m_MinimumNumberOfPlayers = 2;	//!< The minimum number of players, per game.
 
 	Server m_Server;	//!< A server instance, which handles the communication between the server and clients.
 	Deck m_Deck;	//!< Generates the cards, and helps control the entites.

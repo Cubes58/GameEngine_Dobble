@@ -41,6 +41,7 @@ private:
 	std::set<EntityID> m_Entities;	//!< A set of entity IDs.
 	std::vector<std::shared_ptr<EntitySystem>> m_Systems;	//!< A vector of entity systems.
 	std::hash<std::string> m_StringHasher;	//!< A string hasher, used to hash strings, into integers.
+	bool m_Instantiated = false;
 
 	EntityManager() = default;	//!< Constructor.
 	~EntityManager() = default;	//!< Destructor.
@@ -61,8 +62,7 @@ public:
 		\return Nothing.
 	*/
 	void Init() {
-		static bool alreadyInstantiated = false;
-		if (alreadyInstantiated)
+		if (m_Instantiated)
 			return;
 
 #ifdef GAME_ENGINE
@@ -71,7 +71,7 @@ public:
 		m_Components[typeid(TransformComponent)];
 #endif
 
-		alreadyInstantiated = true;
+		m_Instantiated = true;
 	}
 
 	/*!
@@ -245,5 +245,7 @@ public:
 		m_Entities.clear();
 		m_Components.clear();
 		m_Systems.clear();
+
+		m_Instantiated = false;
 	}
 };

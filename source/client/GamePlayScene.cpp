@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "EntityManager.h"
+#include "RenderSystem.h"
 #include "AudioManager.h"
 #include "ParticleManager.h"
 #include "UserInterface.h"
@@ -16,6 +17,9 @@
 
 GamePlayScene::GamePlayScene(const Vector2Df &p_ScreenSize, const std::string &p_File) 
 	: Scene(p_ScreenSize, p_File) {
+	EntityManagerInstance.Init();
+	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>((float)p_ScreenSize.X(), (float)p_ScreenSize.Y()));
+
 	m_ParticleManager = std::make_shared<ParticleManager>(p_ScreenSize, MAX_NUMBER_OF_PARTICLES);
 
 	m_CouldConnect = m_Client.Connect(sf::Time::Zero);
@@ -108,12 +112,39 @@ void GamePlayScene::Render() {
 	m_PostProcessor->EndRender();
 	m_PostProcessor->Render();
 
-	glm::vec3 colour = glm::vec3(0.2f, 0.5f, 0.1f);
-	if (!(m_UserInterface->Time() - m_TimeOfLastAttempt >= ATTEMPT_DELAY)) 
-		colour = glm::vec3(0.439, 0.098, 0.098);
+	glm::vec3 playerScoreAndTimeColour = glm::vec3(0.2f, 0.5f, 0.1f);
+	glm::vec3 enemyScoreAndTimeColour = glm::vec3(0.439, 0.098, 0.439);
+	if (!(m_UserInterface->Time() - m_TimeOfLastAttempt >= ATTEMPT_DELAY)) {
+		playerScoreAndTimeColour = glm::vec3(0.439, 0.098, 0.098);
+		enemyScoreAndTimeColour = glm::vec3(0.0f, 0.0f, 0.0f);
+	}
 
-	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, colour);
-	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, colour);
+	Vector2Df enemyScorePosition(0.15f, 0.955f);
+	for (auto &enemyScore : m_EnemyScores) {
+		RenderText("Enemy Score: " + std::to_string(static_cast<int>(enemyScore)), enemyScorePosition, 0.55f, enemyScoreAndTimeColour);
+		enemyScorePosition.SetX(enemyScorePosition.X() + 0.22f);
+	}
+
+	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, playerScoreAndTimeColour);
+	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, playerScoreAndTimeColour);
+}
+
+void GamePlayScene::ReadScore(sf::Packet &p_Packet) {
+	float scoreData = 0.0f;
+	bool isForThisClient = false;
+	unsigned int enemyScoreID = 0;
+	while ((p_Packet >> scoreData) && (p_Packet >> isForThisClient)) {
+		if (isForThisClient) {
+			m_Score = scoreData;
+			Log(Type::INFO) << "Score: " << m_Score;
+		}
+		else {
+			m_EnemyScores[enemyScoreID] = scoreData;
+			Log(Type::INFO) << "Enemy Score: " << m_EnemyScores[enemyScoreID];
+
+			++enemyScoreID;
+		}
+	}
 }
 
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
@@ -134,8 +165,7 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 		m_TimeOfLastAttempt = m_UserInterface->Time() - ATTEMPT_DELAY;
 	}
 	else if (packetID == Packet::SCORE) {
-		p_Packet >> m_Score;
-		Log(Type::INFO) << "Score: " << m_Score;
+		ReadScore(p_Packet);
 	}
 	else if (packetID == Packet::GAME_FINISHED) {
 		bool hasPlayerWonGame = false;
@@ -147,6 +177,10 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 			m_GameState = GameState::LOSE;
 	}
 	else if (packetID == Packet::STARTING_GAME) {
+		std::size_t numberOfEnemyPlayers = 0;
+		p_Packet >> numberOfEnemyPlayers;
+		m_EnemyScores.resize(numberOfEnemyPlayers);
+
 		m_UserInterface->ResetTime();
 	}
 	else if (packetID == Packet::DISCONNECT) {
