@@ -11,6 +11,8 @@
 #include "Deck.h"
 
 #define SCORE_GAINED_PER_GUESS 25.0f	//!< The score a player earns per correct guess.
+#define SCORE_LOST_TIME_GAP_DURATION 5.0f	//!< How long before the amount of score earned, for winning the round, is reduced.
+#define SCORE_VALUE_REDUCTION_DUE_TO_TIME (SCORE_GAINED_PER_GUESS / 5.0f)	//!< The amount of score lost each round, when a certain amount of time has passed.
 
 /*! \class ServerGame
 	\brief A class handles the server game.
@@ -24,6 +26,7 @@ private:
 	Deck m_Deck;	//!< Generates the cards, and helps control the entites.
 	std::map<ClientID, float> m_PlayerScores;	//!< Keeps track of the players' scores.
 	unsigned int m_ActiveDeckCard;	//!< ID of the current deck card. 
+	float m_RoundLength = 0.0f;	//!< Keeps track of how long the round lasted.
 	bool m_GameOver = false;	//!< Keeps track of the game state, whether it's over or not.
 	bool m_IsRunning;	//!< Keeps track of the server state, whether it's running or not.
 

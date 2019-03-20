@@ -177,6 +177,7 @@ void PostProcessor::InitializeBlurKernels() {
 void PostProcessor::Update(float p_DeltaTime) {
 	m_AccumulatedTime += p_DeltaTime;
 	m_TimePassedSinceShakeActive += p_DeltaTime;
+	m_TimePassedSinceOtherEffectActive += p_DeltaTime;
 
 	m_Shader->Use();
 	m_Shader->SetFloat("time", m_AccumulatedTime);
@@ -195,6 +196,10 @@ void PostProcessor::Update(float p_DeltaTime) {
 
 	if (m_TimePassedSinceShakeActive >= m_ShakeTime) {
 		m_Shake = false;
+	}
+	if (m_TimePassedSinceOtherEffectActive >= m_OtherEffectTime) {
+		m_InvertColours = false;
+		m_Chaos = false;
 	}
 }
 

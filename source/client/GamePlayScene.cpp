@@ -8,6 +8,7 @@
 #include "UserInterface.h"
 #include "FontRenderer.h"
 #include "PostProcessor.h"
+#include "Randomiser.h"
 #include "Logger.h"
 
 #include "RenderComponent.h"
@@ -67,17 +68,26 @@ void GamePlayScene::Update(float p_DeltaTime) {
 		return;
 	}
 
+	m_TimePassedSinceShakeEffectActivated += p_DeltaTime;
+	m_TimePassedSinceOtherEffectActivated += p_DeltaTime;
+
 	EntityManagerInstance.UpdateSystems(p_DeltaTime);
 	m_UserInterface->Update(p_DeltaTime);
 	m_PostProcessor->Update(p_DeltaTime);
 	m_ParticleManager->Update(p_DeltaTime, m_MousePosition);
 	
-	static float timePassed;
-	timePassed += p_DeltaTime;
-	if (timePassed >= 10.0f) {
+	if (m_TimePassedSinceShakeEffectActivated >= m_ShakeEffectActivationGap) {
+		m_ShakeEffectActivationGap = RandomiserInstance.GetUniformRealRandomNumber(MIN_GAP_DURATION_BETWEEN_SHAKE_EFFECT, MAX_GAP_DURATION_BETWEEN_SHAKE_EFFECT);
 		m_PostProcessor->SetShakeState(true);
-		m_PostProcessor->SetShakeTime(4.5f);
-		timePassed = 0.0f;
+		m_PostProcessor->SetShakeTime(RandomiserInstance.GetUniformRealRandomNumber(MIN_SHAKE_TIME_EFFECT_DURATION, MAX_SHAKE_TIME_EFFECT_DURATION));
+		m_TimePassedSinceShakeEffectActivated = 0.0f;
+	}
+	if (m_TimePassedSinceOtherEffectActivated >= m_OtherEffectActivationGap) {
+		m_OtherEffectActivationGap = RandomiserInstance.GetUniformRealRandomNumber(MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT, MAX_GAP_DURATION_BETWEEN_OTHER_EFFECT);
+		// Randomly generate a number, if it's an even number set the inverted colours state, otherwise set the chaos state.
+		RandomiserInstance.GetUniformIntegerRandomNumber(1, 100) % 2 == 0 ? m_PostProcessor->SetInvertColoursState(true) : m_PostProcessor->SetChaosState(true);
+		m_PostProcessor->SetOtherEffectTime(RandomiserInstance.GetUniformRealRandomNumber(MIN_OTHER_EFFECT_TIME_DURATION, MAX_OTHER_EFFECT_TIME_DURATION));
+		m_TimePassedSinceOtherEffectActivated = 0.0f;
 	}
 
 	sf::Packet packet;
@@ -98,8 +108,12 @@ void GamePlayScene::Render() {
 	m_PostProcessor->EndRender();
 	m_PostProcessor->Render();
 
-	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
-	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, glm::vec3(0.2f, 0.5f, 0.1f));
+	glm::vec3 colour = glm::vec3(0.2f, 0.5f, 0.1f);
+	if (!(m_UserInterface->Time() - m_TimeOfLastAttempt >= ATTEMPT_DELAY)) 
+		colour = glm::vec3(0.439, 0.098, 0.098);
+
+	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, colour);
+	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, colour);
 }
 
 void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {

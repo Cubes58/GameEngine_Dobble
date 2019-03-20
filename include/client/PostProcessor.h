@@ -19,9 +19,8 @@ static const constexpr unsigned int s_NumberOfBlurKernels = 10;	//!< The number 
 
 class PostProcessor {
 private:
-	Texture2D m_Texture;	//!< Stores the frame buffer object information.
-	
 	std::array<std::array<float, 9>, s_NumberOfBlurKernels> m_BlurKernels;	//!< An array of blur kernels, with different sigmas.
+	Texture2D m_Texture;	//!< Stores the frame buffer object information.
 	Vector2Df m_TextureSize;	//!< The size of the texture.
 
 	unsigned int m_MultisampledFrameBufferObject;	//!< The ID of the multisampled frame buffer object.
@@ -32,12 +31,16 @@ private:
 
 	float m_ShakeTime = 0.0f;	//!< The amount of time the screen should shake for.
 	float m_TimePassedSinceShakeActive = 0.0f;	//!< The amount of time that's passed since the screen has started shaking.
+
+	float m_OtherEffectTime = 0.0f;	//!< The amount of time the other effect should last for.
+	float m_TimePassedSinceOtherEffectActive = 0.0f;	//!< The amount of time that's passed since the other effect has been activated.
+
 	float m_AccumulatedTime = 0.0f;	//!< The amount of time that's passed, since the instance was created.
 
+	Shader *m_Shader;	//!< A pointer to the shader used by the post processor.
 	bool m_Shake = false;	//!< Manages whether the screen should shake, or not.
 	bool m_InvertColours = false;	//!< Manages whether the screen's colours should be inverted.
 	bool m_Chaos = false;	//!< Manages whether the edge kernel should be used.
-	Shader *m_Shader;	//!< A pointer to the shader used by the post processor.
 
 	/*!
 		\brief Initialize the render data.
@@ -85,6 +88,7 @@ public:
 
 	/*!
 		\brief Sets the shake effect duration.
+		\param p_ShakeTime The duration of the shake effect.
 		\return Nothing.
 	*/
 	void SetShakeTime(float p_ShakeTime = 0.05f) {
@@ -124,6 +128,10 @@ public:
 	*/
 	void SetInvertColoursState(bool p_InvertColoursState) {
 		m_InvertColours = p_InvertColoursState;
+		if (m_InvertColours) {
+			m_TimePassedSinceOtherEffectActive = 0.0f;
+			m_Chaos = false;
+		}
 	}
 
 	/*!
@@ -140,6 +148,19 @@ public:
 	*/
 	void SetChaosState(bool p_ChaosState) {
 		m_Chaos = p_ChaosState;
+		if (m_Chaos) {
+			m_TimePassedSinceOtherEffectActive = 0.0f;
+			m_InvertColours = false;
+		}
+	}
+
+	/*!
+		\brief Sets the other effect duration (either inverted colours or the chaos colours).
+		\param p_OtherEffectTime The duration of the (inverted colours/chaos colours) effect.
+		\return Nothing.
+	*/
+	void SetOtherEffectTime(float p_OtherEffectTime = 0.05f) {
+		m_OtherEffectTime = p_OtherEffectTime;
 	}
 
 	/*!

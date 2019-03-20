@@ -6,9 +6,9 @@
 
 #include <map>
 
-#include <SFML\Audio\SoundBuffer.hpp>
-#include <SFML\Audio\Sound.hpp>
-#include <SFML\Audio\Music.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/Music.hpp>
 
 #define AudioManagerInstance AudioManager::Instance()	//!< Direct access to the AudioManager singleton instance.
 

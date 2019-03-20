@@ -15,6 +15,19 @@
 #define ATTEMPT_DELAY 4.0f	//!< The delay between each symbol attempt.
 #define MAX_NUMBER_OF_PARTICLES	500	//!< The maximum number of particles.
 
+// Post Processing effect settings.
+// Shake effect:
+#define MIN_SHAKE_TIME_EFFECT_DURATION 3.25f	//!< The minimum duration the shake effect can last for.
+#define MAX_SHAKE_TIME_EFFECT_DURATION 5.5f	//!< The maximum duration the shake effect can last for.
+#define MIN_GAP_DURATION_BETWEEN_SHAKE_EFFECT (MAX_SHAKE_TIME_EFFECT_DURATION + 3.5f)	//!< The minimum duration between each activation of the shake effect.
+#define MAX_GAP_DURATION_BETWEEN_SHAKE_EFFECT (MIN_GAP_DURATION_BETWEEN_SHAKE_EFFECT + 8.5f)	//!< The maximum duration between each activation of the shake effect.
+
+// Other effect (inverted colours or edge kernel - chaos):
+#define MIN_OTHER_EFFECT_TIME_DURATION 3.25f	//!< The minimum duration the other effect can last for.
+#define MAX_OTHER_EFFECT_TIME_DURATION 5.5f	//!< The maximum duration the other effect can last for.
+#define MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT (MAX_OTHER_EFFECT_TIME_DURATION + 3.5f)	//!< The minimum duration between each activation of the other effect.
+#define MAX_GAP_DURATION_BETWEEN_OTHER_EFFECT (MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT + 8.5f)	//!< The maximum duration between each activation of the other effect.
+
 class ParticleManager;
 
 /*! \class GamePlayScene
@@ -31,6 +44,10 @@ private:
 	sf::Int32 m_RoundsWon = 0;	//!< The number of rounds the player has won.
 	float m_Score = 0.0f;	//!< The score the player has accumulated, by winning rounds.
 	float m_TimeOfLastAttempt = -ATTEMPT_DELAY;	//!< The last time the player guessed a symbol.
+	float m_TimePassedSinceShakeEffectActivated = 0.0f;	//!< The time passed since the shake effect was activated.
+	float m_ShakeEffectActivationGap = MIN_GAP_DURATION_BETWEEN_SHAKE_EFFECT;
+	float m_TimePassedSinceOtherEffectActivated = 0.0f;	//!< The time passed since the other effect was activated.
+	float m_OtherEffectActivationGap = MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT;
 	std::shared_ptr<ParticleManager> m_ParticleManager;	//!< Pointer to a particle manager, which manages the particle system.
 	bool m_CouldConnect = true;	//!< Manages the connection state between the server and the client.
 
