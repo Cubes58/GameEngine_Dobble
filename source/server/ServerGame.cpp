@@ -17,7 +17,7 @@ ServerGame::ServerGame() : m_IsRunning(true) {
 	
 	// Connect to the server.
 	m_Server.WaitForClientsToConnect(s_m_NumberOfPlayers);
-	
+
 	SendStartingInformation();
 }
 
@@ -87,47 +87,49 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 
 void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_map<ClientID, bool> &p_PlayerRoundState) {
 	// Deck card will also be needed to carry on the game (+1).
-	if (m_Deck.NumberOfRemainingCards() < p_NumberOfPlayersWonRound + 1) {
-		m_GameOver = true;
-	}
-	else {
-		m_GameOver = false;
-		for (auto &client : m_Server.GetClientIDs()) {
-			sf::Packet roundFinishedPacket = Packet::SetPacketType(Packet::ROUND_FINISHED);
+	(m_Deck.NumberOfRemainingCards() < p_NumberOfPlayersWonRound + 1) ? m_GameOver = true : m_GameOver = false;
 
-			auto iter = p_PlayerRoundState.find(client);
-			if (iter != p_PlayerRoundState.end()) {
-				// Check whether the player has won.
-				if (iter->second) {
-					// Increase the player's score.
-					auto playerScore = m_PlayerScores.find(iter->first);
-					if (playerScore == m_PlayerScores.end()) {
-						// If the player's score cannot be found then create a score to manage, for the player.
-						m_PlayerScores.emplace(iter->first, 0.0f);
-						playerScore = m_PlayerScores.find(iter->first);
-					}
+	for (auto &client : m_Server.GetClientIDs()) {
+		sf::Packet roundFinishedPacket = Packet::SetPacketType(Packet::ROUND_FINISHED);
 
-					// Add the player's score.
-					playerScore->second = playerScore->second + SCORE_GAINED_PER_GUESS;
-					Log(Type::INFO) << "Client ID: " << playerScore->first << "\t" << "Score: " << playerScore->second;
+		auto iter = p_PlayerRoundState.find(client);
+		if (iter != p_PlayerRoundState.end()) {
+			// Check whether the player has won.
+			if (iter->second) {
+				// Increase the player's score.
+				auto playerScore = m_PlayerScores.find(iter->first);
+				if (playerScore == m_PlayerScores.end()) {
+					// If the player's score cannot be found then create a score to manage, for the player.
+					m_PlayerScores.emplace(iter->first, 0.0f);
+					playerScore = m_PlayerScores.find(iter->first);
+				}
 
-					// Tell the player they've won the round.
-					roundFinishedPacket << iter->second;
-					m_Server.Send(client, roundFinishedPacket);
+				// Add the player's score.
+				int numberOfLostScoreGapsOccured = static_cast<int>(m_RoundLength / SCORE_LOST_TIME_GAP_DURATION);
+				float earnedScore = SCORE_GAINED_PER_GUESS - (numberOfLostScoreGapsOccured * SCORE_VALUE_REDUCTION_DUE_TO_TIME);
+				if (earnedScore < 0.0f)
+					earnedScore = 0.0f;
 
-					// Send the player their new card.
+				playerScore->second = playerScore->second + earnedScore;
+				Log(Type::INFO) << "Client ID: " << playerScore->first << "\t" << "Score: " << playerScore->second;
+
+				// Tell the player they've won the round.
+				roundFinishedPacket << iter->second;
+				m_Server.Send(client, roundFinishedPacket);
+
+				// Send the player their new card.
+				if (!m_GameOver) {
 					sf::Packet playerCardPacket = Packet::SetPacketType(Packet::PLAYER_CARD_DATA);
 					unsigned int playerCard = m_Deck.GetCardIDFromTop();
 					playerCardPacket << *EntityManagerInstance.GetComponent<RenderComponent>(playerCard);
 					playerCardPacket << *EntityManagerInstance.GetComponent<TransformComponent>(playerCard);
 					m_Server.Send(client, playerCardPacket);
-					continue;
 				}
 			}
-			// Player didn't win.
-			roundFinishedPacket << false;
-			m_Server.Send(client, roundFinishedPacket);
 		}
+		// Player didn't win.
+		roundFinishedPacket << false;
+		m_Server.Send(client, roundFinishedPacket);
 	}
 
 	// Send the players their score.
@@ -137,6 +139,7 @@ void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_ma
 		m_Server.Send(playerScore.first, scorePacket);
 	}
 
+	m_RoundLength = 0.0f;
 	HandleGameOver();
 }
 
@@ -183,6 +186,8 @@ bool ServerGame::CheckIfPlayerWonRound(const ClientID &p_ClientID, sf::Packet &p
 }
 
 void ServerGame::Update(float p_DeltaTime) {
+	m_RoundLength += p_DeltaTime;
+
 	// Get any packets from the clients.
 	std::map<ClientID, sf::Packet> incomingData;
 	if (m_Server.GetReceivedData(incomingData))

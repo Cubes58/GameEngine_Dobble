@@ -5,6 +5,7 @@
 #include "RenderComponent.h"
 #include "TransformComponent.h"
 #include "Collision.h"
+#include "EntityManager.h"
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Cursor.hpp>
@@ -133,6 +134,103 @@ TEST(TransformComponentTest, DataChange) {
 	}
 
 	EXPECT_TRUE(!sameData);
+}
+
+TEST(EntityManagerTest, createComponentWithName) {
+	std::hash<std::string> m_StringHasher;
+
+	std::string name = "myEntity";
+	EntityManagerInstance.CreateEntity(name);
+
+	EntityID entityID = m_StringHasher(name);
+
+	bool success = false;
+	auto iter = EntityManagerInstance.GetEntities()->find(entityID);
+	if (iter != EntityManagerInstance.GetEntities()->end())
+		success = true;
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, createComponentWithEntityID) {
+	EntityID entityID = 10;
+	EntityManagerInstance.CreateEntity(entityID);
+
+	bool success = false;
+	auto iter = EntityManagerInstance.GetEntities()->find(entityID);
+	if (iter != EntityManagerInstance.GetEntities()->end())
+		success = true;
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, getEntities) {
+	EntityID entityID1 = 10;
+	EntityManagerInstance.CreateEntity(entityID1);
+
+	const std::set<EntityID> *entities = EntityManagerInstance.GetEntities();
+
+	bool success = false;
+	for (auto &entityID : *entities) {
+		if (entityID == entityID1)
+			success = true;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, addAndGetEntityComponentUsingEntityID) {
+	// Create an entity.
+	EntityID entityID = 10;
+	EntityManagerInstance.CreateEntity(entityID);
+
+	// Add a component to it.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityID, std::make_shared<RenderComponent>(renderComponent));
+
+	// Get the component.
+	std::shared_ptr<RenderComponent> renderComponentPointer = EntityManagerInstance.GetComponent<RenderComponent>(entityID);
+
+	// Verify that it's the correct component.
+	bool success = true;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		if (renderComponent.m_SymbolTextureIDs[i] != renderComponentPointer->m_SymbolTextureIDs[i]) {
+			success = false;
+		}
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, addAndGetEntityComponentUsingEntityName) {
+	// Create an entity.
+	std::string entityID = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityID);
+
+	// Add a component to it.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityID, std::make_shared<RenderComponent>(renderComponent));
+
+	// Get the component.
+	std::shared_ptr<RenderComponent> renderComponentPointer = EntityManagerInstance.GetComponent<RenderComponent>(entityID);
+
+	// Verify that it's the correct component.
+	bool success = true;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		if (renderComponent.m_SymbolTextureIDs[i] != renderComponentPointer->m_SymbolTextureIDs[i]) {
+			success = false;
+		}
+	}
+
+	EXPECT_TRUE(success);
 }
 
 TEST(MouseInputTest, mousePosition) {

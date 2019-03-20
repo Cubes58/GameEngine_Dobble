@@ -143,7 +143,7 @@ void Server::Send(sf::Packet &p_Packet) {
 
 bool Server::GetReceivedData(const ClientID &p_ClientID, sf::Packet &p_Packet) {
 	auto client = m_Clients.find(p_ClientID);
-	if (client != m_Clients.end() && m_SocketSelector.wait()) {
+	if (client != m_Clients.end() && m_SocketSelector.wait(sf::microseconds(1000))) {
 		if (m_SocketSelector.isReady(*client->second)) {
 			if (client->second->receive(p_Packet) == sf::TcpSocket::Done) {
 				Log(Type::INFO) << "Data received from a client! Client ID: " << client->first;
@@ -161,7 +161,7 @@ bool Server::GetReceivedData(std::map<ClientID, sf::Packet> &p_Packets) {
 	p_Packets.clear();
 
 	bool dataRecieved = false;
-	if (m_SocketSelector.wait()) {
+	if (m_SocketSelector.wait(sf::microseconds(1000))) {
 		for (auto &client : m_Clients) {
 			sf::Packet packet;
 			if (m_SocketSelector.isReady(*client.second)) {
