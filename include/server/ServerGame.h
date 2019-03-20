@@ -10,7 +10,8 @@
 #include "Server.h"
 #include "Deck.h"
 
-#define TIME_TO_WAIT_FOR_MORE_CLIENTS 5.0f
+#define TIME_TO_WAIT_FOR_MORE_CLIENTS 5.0f	//!< Wait time, to see if any other players want to play.
+#define MAXIMUM_NUMBER_OF_PLAYERS_PER_GAME 4	//!< The maximum number of players per game.
 
 #define SCORE_GAINED_PER_GUESS 25.0f	//!< The score a player earns per correct guess.
 #define SCORE_LOST_TIME_GAP_DURATION 5.0f	//!< How long before the amount of score earned, for winning the round, is reduced.

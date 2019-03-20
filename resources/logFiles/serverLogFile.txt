@@ -1,0 +1,62 @@
+[INFO]: A client has requested a connection, to join the lobby. Remote address: 127.0.0.1
+[INFO]: Number of clients needed: 2
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 1
+[INFO]: Number of clients needed: 1
+[INFO]: A client has requested a connection, to join the lobby. Remote address: 127.0.0.1
+[INFO]: Number of clients needed: 1
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 2
+[INFO]: Number of clients needed: 0
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 4
+[INFO]: Symbol ID: 8
+[INFO]: Symbol ID: 15
+[INFO]: Symbol ID: 17
+[INFO]: Symbol ID: 24
+[INFO]: Symbol ID: 31
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Transform data: XPos: -181.987	YPos: 43.2374	Radius: 52.113	Rotation: 286.927
+[INFO]: Transform data: XPos: 61.66	YPos: -158.542	Radius: 56.148	Rotation: 100.21
+[INFO]: Transform data: XPos: -58.3573	YPos: 136.375	Radius: 101.664	Rotation: 284.017
+[INFO]: Transform data: XPos: 126.887	YPos: 15.2447	Radius: 119.669	Rotation: 294.949
+[INFO]: Transform data: XPos: -81.3822	YPos: -80.0515	Radius: 107.014	Rotation: 55.068
+[INFO]: Transform data: XPos: 82.8464	YPos: 200.355	Radius: 33.1925	Rotation: 310.12
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 1
+[INFO]: Symbol ID: 22
+[INFO]: Symbol ID: 23
+[INFO]: Symbol ID: 24
+[INFO]: Symbol ID: 25
+[INFO]: Symbol ID: 26
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Transform data: XPos: 168.186	YPos: 21.1467	Radius: 54.0489	Rotation: 358.826
+[INFO]: Transform data: XPos: -98.2345	YPos: -159.714	Radius: 62.4939	Rotation: 124.231
+[INFO]: Transform data: XPos: -144.761	YPos: 4.82539	Radius: 104.536	Rotation: 317.063
+[INFO]: Transform data: XPos: 72.9561	YPos: -113.311	Radius: 110.716	Rotation: 341.945
+[INFO]: Transform data: XPos: 36.5005	YPos: 113.732	Radius: 106.927	Rotation: 92.6914
+[INFO]: Transform data: XPos: 189.981	YPos: 109.02	Radius: 30.9606	Rotation: 13.5903
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Number of circles in the render component: 7
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 6
+[INFO]: Symbol ID: 11
+[INFO]: Symbol ID: 15
+[INFO]: Symbol ID: 19
+[INFO]: Symbol ID: 23
+[INFO]: Symbol ID: 27
+[INFO]: Number of circles in the transform component: 7
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Transform data: XPos: -133.13	YPos: 66.7059	Radius: 60.0673	Rotation: 191.588
+[INFO]: Transform data: XPos: -36.6455	YPos: -169.587	Radius: 67.2569	Rotation: 268.076
+[INFO]: Transform data: XPos: -90.6385	YPos: -44.1965	Radius: 58.6968	Rotation: 121.305
+[INFO]: Transform data: XPos: -61.7719	YPos: 178.728	Radius: 60.8983	Rotation: 203.659
+[INFO]: Transform data: XPos: 62.6795	YPos: 18.6829	Radius: 103.007	Rotation: 156.452
+[INFO]: Transform data: XPos: 94.3216	YPos: -146.977	Radius: 65.6476	Rotation: 301.996
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2

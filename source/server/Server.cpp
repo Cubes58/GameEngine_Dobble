@@ -40,6 +40,9 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 				sf::Packet connectionPacket = Packet::SetPacketType(Packet::CONNECT);
 				connectionPacket << m_GamePortNumber;
 				client->send(connectionPacket);
+
+				Log(Type::INFO) << "A client has requested a connection, to join the lobby. Remote address: " << client->getRemoteAddress().toString();
+				return true;
 			}
 			else {
 				Log(Type::FAULT) << "A problem occured during client connection. Skipping.";
@@ -57,6 +60,9 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 
 				Log(Type::INFO) << "Client connected. Remote address: " << client->getRemoteAddress().toString() << " Their ID is: " << s_m_NewClientID;
 				return true;
+			}
+			else {
+				Log(Type::FAULT) << "A problem occured during client connection. Skipping.";
 			}
 		}
 		else {
@@ -82,20 +88,13 @@ bool Server::CheckForClientConnectionRequest(const sf::Time &p_WaitTime) {
 void Server::WaitForClientsToConnect(int p_NumberOfClients) {
 	Log(Type::INFO) << "Waiting for " << p_NumberOfClients << " new clients.";
 
-	int numberOfClientsAdded(0);
 	int numberOfClientsBeforeWaiting = m_Clients.size();
-	while (numberOfClientsAdded < p_NumberOfClients) {
+	int numberOfClientsWanted = p_NumberOfClients;
+	while (p_NumberOfClients > 0) {
 		// Maximum time to wait, (use Time::Zero for infinity).
-		if (CheckForClientConnectionRequest(sf::Time::Zero)) {
-			++numberOfClientsAdded;
-			Log(Type::INFO) << "Number of clients added: " << numberOfClientsAdded;
-
-			// Check if a client has disconnected, while they were waiting.
-			if (m_Clients.size() < numberOfClientsBeforeWaiting + p_NumberOfClients) {
-				numberOfClientsAdded = (numberOfClientsBeforeWaiting + p_NumberOfClients) - m_Clients.size();
-				Log(Type::INFO) << "Number of clients still needed: " << numberOfClientsAdded;
-			}
-		}
+		CheckForClientConnectionRequest(sf::Time::Zero);
+		p_NumberOfClients = (numberOfClientsBeforeWaiting + numberOfClientsWanted) - m_Clients.size();
+		Log(Type::INFO) << "Number of clients needed: " << p_NumberOfClients;
 	}
 }
 

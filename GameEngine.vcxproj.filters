@@ -235,5 +235,6 @@
     <None Include="resources\shaders\PostProcessingEffects.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClientClassDiagram.cd" />
   </ItemGroup>
 </Project>

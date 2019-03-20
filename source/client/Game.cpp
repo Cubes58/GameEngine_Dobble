@@ -3,7 +3,6 @@
 #include "GLCore.hpp"
 #include "Logger.h"
 
-#include "EntityManager.h"
 #include "AudioManager.h"
 #include "ResourceManager.h"
 #include "PacketTypes.h"
@@ -15,7 +14,9 @@ Game::Game(Window &p_Window) : m_Window(p_Window), m_GameState(GameState::MAIN_M
 	SetScene();
 }
 
-Game::~Game() { }
+Game::~Game() {
+	
+}
 
 void Game::ProcessEvents() {
 	sf::Event event;
@@ -114,7 +115,6 @@ void Game::SetScene() {
 		p_Scene->AddText(std::make_shared<Text>("Final Score: " + std::to_string((int)playerScore), Vector2Df(0.20f, 0.125f), 0.7f, p_Colour));
 		p_Scene->AddText(std::make_shared<Text>("Rounds Won: " + std::to_string(numberOfRoundsWon), Vector2Df(0.60f, 0.125f), 0.7f, p_Colour));
 	};
-
 	if (m_GameState == GameState::WIN) {
 		Scene *scene = static_cast<Scene*>(m_Scene.get());		
 		SetEndGameText(scene, glm::vec3(0.098f, 0.439f, 0.098f));

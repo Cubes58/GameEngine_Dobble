@@ -15,7 +15,13 @@
 
 #define ASSERT(x) if (!(x)) __debugbreak();	//!< Simple Assert function checker.
 #define LOG_FILES_FOLDER "./resources/logFiles"	//!< Relative path to the log files folder, so they can be loaded in.
-#define DEFAULT_LOG_FILE  "logFile"	//!< The default log file.
+
+#ifdef GAME_ENGINE
+	#define DEFAULT_LOG_FILE  "clientLogFile"	//!< The default client log file.
+#else
+	#define DEFAULT_LOG_FILE  "serverLogFile"	//!< The default server log file.
+#endif
+
 
 /**
 	@file Logger.h

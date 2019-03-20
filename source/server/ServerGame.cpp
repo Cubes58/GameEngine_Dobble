@@ -9,14 +9,18 @@
 #include "Logger.h"
 
 ServerGame::ServerGame() : m_IsRunning(true) {
-	int rand = Randomiser::Instance().GetUniformIntegerRandomNumber(1, 100);
-	if (rand % 2 == 0)
+	int numberOfCirclesPerCardDecider = Randomiser::Instance().GetUniformIntegerRandomNumber(1, 100);
+	if (numberOfCirclesPerCardDecider % 2 == 0)
 		m_Deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, (unsigned int)6);
 	else
 		m_Deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, (unsigned int)8);
 	
 	// Wait for the minimum number of clients - no matter how long it takes.
 	m_Server.WaitForClientsToConnect(s_m_MinimumNumberOfPlayers);
+
+	// Give other players time to join, unless the maximum capacity has been reached.
+	// Each time a new player joins the timer will be reset, allowing another to join, without rushing.
+	while (m_Server.GetClientIDs().size() < MAXIMUM_NUMBER_OF_PLAYERS_PER_GAME && m_Server.CheckForClientConnectionRequest(sf::seconds(TIME_TO_WAIT_FOR_MORE_CLIENTS)));
 
 	SendStartingInformation();
 }
