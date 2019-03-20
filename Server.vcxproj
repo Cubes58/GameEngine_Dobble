@@ -209,6 +209,9 @@
     <ClInclude Include="include\TransformComponent.h" />
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ServerClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

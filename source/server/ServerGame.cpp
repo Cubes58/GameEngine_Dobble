@@ -9,14 +9,18 @@
 #include "Logger.h"
 
 ServerGame::ServerGame() : m_IsRunning(true) {
-	int rand = Randomiser::Instance().GetUniformIntegerRandomNumber(1, 100);
-	if (rand % 2 == 0)
+	int numberOfCirclesPerCardDecider = Randomiser::Instance().GetUniformIntegerRandomNumber(1, 100);
+	if (numberOfCirclesPerCardDecider % 2 == 0)
 		m_Deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, (unsigned int)6);
 	else
 		m_Deck.GenerateCards(Vector2Df(0.0f, 0.0f), 250.0f, (unsigned int)8);
 	
-	// Connect to the server.
-	m_Server.WaitForClientsToConnect(s_m_NumberOfPlayers);
+	// Wait for the minimum number of clients - no matter how long it takes.
+	m_Server.WaitForClientsToConnect(s_m_MinimumNumberOfPlayers);
+
+	// Give other players time to join, unless the maximum capacity has been reached.
+	// Each time a new player joins the timer will be reset, allowing another to join, without rushing.
+	while (m_Server.GetClientIDs().size() < MAXIMUM_NUMBER_OF_PLAYERS_PER_GAME && m_Server.CheckForClientConnectionRequest(sf::seconds(TIME_TO_WAIT_FOR_MORE_CLIENTS)));
 
 	SendStartingInformation();
 }
@@ -43,7 +47,12 @@ void ServerGame::SendStartingInformation() {
 
 	m_Server.SetListeningState(false);
 	sf::Packet startingPacket = Packet::SetPacketType(Packet::STARTING_GAME);
+	startingPacket << (m_Server.GetClientIDs().size() - 1);
 	m_Server.Send(startingPacket);
+
+	for (ClientID client : m_Server.GetClientIDs()) {
+		m_PlayerScores.emplace(client, 0.0f);
+	}
 }
 
 void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
@@ -100,6 +109,7 @@ void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_ma
 				auto playerScore = m_PlayerScores.find(iter->first);
 				if (playerScore == m_PlayerScores.end()) {
 					// If the player's score cannot be found then create a score to manage, for the player.
+					// Ensures there's always a score element for all players.
 					m_PlayerScores.emplace(iter->first, 0.0f);
 					playerScore = m_PlayerScores.find(iter->first);
 				}
@@ -107,8 +117,8 @@ void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_ma
 				// Add the player's score.
 				int numberOfLostScoreGapsOccured = static_cast<int>(m_RoundLength / SCORE_LOST_TIME_GAP_DURATION);
 				float earnedScore = SCORE_GAINED_PER_GUESS - (numberOfLostScoreGapsOccured * SCORE_VALUE_REDUCTION_DUE_TO_TIME);
-				if (earnedScore < 0.0f)
-					earnedScore = 0.0f;
+				if (earnedScore <= 5.0f)
+					earnedScore = 5.0f;
 
 				playerScore->second = playerScore->second + earnedScore;
 				Log(Type::INFO) << "Client ID: " << playerScore->first << "\t" << "Score: " << playerScore->second;
@@ -132,10 +142,19 @@ void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_ma
 		m_Server.Send(client, roundFinishedPacket);
 	}
 
-	// Send the players their score.
+	// Send the players the scores.
 	for (auto &playerScore : m_PlayerScores) {
 		sf::Packet scorePacket = Packet::SetPacketType(Packet::SCORE);
-		scorePacket << playerScore.second;
+		scorePacket << playerScore.second << true;
+
+		// Loop through the others score, add them so the player knows about the enemy scores.
+		for (auto &otherPlayerScore : m_PlayerScores) {
+			if (playerScore.first == otherPlayerScore.first)
+				continue;
+
+			scorePacket << otherPlayerScore.second << false;
+		}
+
 		m_Server.Send(playerScore.first, scorePacket);
 	}
 

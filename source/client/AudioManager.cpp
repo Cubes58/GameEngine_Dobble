@@ -6,6 +6,7 @@
 AudioManager::AudioManager() {
 	LoadSoundEffects("./resources/audio/soundEffects/");
 	m_BackgroundMusic.setLoop(true);
+	m_BackgroundMusic.setVolume(50);	// As it's the background music, half its volume.
 }
 
 bool AudioManager::OpenMusicFile(const std::string &p_PathToAudioFile, bool p_Play) {

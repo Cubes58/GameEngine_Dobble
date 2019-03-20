@@ -251,6 +251,7 @@
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClientClassDiagram.cd" />
     <None Include="resources\shaders\FontShader.frag" />
     <None Include="resources\shaders\FontShader.vert" />
     <None Include="resources\shaders\PostProcessingEffects.frag" />
