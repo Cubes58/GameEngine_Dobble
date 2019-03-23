@@ -1,0 +1,8 @@
+{
+  "ServerInformation": [
+    {
+      "portNumber": 8787,
+	  "serverIPAddress": "127.0.0.1"
+    }
+  ]
+}

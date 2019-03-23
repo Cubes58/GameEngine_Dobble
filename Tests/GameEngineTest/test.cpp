@@ -1,14 +1,28 @@
 #include "pch.h"
 
+// Get (direct) access to everything.
 #define private public
-
-#include "RenderComponent.h"
-#include "TransformComponent.h"
-#include "Collision.h"
-#include "EntityManager.h"
+//#define protected public
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Cursor.hpp>
+
+#include "Window.h"
+#include "Vector2D.h"
+#include "FileSystemHelper.h"
+#include "Collision.h"
+
+#include "EntityManager.h"
+#include "ResourceManager.h"
+#include "AudioManager.h"
+#include "ParticleManager.h"
+
+#include "RenderSystem.h"
+
+#include "RenderComponent.h"
+#include "TransformComponent.h"
+
+#include "Particle.h"
 
 TEST(RenderComponentTest, DefaultInitialization) {
 	RenderComponent renderComponent;
@@ -74,9 +88,7 @@ TEST(RenderComponentTest, DataChange) {
 }
 
 TEST(TransformComponentTest, DefaultInitialization) {
-	TransformComponent transformComponent;
-
-	EXPECT_NO_THROW(true);
+	EXPECT_NO_THROW(TransformComponent transformComponent);
 }
 
 TEST(TransformComponentTest, NumberOfCirclesGivenInitialization) {
@@ -134,6 +146,14 @@ TEST(TransformComponentTest, DataChange) {
 	}
 
 	EXPECT_TRUE(!sameData);
+}
+
+TEST(EntityManagerTest, accessInstance) {
+	EXPECT_NO_THROW(EntityManager::Instance());
+}
+
+TEST(EntityManagerTest, accessInstanceUsingMacro) {
+	EXPECT_NO_THROW(EntityManagerInstance);
 }
 
 TEST(EntityManagerTest, createComponentWithName) {
@@ -229,6 +249,333 @@ TEST(EntityManagerTest, addAndGetEntityComponentUsingEntityName) {
 			success = false;
 		}
 	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, deleteComponentUsingEntityID) {
+	// Create entity.
+	EntityID entityID = 10;
+	EntityManagerInstance.CreateEntity(entityID);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityID, std::make_shared<RenderComponent>(renderComponent));
+
+	bool success = false;
+	if (EntityManagerInstance.GetComponent<RenderComponent>(entityID) != nullptr) {
+		success = true;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, deleteComponentUsingEntityName) {
+	// Create entity.
+	std::string entityName = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityName);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityName, std::make_shared<RenderComponent>(renderComponent));
+
+	bool success = false;
+	if (EntityManagerInstance.GetComponent<RenderComponent>(entityName) != nullptr) {
+		success = true;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, deleteEntityUsingEntityID) {
+	EntityManagerInstance.Clear();
+
+	// Create entity.
+	int entityID = 10;
+	EntityManagerInstance.CreateEntity(entityID);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityID, std::make_shared<RenderComponent>(renderComponent));
+	
+	EntityManagerInstance.DeleteEntity(entityID);
+	
+	bool success = false;
+	if (EntityManagerInstance.GetEntities()->size() <= 0) {
+		success = true;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, deleteEntityUsingEntityName) {
+	EntityManagerInstance.Clear();
+
+	// Create entity.
+	std::string entityName = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityName);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityName, std::make_shared<RenderComponent>(renderComponent));
+
+	EntityManagerInstance.DeleteEntity(entityName);
+
+	bool success = false;
+	if (EntityManagerInstance.GetEntities()->size() <= 0) {
+		success = true;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(EntityManagerTest, addEntitySystem) {
+	EntityManagerInstance.Clear();
+	EntityManagerInstance.Init();
+
+	// Create entity.
+	std::string entityName = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityName);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityName, std::make_shared<RenderComponent>(renderComponent));
+
+	float width = 1280.0f, height = 720.0f;
+	// Create an OpenGL context, so OpenGL methods can be used.
+	Window window(sf::VideoMode((int)width, (int)height), "Dobble", sf::Style::Close);
+
+	EXPECT_NO_FATAL_FAILURE(EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>(width, height)));
+}
+
+TEST(EntityManagerTest, updateEntitySystem) {
+	EntityManagerInstance.Clear();
+	EntityManagerInstance.Init();
+
+	// Create entity.
+	std::string entityName = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityName);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityName, std::make_shared<RenderComponent>(renderComponent));
+
+	float width = 1280.0f, height = 720.0f;
+	// Create an OpenGL context, so OpenGL methods can be used.
+	Window window(sf::VideoMode((int)width, (int)height), "Dobble", sf::Style::Close);
+
+	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>(width, height));
+
+	EXPECT_NO_FATAL_FAILURE(EntityManagerInstance.UpdateSystems(1.0f / 60.0f));
+}
+
+TEST(EntityManagerTest, renderEntitySystem) {
+	EntityManagerInstance.Clear();
+	EntityManagerInstance.Init();
+
+	// Create entity.
+	std::string entityName = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityName);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityName, std::make_shared<RenderComponent>(renderComponent));
+
+	float width = 1280.0f, height = 720.0f;
+	// Create an OpenGL context, so OpenGL methods can be used.
+	Window window(sf::VideoMode((int)width, (int)height), "Dobble", sf::Style::Close);
+
+	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>(width, height));
+
+	EXPECT_NO_FATAL_FAILURE(EntityManagerInstance.RenderSystems());
+}
+
+TEST(EntityManagerTest, clearEntityManagerData) {
+	EntityManagerInstance.Init();
+
+	// Create entity.
+	std::string entityName = "MyEntity";
+	EntityManagerInstance.CreateEntity(entityName);
+
+	// Create and add component.
+	int numberOfCircles = 8;
+	RenderComponent renderComponent;
+	for (int i = 0; i < numberOfCircles; ++i) {
+		renderComponent.m_SymbolTextureIDs.emplace_back(i);
+	}
+	EntityManagerInstance.AddComponentToEntity<RenderComponent>(entityName, std::make_shared<RenderComponent>(renderComponent));
+
+	float width = 1280.0f, height = 720.0f;
+	// Create an OpenGL context, so OpenGL methods can be used.
+	Window window(sf::VideoMode((int)width, (int)height), "Dobble", sf::Style::Close);
+	// Add an entity system.
+	EntityManagerInstance.AddSystem(std::make_shared<RenderSystem>(width, height));
+
+	// Use Clear to remove all of the entities, components, and entity systems.
+	EntityManagerInstance.Clear();
+
+	bool success = true;
+	if (EntityManagerInstance.m_Components.size() > 0)
+		success = false;
+	if (EntityManagerInstance.m_Entities.size() > 0)
+		success = false;
+	if (EntityManagerInstance.m_Systems.size() > 0)
+		success = false;
+
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, accessInstance) {
+	EXPECT_NO_THROW(AudioManager::Instance());
+}
+
+TEST(AudioManagerTest, accessInstanceUsingMacro) {
+	EXPECT_NO_THROW(AudioManagerInstance);
+}
+
+TEST(AudioManagerTest, openMusicFile) {
+	bool success = false;
+
+	EXPECT_NO_THROW(success = AudioManagerInstance.OpenMusicFile("resources/audio/music/dobbleTheme.wav", true));
+	if (!AudioManagerInstance.m_BackgroundMusic.m_isStreaming)
+		success = false;
+
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, loadSoundEffectFileWithNameAndFile) {
+	bool success = false;
+
+	std::string soundEffectName = "bleep";
+	EXPECT_NO_THROW(success = AudioManagerInstance.LoadSoundEffect("bleep", "resources/audio/soundEffects/" + soundEffectName + ".wav"));
+
+	// Ensure the sound effect has been loaded - find the loaded instance.
+	auto iter = AudioManagerInstance.m_SoundEffects.find(soundEffectName);
+	if (iter == AudioManagerInstance.m_SoundEffects.end()) {
+		success = false;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, loadSoundEffectFileWithJustFile) {
+	bool success = false;
+
+	std::string soundEffectName = "symbolGuess";
+	EXPECT_NO_THROW(success = AudioManagerInstance.LoadSoundEffect("resources/audio/soundEffects/" + soundEffectName + ".wav"));
+
+	auto iter = AudioManagerInstance.m_SoundEffects.find(soundEffectName);
+	if (iter == AudioManagerInstance.m_SoundEffects.end()) {
+		success = false;
+	}
+
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, loadSoundEffectsFromFolder) {
+	bool success = false;
+	// Load files, even if there aren't any to load there shouldn't be an exception thrown!
+	EXPECT_NO_THROW(success = AudioManagerInstance.LoadSoundEffects("resources/audio/soundEffects/"));
+
+	// Ensure the files were loaded.
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, playSoundEffect) {
+	bool success = false;
+
+	std::string soundEffectName = "bleep";
+	EXPECT_NO_THROW(AudioManagerInstance.LoadSoundEffect("bleep", "resources/audio/soundEffects/" + soundEffectName + ".wav"));
+	EXPECT_NO_THROW(success = AudioManagerInstance.PlaySoundEffect(soundEffectName));
+
+	// Ensure the files were loaded.
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, getSoundEffect) {
+	bool success = true;
+
+	std::string soundEffectName = "bleep";
+	EXPECT_NO_THROW(AudioManagerInstance.LoadSoundEffect("bleep", "resources/audio/soundEffects/" + soundEffectName + ".wav"));
+
+	const sf::SoundBuffer *soundBufferPointer = nullptr;
+	EXPECT_NO_THROW(soundBufferPointer = AudioManagerInstance.GetSoundEffect(soundEffectName));
+
+	if (soundBufferPointer == nullptr)
+		success = false;
+
+	// Ensure the files were loaded.
+	EXPECT_TRUE(success);
+}
+
+TEST(AudioManagerTest, getBackgroundMusic) {
+	bool success = false;
+
+	EXPECT_NO_THROW(AudioManagerInstance.OpenMusicFile("resources/audio/music/dobbleTheme.wav", true));
+
+	AudioManagerInstance.GetBackgroundMusic().stop();
+	if (AudioManagerInstance.m_BackgroundMusic.getStatus() == sf::Music::Stopped) {
+		success = true;
+	}
+
+	// Ensure the files were loaded.
+	EXPECT_TRUE(success);
+}
+
+TEST(ParticleManagerTest, initializeData) {
+	Vector2Df screenSize(1280.0f, 720.0f);
+	Window window(sf::VideoMode((int)screenSize.X(), (int)screenSize.Y()), "Dobble", sf::Style::Close);
+
+	std::shared_ptr<ParticleManager> particleManager;
+	EXPECT_NO_THROW(particleManager = std::make_shared<ParticleManager>(screenSize, 50));
+
+	bool success = true;
+	if (particleManager->m_NumberOfParticles != 50)
+		success = false;
+
+	EXPECT_TRUE(success);
+}
+
+TEST(ParticleManagerTest, updateParticles) {
+	Vector2Df screenSize(1280.0f, 720.0f);
+	Window window(sf::VideoMode((int)screenSize.X(), (int)screenSize.Y()), "Dobble", sf::Style::Close);
+
+	ParticleManager particleManager(screenSize, 50);
+
+	bool success = true;
+	particleManager.Update(60.0f / 1.0f, Vector2Df(0.0f, 0.0f));
+	
+	//if (particleManager. != firstParticleUsedSet) {
+		success = false;
+	//}
 
 	EXPECT_TRUE(success);
 }

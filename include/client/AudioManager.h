@@ -46,11 +46,7 @@ public:
 		\brief Gets the AudioManager instance.
 		\return Returns the Audio Manager instance.
 	*/
-	static AudioManager &Instance() {
-		static AudioManager s_AudioManager;
-
-		return s_AudioManager;
-	}
+	static AudioManager &Instance();
 
 	/*!
 		\brief Starts streaming an audio file.
