@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./external/include/freetype/freetype;</AdditionalIncludeDirectories>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -127,7 +127,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./external/include/freetype/freetype;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StructMemberAlignment>Default</StructMemberAlignment>
@@ -150,7 +150,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./external/include/freetype/freetype;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StructMemberAlignment>Default</StructMemberAlignment>
@@ -176,7 +176,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./external/include;./external/include/freetype;./external/include/freetype/freetype;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>26495;4018;6386;</DisableSpecificWarnings>
       <PreprocessorDefinitions>GAME_ENGINE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StructMemberAlignment>Default</StructMemberAlignment>

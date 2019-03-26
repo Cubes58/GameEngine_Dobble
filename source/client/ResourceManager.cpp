@@ -23,6 +23,12 @@ ResourceManager::~ResourceManager() {
 		gl::DeleteTextures(1, &texture.second.GetID());
 }
 
+ResourceManager &ResourceManager::Instance() {
+	static ResourceManager s_ResourceManager;
+
+	return s_ResourceManager;
+}
+
 bool ResourceManager::LoadShaderFromFile(const std::string &p_VertexShaderFile, const std::string &p_FragmentShaderFile, const std::string &p_GeometryShaderFile) {
 	// Retrieve the vertex/fragment source code, from the file path.
 	std::string vertexCode;

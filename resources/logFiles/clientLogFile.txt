@@ -135,8 +135,45 @@ void main() {
 	
 	FragColour = mix(textureFragColour, colour, mixValue);
 }
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
+layout (location = 0) in vec2 vertex;
+
+out vec2 TexCoords;
+
+uniform mat4 model;
+uniform mat4 projection;
+
+void main() {
+	TexCoords = vertex;
+	gl_Position = projection * model * vec4(vertex, 0.0f, 1.0f);
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 FragColour;
+
+uniform sampler2D image;
+uniform vec4 colour;
+uniform float mixValue;
+uniform bool usingColourAsTextureMask;
+
+void main() {
+	vec4 textureFragColour = texture(image, TexCoords);
+	if (usingColourAsTextureMask && textureFragColour.a <= 0.0f)
+		discard;
+	
+	FragColour = mix(textureFragColour, colour, mixValue);
+}
 [INFO]: Texture width: 1280	Texture height: 720
 [INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/bleep.wav
 [INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/squat.wav
 [INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/symbolGuess.wav
 [INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720

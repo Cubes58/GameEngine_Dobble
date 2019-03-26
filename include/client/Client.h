@@ -16,14 +16,21 @@
 
 class Client {
 private:
-	static const int s_m_PortNumber = 8787;	//!< The port number to connect to the server.
+	unsigned int m_PortNumber = 8787;	//!< The port number to connect to the server.
 	sf::IpAddress m_ServerIPAddress = "127.0.0.1"; //!< The server's IP address.
 	sf::TcpSocket m_ServerSocket;	//!< The socket (connection) between the client and the server, used to communicate.
 	sf::Int32 m_PlayPortNumber = -1;	//!< The port number the game is being played on (the server sends information about the game details).
 	bool m_Connected;	//!< Manages if the client is connected to the server.
 
+	/*!
+		\brief Attempts to load the server's information in.
+		\param p_File The file to load the server's information from.
+		\return Returns true if the server's data was successfully loaded in, otherwise false.
+	*/
+	bool LoadServerInformation(const std::string &p_File);
+
 public:
-	Client() = default;	//!< Constructor.
+	Client();;	//!< Constructor.
 	~Client();	//!< Destructor.
 
 	/*!

@@ -1,6 +1,13 @@
 #include "Client.h"
 
+#include <fstream>
+#include <json/json.h>
+
 #include "Logger.h"
+
+Client::Client() {
+	LoadServerInformation("resources/configuration/serverIPAddress.json");
+}
 
 Client::~Client() {
 	if (IsConnected())
@@ -8,8 +15,8 @@ Client::~Client() {
 }
 
 bool Client::Connect(const sf::Time &p_ConnectWaitTimeOut) {
-	Log(Type::INFO) << "Attempting to connect to the server... " << "\nPort number: " << s_m_PortNumber << "\nIP Address: " << m_ServerIPAddress;
-	if (m_ServerSocket.connect(m_ServerIPAddress, s_m_PortNumber, p_ConnectWaitTimeOut) != sf::Socket::Done) {
+	Log(Type::INFO) << "Attempting to connect to the server... " << "\nPort number: " << m_PortNumber << "\nIP Address: " << m_ServerIPAddress;
+	if (m_ServerSocket.connect(m_ServerIPAddress, m_PortNumber, p_ConnectWaitTimeOut) != sf::Socket::Done) {
 		Log(Type::FAULT) << "The server wasn't listening!";
 		m_Connected = false;
 		return false;
@@ -82,4 +89,66 @@ bool Client::IsConnected() {
 
 void Client::SetConnected(bool p_Connected) {
 	m_Connected = p_Connected;
+}
+
+bool Client::LoadServerInformation(const std::string &p_File) {
+	// Load server information from a JSON file.
+	std::fstream jsonData;
+	Json::Value root;
+	Json::Reader reader;
+
+	try {
+		jsonData.open(p_File.c_str());
+		// Check for errors, when parsing the file data.
+		if (!reader.parse(jsonData, root)) {
+			Log(Type::FAULT) << "Failed to parse data from: " << p_File << reader.getFormattedErrorMessages() << "\n";
+			throw std::invalid_argument("Couldn't parse file.");
+		}
+
+		if (jsonData.is_open())
+			jsonData.close();
+	}
+	catch (const std::invalid_argument &p_Exception) {
+		Log(Type::FAULT) << "INVALID_ARGUMENT: " << p_Exception.what() << "\n";
+		if (jsonData.is_open())
+			jsonData.close();
+		return false;
+	}
+	catch (...) {
+		// Catch all rune-time errors, and attempt to recover.
+		Log(Type::FAULT) << "Something unexpected happened, while reading the server configuration file: " << p_File;
+		if (jsonData.is_open())
+			jsonData.close();
+		return false;
+	}
+	const Json::Value serverInformationObjects = root["ServerInformation"];
+
+	for (unsigned int i = 0; i < serverInformationObjects.size(); i++) {
+		// Get the server's port number.
+		const Json::Value portNode = serverInformationObjects[i]["portNumber"];
+		if (portNode.type() != Json::nullValue) {
+			int portNumber = portNode.asUInt();
+			if (portNumber > 0 && portNumber < 65535)
+				m_PortNumber = portNumber;
+			else
+				Log(Type::FAULT) << "Invalid port number: " << portNumber;
+		}
+		else
+			Log(Type::WARNING) << "Couldn't find the port number, using the default." << m_PortNumber;
+
+		const Json::Value ipAddressNode = serverInformationObjects[i]["serverIPAddress"];
+		if (ipAddressNode.type() != Json::nullValue) {
+			m_ServerIPAddress = ipAddressNode.asString();
+
+			if (m_ServerIPAddress.toString() == "0.0.0.0") {
+				Log(Type::FAULT) << "There was an issue reading in the server's IP address, from the file: " << p_File;
+				Log(Type::FAULT) << "The IP address will be set to 127.0.0.1";
+				m_ServerIPAddress = "127.0.0.1";
+			}
+		}
+		else
+			Log(Type::WARNING) << "Couldn't find an IP Address, for the server, using the default: " << m_ServerIPAddress;
+	}
+
+	return true;
 }
