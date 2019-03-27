@@ -40,6 +40,12 @@ private:
 	void SendStartingInformation();
 
 	/*!
+		\brief Sends the players their scores, and the other players' scores.
+		\return Nothing.
+	*/
+	void SendPlayerScores();
+
+	/*!
 		\brief Handles incoming data, from the players.
 		\param p_Data The data received from the players.
 		\return Nothing.

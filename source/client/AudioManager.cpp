@@ -9,6 +9,12 @@ AudioManager::AudioManager() {
 	m_BackgroundMusic.setVolume(50);	// As it's the background music, half its volume.
 }
 
+AudioManager &AudioManager::Instance() {
+	static AudioManager s_AudioManager;
+
+	return s_AudioManager;
+}
+
 bool AudioManager::OpenMusicFile(const std::string &p_PathToAudioFile, bool p_Play) {
 	if (m_BackgroundMusic.openFromFile(p_PathToAudioFile)) {
 		Log(Type::INFO) << "The music file was successfully opened. Music file: " << p_PathToAudioFile;

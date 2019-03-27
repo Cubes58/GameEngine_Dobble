@@ -65,6 +65,8 @@ bool Window::SetIcon(const std::string &p_IconFileLocation) {
 void Window::SetScreenSize(int p_Width, int p_Height) {
 	m_Width = p_Width;
 	m_Height = p_Height;
+
+	m_Window.setSize(sf::Vector2u((unsigned int)m_Width, (unsigned int)m_Height));
 }
 
 sf::RenderWindow &Window::GetWindow() {

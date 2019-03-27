@@ -35,28 +35,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/client;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../../include/client;../../include;../../external/include;../../external/include/freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>../../source/client;../../source;$(VC_SourcePath);</SourcePath>
     <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/client;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../../include/client;../../include;../../external/include;../../external/include/freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>../../source/client;../../source;$(VC_SourcePath);</SourcePath>
     <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/client;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../../include/client;../../include;../../external/include;../../external/include/freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>../../source/client;../../source;$(VC_SourcePath);</SourcePath>
     <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/client;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../../include/client;../../include;../../external/include;../../external/include/freetype;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <SourcePath>../../source/client;../../source;$(VC_SourcePath);</SourcePath>
     <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
@@ -97,13 +97,17 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>5999;4075;26495;4244;</DisableSpecificWarnings>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;GameEngineLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;../../external/include/freetype/freetype;</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -117,13 +121,17 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>5999;4075;26495;4244;</DisableSpecificWarnings>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;GameEngineLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;../../external/include/freetype/freetype;</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -135,6 +143,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>5999;4075;26495;4244;</DisableSpecificWarnings>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -142,8 +151,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;GameEngineLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;../../external/include/freetype/freetype;</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -155,6 +167,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>5999;4075;26495;4244;</DisableSpecificWarnings>
       <AdditionalOptions> /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <StructMemberAlignment>Default</StructMemberAlignment>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -162,8 +175,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;GameEngineLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../external/include;../../external/include/freetype;../../external/include/freetype/freetype;</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

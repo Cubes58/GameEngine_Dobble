@@ -55,6 +55,23 @@ void ServerGame::SendStartingInformation() {
 	}
 }
 
+void ServerGame::SendPlayerScores() {
+	for (auto &playerScore : m_PlayerScores) {
+		sf::Packet scorePacket = Packet::SetPacketType(Packet::SCORE);
+		scorePacket << playerScore.second << true;
+
+		// Loop through the others score, add them so the player knows about the enemy scores.
+		for (auto &otherPlayerScore : m_PlayerScores) {
+			if (playerScore.first == otherPlayerScore.first)
+				continue;
+
+			scorePacket << otherPlayerScore.second << false;
+		}
+
+		m_Server.Send(playerScore.first, scorePacket);
+	}
+}
+
 void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 	std::unordered_map<ClientID, bool> hasPlayerWonRound;
 	int numberOfPlayersThatWon = 0;
@@ -81,7 +98,12 @@ void ServerGame::HandlePackets(std::map<ClientID, sf::Packet> &p_Data) {
 				m_Server.Send(gameFinishedPacket);
 			}
 
-			continue;
+			sf::Packet playerLeftPacket = Packet::SetPacketType(Packet::PLAYER_LEFT);
+			playerLeftPacket << m_Server.GetClientIDs().size() - 1;
+			m_Server.Send(playerLeftPacket);
+
+			// Send the players the scores.
+			SendPlayerScores();
 		}
 		else {
 			Log(Type::WARNING) << "Unknown packet type: " << packetType;
@@ -141,22 +163,8 @@ void ServerGame::HandleRoundWon(int p_NumberOfPlayersWonRound, std::unordered_ma
 		roundFinishedPacket << false;
 		m_Server.Send(client, roundFinishedPacket);
 	}
-
 	// Send the players the scores.
-	for (auto &playerScore : m_PlayerScores) {
-		sf::Packet scorePacket = Packet::SetPacketType(Packet::SCORE);
-		scorePacket << playerScore.second << true;
-
-		// Loop through the others score, add them so the player knows about the enemy scores.
-		for (auto &otherPlayerScore : m_PlayerScores) {
-			if (playerScore.first == otherPlayerScore.first)
-				continue;
-
-			scorePacket << otherPlayerScore.second << false;
-		}
-
-		m_Server.Send(playerScore.first, scorePacket);
-	}
+	SendPlayerScores();
 
 	m_RoundLength = 0.0f;
 	HandleGameOver();

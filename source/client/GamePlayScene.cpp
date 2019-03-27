@@ -127,6 +127,9 @@ void GamePlayScene::Render() {
 
 	RenderText("Score: " + std::to_string(static_cast<int>(m_Score)), Vector2Df(0.01f, 0.955f), 0.55f, playerScoreAndTimeColour);
 	RenderText("Time: " + std::to_string(static_cast<int>(m_UserInterface->Time())), Vector2Df(0.88f, 0.955f), 0.55f, playerScoreAndTimeColour);
+
+	if (m_WaitingForMorePlayers)
+		RenderText("Waiting for more players to join...", Vector2Df(0.225f, 0.45f), 0.8f, glm::vec3(0.0f, 0.0f, 0.0f));
 }
 
 void GamePlayScene::ReadScore(sf::Packet &p_Packet) {
@@ -181,7 +184,14 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 		p_Packet >> numberOfEnemyPlayers;
 		m_EnemyScores.resize(numberOfEnemyPlayers);
 
+		m_WaitingForMorePlayers = false;
 		m_UserInterface->ResetTime();
+	}
+	else if (packetID == Packet::PLAYER_LEFT) {
+		m_EnemyScores.clear();
+		std::size_t numberOfEnemyPlayers = 0;
+		p_Packet >> numberOfEnemyPlayers;
+		m_EnemyScores.resize(numberOfEnemyPlayers);
 	}
 	else if (packetID == Packet::DISCONNECT) {
 		m_GameState = GameState::MAIN_MENU;

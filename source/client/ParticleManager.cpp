@@ -131,7 +131,7 @@ void ParticleManager::Render() {
 }
 
 unsigned int ParticleManager::GetNumberOfParticlesToSpawnEachTime() const {
-	return m_NumberOfParticles;
+	return m_NumberOfParticlesToSpawnEachTime;
 }
 
 void ParticleManager::SetNumberOfParticlesToSpawnEachTime(unsigned int p_NumberToSpawn) {

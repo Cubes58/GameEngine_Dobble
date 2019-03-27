@@ -57,11 +57,7 @@ public:
 		\brief Gets the ResourceManager instance.
 		\return Returns the Resource Manager instance.
 	*/
-	static ResourceManager &Instance() {
-		static ResourceManager s_ResourceManager;
-
-		return s_ResourceManager;
-	}
+	static ResourceManager &Instance();
 
 	/*!
 		\brief Loads shaders from a folder.

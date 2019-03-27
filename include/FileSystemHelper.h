@@ -91,6 +91,11 @@ public:
 		p_Files.erase(std::remove_if(p_Files.begin(), p_Files.end(), [&](std::string p_File)->bool {
 
 			size_t extensionStartPosition = p_File.find_last_of(".");
+			// Enusre it's a file, otherwise it won't have a file type.
+			if (extensionStartPosition == std::string::npos) {
+				return true;
+			}
+
 			std::string fileExtension = p_File.substr(extensionStartPosition, p_File.size() - 1);
 			for (auto &extension : p_FileExtensions) {
 				if (fileExtension == extension && p_KeepFile)
