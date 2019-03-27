@@ -25,6 +25,7 @@ namespace Packet {
 		ROUND_FINISHED,		/**< Send the winner, of the round. */
 		SCORE,				/**< Send the player's score. */
 		GAME_FINISHED,		/**< Send the winner, of the game. */
+		PLAYER_LEFT,		/**< Inform the player[s] a player has left. */
 
 		NOT_AVAILABLE		/**< Unknown packet/ignore it. */
 	};

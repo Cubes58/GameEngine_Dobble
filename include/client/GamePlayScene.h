@@ -52,6 +52,7 @@ private:
 	float m_OtherEffectActivationGap = MIN_GAP_DURATION_BETWEEN_OTHER_EFFECT;	//!< The time gap between each other effect.
 	std::shared_ptr<ParticleManager> m_ParticleManager;	//!< Pointer to a particle manager, which manages the particle system.
 	bool m_CouldConnect = true;	//!< Manages the connection state between the server and the client.
+	bool m_WaitingForMorePlayers = true;	//!< Keeps track of whether the lobby is waiting for more players, or not.
 
 	/*!
 		\brief Handles incoming score packets, from the server.

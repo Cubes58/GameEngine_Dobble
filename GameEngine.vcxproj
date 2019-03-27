@@ -117,6 +117,14 @@
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -137,6 +145,14 @@
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -163,6 +179,14 @@
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -188,6 +212,14 @@
     <PostBuildEvent>
       <Command>copy /y "$(SolutionDir)/external/dlls/$(Platform)" "$(OutDir)"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\client\AudioManager.cpp" />
@@ -252,7 +284,7 @@
     <ClInclude Include="include\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClientClassDiagram.cd" />
+    <None Include="GameEngineClassDiagram.cd" />
     <None Include="resources\shaders\FontShader.frag" />
     <None Include="resources\shaders\FontShader.vert" />
     <None Include="resources\shaders\PostProcessingEffects.frag" />

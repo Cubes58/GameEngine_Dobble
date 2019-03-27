@@ -238,6 +238,6 @@
     <None Include="resources\shaders\PostProcessingEffects.vert">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ClientClassDiagram.cd" />
+    <None Include="GameEngineClassDiagram.cd" />
   </ItemGroup>
 </Project>
