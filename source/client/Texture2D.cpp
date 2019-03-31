@@ -1,7 +1,7 @@
 #include "Texture2D.h"
 
 Texture2D::Texture2D() : m_Width(0), m_Height(0), m_InternalFormat(gl::RGB), m_WrapS(gl::REPEAT),
-m_WrapT(gl::REPEAT), m_FilterMin(gl::LINEAR), m_FilterMax(gl::LINEAR), m_ImageFormat(gl::RGB) {
+	m_WrapT(gl::REPEAT), m_FilterMin(gl::LINEAR), m_FilterMax(gl::LINEAR), m_ImageFormat(gl::RGB) {
 	gl::GenTextures(1, &m_ID);
 }
 

@@ -1,0 +1,81 @@
+{
+  "UserInterfaceObjects": [
+    {
+      "type": "shape",
+      "shapeType": "rectangleShape",
+      "orientation": [
+        0.0,
+        0.0
+      ],
+      "position": [
+        640.0,
+        360.0
+      ],
+      "size": [
+        1280.0,
+        720.0
+      ],
+      "texture": "oceanMountainBackground"
+    },
+    {
+      "type": "button",
+      "shapeType": "rectangleShape",
+      "orientation": [
+        0.0,
+        0.0
+      ],
+      "position": [
+        90.0,
+        680.0
+      ],
+      "size": [
+        140.0,
+        45.0
+      ],
+      "texture": "paintStroke2",
+      "stateChange": "MAIN_MENU"
+    },
+    {
+      "type": "text",
+      "text": "Menu",
+      "position": [
+        0.03,
+        0.04
+      ],
+      "scale": 0.7,
+      "colour": [
+        0.098,
+        0.439,
+        0.098
+      ]
+    },
+    {
+      "type": "text",
+      "text": "You have won.",
+      "position": [
+        0.40,
+        0.5
+      ],
+      "scale": 0.7,
+      "colour": [
+        0.098,
+        0.439,
+        0.098
+      ]
+    },
+    {
+      "type": "text",
+      "text": "Congratulations!",
+      "position": [
+        0.38,
+        0.44
+      ],
+      "scale": 0.7,
+      "colour": [
+        0.098,
+        0.439,
+        0.098
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+[INFO]: OpenGL version: 4.6.0 NVIDIA 398.36
+[WARNING]: Unable to load: 0 functions.
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
+layout (location = 0) in vec4 vertex; // <vec2 position, vec2 texture>
+
+out vec2 TexCoords;
+
+uniform mat4 projection;
+
+void main() {
+	gl_Position = projection * vec4(vertex.xy, 0.0, 1.0);
+	TexCoords = vertex.zw;
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 colour;
+
+uniform sampler2D text;
+uniform vec3 textColour;
+
+void main() {
+	vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, TexCoords).r);
+	colour = vec4(textColour, 1.0) * sampled;
+}
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
+layout (location = 0) in vec4 vertex;	// Vec2 Position, vec2 TextureCoordinates //
+
+out vec2 TexCoords;
+
+uniform bool shake;
+uniform bool invertColours;
+uniform bool chaos;
+uniform float time;
+
+void main() {
+	gl_Position = vec4(vertex.xy, 0.0f, 1.0f);
+	TexCoords = vertex.zw;
+
+	// Shake the screen around.
+	if (shake) {
+		float strength = 0.0125f;
+		gl_Position.x += cos(time * 10.0f) * strength;
+		gl_Position.y += cos(time * 15.0f) * strength;
+	}
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 FragColour;
+
+uniform sampler2D scene;
+uniform vec2 offsets[9];
+uniform int edgeKernel[9];
+uniform float blurKernel[9];
+uniform bool shake;
+uniform bool invertColours;
+uniform bool chaos;
+
+void main() {
+	FragColour = vec4(0.0f);
+	vec3 sampleData[9];
+
+	// Sample from texture offsets if using convolution matrix.
+	if (chaos || shake) {
+		for (int i = 0; i < 9; i++) {
+			sampleData[i] = vec3(texture(scene, TexCoords.st + offsets[i]));
+		}
+	}
+
+	// Process effects.
+	if (invertColours) {
+		FragColour = vec4(1.0f - texture(scene, TexCoords).rgb, 1.0f);
+	}
+	else if (chaos) {
+		for (int i = 0; i < 9; i++) {
+			FragColour += vec4(sampleData[i] * edgeKernel[i], 0.0f);
+		}
+		FragColour.a = 1.0f;
+	}
+	else if (shake) {
+		for (int i = 0; i < 9; i++) {
+			FragColour += vec4(sampleData[i] * blurKernel[i], 0.0f);
+		}
+		FragColour.a = 1.0f;
+	}
+	else {
+		FragColour = texture(scene, TexCoords);
+	}
+}
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
+layout (location = 0) in vec2 vertex;
+
+out vec2 TexCoords;
+
+uniform mat4 model;
+uniform mat4 projection;
+
+void main() {
+	TexCoords = vertex;
+	gl_Position = projection * model * vec4(vertex, 0.0f, 1.0f);
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 FragColour;
+
+uniform sampler2D image;
+uniform vec4 colour;
+uniform float mixValue;
+uniform bool usingColourAsTextureMask;
+
+void main() {
+	vec4 textureFragColour = texture(image, TexCoords);
+	if (usingColourAsTextureMask && textureFragColour.a <= 0.0f)
+		discard;
+	
+	FragColour = mix(textureFragColour, colour, mixValue);
+}
+[INFO]: 
+SHADER SOURCE CODE:35633	SHADER TYPE: VERTEX
+#version 430 core
+
+layout (location = 0) in vec2 vertex;
+
+out vec2 TexCoords;
+
+uniform mat4 model;
+uniform mat4 projection;
+
+void main() {
+	TexCoords = vertex;
+	gl_Position = projection * model * vec4(vertex, 0.0f, 1.0f);
+}
+[INFO]: 
+SHADER SOURCE CODE:35632	SHADER TYPE: FRAGMENT
+#version 430 core
+
+in vec2 TexCoords;
+
+out vec4 FragColour;
+
+uniform sampler2D image;
+uniform vec4 colour;
+uniform float mixValue;
+uniform bool usingColourAsTextureMask;
+
+void main() {
+	vec4 textureFragColour = texture(image, TexCoords);
+	if (usingColourAsTextureMask && textureFragColour.a <= 0.0f)
+		discard;
+	
+	FragColour = mix(textureFragColour, colour, mixValue);
+}
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/bleep.wav
+[INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/squat.wav
+[INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/symbolGuess.wav
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
