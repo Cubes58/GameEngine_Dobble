@@ -35,30 +35,30 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>../../source/server;../../source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <IncludePath>../../include/client;../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>../../source/client;../../source/server;../../source;$(VC_SourcePath);</SourcePath>
+    <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>../../source/server;../../source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <IncludePath>../../include/client;../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>../../source/client;../../source/server;../../source;$(VC_SourcePath);</SourcePath>
+    <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>../../source/server;../../source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>../../include/client;../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>../../source/client;../../source/server;../../source;$(VC_SourcePath);</SourcePath>
+    <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)/executable/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</OutDir>
     <IntDir>$(SolutionDir)/temp/$(MSBuildProjectName)/$(Platform)/$(Configuration)/</IntDir>
-    <IncludePath>../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>../../source/server;../../source;$(VC_SourcePath);</SourcePath>
-    <LibraryPath>../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
+    <IncludePath>../../include/client;../../include/server;../../include;../../external/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>../../source/client;../../source/server;../../source;$(VC_SourcePath);</SourcePath>
+    <LibraryPath>../../executable/GameEngineLib/$(Platform)/$(Configuration);../../executable/ServerLib/$(Platform)/$(Configuration);../../external/libs;../../external/libs/$(Platform);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -76,6 +76,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GameEngineLib.vcxproj">
+      <Project>{034cae41-c44e-4575-9a5e-3783ea0d03de}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\ServerLib.vcxproj">
       <Project>{dad854b6-ef0f-4046-ac10-6e586009fdf6}</Project>
     </ProjectReference>
@@ -101,7 +104,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;GameEngineLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -124,7 +127,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;GameEngineLib.lib;opengl32.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -147,7 +150,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;GameEngineLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -170,7 +173,7 @@
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>../../external/libs/$(Platform)/$(Configuration)/gtest.lib;../../external/libs/$(Platform)/$(Configuration)/gtest_main.lib;ServerLib.lib;GameEngineLib.lib;opengl32.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-network.lib;sfml-audio.lib;kernel32.lib;user32.lib;gdi32.lib;shell32.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../external/include;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>

@@ -10,6 +10,7 @@
 #include "Server.h"
 #include "Deck.h"
 
+#define MINIMUM_NUMBER_OF_PLAYERS 2	//!< The minimum number of players, per game.
 #define TIME_TO_WAIT_FOR_MORE_CLIENTS 5.0f	//!< Wait time, to see if any other players want to play.
 #define MAXIMUM_NUMBER_OF_PLAYERS_PER_GAME 4	//!< The maximum number of players per game.
 
@@ -23,8 +24,6 @@
 
 class ServerGame {
 private:
-	static const constexpr unsigned int s_m_MinimumNumberOfPlayers = 2;	//!< The minimum number of players, per game.
-
 	Server m_Server;	//!< A server instance, which handles the communication between the server and clients.
 	Deck m_Deck;	//!< Generates the cards, and helps control the entites.
 	std::map<ClientID, float> m_PlayerScores;	//!< Keeps track of the players' scores.

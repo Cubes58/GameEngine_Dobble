@@ -173,7 +173,7 @@ void GamePlayScene::HandlePacket(sf::Packet &p_Packet) {
 	else if (packetID == Packet::GAME_FINISHED) {
 		bool hasPlayerWonGame = false;
 		p_Packet >> hasPlayerWonGame;
-		Log(Type::INFO) << "Game over. Has the player won: " << hasPlayerWonGame;
+		Log(Type::INFO) << "Game over. Has the player won: " << (hasPlayerWonGame ? "Yes" : "No");
 		if (hasPlayerWonGame)
 			m_GameState = GameState::WIN;
 		else
