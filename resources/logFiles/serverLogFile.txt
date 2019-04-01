@@ -1,0 +1,80 @@
+[INFO]: A client has requested a connection, to join the lobby. Remote address: 127.0.0.1
+[INFO]: Number of clients needed: 2
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 1
+[INFO]: Number of clients needed: 1
+[INFO]: A client has requested a connection, to join the lobby. Remote address: 127.0.0.1
+[INFO]: Number of clients needed: 1
+[INFO]: Client connected. Remote address: 127.0.0.1 Their ID is: 2
+[INFO]: Number of clients needed: 0
+[INFO]: Number of circles in the render component: 9
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 6
+[INFO]: Symbol ID: 9
+[INFO]: Symbol ID: 20
+[INFO]: Symbol ID: 24
+[INFO]: Symbol ID: 35
+[INFO]: Symbol ID: 39
+[INFO]: Symbol ID: 50
+[INFO]: Symbol ID: 54
+[INFO]: Number of circles in the transform component: 9
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Transform data: XPos: -79.7351	YPos: 154.165	Radius: 43.7686	Rotation: 153.472
+[INFO]: Transform data: XPos: -125.118	YPos: -121.356	Radius: 59.4063	Rotation: 310.991
+[INFO]: Transform data: XPos: 174.143	YPos: -102.302	Radius: 45.9871	Rotation: 256.127
+[INFO]: Transform data: XPos: 177.865	YPos: -10.2193	Radius: 46.1706	Rotation: 47.317
+[INFO]: Transform data: XPos: 40.7874	YPos: -94.6866	Radius: 87.5855	Rotation: 55.7276
+[INFO]: Transform data: XPos: -154.807	YPos: 22.4023	Radius: 87.3858	Rotation: 234.128
+[INFO]: Transform data: XPos: 81.0529	YPos: 96.0597	Radius: 97.5924	Rotation: 81.2302
+[INFO]: Transform data: XPos: -15.9302	YPos: 207.955	Radius: 39.6845	Rotation: 206.887
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Number of circles in the render component: 9
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 4
+[INFO]: Symbol ID: 13
+[INFO]: Symbol ID: 22
+[INFO]: Symbol ID: 24
+[INFO]: Symbol ID: 33
+[INFO]: Symbol ID: 42
+[INFO]: Symbol ID: 44
+[INFO]: Symbol ID: 53
+[INFO]: Number of circles in the transform component: 9
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Transform data: XPos: 9.81854	YPos: -212.339	Radius: 37.4343	Rotation: 92.424
+[INFO]: Transform data: XPos: -56.2672	YPos: -148.107	Radius: 46.2814	Rotation: 118.778
+[INFO]: Transform data: XPos: -125.439	YPos: 146.33	Radius: 57.2634	Rotation: 253.793
+[INFO]: Transform data: XPos: 94.6857	YPos: -101.66	Radius: 79.7351	Rotation: 217.253
+[INFO]: Transform data: XPos: 15.2507	YPos: 127.417	Radius: 84.6922	Rotation: 103.711
+[INFO]: Transform data: XPos: 161.292	YPos: 45.8364	Radius: 82.1031	Rotation: 336.028
+[INFO]: Transform data: XPos: -117.691	YPos: -21.4498	Radius: 94.4841	Rotation: 317.112
+[INFO]: Transform data: XPos: -171.686	YPos: -134.235	Radius: 30.5592	Rotation: 73.7847
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Number of circles in the render component: 9
+[INFO]: Symbol ID: 0
+[INFO]: Symbol ID: 8
+[INFO]: Symbol ID: 15
+[INFO]: Symbol ID: 21
+[INFO]: Symbol ID: 27
+[INFO]: Symbol ID: 33
+[INFO]: Symbol ID: 39
+[INFO]: Symbol ID: 45
+[INFO]: Symbol ID: 51
+[INFO]: Number of circles in the transform component: 9
+[INFO]: Transform data: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Transform data: XPos: -12.5818	YPos: 200.344	Radius: 38.6488	Rotation: 64.3681
+[INFO]: Transform data: XPos: -208.692	YPos: -20.476	Radius: 40.306	Rotation: 128.659
+[INFO]: Transform data: XPos: -170.979	YPos: 120.775	Radius: 40.6662	Rotation: 293.682
+[INFO]: Transform data: XPos: 190.656	YPos: 67.2583	Radius: 47.8283	Rotation: 25.9341
+[INFO]: Transform data: XPos: -73.8513	YPos: -146.136	Radius: 86.2635	Rotation: 177.23
+[INFO]: Transform data: XPos: -44.0126	YPos: 66.9979	Radius: 90.5121	Rotation: 230.677
+[INFO]: Transform data: XPos: 111.951	YPos: -56.2212	Radius: 98.6012	Rotation: 115.684
+[INFO]: Transform data: XPos: 61.9849	YPos: 156.183	Radius: 48.0137	Rotation: 108.077
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Successfully sent data to a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Data received from a client! Client ID: 1
+[INFO]: Disconnecting from a client! Client ID: 1
+[INFO]: Successfully disconnected from a client! Client ID: 1
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Successfully sent data to a client! Client ID: 2
+[INFO]: Successfully sent data to a client! Client ID: 2

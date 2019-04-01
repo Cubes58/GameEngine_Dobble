@@ -175,3 +175,81 @@ void main() {
 [INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/squat.wav
 [INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/symbolGuess.wav
 [INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server listener!
+[INFO]: Packet being received, from the server.
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/retroTheme.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server listener!
+[INFO]: Packet being received, from the server.
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/retroTheme.wav
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -79.7351	YPos: 154.165	Radius: 43.7686	Rotation: 153.472
+[INFO]: XPos: -125.118	YPos: -121.356	Radius: 59.4063	Rotation: 310.991
+[INFO]: XPos: 174.143	YPos: -102.302	Radius: 45.9871	Rotation: 256.127
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 177.865	YPos: -10.2193	Radius: 46.1706	Rotation: 47.317
+[INFO]: XPos: 40.7874	YPos: -94.6866	Radius: 87.5855	Rotation: 55.7276
+[INFO]: XPos: -79.7351	YPos: 154.165	Radius: 43.7686	Rotation: 153.472
+[INFO]: XPos: -154.807	YPos: 22.4023	Radius: 87.3858	Rotation: 234.128
+[INFO]: XPos: -125.118	YPos: -121.356	Radius: 59.4063	Rotation: 310.991
+[INFO]: XPos: 81.0529	YPos: 96.0597	Radius: 97.5924	Rotation: 81.2302
+[INFO]: XPos: 174.143	YPos: -102.302	Radius: 45.9871	Rotation: 256.127
+[INFO]: XPos: 177.865	YPos: -10.2193	Radius: 46.1706	Rotation: 47.317
+[INFO]: XPos: -15.9302	YPos: 207.955	Radius: 39.6845	Rotation: 206.887
+[INFO]: XPos: 40.7874	YPos: -94.6866	Radius: 87.5855	Rotation: 55.7276
+[INFO]: XPos: -154.807	YPos: 22.4023	Radius: 87.3858	Rotation: 234.128
+[INFO]: XPos: 81.0529	YPos: 96.0597	Radius: 97.5924	Rotation: 81.2302
+[INFO]: XPos: -15.9302	YPos: 207.955	Radius: 39.6845	Rotation: 206.887
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 9.81854	YPos: -212.339	Radius: 37.4343	Rotation: 92.424
+[INFO]: XPos: -56.2672	YPos: -148.107	Radius: 46.2814	Rotation: 118.778
+[INFO]: XPos: -125.439	YPos: 146.33	Radius: 57.2634	Rotation: 253.793
+[INFO]: XPos: 94.6857	YPos: -101.66	Radius: 79.7351	Rotation: 217.253
+[INFO]: XPos: 15.2507	YPos: 127.417	Radius: 84.6922	Rotation: 103.711
+[INFO]: XPos: 161.292	YPos: 45.8364	Radius: 82.1031	Rotation: 336.028
+[INFO]: XPos: -117.691	YPos: -21.4498	Radius: 94.4841	Rotation: 317.112
+[INFO]: XPos: -171.686	YPos: -134.235	Radius: 30.5592	Rotation: 73.7847
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -12.5818	YPos: 200.344	Radius: 38.6488	Rotation: 64.3681
+[INFO]: XPos: -208.692	YPos: -20.476	Radius: 40.306	Rotation: 128.659
+[INFO]: XPos: -170.979	YPos: 120.775	Radius: 40.6662	Rotation: 293.682
+[INFO]: XPos: 190.656	YPos: 67.2583	Radius: 47.8283	Rotation: 25.9341
+[INFO]: XPos: -73.8513	YPos: -146.136	Radius: 86.2635	Rotation: 177.23
+[INFO]: XPos: -44.0126	YPos: 66.9979	Radius: 90.5121	Rotation: 230.677
+[INFO]: XPos: 111.951	YPos: -56.2212	Radius: 98.6012	Rotation: 115.684
+[INFO]: XPos: 61.9849	YPos: 156.183	Radius: 48.0137	Rotation: 108.077
+[INFO]: Packet being received, from the server.
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Disconnecting, from the server.
+[INFO]: The server has been notified!
+[INFO]: Successfully disconnected, from the server.
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
+[INFO]: Packet being received, from the server.
+[INFO]: Game over. Has the player won: Yes
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Disconnecting, from the server.
+[INFO]: The server has been notified!
+[INFO]: Successfully disconnected, from the server.
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/ambientChill.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
+[INFO]: Playing the sound: bleep
