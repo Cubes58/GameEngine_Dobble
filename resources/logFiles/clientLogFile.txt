@@ -170,3 +170,330 @@ void main() {
 	
 	FragColour = mix(textureFragColour, colour, mixValue);
 }
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/bleep.wav
+[INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/squat.wav
+[INFO]: The sound effect was successfully loaded. Sound effect file: ./resources/audio/soundEffects/symbolGuess.wav
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server listener!
+[INFO]: Packet being received, from the server.
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/retroTheme.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server listener!
+[INFO]: Packet being received, from the server.
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/retroTheme.wav
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Attempting to connect to the server... 
+Port number: 8787
+IP Address: 127.0.0.1
+[INFO]: Connected to the server listener!
+[INFO]: Packet being received, from the server.
+[INFO]: Connected to a game on the server (in lobby)!
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/retroTheme.wav
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -144.613	YPos: -149.599	Radius: 37.729	Rotation: 115.558
+[INFO]: XPos: 42.7066	YPos: -177.428	Radius: 50.3755	Rotation: 107.083
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 42.7066	YPos: -177.428	Radius: 50.3755	Rotation: 107.083
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -62.7227	YPos: -140.051	Radius: 44.7158	Rotation: 68.9665
+[INFO]: XPos: -62.7227	YPos: -140.051	Radius: 44.7158	Rotation: 68.9665
+[INFO]: XPos: 132.389	YPos: 134.636	Radius: 60.0121	Rotation: 193.845
+[INFO]: XPos: 132.389	YPos: 134.636	Radius: 60.0121	Rotation: 193.845
+[INFO]: XPos: -144.613	YPos: -149.599	Radius: 37.729	Rotation: 115.558
+[INFO]: XPos: -144.613	YPos: -149.599	Radius: 37.729	Rotation: 115.558
+[INFO]: XPos: -47.2249	YPos: 148.026	Radius: 89.1707	Rotation: 132.58
+[INFO]: XPos: 42.7066	YPos: -177.428	Radius: 50.3755	Rotation: 107.083
+[INFO]: XPos: 42.7066	YPos: -177.428	Radius: 50.3755	Rotation: 107.083
+[INFO]: XPos: -47.2249	YPos: 148.026	Radius: 89.1707	Rotation: 132.58
+[INFO]: XPos: -129.531	YPos: -10.4448	Radius: 89.4	Rotation: 324.068
+[INFO]: XPos: -62.7227	YPos: -140.051	Radius: 44.7158	Rotation: 68.9665
+[INFO]: XPos: -62.7227	YPos: -140.051	Radius: 44.7158	Rotation: 68.9665
+[INFO]: XPos: 82.346	YPos: -39.8057	Radius: 92.8414	Rotation: 163.728
+[INFO]: XPos: 132.389	YPos: 134.636	Radius: 60.0121	Rotation: 193.845
+[INFO]: XPos: 82.346	YPos: -39.8057	Radius: 92.8414	Rotation: 163.728
+[INFO]: XPos: 132.389	YPos: 134.636	Radius: 60.0121	Rotation: 193.845
+[INFO]: XPos: 200.739	YPos: 61.5888	Radius: 40.0258	Rotation: 225.24
+[INFO]: XPos: -47.2249	YPos: 148.026	Radius: 89.1707	Rotation: 132.58
+[INFO]: XPos: 200.739	YPos: 61.5888	Radius: 40.0258	Rotation: 225.24
+[INFO]: XPos: -47.2249	YPos: 148.026	Radius: 89.1707	Rotation: 132.58
+[INFO]: XPos: -129.531	YPos: -10.4448	Radius: 89.4	Rotation: 324.068
+[INFO]: XPos: -129.531	YPos: -10.4448	Radius: 89.4	Rotation: 324.068
+[INFO]: XPos: 82.346	YPos: -39.8057	Radius: 92.8414	Rotation: 163.728
+[INFO]: XPos: 82.346	YPos: -39.8057	Radius: 92.8414	Rotation: 163.728
+[INFO]: XPos: 200.739	YPos: 61.5888	Radius: 40.0258	Rotation: 225.24
+[INFO]: XPos: 200.739	YPos: 61.5888	Radius: 40.0258	Rotation: 225.24
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 140.885	YPos: -139.04	Radius: 40.4608	Rotation: 113.551
+[INFO]: XPos: 102.685	YPos: 142.559	Radius: 41.906	Rotation: 114.592
+[INFO]: XPos: 45.9736	YPos: -189.31	Radius: 50.335	Rotation: 268.465
+[INFO]: XPos: -58.7049	YPos: -119.81	Radius: 75.315	Rotation: 307.839
+[INFO]: XPos: -23.5058	YPos: 134.698	Radius: 80.5993	Rotation: 10.5841
+[INFO]: XPos: -141.627	YPos: 18.1233	Radius: 85.3596	Rotation: 172.656
+[INFO]: XPos: 98.5549	YPos: -17.6823	Radius: 88.0677	Rotation: 77.8166
+[INFO]: XPos: 160.116	YPos: 97.2175	Radius: 31.2669	Rotation: 214.109
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -158.365	YPos: -125.126	Radius: 24.375	Rotation: 177.972
+[INFO]: XPos: 201.88	YPos: -11.708	Radius: 47.7805	Rotation: 63.043
+[INFO]: XPos: -67.7368	YPos: 164.325	Radius: 72.2614	Rotation: 37.2467
+[INFO]: XPos: 87.4034	YPos: -103.247	Radius: 87.4256	Rotation: 249.353
+[INFO]: XPos: -65.8015	YPos: -160.007	Radius: 74.5423	Rotation: 326.727
+[INFO]: XPos: 105.914	YPos: 100.62	Radius: 99.9594	Rotation: 198.447
+[INFO]: XPos: -133.821	YPos: 5.77084	Radius: 95.4819	Rotation: 281.107
+[INFO]: XPos: 0.680023	YPos: -9.97209	Radius: 39.9371	Rotation: 204.534
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 179.242	YPos: 85.9279	Radius: 26.0918	Rotation: 90.0226
+[INFO]: XPos: -187.529	YPos: -3.40298	Radius: 50.7948	Rotation: 138.18
+[INFO]: XPos: 65.5208	YPos: -185.211	Radius: 49.6195	Rotation: 81.7988
+[INFO]: XPos: 83.9893	YPos: 123.32	Radius: 76.2375	Rotation: 71.0781
+[INFO]: XPos: -106.29	YPos: -101.71	Radius: 76.7352	Rotation: 310.219
+[INFO]: XPos: -85.9548	YPos: 101.143	Radius: 94.9687	Rotation: 115.009
+[INFO]: XPos: 115.406	YPos: -54.4377	Radius: 90.3459	Rotation: 197.926
+[INFO]: XPos: 214.021	YPos: 11.9342	Radius: 28.524	Rotation: 65.08
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 50.3723	YPos: 194.759	Radius: 40.2777	Rotation: 193.973
+[INFO]: XPos: -181.637	YPos: 20.6932	Radius: 65.7576	Rotation: 263.329
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 124.75	YPos: 151.607	Radius: 45.7109	Rotation: 11.9542
+[INFO]: XPos: 61.7694	YPos: -151.694	Radius: 53.9596	Rotation: 163.941
+[INFO]: XPos: -80.3848	YPos: 135.593	Radius: 86.3551	Rotation: 126.289
+[INFO]: XPos: -62.0822	YPos: -78.7739	Radius: 89.7645	Rotation: 52.6187
+[INFO]: XPos: 122.154	YPos: -15.8828	Radius: 94.6712	Rotation: 218.42
+[INFO]: XPos: 39.4298	YPos: 120.935	Radius: 34.3528	Rotation: 316.033
+[INFO]: Packet being received, from the server.
+[INFO]: The player has clicked on a symbol. Symbol ID: 30
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Playing the sound: symbolGuess
+[INFO]: Packet being sent, to the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 0
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 25
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Enemy Score: 0
+[INFO]: XPos: 13.0162	YPos: -194.407	Radius: 43.6337	Rotation: 347.602
+[INFO]: Enemy Score: 0
+[INFO]: XPos: 103.904	YPos: -101.699	Radius: 54.381	Rotation: 138.751
+[INFO]: Enemy Score: 25
+[INFO]: XPos: -153	YPos: -91.0175	Radius: 44.4532	Rotation: 175.912
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 0
+[INFO]: XPos: -129.829	YPos: 30.5288	Radius: 78.6063	Rotation: 109.539
+[INFO]: Enemy Score: 0
+[INFO]: XPos: -24.877	YPos: -81.8329	Radius: 75.147	Rotation: 45.145
+[INFO]: Enemy Score: 0
+[INFO]: XPos: 11.5141	YPos: 162.925	Radius: 86.4825	Rotation: 8.5041
+[INFO]: Enemy Score: 25
+[INFO]: XPos: 137.705	YPos: 39.0369	Radius: 90.3575	Rotation: 210.237
+[INFO]: XPos: -111.494	YPos: -156.019	Radius: 32.6699	Rotation: 154.45
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 25
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 0
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -165.232	YPos: 37.9285	Radius: 48.3861	Rotation: 9.65265
+[INFO]: XPos: -165.232	YPos: 37.9285	Radius: 48.3861	Rotation: 9.65265
+[INFO]: XPos: -165.232	YPos: 37.9285	Radius: 48.3861	Rotation: 9.65265
+[INFO]: XPos: -195.794	YPos: -50.8743	Radius: 45.5284	Rotation: 17.3165
+[INFO]: XPos: -195.794	YPos: -50.8743	Radius: 45.5284	Rotation: 17.3165
+[INFO]: XPos: 178.357	YPos: -82.233	Radius: 50.7314	Rotation: 123.411
+[INFO]: XPos: 178.357	YPos: -82.233	Radius: 50.7314	Rotation: 123.411
+[INFO]: XPos: 178.357	YPos: -82.233	Radius: 50.7314	Rotation: 123.411
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 92.2668	YPos: -129.201	Radius: 47.3375	Rotation: 178.164
+[INFO]: XPos: 92.2668	YPos: -129.201	Radius: 47.3375	Rotation: 178.164
+[INFO]: XPos: 92.2668	YPos: -129.201	Radius: 47.3375	Rotation: 178.164
+[INFO]: XPos: -48.0097	YPos: 161.425	Radius: 81.5872	Rotation: 139.987
+[INFO]: XPos: -48.0097	YPos: 161.425	Radius: 81.5872	Rotation: 139.987
+[INFO]: XPos: -48.0097	YPos: 161.425	Radius: 81.5872	Rotation: 139.987
+[INFO]: XPos: -165.232	YPos: 37.9285	Radius: 48.3861	Rotation: 9.65265
+[INFO]: XPos: -195.794	YPos: -50.8743	Radius: 45.5284	Rotation: 17.3165
+[INFO]: XPos: -38.5919	YPos: -95.635	Radius: 83.0438	Rotation: 229.369
+[INFO]: XPos: -38.5919	YPos: -95.635	Radius: 83.0438	Rotation: 229.369
+[INFO]: XPos: -38.5919	YPos: -95.635	Radius: 83.0438	Rotation: 229.369
+[INFO]: XPos: 117.239	YPos: 54.4426	Radius: 98.987	Rotation: 44.5133
+[INFO]: XPos: 117.239	YPos: 54.4426	Radius: 98.987	Rotation: 44.5133
+[INFO]: XPos: 117.239	YPos: 54.4426	Radius: 98.987	Rotation: 44.5133
+[INFO]: XPos: 178.357	YPos: -82.233	Radius: 50.7314	Rotation: 123.411
+[INFO]: XPos: 92.2668	YPos: -129.201	Radius: 47.3375	Rotation: 178.164
+[INFO]: XPos: -95.1639	YPos: -2.4548	Radius: 25.9652	Rotation: 196.587
+[INFO]: XPos: -95.1639	YPos: -2.4548	Radius: 25.9652	Rotation: 196.587
+[INFO]: XPos: -95.1639	YPos: -2.4548	Radius: 25.9652	Rotation: 196.587
+[INFO]: XPos: -48.0097	YPos: 161.425	Radius: 81.5872	Rotation: 139.987
+[INFO]: XPos: -38.5919	YPos: -95.635	Radius: 83.0438	Rotation: 229.369
+[INFO]: XPos: 117.239	YPos: 54.4426	Radius: 98.987	Rotation: 44.5133
+[INFO]: XPos: -95.1639	YPos: -2.4548	Radius: 25.9652	Rotation: 196.587
+[INFO]: Playing the sound: bleep
+[INFO]: Texture width: 1280	Texture height: 720
+[INFO]: Disconnecting, from the server.
+[INFO]: The server has been notified!
+[INFO]: Successfully disconnected, from the server.
+[INFO]: The music file was successfully opened. Music file: resources/audio/music/dobbleTheme.wav
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 0
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 25
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 0
+[INFO]: Score: 25
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 25
+[INFO]: The player has clicked on a symbol. Symbol ID: 21
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Playing the sound: symbolGuess
+[INFO]: Packet being sent, to the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 149.946	YPos: -140.601	Radius: 44.446	Rotation: 321.952
+[INFO]: XPos: -151.783	YPos: 133.198	Radius: 48.0602	Rotation: 87.8857
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 112.877	YPos: 155.413	Radius: 47.2415	Rotation: 124.295
+[INFO]: Score: 25
+[INFO]: Score: 0
+[INFO]: XPos: 5.851	YPos: -162.302	Radius: 75.912	Rotation: 271.677
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 5
+[INFO]: XPos: -16.146	YPos: 157.058	Radius: 81.792	Rotation: 149.29
+[INFO]: Enemy Score: 5
+[INFO]: Enemy Score: 25
+[INFO]: XPos: -109.565	YPos: -44.2068	Radius: 89.2156	Rotation: 43.9118
+[INFO]: XPos: 135.756	YPos: 7.43753	Radius: 102.492	Rotation: 258.429
+[INFO]: XPos: -89.5784	YPos: -197.604	Radius: 25.8379	Rotation: 320.746
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 5
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 25
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: -107.469	YPos: -179.85	Radius: 40.4869	Rotation: 171.162
+[INFO]: XPos: -107.469	YPos: -179.85	Radius: 40.4869	Rotation: 171.162
+[INFO]: XPos: 201.469	YPos: -53.9743	Radius: 40.753	Rotation: 262.864
+[INFO]: XPos: 201.469	YPos: -53.9743	Radius: 40.753	Rotation: 262.864
+[INFO]: XPos: 201.469	YPos: -53.9743	Radius: 40.753	Rotation: 262.864
+[INFO]: XPos: 96.2155	YPos: 167.871	Radius: 56.5105	Rotation: 290.177
+[INFO]: XPos: 96.2155	YPos: 167.871	Radius: 56.5105	Rotation: 290.177
+[INFO]: XPos: -40.9138	YPos: 118.917	Radius: 84.9409	Rotation: 125.406
+[INFO]: XPos: -40.9138	YPos: 118.917	Radius: 84.9409	Rotation: 125.406
+[INFO]: XPos: -40.9138	YPos: 118.917	Radius: 84.9409	Rotation: 125.406
+[INFO]: XPos: 97.6308	YPos: 21.7382	Radius: 84.2875	Rotation: 157.237
+[INFO]: XPos: 97.6308	YPos: 21.7382	Radius: 84.2875	Rotation: 157.237
+[INFO]: XPos: 97.6308	YPos: 21.7382	Radius: 84.2875	Rotation: 157.237
+[INFO]: XPos: 28.4991	YPos: -133.101	Radius: 85.2838	Rotation: 223.36
+[INFO]: XPos: 28.4991	YPos: -133.101	Radius: 85.2838	Rotation: 223.36
+[INFO]: XPos: 28.4991	YPos: -133.101	Radius: 85.2838	Rotation: 223.36
+[INFO]: XPos: -134.727	YPos: -41.8687	Radius: 100.162	Rotation: 81.9485
+[INFO]: XPos: -134.727	YPos: -41.8687	Radius: 100.162	Rotation: 81.9485
+[INFO]: XPos: -134.727	YPos: -41.8687	Radius: 100.162	Rotation: 81.9485
+[INFO]: XPos: 173.535	YPos: -122.166	Radius: 32.9383	Rotation: 159.703
+[INFO]: XPos: 173.535	YPos: -122.166	Radius: 32.9383	Rotation: 159.703
+[INFO]: XPos: 173.535	YPos: -122.166	Radius: 32.9383	Rotation: 159.703
+[INFO]: The player has clicked on a symbol. Symbol ID: 1
+Entity Name: PlayerCard
+[INFO]: Symbol sent to the server!PlayerCard
+[INFO]: Playing the sound: symbolGuess
+[INFO]: Packet being sent, to the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: Score: 25
+[INFO]: Enemy Score: 25
+[INFO]: XPos: 53.5261	YPos: 165.604	Radius: 49.8642	Rotation: 13.3092
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 25
+[INFO]: XPos: -86.2656	YPos: -175.934	Radius: 54.0344	Rotation: 57.7061
+[INFO]: Enemy Score: 25
+[INFO]: XPos: -177.017	YPos: 46.7014	Radius: 48.238	Rotation: 229.521
+[INFO]: XPos: -93.9309	YPos: -45.9294	Radius: 76.1957	Rotation: 210.295
+[INFO]: XPos: 138.213	YPos: 25.8941	Radius: 82.4905	Rotation: 43.9159
+[INFO]: XPos: -75.6878	YPos: 149.306	Radius: 80.3734	Rotation: 96.2927
+[INFO]: XPos: 78.7427	YPos: -139.724	Radius: 89.6152	Rotation: 250.691
+[INFO]: XPos: 152.885	YPos: 146.055	Radius: 38.5625	Rotation: 158.854
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: Score: 25
+[INFO]: Enemy Score: 0
+[INFO]: Enemy Score: 25
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 23.8371	YPos: -192.723	Radius: 50.6376	Rotation: 316.869
+[INFO]: XPos: -199.813	YPos: -47.4202	Radius: 44.637	Rotation: 124.255
+[INFO]: XPos: 37.8583	YPos: 176.861	Radius: 50.9785	Rotation: 269.63
+[INFO]: Packet being received, from the server.
+[INFO]: Packet being received, from the server.
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 0	YPos: 0	Radius: 250	Rotation: 0
+[INFO]: XPos: 94.3185	YPos: -78.694	Radius: 76.8697	Rotation: 67.0074
+[INFO]: XPos: 23.8371	YPos: -192.723	Radius: 50.6376	Rotation: 316.869
+[INFO]: XPos: 23.8371	YPos: -192.723	Radius: 50.6376	Rotation: 316.869
+[INFO]: XPos: -86.1415	YPos: -122.394	Radius: 79.9057	Rotation: 191.605
+[INFO]: XPos: 133.797	YPos: 86.3089	Radius: 80.9455	Rotation: 317.808
+[INFO]: XPos: -199.813	YPos: -47.4202	Radius: 44.637	Rotation: 124.255
+[INFO]: XPos: -199.813	YPos: -47.4202	Radius: 44.637	Rotation: 124.255
+[INFO]: XPos: 37.8583	YPos: 176.861	Radius: 50.9785	Rotation: 269.63
+[INFO]: XPos: 37.8583	YPos: 176.861	Radius: 50.9785	Rotation: 269.63
+[INFO]: XPos: -101.935	YPos: 63.2273	Radius: 103.089	Rotation: 277.969
+[INFO]: XPos: 94.3185	YPos: -78.694	Radius: 76.8697	Rotation: 67.0074
+[INFO]: XPos: 205.149	YPos: -40.8817	Radius: 40.2337	Rotation: 184.211
+[INFO]: XPos: 94.3185	YPos: -78.694	Radius: 76.8697	Rotation: 67.0074
+[INFO]: XPos: -86.1415	YPos: -122.394	Radius: 79.9057	Rotation: 191.605
+[INFO]: XPos: -86.1415	YPos: -122.394	Radius: 79.9057	Rotation: 191.605
+[INFO]: XPos: 133.797	YPos: 86.3089	Radius: 80.9455	Rotation: 317.808
+[INFO]: XPos: 133.797	YPos: 86.3089	Radius: 80.9455	Rotation: 317.808
+[INFO]: XPos: -101.935	YPos: 63.2273	Radius: 103.089	Rotation: 277.969
+[INFO]: XPos: -101.935	YPos: 63.2273	Radius: 103.089	Rotation: 277.969
+[INFO]: XPos: 205.149	YPos: -40.8817	Radius: 40.2337	Rotation: 184.211
+[INFO]: XPos: 205.149	YPos: -40.8817	Radius: 40.2337	Rotation: 184.211
